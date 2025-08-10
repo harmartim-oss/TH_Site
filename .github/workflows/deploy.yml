@@ -26,13 +26,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          # Add caching for npm dependencies
+          cache: 'npm' 
       - name: Install dependencies
         run: npm install
       - name: Build project
-        # THIS IS THE LINE THAT WAS CHANGED
-        # We explicitly pass the base path to the build command.
-        run: npm run build -- --base=/TH_Site/
+        # The build command is now simpler, relying on the vite.config.js
+        run: npm run build 
       - name: Upload production-ready build files
         uses: actions/upload-pages-artifact@v3
         with:
