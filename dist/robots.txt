@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://timharmarlegal.com/sitemap.xml
+Sitemap: https://www.timharmar.com/sitemap.xml
 
