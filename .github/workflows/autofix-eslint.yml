@@ -1,0 +1,43 @@
+name: Autofix ESLint
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays at 06:00 UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  eslint-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Run ESLint with fixes
+        run: npm run lint:fix
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(eslint): apply automatic fixes"
+          title: "chore(eslint): apply automatic fixes"
+          body: "Automated ESLint fixes via scheduled/manual workflow."
+          branch: "chore/eslint-autofix"
+          labels: "automation, eslint"
+          delete-branch: true
