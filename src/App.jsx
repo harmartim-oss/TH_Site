@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import styles from './App.module.css'
 // The line "import './index.css'" has been removed from here
 
@@ -10,9 +9,6 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className={styles.logo} alt="Vite logo" />
-        </a>
         <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
           <img src={reactLogo} className={`${styles.logo} ${styles.logo_react}`} alt="React logo" />
         </a>
@@ -27,7 +23,7 @@ function App() {
         </p>
       </div>
       <p className={styles.read_the_docs}>
-        Click on the Vite and React logos to learn more
+        Click on the React logo to learn more
       </p>
     </>
   )
