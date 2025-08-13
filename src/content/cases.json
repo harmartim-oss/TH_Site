@@ -1,0 +1,34 @@
+[
+  {
+    "id": "smb-contracts-ops",
+    "title": "Streamlined contracts reduced cycle time by 40%",
+    "summary": "For a regional services company, standardized MSAs and SOWs, aligned approval workflows, and clarified vendor obligations. The result was faster deals and fewer post‑signing issues.",
+    "outcome": "Shorter sales cycles; fewer escalations",
+    "industries": ["Professional Services", "B2B"],
+    "services": ["Contracts", "Commercial", "Governance"]
+  },
+  {
+    "id": "privacy-readiness",
+    "title": "Privacy readiness with lightweight controls",
+    "summary": "Helped a SaaS provider inventory data, map flows, and implement a clear data request process without heavy tooling. Delivered concise privacy notices and a practical retention policy.",
+    "outcome": "Aligned with privacy obligations; reduced request handling time",
+    "industries": ["SaaS", "Technology"],
+    "services": ["Privacy", "Compliance"]
+  },
+  {
+    "id": "manufacturing-supply",
+    "title": "Supply agreements that protect margins",
+    "summary": "Updated manufacturing supply agreements to address pricing adjustments, lead‑time risk, and quality remedies. Reduced disputes and improved predictability with suppliers.",
+    "outcome": "Fewer disputes; clearer cost and risk allocations",
+    "industries": ["Manufacturing"],
+    "services": ["Commercial", "Operations"]
+  },
+  {
+    "id": "hiring-compliance",
+    "title": "Practical hiring compliance for growth",
+    "summary": "Built a lightweight hiring compliance starter for a growing team: standardized offers, confidentiality/IP clauses, and onboarding checklists adapted for remote roles.",
+    "outcome": "Consistent onboarding; reduced onboarding errors",
+    "industries": ["SMB", "Technology", "Services"],
+    "services": ["Employment", "Compliance"]
+  }
+]

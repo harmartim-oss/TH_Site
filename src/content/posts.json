@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "contract-review-checklist",
+    "title": "A practical contract review checklist for SMBs",
+    "summary": "A concise checklist to spot commercial, risk, and operational issues before you sign.",
+    "date": "2025-08-10",
+    "tags": ["Contracts", "SMB", "Risk"]
+  },
+  {
+    "slug": "privacy-readiness-basics",
+    "title": "Privacy readiness: start with your data map",
+    "summary": "Inventory systems, map flows, and set a simple intake for access requests—no heavy tools required.",
+    "date": "2025-08-07",
+    "tags": ["Privacy", "Compliance", "SaaS"]
+  },
+  {
+    "slug": "hiring-compliance-starter",
+    "title": "Hiring compliance starter for growing teams",
+    "summary": "Standardize offers and onboarding to reduce errors and protect IP as you scale.",
+    "date": "2025-08-05",
+    "tags": ["Employment", "SMB", "Operations"]
+  }
+]
