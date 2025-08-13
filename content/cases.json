@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Manufacturing Client Reduces Compliance Risk by 80%",
+    "summary": "Helped a mid-size manufacturing company implement comprehensive privacy controls and PIPEDA compliance framework, significantly reducing regulatory exposure while streamlining operations.",
+    "outcome": "80% reduction in compliance risk",
+    "industry": "Manufacturing"
+  },
+  {
+    "id": 2, 
+    "title": "SaaS Startup Protects Core IP Portfolio",
+    "summary": "Developed comprehensive intellectual property strategy for emerging software company, securing key patents and trademarks while establishing robust licensing framework.",
+    "outcome": "Complete IP protection strategy",
+    "industry": "SaaS"
+  },
+  {
+    "id": 3,
+    "title": "Retail Chain Successfully Resolves Multi-Party Dispute",
+    "summary": "Led complex civil litigation involving supply chain contracts and consumer protection issues, achieving favorable settlement that preserved client relationships.",
+    "outcome": "Favorable settlement achieved",
+    "industry": "Retail"
+  },
+  {
+    "id": 4,
+    "title": "Professional Services Firm Expands with Confidence",
+    "summary": "Provided ongoing legal counsel supporting business expansion, including contract review, regulatory compliance, and risk management across multiple jurisdictions.",
+    "outcome": "Successful expansion completed",
+    "industry": "Professional Services"
+  }
+]

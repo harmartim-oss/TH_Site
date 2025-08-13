@@ -91,6 +91,106 @@
     }
     </script>
     
+    <!-- Person Schema for Principal Lawyer -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Tim J. Harmar",
+      "jobTitle": "Principal Lawyer",
+      "worksFor": {
+        "@type": "LegalService",
+        "name": "Tim Harmar Legal & Consulting Services"
+      },
+      "alumniOf": [
+        "University of Windsor Faculty of Law",
+        "York University Osgoode Hall Law School"
+      ],
+      "knowsLanguage": ["en-CA", "en-US"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sault Ste. Marie",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      }
+    }
+    </script>
+    
+    <!-- Service Entries Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Civil Litigation Services",
+      "provider": {
+        "@type": "LegalService",
+        "name": "Tim Harmar Legal & Consulting Services"
+      },
+      "serviceType": "Civil Litigation",
+      "areaServed": "Sault Ste. Marie, Ontario, Canada"
+    }
+    </script>
+    
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What practice areas do you specialize in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We specialize in civil litigation, privacy law, intellectual property law, business law, and economic development consulting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you serve clients outside of Sault Ste. Marie?",
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "Yes, we provide legal services throughout Ontario and work with clients across Canada on various matters."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.timharmar.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Practice Areas",
+          "item": "https://www.timharmar.com/#practice-areas"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Case Studies",
+          "item": "https://www.timharmar.com/#case-studies"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Resources",
+          "item": "https://www.timharmar.com/#resources"
+        }
+      ]
+    }
+    </script>
+    
     <!-- Additional SEO Meta Tags -->
     <meta name="format-detection" content="telephone=no" />
     <meta name="google-site-verification" content="" />
@@ -103,8 +203,8 @@
     <!-- DNS Prefetch for external domains -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <script type="module" crossorigin src="/TH_Site/assets/index-DEOQwJIE.js"></script>
-    <link rel="stylesheet" crossorigin href="/TH_Site/assets/index-kQJbKSsj.css">
+    <script type="module" crossorigin src="/TH_Site/assets/index-CzPlcBsz.js"></script>
+    <link rel="stylesheet" crossorigin href="/TH_Site/assets/index-DfpxeIru.css">
   </head>
   <body>
     <div id="root"></div>

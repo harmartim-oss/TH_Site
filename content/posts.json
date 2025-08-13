@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "new-privacy-amendments-2025",
+    "title": "New PIPEDA Amendments Coming in 2025",
+    "summary": "Key changes to Canada's privacy legislation that businesses need to prepare for, including enhanced consent requirements and expanded individual rights.",
+    "date": "2025-01-15",
+    "tags": ["Privacy Law", "PIPEDA", "Compliance"],
+    "category": "Privacy Law"
+  },
+  {
+    "slug": "civil-procedure-updates-ontario", 
+    "title": "Ontario Court of Appeal Updates Civil Procedure Rules",
+    "summary": "Recent amendments to Ontario's Rules of Civil Procedure affecting case management, discovery processes, and alternative dispute resolution requirements.",
+    "date": "2025-01-12",
+    "tags": ["Civil Litigation", "Ontario", "Procedure"],
+    "category": "Civil Litigation"
+  },
+  {
+    "slug": "ip-strategy-tech-startups",
+    "title": "IP Strategy for Tech Startups in 2025",
+    "summary": "Essential intellectual property considerations for technology startups, including patent timing, trademark protection, and trade secret management.",
+    "date": "2025-01-10",
+    "tags": ["Intellectual Property", "Startups", "Technology"],
+    "category": "Business Law"
+  }
+]
