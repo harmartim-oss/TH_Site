@@ -1,36 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import styles from './App.module.css'
-// The line "import './index.css'" has been removed from here
-
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className={styles.logo} alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className={`${styles.logo} ${styles.logo_react}`} alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className={styles.card}>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <main>
+      <header style={{ padding: "2rem 1rem", textAlign: "center" }}>
+        <h1>Tim Harmar Legal & Consulting Services</h1>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Civil litigation, privacy law, intellectual property, and economic development consulting in Sault Ste. Marie, Ontario.
         </p>
-      </div>
-      <p className={styles.read_the_docs}>
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      </header>
 
-export default App
+      <section style={{ maxWidth: 960, margin: "0 auto", padding: "1rem" }}>
+        <h2>How we can help</h2>
+        <ul>
+          <li>Civil Litigation</li>
+          <li>Privacy Law</li>
+          <li>Intellectual Property</li>
+          <li>Business Law</li>
+          <li>Economic Development Consulting</li>
+        </ul>
+      </section>
+
+      <footer style={{ padding: "2rem 1rem", textAlign: "center", opacity: 0.8 }}>
+        <p>Contact: tharmar@timharmar.com • +1-705-999-3657</p>
+      </footer>
+    </main>
+  );
+}
