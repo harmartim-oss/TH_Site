@@ -1,3 +1,8 @@
+import React from 'react';
+import CuttingEdgeFeatures from './components/CuttingEdgeFeatures.jsx';
+
+const { AILegalAssistant } = CuttingEdgeFeatures;
+
 export default function App() {
   return (
     <main>
@@ -22,6 +27,9 @@ export default function App() {
       <footer style={{ padding: "2rem 1rem", textAlign: "center", opacity: 0.8 }}>
         <p>Contact: tharmar@timharmar.com • +1-705-999-3657</p>
       </footer>
+
+      {/* Add AI Legal Assistant chat widget */}
+      <AILegalAssistant />
     </main>
   );
 }
