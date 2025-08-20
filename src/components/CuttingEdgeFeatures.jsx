@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   MessageCircle, 
   Calendar, 
