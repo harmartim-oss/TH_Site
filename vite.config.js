@@ -8,11 +8,11 @@ export default defineConfig({
   base: '/TH_Site/',
   build: {
     // Explicitly disable Server-Side Rendering
-    ssr: false, 
+    ssr: false,
   },
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL('./src', import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 })

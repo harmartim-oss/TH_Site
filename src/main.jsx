@@ -6,5 +6,5 @@ import './index.css' // This line is now correct again
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )

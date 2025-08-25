@@ -1,45 +1,49 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  MessageCircle, 
-  Calendar, 
-  FileText, 
-  Search, 
-  Bell, 
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  MessageCircle,
+  Calendar,
+  FileText,
+  Search,
+  Bell,
   Shield,
   Zap,
   Brain,
   Globe,
   Clock,
   Users,
-  TrendingUp
-} from 'lucide-react';
+  TrendingUp,
+} from 'lucide-react'
 
 // AI-Powered Legal Assistant Chat Widget
 export const AILegalAssistant = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hello! I'm Tim's AI legal assistant. How can I help you today?", sender: 'bot' }
-  ]);
-  const [inputValue, setInputValue] = useState('');
+    {
+      id: 1,
+      text: "Hello! I'm Tim's AI legal assistant. How can I help you today?",
+      sender: 'bot',
+    },
+  ])
+  const [inputValue, setInputValue] = useState('')
 
   const handleSendMessage = () => {
     if (inputValue.trim()) {
-      const newMessage = { id: Date.now(), text: inputValue, sender: 'user' };
-      setMessages([...messages, newMessage]);
-      setInputValue('');
-      
+      const newMessage = { id: Date.now(), text: inputValue, sender: 'user' }
+      setMessages([...messages, newMessage])
+      setInputValue('')
+
       // Simulate AI response
       setTimeout(() => {
         const botResponse = {
           id: Date.now() + 1,
-          text: "Thank you for your question. Tim Harmar specializes in privacy law, civil litigation, and economic development. Would you like to schedule a consultation to discuss your specific legal needs?",
-          sender: 'bot'
-        };
-        setMessages(prev => [...prev, botResponse]);
-      }, 1000);
+          text: 'Thank you for your question. Tim Harmar specializes in privacy law, civil litigation, and economic development. Would you like to schedule a consultation to discuss your specific legal needs?',
+          sender: 'bot',
+        }
+        setMessages((prev) => [...prev, botResponse])
+      }, 1000)
     }
-  };
+  }
 
   return (
     <>
@@ -66,7 +70,7 @@ export const AILegalAssistant = () => {
               <h3 className="font-semibold">AI Legal Assistant</h3>
               <p className="text-sm opacity-90">Powered by Tim Harmar Legal</p>
             </div>
-            
+
             <div className="flex-1 p-4 overflow-y-auto space-y-3">
               {messages.map((message) => (
                 <div
@@ -85,7 +89,7 @@ export const AILegalAssistant = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="p-4 border-t">
               <div className="flex gap-2">
                 <input
@@ -108,22 +112,22 @@ export const AILegalAssistant = () => {
         )}
       </AnimatePresence>
     </>
-  );
-};
+  )
+}
 
 // Smart Appointment Scheduler
 export const SmartScheduler = () => {
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [consultationType, setConsultationType] = useState('');
+  const [selectedDate, setSelectedDate] = useState('')
+  const [selectedTime, setSelectedTime] = useState('')
+  const [consultationType, setConsultationType] = useState('')
 
-  const availableTimes = ['9:00 AM', '10:30 AM', '2:00 PM', '3:30 PM', '4:30 PM'];
+  const availableTimes = ['9:00 AM', '10:30 AM', '2:00 PM', '3:30 PM', '4:30 PM']
   const consultationTypes = [
     'Privacy Law Consultation',
     'Civil Litigation Review',
     'IP Strategy Session',
-    'Business Development Consultation'
-  ];
+    'Business Development Consultation',
+  ]
 
   return (
     <motion.div
@@ -136,12 +140,10 @@ export const SmartScheduler = () => {
         <Calendar className="w-8 h-8 text-teal-600 mr-3" />
         <h3 className="text-2xl font-bold text-gray-900">Smart Scheduler</h3>
       </div>
-      
+
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Consultation Type
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Consultation Type</label>
           <select
             value={consultationType}
             onChange={(e) => setConsultationType(e.target.value)}
@@ -149,15 +151,15 @@ export const SmartScheduler = () => {
           >
             <option value="">Select consultation type</option>
             {consultationTypes.map((type, index) => (
-              <option key={index} value={type}>{type}</option>
+              <option key={index} value={type}>
+                {type}
+              </option>
             ))}
           </select>
         </div>
-        
+
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Preferred Date
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date</label>
           <input
             type="date"
             value={selectedDate}
@@ -166,11 +168,9 @@ export const SmartScheduler = () => {
             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           />
         </div>
-        
+
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Available Times
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Available Times</label>
           <div className="grid grid-cols-2 gap-2">
             {availableTimes.map((time, index) => (
               <button
@@ -187,7 +187,7 @@ export const SmartScheduler = () => {
             ))}
           </div>
         </div>
-        
+
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -197,29 +197,29 @@ export const SmartScheduler = () => {
         </motion.button>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
 // Legal Document Generator
 export const DocumentGenerator = () => {
-  const [documentType, setDocumentType] = useState('');
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [documentType, setDocumentType] = useState('')
+  const [isGenerating, setIsGenerating] = useState(false)
 
   const documentTypes = [
     'Privacy Policy Template',
     'Non-Disclosure Agreement',
     'Service Agreement Template',
     'Business Formation Checklist',
-    'IP Protection Guide'
-  ];
+    'IP Protection Guide',
+  ]
 
   const handleGenerate = () => {
-    setIsGenerating(true);
+    setIsGenerating(true)
     setTimeout(() => {
-      setIsGenerating(false);
-      alert('Document template generated! Check your email for the download link.');
-    }, 2000);
-  };
+      setIsGenerating(false)
+      alert('Document template generated! Check your email for the download link.')
+    }, 2000)
+  }
 
   return (
     <motion.div
@@ -232,11 +232,11 @@ export const DocumentGenerator = () => {
         <FileText className="w-8 h-8 text-blue-600 mr-3" />
         <h3 className="text-2xl font-bold text-gray-900">Document Generator</h3>
       </div>
-      
+
       <p className="text-gray-600 mb-6">
         Generate customized legal document templates for your business needs.
       </p>
-      
+
       <div className="space-y-4">
         <select
           value={documentType}
@@ -245,10 +245,12 @@ export const DocumentGenerator = () => {
         >
           <option value="">Select document type</option>
           {documentTypes.map((type, index) => (
-            <option key={index} value={type}>{type}</option>
+            <option key={index} value={type}>
+              {type}
+            </option>
           ))}
         </select>
-        
+
         <motion.button
           onClick={handleGenerate}
           disabled={!documentType || isGenerating}
@@ -267,30 +269,62 @@ export const DocumentGenerator = () => {
         </motion.button>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
 // Legal News & Updates Feed
 export const LegalNewsFeed = () => {
-  const [activeTab, setActiveTab] = useState('privacy');
+  const [activeTab, setActiveTab] = useState('privacy')
 
   const newsItems = {
     privacy: [
-      { title: 'New PIPEDA Amendments Coming in 2025', date: '2025-01-15', category: 'Privacy Law' },
-      { title: 'Supreme Court Rules on Digital Privacy Rights', date: '2025-01-10', category: 'Privacy Law' },
-      { title: 'CASL Enforcement Trends for Small Business', date: '2025-01-05', category: 'Privacy Law' }
+      {
+        title: 'New PIPEDA Amendments Coming in 2025',
+        date: '2025-01-15',
+        category: 'Privacy Law',
+      },
+      {
+        title: 'Supreme Court Rules on Digital Privacy Rights',
+        date: '2025-01-10',
+        category: 'Privacy Law',
+      },
+      {
+        title: 'CASL Enforcement Trends for Small Business',
+        date: '2025-01-05',
+        category: 'Privacy Law',
+      },
     ],
     litigation: [
-      { title: 'Ontario Court of Appeal Updates Civil Procedure Rules', date: '2025-01-12', category: 'Civil Litigation' },
-      { title: 'New Anti-SLAPP Legislation Developments', date: '2025-01-08', category: 'Civil Litigation' },
-      { title: 'Commercial Dispute Resolution Trends', date: '2025-01-03', category: 'Civil Litigation' }
+      {
+        title: 'Ontario Court of Appeal Updates Civil Procedure Rules',
+        date: '2025-01-12',
+        category: 'Civil Litigation',
+      },
+      {
+        title: 'New Anti-SLAPP Legislation Developments',
+        date: '2025-01-08',
+        category: 'Civil Litigation',
+      },
+      {
+        title: 'Commercial Dispute Resolution Trends',
+        date: '2025-01-03',
+        category: 'Civil Litigation',
+      },
     ],
     business: [
-      { title: 'Economic Development Incentives for Northern Ontario', date: '2025-01-14', category: 'Business Law' },
-      { title: 'Corporate Governance Best Practices Update', date: '2025-01-09', category: 'Business Law' },
-      { title: 'IP Strategy for Tech Startups', date: '2025-01-06', category: 'Business Law' }
-    ]
-  };
+      {
+        title: 'Economic Development Incentives for Northern Ontario',
+        date: '2025-01-14',
+        category: 'Business Law',
+      },
+      {
+        title: 'Corporate Governance Best Practices Update',
+        date: '2025-01-09',
+        category: 'Business Law',
+      },
+      { title: 'IP Strategy for Tech Startups', date: '2025-01-06', category: 'Business Law' },
+    ],
+  }
 
   return (
     <motion.div
@@ -303,7 +337,7 @@ export const LegalNewsFeed = () => {
         <Bell className="w-8 h-8 text-teal-600 mr-3" />
         <h3 className="text-2xl font-bold text-gray-900">Legal Updates</h3>
       </div>
-      
+
       <div className="flex space-x-4 mb-6">
         {Object.keys(newsItems).map((tab) => (
           <button
@@ -319,7 +353,7 @@ export const LegalNewsFeed = () => {
           </button>
         ))}
       </div>
-      
+
       <div className="space-y-4">
         {newsItems[activeTab].map((item, index) => (
           <motion.div
@@ -338,49 +372,55 @@ export const LegalNewsFeed = () => {
         ))}
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
 // Interactive Legal Assessment Tool
 export const LegalAssessment = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [showResults, setShowResults] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [answers, setAnswers] = useState({})
+  const [showResults, setShowResults] = useState(false)
 
   const questions = [
     {
       id: 'business_type',
       question: 'What type of business do you operate?',
-      options: ['Technology Startup', 'Manufacturing', 'Professional Services', 'Retail', 'Other']
+      options: ['Technology Startup', 'Manufacturing', 'Professional Services', 'Retail', 'Other'],
     },
     {
       id: 'legal_concerns',
       question: 'What are your primary legal concerns?',
-      options: ['Privacy Compliance', 'Contract Review', 'IP Protection', 'Regulatory Compliance', 'Litigation Risk']
+      options: [
+        'Privacy Compliance',
+        'Contract Review',
+        'IP Protection',
+        'Regulatory Compliance',
+        'Litigation Risk',
+      ],
     },
     {
       id: 'urgency',
       question: 'How urgent is your legal need?',
-      options: ['Immediate (within 1 week)', 'Soon (within 1 month)', 'Planning ahead (3+ months)']
-    }
-  ];
+      options: ['Immediate (within 1 week)', 'Soon (within 1 month)', 'Planning ahead (3+ months)'],
+    },
+  ]
 
   const handleAnswer = (answer) => {
-    const newAnswers = { ...answers, [questions[currentQuestion].id]: answer };
-    setAnswers(newAnswers);
-    
+    const newAnswers = { ...answers, [questions[currentQuestion].id]: answer }
+    setAnswers(newAnswers)
+
     if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion(currentQuestion + 1)
     } else {
-      setShowResults(true);
+      setShowResults(true)
     }
-  };
+  }
 
   const resetAssessment = () => {
-    setCurrentQuestion(0);
-    setAnswers({});
-    setShowResults(false);
-  };
+    setCurrentQuestion(0)
+    setAnswers({})
+    setShowResults(false)
+  }
 
   return (
     <motion.div
@@ -393,12 +433,14 @@ export const LegalAssessment = () => {
         <Brain className="w-8 h-8 text-purple-600 mr-3" />
         <h3 className="text-2xl font-bold text-gray-900">Legal Needs Assessment</h3>
       </div>
-      
+
       {!showResults ? (
         <div>
           <div className="mb-4">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
-              <span>Question {currentQuestion + 1} of {questions.length}</span>
+              <span>
+                Question {currentQuestion + 1} of {questions.length}
+              </span>
               <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -408,9 +450,9 @@ export const LegalAssessment = () => {
               ></div>
             </div>
           </div>
-          
+
           <h4 className="text-lg font-semibold mb-4">{questions[currentQuestion].question}</h4>
-          
+
           <div className="space-y-3">
             {questions[currentQuestion].options.map((option, index) => (
               <motion.button
@@ -430,12 +472,19 @@ export const LegalAssessment = () => {
           <h4 className="text-lg font-semibold mb-4">Assessment Complete!</h4>
           <div className="bg-white p-6 rounded-lg mb-4">
             <p className="text-gray-700 mb-4">
-              Based on your responses, Tim Harmar can help you with specialized legal services tailored to your needs.
+              Based on your responses, Tim Harmar can help you with specialized legal services
+              tailored to your needs.
             </p>
             <div className="space-y-2">
-              <p><strong>Business Type:</strong> {answers.business_type}</p>
-              <p><strong>Primary Concern:</strong> {answers.legal_concerns}</p>
-              <p><strong>Timeline:</strong> {answers.urgency}</p>
+              <p>
+                <strong>Business Type:</strong> {answers.business_type}
+              </p>
+              <p>
+                <strong>Primary Concern:</strong> {answers.legal_concerns}
+              </p>
+              <p>
+                <strong>Timeline:</strong> {answers.urgency}
+              </p>
             </div>
           </div>
           <div className="flex space-x-4">
@@ -452,14 +501,13 @@ export const LegalAssessment = () => {
         </div>
       )}
     </motion.div>
-  );
-};
+  )
+}
 
 export default {
   AILegalAssistant,
   SmartScheduler,
   DocumentGenerator,
   LegalNewsFeed,
-  LegalAssessment
-};
-
+  LegalAssessment,
+}
