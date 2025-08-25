@@ -282,16 +282,19 @@ export const LegalNewsFeed = () => {
         title: 'New PIPEDA Amendments Coming in 2025',
         date: '2025-01-15',
         category: 'Privacy Law',
+        link: 'https://www.priv.gc.ca/en/about-the-opc/what-we-do/provincial-and-territorial-collaboration/provincial-and-territorial-privacy-laws-and-oversight/',
       },
       {
         title: 'Supreme Court Rules on Digital Privacy Rights',
         date: '2025-01-10',
         category: 'Privacy Law',
+        link: 'https://www.scc-csc.ca/case-dossier/info/sum-som-eng.aspx',
       },
       {
         title: 'CASL Enforcement Trends for Small Business',
         date: '2025-01-05',
         category: 'Privacy Law',
+        link: 'https://crtc.gc.ca/eng/casl-lcap/',
       },
     ],
     litigation: [
@@ -299,16 +302,19 @@ export const LegalNewsFeed = () => {
         title: 'Ontario Court of Appeal Updates Civil Procedure Rules',
         date: '2025-01-12',
         category: 'Civil Litigation',
+        link: 'https://www.ontariocourts.ca/coa/en/',
       },
       {
         title: 'New Anti-SLAPP Legislation Developments',
         date: '2025-01-08',
         category: 'Civil Litigation',
+        link: 'https://www.ontario.ca/laws/statute/10015',
       },
       {
         title: 'Commercial Dispute Resolution Trends',
         date: '2025-01-03',
         category: 'Civil Litigation',
+        link: 'https://www.ontariocourts.ca/scj/en/',
       },
     ],
     business: [
@@ -316,13 +322,20 @@ export const LegalNewsFeed = () => {
         title: 'Economic Development Incentives for Northern Ontario',
         date: '2025-01-14',
         category: 'Business Law',
+        link: 'https://www.ontario.ca/page/northern-ontario-heritage-fund',
       },
       {
         title: 'Corporate Governance Best Practices Update',
         date: '2025-01-09',
         category: 'Business Law',
+        link: 'https://www.osc.ca/en',
       },
-      { title: 'IP Strategy for Tech Startups', date: '2025-01-06', category: 'Business Law' },
+      { 
+        title: 'IP Strategy for Tech Startups', 
+        date: '2025-01-06', 
+        category: 'Business Law',
+        link: 'https://www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/home'
+      },
     ],
   }
 
@@ -335,7 +348,7 @@ export const LegalNewsFeed = () => {
     >
       <div className="flex items-center mb-6">
         <Bell className="w-8 h-8 text-teal-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-900">Legal Updates</h3>
+        <h3 className="text-2xl font-bold text-gray-900">In the News</h3>
       </div>
 
       <div className="flex space-x-4 mb-6">
@@ -363,11 +376,18 @@ export const LegalNewsFeed = () => {
             transition={{ delay: index * 0.1 }}
             className="border-l-4 border-teal-500 pl-4 py-2"
           >
-            <h4 className="font-semibold text-gray-900">{item.title}</h4>
-            <div className="flex items-center text-sm text-gray-600 mt-1">
-              <Clock className="w-4 h-4 mr-1" />
-              {item.date} • {item.category}
-            </div>
+            <a 
+              href={item.link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block hover:bg-gray-50 rounded-lg p-2 transition-colors"
+            >
+              <h4 className="font-semibold text-gray-900 hover:text-teal-600 transition-colors">{item.title}</h4>
+              <div className="flex items-center text-sm text-gray-600 mt-1">
+                <Clock className="w-4 h-4 mr-1" />
+                {item.date} • {item.category}
+              </div>
+            </a>
           </motion.div>
         ))}
       </div>
