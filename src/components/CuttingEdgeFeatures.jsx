@@ -200,25 +200,71 @@ export const SmartScheduler = () => {
   )
 }
 
-// Legal Document Generator
-export const DocumentGenerator = () => {
-  const [documentType, setDocumentType] = useState('')
-  const [isGenerating, setIsGenerating] = useState(false)
+// Legal Resources Library
+export const LegalResourcesLibrary = () => {
+  const [selectedCategory, setSelectedCategory] = useState('guides')
 
-  const documentTypes = [
-    'Privacy Policy Template',
-    'Non-Disclosure Agreement',
-    'Service Agreement Template',
-    'Business Formation Checklist',
-    'IP Protection Guide',
-  ]
-
-  const handleGenerate = () => {
-    setIsGenerating(true)
-    setTimeout(() => {
-      setIsGenerating(false)
-      alert('Document template generated! Check your email for the download link.')
-    }, 2000)
+  const resources = {
+    guides: [
+      {
+        title: 'Privacy Compliance Guide for Small Business',
+        description: 'Essential steps to ensure your business complies with Canadian privacy laws.',
+        type: 'PDF Guide',
+        icon: '🔒',
+      },
+      {
+        title: 'Contract Review Checklist',
+        description: 'Key elements to review before signing any business contract.',
+        type: 'Checklist',
+        icon: '✅',
+      },
+      {
+        title: 'IP Protection Basics',
+        description: 'Understanding trademarks, copyrights, and trade secrets for your business.',
+        type: 'Guide',
+        icon: '💡',
+      },
+    ],
+    faqs: [
+      {
+        title: 'When do I need a lawyer for my startup?',
+        description: 'Learn the critical moments when legal counsel becomes essential.',
+        type: 'FAQ',
+        icon: '❓',
+      },
+      {
+        title: 'Understanding PIPEDA compliance',
+        description: 'Common questions about Canadian privacy law requirements.',
+        type: 'FAQ',
+        icon: '🛡️',
+      },
+      {
+        title: 'Employment law basics',
+        description: 'Key employment law considerations for Canadian businesses.',
+        type: 'FAQ',
+        icon: '👥',
+      },
+    ],
+    tools: [
+      {
+        title: 'Legal Budget Calculator',
+        description: 'Estimate legal costs for common business services.',
+        type: 'Tool',
+        icon: '💰',
+      },
+      {
+        title: 'Contract Template Library',
+        description: 'Basic templates for common business agreements.',
+        type: 'Templates',
+        icon: '📄',
+      },
+      {
+        title: 'Compliance Calendar',
+        description: 'Track important legal deadlines and requirements.',
+        type: 'Calendar',
+        icon: '📅',
+      },
+    ],
   }
 
   return (
@@ -230,44 +276,59 @@ export const DocumentGenerator = () => {
     >
       <div className="flex items-center mb-6">
         <FileText className="w-8 h-8 text-blue-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-900">Document Generator</h3>
+        <h3 className="text-2xl font-bold text-gray-900">Legal Resources Library</h3>
       </div>
 
       <p className="text-gray-600 mb-6">
-        Generate customized legal document templates for your business needs.
+        Access helpful legal resources, guides, and tools to support your business.
       </p>
 
-      <div className="space-y-4">
-        <select
-          value={documentType}
-          onChange={(e) => setDocumentType(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        >
-          <option value="">Select document type</option>
-          {documentTypes.map((type, index) => (
-            <option key={index} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-
-        <motion.button
-          onClick={handleGenerate}
-          disabled={!documentType || isGenerating}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isGenerating ? (
-            <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-              Generating...
-            </div>
-          ) : (
-            'Generate Document'
-          )}
-        </motion.button>
+      <div className="flex space-x-2 mb-6">
+        {Object.keys(resources).map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-4 py-2 rounded-lg font-medium transition-colors capitalize ${
+              selectedCategory === category
+                ? 'bg-blue-600 text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-100'
+            }`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
+
+      <div className="space-y-3">
+        {resources[selectedCategory].map((resource, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors cursor-pointer"
+          >
+            <div className="flex items-start">
+              <span className="text-2xl mr-3">{resource.icon}</span>
+              <div className="flex-1">
+                <h4 className="font-semibold text-gray-900 mb-1">{resource.title}</h4>
+                <p className="text-gray-600 text-sm mb-2">{resource.description}</p>
+                <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                  {resource.type}
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className="w-full mt-6 bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+      >
+        Access Full Resource Library
+      </motion.button>
     </motion.div>
   )
 }
@@ -529,7 +590,7 @@ export const LegalAssessment = () => {
 export default {
   AILegalAssistant,
   SmartScheduler,
-  DocumentGenerator,
+  LegalResourcesLibrary,
   LegalNewsFeed,
   LegalAssessment,
 }

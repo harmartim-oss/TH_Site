@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
   AILegalAssistant,
   SmartScheduler,
-  DocumentGenerator,
+  LegalResourcesLibrary,
   LegalNewsFeed,
   LegalAssessment,
 } from './components/CuttingEdgeFeatures'
@@ -126,17 +126,22 @@ export default function App() {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mb-4">
-              <span className="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wide uppercase">
+            <div className="mb-6">
+              <span className="bg-white bg-opacity-20 text-white px-8 py-3 rounded-full text-lg font-bold tracking-wide uppercase shadow-lg">
                 Tim Harmar Legal & Consulting Services
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Expert Legal Solutions for Your Business
             </h1>
+            <div className="mb-6">
+              <h2 className="text-2xl md:text-3xl font-semibold text-blue-100 mb-2">
+                Tim Harmar Legal & Consulting Services
+              </h2>
+              <div className="w-32 h-1 bg-white mx-auto rounded-full"></div>
+            </div>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Award-winning legal expertise from{' '}
-              <strong>Tim Harmar Legal & Consulting Services</strong> - specialized in civil
+              Award-winning legal expertise specialized in civil
               litigation, privacy law, intellectual property, and business strategy consulting in
               Sault Ste. Marie, Ontario.
             </p>
@@ -150,7 +155,7 @@ export default function App() {
                   document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
                 }
               >
-                Learn More
+                Explore Our Legal Services
               </button>
             </div>
           </div>
@@ -257,7 +262,7 @@ export default function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <LegalAssessment />
-            <DocumentGenerator />
+            <LegalResourcesLibrary />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
