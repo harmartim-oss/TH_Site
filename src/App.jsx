@@ -232,11 +232,10 @@ export default function App() {
       <section id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Team
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our dedicated legal professionals are committed to providing exceptional service and expertise to every client.
+              Our dedicated legal professionals are committed to providing exceptional service and
+              expertise to every client.
             </p>
           </div>
 
@@ -244,9 +243,7 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             {/* Tim J. Harmar */}
             <div className="bg-gray-50 p-8 rounded-2xl">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Tim J. Harmar
-              </h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Tim J. Harmar</h3>
               <p className="text-blue-600 font-semibold mb-4">Principal Lawyer</p>
               <p className="text-lg text-gray-600 mb-6">
                 With extensive experience in civil litigation, privacy law, and intellectual
@@ -271,25 +268,33 @@ export default function App() {
 
             {/* Kelly Burton */}
             <div className="bg-gray-50 p-8 rounded-2xl">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Kelly Burton
-              </h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Kelly Burton</h3>
               <p className="text-blue-600 font-semibold mb-4">Legal Assistant</p>
               <p className="text-lg text-gray-600 mb-6">
-                Kelly Burton is a dedicated and detail-oriented Legal Assistant at Tim Harmar Legal & Consulting Services. With a passion for the law and a commitment to client success, Kelly provides crucial support to our legal team. Her responsibilities include managing case files, drafting legal documents, and ensuring seamless communication between our attorneys and clients.
+                Kelly Burton is a dedicated and detail-oriented Legal Assistant at Tim Harmar Legal
+                & Consulting Services. With a passion for the law and a commitment to client
+                success, Kelly provides crucial support to our legal team. Her responsibilities
+                include managing case files, drafting legal documents, and ensuring seamless
+                communication between our attorneys and clients.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center">
                   <span className="text-blue-600 mr-3">📋</span>
-                  <span className="text-gray-700">Expert in legal research and case management</span>
+                  <span className="text-gray-700">
+                    Expert in legal research and case management
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-blue-600 mr-3">📝</span>
-                  <span className="text-gray-700">Specialized in document preparation and client coordination</span>
+                  <span className="text-gray-700">
+                    Specialized in document preparation and client coordination
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-blue-600 mr-3">⚖️</span>
-                  <span className="text-gray-700">Committed to upholding the highest standards of professionalism</span>
+                  <span className="text-gray-700">
+                    Committed to upholding the highest standards of professionalism
+                  </span>
                 </div>
               </div>
             </div>
