@@ -135,17 +135,20 @@ export default function App() {
               Expert Legal Solutions for Your Business
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Award-winning legal expertise from <strong>Tim Harmar Legal & Consulting Services</strong> - 
-              specialized in civil litigation, privacy law, intellectual property, and business strategy 
-              consulting in Sault Ste. Marie, Ontario.
+              Award-winning legal expertise from{' '}
+              <strong>Tim Harmar Legal & Consulting Services</strong> - specialized in civil
+              litigation, privacy law, intellectual property, and business strategy consulting in
+              Sault Ste. Marie, Ontario.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 Schedule Free Consultation
               </button>
-              <button 
+              <button
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors"
-                onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() =>
+                  document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
+                }
               >
                 Learn More
               </button>
@@ -173,38 +176,44 @@ export default function App() {
                 description:
                   'Expert representation in complex civil matters with a track record of success.',
                 icon: '⚖️',
-                detailed: 'Our civil litigation practice encompasses comprehensive legal representation for businesses and individuals in complex disputes. We handle contract disputes, tort claims, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience and strategic case management, we provide aggressive advocacy while exploring cost-effective resolution strategies including mediation and arbitration.',
+                detailed:
+                  'Our civil litigation practice encompasses comprehensive legal representation for businesses and individuals in complex disputes. We handle contract disputes, tort claims, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience and strategic case management, we provide aggressive advocacy while exploring cost-effective resolution strategies including mediation and arbitration.',
               },
               {
                 title: 'Privacy Law',
                 description: 'Comprehensive privacy compliance and data protection strategies.',
                 icon: '🔒',
-                detailed: 'Navigate the complex landscape of Canadian privacy laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, and regulatory compliance audits for businesses of all sizes.',
+                detailed:
+                  'Navigate the complex landscape of Canadian privacy laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, and regulatory compliance audits for businesses of all sizes.',
               },
               {
                 title: 'Intellectual Property',
                 description: 'Protecting your innovations and creative assets in the digital age.',
                 icon: '💡',
-                detailed: 'Comprehensive intellectual property protection including trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, IP due diligence for mergers and acquisitions, and IP portfolio management. We help businesses protect their most valuable intangible assets and develop strategic IP licensing and monetization strategies.',
+                detailed:
+                  'Comprehensive intellectual property protection including trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, IP due diligence for mergers and acquisitions, and IP portfolio management. We help businesses protect their most valuable intangible assets and develop strategic IP licensing and monetization strategies.',
               },
               {
                 title: 'Business Law',
                 description: 'Strategic legal counsel for business growth and compliance.',
                 icon: '🏢',
-                detailed: 'Full-spectrum business law services including corporate formation and governance, shareholder agreements, commercial contracts, regulatory compliance, employment law matters, and corporate restructuring. We serve as outside general counsel for emerging companies and established businesses, providing strategic legal guidance for sustainable growth.',
+                detailed:
+                  'Full-spectrum business law services including corporate formation and governance, shareholder agreements, commercial contracts, regulatory compliance, employment law matters, and corporate restructuring. We serve as outside general counsel for emerging companies and established businesses, providing strategic legal guidance for sustainable growth.',
               },
               {
                 title: 'Business Start Up and Strategy',
                 description:
                   'Comprehensive legal guidance for entrepreneurs and new business ventures.',
                 icon: '🚀',
-                detailed: 'End-to-end legal support for entrepreneurs launching new ventures including business entity selection and formation, founders\' agreements, intellectual property strategy, regulatory compliance roadmaps, employment policies, privacy frameworks, and strategic partnerships. We help startups build solid legal foundations while remaining agile and cost-effective.',
+                detailed:
+                  "End-to-end legal support for entrepreneurs launching new ventures including business entity selection and formation, founders' agreements, intellectual property strategy, regulatory compliance roadmaps, employment policies, privacy frameworks, and strategic partnerships. We help startups build solid legal foundations while remaining agile and cost-effective.",
               },
               {
                 title: 'Legal Consulting',
                 description: 'Strategic advice and risk management for complex legal challenges.',
                 icon: '🎯',
-                detailed: 'Strategic legal consulting for complex business challenges including regulatory compliance reviews, risk assessment and mitigation strategies, legal project management, and specialized advisory services. We provide senior-level legal expertise for organizations requiring sophisticated legal analysis and strategic guidance.',
+                detailed:
+                  'Strategic legal consulting for complex business challenges including regulatory compliance reviews, risk assessment and mitigation strategies, legal project management, and specialized advisory services. We provide senior-level legal expertise for organizations requiring sophisticated legal analysis and strategic guidance.',
               },
             ].map((service, index) => (
               <div
@@ -284,28 +293,37 @@ export default function App() {
               </div>
               <div className="bg-blue-600 text-white p-4 rounded-lg mb-6">
                 <p className="font-semibold text-lg">🏆 Award-Winning Legal Excellence</p>
-                <p className="text-blue-100">Supreme Court of Canada Experience • 15+ Years Practice</p>
+                <p className="text-blue-100">
+                  Supreme Court of Canada Experience • 15+ Years Practice
+                </p>
               </div>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Tim Harmar is a distinguished lawyer with extensive experience in civil litigation, privacy law, 
-                and intellectual property. As the founder of Tim Harmar Legal & Consulting Services, he brings 
-                award-winning legal expertise and Supreme Court of Canada experience to clients throughout 
-                Sault Ste. Marie and Northern Ontario. His practice focuses on delivering innovative legal 
-                solutions with cutting-edge technology integration.
+                Tim Harmar is a distinguished lawyer with extensive experience in civil litigation,
+                privacy law, and intellectual property. As the founder of Tim Harmar Legal &
+                Consulting Services, he brings award-winning legal expertise and Supreme Court of
+                Canada experience to clients throughout Sault Ste. Marie and Northern Ontario. His
+                practice focuses on delivering innovative legal solutions with cutting-edge
+                technology integration.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <span className="text-blue-600 mr-3 text-lg">🎓</span>
-                    <span className="text-gray-700 font-medium">University of Windsor Faculty of Law</span>
+                    <span className="text-gray-700 font-medium">
+                      University of Windsor Faculty of Law
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <span className="text-blue-600 mr-3 text-lg">🎓</span>
-                    <span className="text-gray-700 font-medium">York University Osgoode Hall Law School</span>
+                    <span className="text-gray-700 font-medium">
+                      York University Osgoode Hall Law School
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <span className="text-blue-600 mr-3 text-lg">🏆</span>
-                    <span className="text-gray-700 font-medium">Supreme Court of Canada Experience</span>
+                    <span className="text-gray-700 font-medium">
+                      Supreme Court of Canada Experience
+                    </span>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -345,8 +363,8 @@ export default function App() {
                 </div>
               </div>
               <p className="text-gray-600 mb-6">
-                Kelly Burton provides dedicated support as our Legal Assistant, ensuring seamless 
-                client communication and efficient case management. With expertise in legal research 
+                Kelly Burton provides dedicated support as our Legal Assistant, ensuring seamless
+                client communication and efficient case management. With expertise in legal research
                 and document preparation, Kelly plays a crucial role in our team's success.
               </p>
               <div className="space-y-3 mb-6">
@@ -356,7 +374,9 @@ export default function App() {
                 </div>
                 <div className="flex items-center">
                   <span className="text-gray-600 mr-3">📝</span>
-                  <span className="text-gray-700 text-sm">Document preparation and coordination</span>
+                  <span className="text-gray-700 text-sm">
+                    Document preparation and coordination
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-gray-600 mr-3">⚖️</span>

@@ -330,11 +330,11 @@ export const LegalNewsFeed = () => {
         category: 'Business Law',
         link: 'https://www.osc.ca/en',
       },
-      { 
-        title: 'IP Strategy for Tech Startups', 
-        date: '2025-01-06', 
+      {
+        title: 'IP Strategy for Tech Startups',
+        date: '2025-01-06',
         category: 'Business Law',
-        link: 'https://www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/home'
+        link: 'https://www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/home',
       },
     ],
   }
@@ -376,13 +376,15 @@ export const LegalNewsFeed = () => {
             transition={{ delay: index * 0.1 }}
             className="border-l-4 border-teal-500 pl-4 py-2"
           >
-            <a 
-              href={item.link} 
-              target="_blank" 
+            <a
+              href={item.link}
+              target="_blank"
               rel="noopener noreferrer"
               className="block hover:bg-gray-50 rounded-lg p-2 transition-colors"
             >
-              <h4 className="font-semibold text-gray-900 hover:text-teal-600 transition-colors">{item.title}</h4>
+              <h4 className="font-semibold text-gray-900 hover:text-teal-600 transition-colors">
+                {item.title}
+              </h4>
               <div className="flex items-center text-sm text-gray-600 mt-1">
                 <Clock className="w-4 h-4 mr-1" />
                 {item.date} • {item.category}
