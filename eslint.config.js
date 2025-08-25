@@ -24,10 +24,14 @@ export default [
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]|motion|AnimatePresence' }],
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
+  },
+  // Special configuration for UI components that export multiple items
+  {
+    files: ['src/components/ui/*.jsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
 ]
