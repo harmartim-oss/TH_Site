@@ -6,6 +6,7 @@ import {
   LegalNewsFeed, 
   LegalAssessment 
 } from './components/CuttingEdgeFeatures';
+import logoImage from './assets/tim_harmar_logo_updated.png';
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function App() {
           <div className="flex justify-between items-center py-4 md:py-6">
             <div className="flex items-center">
               <img 
-                src="/src/assets/tim_harmar_logo_updated.png" 
+                src={logoImage} 
                 alt="Tim Harmar Legal & Consulting Services" 
                 className="h-12 w-auto md:h-16"
               />
