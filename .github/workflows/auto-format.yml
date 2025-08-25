@@ -1,0 +1,55 @@
+name: Auto Format & Commit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter (non-blocking)
+        run: |
+          npm run lint || echo "Lint script failed or not present. Continuing."
+
+      - name: Run formatter (non-blocking)
+        run: |
+          npm run format || echo "Format script failed or not present. Continuing."
+
+      - name: Detect changes
+        id: changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit & push changes (only on push events)
+        if: steps.changes.outputs.changes == 'true' && github.event_name == 'push'
+        run: |
+          git add .
+          git commit -m "chore(format): automated formatting adjustments [skip ci]"
+          git push
