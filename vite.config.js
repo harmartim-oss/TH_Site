@@ -5,7 +5,7 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/TH_Site/',
+  base: '/',
   build: {
     // Explicitly disable Server-Side Rendering
     ssr: false,
