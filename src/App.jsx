@@ -404,21 +404,21 @@ export default function App() {
                 </div>
               </div>
               <p className="text-gray-600 mb-6">
-                Josh Ochoa serves as our Office Administrator, providing essential administrative 
-                support and ensuring smooth daily operations. With expertise in office management 
-                and client relations, Josh maintains our high standards of professional service and 
+                Josh Ochoa serves as our Office Administrator, providing essential administrative
+                support and ensuring smooth daily operations. With expertise in office management
+                and client relations, Josh maintains our high standards of professional service and
                 organizational excellence.
               </p>
               <div className="space-y-3 mb-6">
                 <div className="flex items-center">
                   <span className="text-gray-600 mr-3">🏢</span>
-                  <span className="text-gray-700 text-sm">Office operations and administration</span>
+                  <span className="text-gray-700 text-sm">
+                    Office operations and administration
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-gray-600 mr-3">📞</span>
-                  <span className="text-gray-700 text-sm">
-                    Client relations and communication
-                  </span>
+                  <span className="text-gray-700 text-sm">Client relations and communication</span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-gray-600 mr-3">📊</span>

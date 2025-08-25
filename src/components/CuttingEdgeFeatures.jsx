@@ -209,117 +209,131 @@ export const LegalResourcesLibrary = () => {
   // Function to generate and download Privacy Compliance Guide PDF
   const downloadPrivacyGuide = () => {
     const doc = new jsPDF()
-    
+
     // Set font size and add title
     doc.setFontSize(20)
     doc.setFont('helvetica', 'bold')
     doc.text('Privacy Compliance Guide for Small Business', 20, 30)
-    
+
     doc.setFontSize(14)
     doc.setFont('helvetica', 'normal')
     doc.text('Essential Steps to Ensure Your Business Complies with Canadian Privacy Laws', 20, 45)
-    
+
     // Add introduction
     doc.setFontSize(16)
     doc.setFont('helvetica', 'bold')
     doc.text('Introduction', 20, 65)
-    
+
     doc.setFontSize(11)
     doc.setFont('helvetica', 'normal')
-    const introText = 'This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including the Personal Information Protection and Electronic Documents Act (PIPEDA) and Ontario\'s privacy regulations.'
+    const introText =
+      "This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including the Personal Information Protection and Electronic Documents Act (PIPEDA) and Ontario's privacy regulations."
     doc.text(doc.splitTextToSize(introText, 170), 20, 75)
-    
+
     // Add key steps
     doc.setFontSize(16)
     doc.setFont('helvetica', 'bold')
     doc.text('Key Steps for Privacy Compliance', 20, 100)
-    
+
     let yPosition = 115
     const steps = [
       {
         title: '1. Understand Applicable Laws',
-        content: 'PIPEDA applies to private-sector organizations in Canada that collect, use, or disclose personal information during commercial activities.'
+        content:
+          'PIPEDA applies to private-sector organizations in Canada that collect, use, or disclose personal information during commercial activities.',
       },
       {
         title: '2. Appoint a Privacy Officer',
-        content: 'Designate a person responsible for overseeing privacy compliance and handling privacy policies and complaints.'
+        content:
+          'Designate a person responsible for overseeing privacy compliance and handling privacy policies and complaints.',
       },
       {
         title: '3. Develop a Privacy Policy',
-        content: 'Create a clear, accessible privacy policy that explains how your business collects, uses, stores, and protects personal information.'
+        content:
+          'Create a clear, accessible privacy policy that explains how your business collects, uses, stores, and protects personal information.',
       },
       {
         title: '4. Obtain Consent',
-        content: 'Obtain explicit or implied consent before collecting personal information and clearly explain why the information is needed.'
+        content:
+          'Obtain explicit or implied consent before collecting personal information and clearly explain why the information is needed.',
       },
       {
         title: '5. Secure Personal Information',
-        content: 'Implement safeguards such as encryption, secure storage, and restricted access to personal data.'
+        content:
+          'Implement safeguards such as encryption, secure storage, and restricted access to personal data.',
       },
       {
         title: '6. Limit Data Retention',
-        content: 'Retain personal information only as long as necessary for the identified purpose.'
+        content:
+          'Retain personal information only as long as necessary for the identified purpose.',
       },
       {
         title: '7. Respond to Access Requests',
-        content: 'Allow individuals to access their personal information and respond to requests within 30 days.'
+        content:
+          'Allow individuals to access their personal information and respond to requests within 30 days.',
       },
       {
         title: '8. Prepare for Data Breaches',
-        content: 'Develop a data breach response plan and document all breaches to prevent recurrence.'
-      }
+        content:
+          'Develop a data breach response plan and document all breaches to prevent recurrence.',
+      },
     ]
-    
+
     doc.setFontSize(11)
     steps.forEach((step) => {
       if (yPosition > 250) {
         doc.addPage()
         yPosition = 30
       }
-      
+
       doc.setFont('helvetica', 'bold')
       doc.text(step.title, 20, yPosition)
       yPosition += 8
-      
+
       doc.setFont('helvetica', 'normal')
       const stepText = doc.splitTextToSize(step.content, 170)
       doc.text(stepText, 20, yPosition)
-      yPosition += (stepText.length * 5) + 8
+      yPosition += stepText.length * 5 + 8
     })
-    
+
     // Add resources
     if (yPosition > 220) {
       doc.addPage()
       yPosition = 30
     }
-    
+
     doc.setFontSize(16)
     doc.setFont('helvetica', 'bold')
     doc.text('Resources', 20, yPosition)
     yPosition += 15
-    
+
     doc.setFontSize(11)
     doc.setFont('helvetica', 'normal')
     doc.text('Office of the Privacy Commissioner of Canada: https://www.priv.gc.ca', 20, yPosition)
     yPosition += 8
     doc.text('PIPEDA Compliance Guide: https://www.priv.gc.ca/en/for-businesses', 20, yPosition)
     yPosition += 15
-    
+
     // Add disclaimer
     doc.setFontSize(16)
     doc.setFont('helvetica', 'bold')
     doc.text('Disclaimer', 20, yPosition)
     yPosition += 10
-    
+
     doc.setFontSize(11)
     doc.setFont('helvetica', 'normal')
-    const disclaimerText = 'This guide is for informational purposes only and does not constitute legal advice. Consult a qualified lawyer to ensure compliance with all applicable laws.'
+    const disclaimerText =
+      'This guide is for informational purposes only and does not constitute legal advice. Consult a qualified lawyer to ensure compliance with all applicable laws.'
     doc.text(doc.splitTextToSize(disclaimerText, 170), 20, yPosition)
-    
+
     // Add footer
     doc.setFontSize(9)
-    doc.text('Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario', 20, 280)
-    
+    doc.text(
+      'Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario',
+      20,
+      280
+    )
+
     // Download the PDF
     doc.save('Privacy-Compliance-Guide-for-Small-Business.pdf')
   }
