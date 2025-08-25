@@ -46,11 +46,14 @@ export const AILegalAssistant = () => {
       {/* Chat Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-24 right-8 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4 rounded-full shadow-lg z-50 hover:shadow-xl transition-all duration-300"
+        className="fixed bottom-24 right-8 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4 rounded-full shadow-lg z-50 hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        aria-label={isOpen ? "Close AI Legal Assistant chat" : "Open AI Legal Assistant chat"}
+        aria-expanded={isOpen}
+        aria-controls="ai-chat-window"
       >
-        <MessageCircle size={24} />
+        <MessageCircle size={24} aria-hidden="true" />
       </motion.button>
 
       {/* Chat Window */}
@@ -61,13 +64,22 @@ export const AILegalAssistant = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             className="fixed bottom-40 right-8 w-80 h-96 bg-white rounded-lg shadow-2xl z-50 flex flex-col"
+            id="ai-chat-window"
+            role="dialog"
+            aria-labelledby="chat-title"
+            aria-describedby="chat-description"
           >
             <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4 rounded-t-lg">
-              <h3 className="font-semibold">AI Legal Assistant</h3>
-              <p className="text-sm opacity-90">Powered by Tim Harmar Legal</p>
+              <h3 id="chat-title" className="font-semibold">AI Legal Assistant</h3>
+              <p id="chat-description" className="text-sm opacity-90">Powered by Tim Harmar Legal</p>
             </div>
             
-            <div className="flex-1 p-4 overflow-y-auto space-y-3">
+            <div 
+              className="flex-1 p-4 overflow-y-auto space-y-3"
+              role="log"
+              aria-live="polite"
+              aria-label="Chat conversation"
+            >
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -79,6 +91,8 @@ export const AILegalAssistant = () => {
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-100 text-gray-800'
                     }`}
+                    role={message.sender === 'user' ? 'none' : 'status'}
+                    aria-label={message.sender === 'user' ? undefined : 'AI Assistant response'}
                   >
                     {message.text}
                   </div>
@@ -95,12 +109,15 @@ export const AILegalAssistant = () => {
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Ask a legal question..."
                   className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  aria-label="Type your legal question here"
                 />
                 <button
                   onClick={handleSendMessage}
-                  className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  aria-label="Send message"
+                  disabled={!inputValue.trim()}
                 >
-                  <MessageCircle size={16} />
+                  <MessageCircle size={16} aria-hidden="true" />
                 </button>
               </div>
             </div>

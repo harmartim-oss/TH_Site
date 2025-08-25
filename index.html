@@ -106,9 +106,19 @@
     <meta name="business.type" content="Legal Services" />
     <meta name="practice.areas" content="Civil Litigation, Privacy Law, Intellectual Property, Business Law, Economic Development" />
     
+    <!-- Additional performance optimizations -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Additional security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
     <!-- Preload critical resources -->
-    <link rel="preload" href="/src/assets/tim_harmar_logo_updated.png" as="image" />
-    <link rel="preload" href="/src/assets/hero_background.png" as="image" />
+    <link rel="preload" href="/tim_harmar_logo_updated.png" as="image" />
+    <link rel="preload" href="/hero_background.png" as="image" />
     
     <!-- DNS Prefetch for external domains -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
