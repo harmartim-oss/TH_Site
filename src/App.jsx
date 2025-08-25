@@ -141,9 +141,8 @@ export default function App() {
               <div className="w-32 h-1 bg-white mx-auto rounded-full"></div>
             </div>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Award-winning legal expertise specialized in civil
-              litigation, privacy law, intellectual property, and business strategy consulting in
-              Sault Ste. Marie, Ontario.
+              Award-winning legal expertise specialized in civil litigation, privacy law,
+              intellectual property, and business strategy consulting in Sault Ste. Marie, Ontario.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
