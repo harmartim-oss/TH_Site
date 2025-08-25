@@ -231,51 +231,90 @@ export default function App() {
       {/* About Section */}
       <section id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Meet Tim J. Harmar
-              </h2>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Meet Our Team
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our dedicated legal professionals are committed to providing exceptional service and expertise to every client.
+            </p>
+          </div>
+
+          {/* Team Members */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Tim J. Harmar */}
+            <div className="bg-gray-50 p-8 rounded-2xl">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Tim J. Harmar
+              </h3>
+              <p className="text-blue-600 font-semibold mb-4">Principal Lawyer</p>
               <p className="text-lg text-gray-600 mb-6">
                 With extensive experience in civil litigation, privacy law, and intellectual
                 property, Tim Harmar brings award-winning legal expertise to Sault Ste. Marie and
                 surrounding areas.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div className="flex items-center">
                   <span className="text-blue-600 mr-3">🎓</span>
-                  <span>University of Windsor Faculty of Law</span>
+                  <span className="text-gray-700">University of Windsor Faculty of Law</span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-blue-600 mr-3">🎓</span>
-                  <span>York University Osgoode Hall Law School</span>
+                  <span className="text-gray-700">York University Osgoode Hall Law School</span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-blue-600 mr-3">🏆</span>
-                  <span>Supreme Court of Canada Experience</span>
+                  <span className="text-gray-700">Supreme Court of Canada Experience</span>
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl text-white">
-              <h3 className="text-2xl font-bold mb-4">Why Choose Tim Harmar Legal?</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <span className="mr-3">✓</span>
-                  Award-winning legal expertise
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-3">✓</span>
-                  Cutting-edge legal technology
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-3">✓</span>
-                  Personalized service approach
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-3">✓</span>
-                  Local expertise, global perspective
-                </li>
-              </ul>
+
+            {/* Kelly Burton */}
+            <div className="bg-gray-50 p-8 rounded-2xl">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Kelly Burton
+              </h3>
+              <p className="text-blue-600 font-semibold mb-4">Legal Assistant</p>
+              <p className="text-lg text-gray-600 mb-6">
+                Kelly Burton is a dedicated and detail-oriented Legal Assistant at Tim Harmar Legal & Consulting Services. With a passion for the law and a commitment to client success, Kelly provides crucial support to our legal team. Her responsibilities include managing case files, drafting legal documents, and ensuring seamless communication between our attorneys and clients.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center">
+                  <span className="text-blue-600 mr-3">📋</span>
+                  <span className="text-gray-700">Expert in legal research and case management</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-blue-600 mr-3">📝</span>
+                  <span className="text-gray-700">Specialized in document preparation and client coordination</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-blue-600 mr-3">⚖️</span>
+                  <span className="text-gray-700">Committed to upholding the highest standards of professionalism</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Why Choose Section */}
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl text-white text-center">
+            <h3 className="text-2xl font-bold mb-6">Why Choose Tim Harmar Legal?</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="flex flex-col items-center">
+                <span className="text-3xl mb-2">🏆</span>
+                <span className="font-semibold">Award-winning legal expertise</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-3xl mb-2">💻</span>
+                <span className="font-semibold">Cutting-edge legal technology</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-3xl mb-2">👥</span>
+                <span className="font-semibold">Personalized service approach</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-3xl mb-2">🌐</span>
+                <span className="font-semibold">Local expertise, global perspective</span>
+              </div>
             </div>
           </div>
         </div>
