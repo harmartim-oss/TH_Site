@@ -62,7 +62,11 @@ export default function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
+            <nav
+              className="hidden md:flex space-x-8"
+              role="navigation"
+              aria-label="Main navigation"
+            >
               <a
                 href="#services"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
@@ -181,7 +185,7 @@ export default function App() {
                 </div>
               </div>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-bold mb-8 font-heading leading-tight">
               Expert Legal Solutions for Your
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-secondary-300">
@@ -189,13 +193,13 @@ export default function App() {
                 Business
               </span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-gray-100">
               Award-winning legal expertise specialized in civil litigation, privacy and
               cybersecurity law, intellectual property, and business strategy consulting in Sault
               Ste. Marie, Ontario.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
                 className="group bg-gradient-to-r from-accent-500 to-secondary-500 hover:from-accent-600 hover:to-secondary-600 text-white px-10 py-5 rounded-2xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-white/20 hover:border-white/40"
@@ -204,7 +208,10 @@ export default function App() {
                 }
                 aria-label="Navigate to contact section to schedule a free consultation"
               >
-                <Calendar className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse" aria-hidden="true" />
+                <Calendar
+                  className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse"
+                  aria-hidden="true"
+                />
                 Schedule Free Consultation
               </button>
               <button
@@ -214,7 +221,10 @@ export default function App() {
                 }
                 aria-label="Navigate to services section to explore our legal services"
               >
-                <Scale className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse" aria-hidden="true" />
+                <Scale
+                  className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse"
+                  aria-hidden="true"
+                />
                 Explore Our Legal Services
               </button>
             </div>
@@ -452,7 +462,7 @@ export default function App() {
                   <Calendar className="inline-block w-4 h-4 mr-2" />
                   Schedule with Tim
                 </button>
-                <button 
+                <button
                   className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-xl hover:bg-primary-50 transition-all duration-200 font-semibold"
                   onClick={() => setShowTimBio(!showTimBio)}
                 >
@@ -470,7 +480,7 @@ export default function App() {
                       Professional Biography - Tim J. Harmar
                     </h4>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div className="space-y-6">
                       <div>
@@ -480,16 +490,20 @@ export default function App() {
                         </h5>
                         <div className="space-y-3 text-gray-700">
                           <p>
-                            <strong>University of Windsor Faculty of Law (J.D.)</strong><br />
-                            Graduated with distinction, focusing on civil litigation and constitutional law.
+                            <strong>University of Windsor Faculty of Law (J.D.)</strong>
+                            <br />
+                            Graduated with distinction, focusing on civil litigation and
+                            constitutional law.
                           </p>
                           <p>
-                            <strong>York University Osgoode Hall Law School (LL.M.)</strong><br />
-                            Advanced studies in intellectual property and privacy law, with specialized focus on technology law.
+                            <strong>York University Osgoode Hall Law School (LL.M.)</strong>
+                            <br />
+                            Advanced studies in intellectual property and privacy law, with
+                            specialized focus on technology law.
                           </p>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
                           <Award className="w-5 h-5 mr-2" />
@@ -503,7 +517,7 @@ export default function App() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-6">
                       <div>
                         <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
@@ -511,29 +525,52 @@ export default function App() {
                           Practice Areas & Expertise
                         </h5>
                         <div className="space-y-2 text-gray-700">
-                          <p><strong>Civil Litigation:</strong> Complex commercial disputes, contract litigation, and appellate practice with a proven track record in both trial and appellate courts.</p>
-                          <p><strong>Privacy & Cybersecurity Law:</strong> PIPEDA compliance, data breach response, cross-border data transfers, and emerging cybersecurity regulations.</p>
-                          <p><strong>Intellectual Property:</strong> Trademark strategy, copyright protection, trade secrets, and IP licensing for technology companies.</p>
-                          <p><strong>Business Law:</strong> Corporate governance, regulatory compliance, and strategic legal consulting for emerging businesses.</p>
+                          <p>
+                            <strong>Civil Litigation:</strong> Complex commercial disputes, contract
+                            litigation, and appellate practice with a proven track record in both
+                            trial and appellate courts.
+                          </p>
+                          <p>
+                            <strong>Privacy & Cybersecurity Law:</strong> PIPEDA compliance, data
+                            breach response, cross-border data transfers, and emerging cybersecurity
+                            regulations.
+                          </p>
+                          <p>
+                            <strong>Intellectual Property:</strong> Trademark strategy, copyright
+                            protection, trade secrets, and IP licensing for technology companies.
+                          </p>
+                          <p>
+                            <strong>Business Law:</strong> Corporate governance, regulatory
+                            compliance, and strategic legal consulting for emerging businesses.
+                          </p>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
                           <Building2 className="w-5 h-5 mr-2" />
                           Professional Philosophy
                         </h5>
                         <p className="text-gray-700 italic">
-                          "My approach combines traditional legal excellence with innovative technology solutions. I believe in providing clients with not just legal advice, but strategic guidance that positions them for long-term success in an increasingly complex regulatory environment."
+                          "My approach combines traditional legal excellence with innovative
+                          technology solutions. I believe in providing clients with not just legal
+                          advice, but strategic guidance that positions them for long-term success
+                          in an increasingly complex regulatory environment."
                         </p>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="mt-8 p-6 bg-white rounded-xl border border-primary-200">
-                    <h5 className="text-lg font-bold text-gray-900 mb-3">Community Involvement & Leadership</h5>
+                    <h5 className="text-lg font-bold text-gray-900 mb-3">
+                      Community Involvement & Leadership
+                    </h5>
                     <p className="text-gray-700">
-                      Tim is actively involved in the Northern Ontario legal community, serving as a mentor to young lawyers and contributing to legal education initiatives. He regularly provides pro bono services to local non-profits and startups, demonstrating his commitment to supporting economic development in Sault Ste. Marie and the surrounding region.
+                      Tim is actively involved in the Northern Ontario legal community, serving as a
+                      mentor to young lawyers and contributing to legal education initiatives. He
+                      regularly provides pro bono services to local non-profits and startups,
+                      demonstrating his commitment to supporting economic development in Sault Ste.
+                      Marie and the surrounding region.
                     </p>
                   </div>
                 </div>
@@ -634,7 +671,9 @@ export default function App() {
 
           {/* Why Choose Section */}
           <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-700 p-10 rounded-3xl text-white text-center shadow-large">
-            <h3 className="text-3xl font-bold mb-8 font-heading">Why Choose Tim Harmar: Legal and Consulting Services?</h3>
+            <h3 className="text-3xl font-bold mb-8 font-heading">
+              Why Choose Tim Harmar: Legal and Consulting Services?
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="flex flex-col items-center group">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-all duration-200">
