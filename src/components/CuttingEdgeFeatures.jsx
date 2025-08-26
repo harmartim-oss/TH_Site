@@ -364,7 +364,7 @@ export const LegalResourcesLibrary = () => {
     </div>
     
     <div class="footer">
-        <p>Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario</p>
+        <p>Prepared by Tim Harmar: Legal and Consulting Services - Sault Ste. Marie, Ontario</p>
     </div>
 </body>
 </html>
@@ -503,11 +503,11 @@ export const LegalResourcesLibrary = () => {
     </ul>
     
     <div class="disclaimer">
-        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.</p>
+        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar: Legal and Consulting Services – For informational purposes only. This is not legal advice.</p>
     </div>
     
     <div class="footer">
-        <p>Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario</p>
+        <p>Prepared by Tim Harmar: Legal and Consulting Services - Sault Ste. Marie, Ontario</p>
     </div>
 </body>
 </html>
@@ -625,11 +625,11 @@ export const LegalResourcesLibrary = () => {
     </ul>
     
     <div class="disclaimer">
-        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.</p>
+        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar: Legal and Consulting Services – For informational purposes only. This is not legal advice.</p>
     </div>
     
     <div class="footer">
-        <p>Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario</p>
+        <p>Prepared by Tim Harmar: Legal and Consulting Services - Sault Ste. Marie, Ontario</p>
     </div>
 </body>
 </html>

@@ -29,12 +29,15 @@ import {
   Briefcase,
   FileText,
   UserCheck,
+  User,
+  ExternalLink,
 } from 'lucide-react'
 import logoImage from './assets/tim_harmar_logo_updated.png'
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedService, setExpandedService] = useState(null)
+  const [showTimBio, setShowTimBio] = useState(false)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
@@ -45,12 +48,12 @@ export default function App() {
             <div className="flex items-center">
               <img
                 src={logoImage}
-                alt="Tim Harmar Legal & Consulting Services"
+                alt="Tim Harmar: Legal and Consulting Services"
                 className="h-12 w-auto md:h-16"
               />
               <div className="ml-4">
                 <h1 className="text-xl md:text-2xl font-bold text-gray-900 font-heading">
-                  Tim Harmar Legal & Consulting Services
+                  Tim Harmar: Legal and Consulting Services
                 </h1>
                 <p className="text-sm text-primary-600 font-semibold">
                   Excellence in Legal Solutions
@@ -59,22 +62,25 @@ export default function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
+            <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
               <a
                 href="#services"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
+                aria-label="Navigate to services section"
               >
                 Services
               </a>
               <a
                 href="#about"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
+                aria-label="Navigate to about section"
               >
                 About
               </a>
               <a
                 href="#contact"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
+                aria-label="Navigate to contact section"
               >
                 Contact
               </a>
@@ -88,8 +94,9 @@ export default function App() {
                   (window.location.href =
                     'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
                 }
+                aria-label="Schedule consultation via email"
               >
-                <Calendar className="inline-block w-4 h-4 mr-2" />
+                <Calendar className="inline-block w-4 h-4 mr-2" aria-hidden="true" />
                 Schedule Consultation
               </button>
             </div>
@@ -156,45 +163,58 @@ export default function App() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mb-8">
-              <span className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-bold tracking-wide uppercase shadow-large border border-white/20">
-                Tim Harmar Legal & Consulting Services
-              </span>
+            {/* Prominent Logo Display */}
+            <div className="mb-12 flex justify-center">
+              <div className="bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+                <img
+                  src={logoImage}
+                  alt="Tim Harmar: Legal and Consulting Services Logo"
+                  className="h-24 w-auto md:h-32 mx-auto mb-4"
+                />
+                <div className="text-gray-900">
+                  <h3 className="text-xl md:text-2xl font-bold font-heading mb-2">
+                    Tim Harmar: Legal and Consulting Services
+                  </h3>
+                  <p className="text-primary-600 font-semibold text-lg">
+                    Excellence in Legal Solutions
+                  </p>
+                </div>
+              </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 font-heading leading-tight">
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 font-heading leading-tight">
               Expert Legal Solutions for Your
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-secondary-300">
                 {' '}
                 Business
               </span>
             </h1>
-            <div className="mb-8">
-              <h2 className="text-2xl md:text-3xl font-semibold text-primary-100 mb-4">
-                Tim Harmar Legal & Consulting Services
-              </h2>
-              <div className="w-40 h-1 bg-gradient-to-r from-accent-400 to-secondary-400 mx-auto rounded-full"></div>
-            </div>
-            <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto leading-relaxed text-gray-100">
+            
+            <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-gray-100">
               Award-winning legal expertise specialized in civil litigation, privacy and
               cybersecurity law, intellectual property, and business strategy consulting in Sault
               Ste. Marie, Ontario.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
-                className="bg-gradient-to-r from-white to-gray-50 text-primary-900 px-8 py-4 rounded-xl font-bold shadow-large"
+                className="group bg-gradient-to-r from-accent-500 to-secondary-500 hover:from-accent-600 hover:to-secondary-600 text-white px-10 py-5 rounded-2xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-white/20 hover:border-white/40"
                 onClick={() =>
                   document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
                 }
+                aria-label="Navigate to contact section to schedule a free consultation"
               >
-                <Calendar className="inline-block w-5 h-5 mr-2" />
+                <Calendar className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse" aria-hidden="true" />
                 Schedule Free Consultation
               </button>
               <button
-                className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-semibold backdrop-blur-sm"
+                className="group border-3 border-white/80 hover:border-white text-white hover:bg-white/10 px-10 py-5 rounded-2xl font-semibold backdrop-blur-sm transform hover:scale-105 transition-all duration-300 shadow-xl"
                 onClick={() =>
                   document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
                 }
+                aria-label="Navigate to services section to explore our legal services"
               >
+                <Scale className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse" aria-hidden="true" />
                 Explore Our Legal Services
               </button>
             </div>
@@ -378,7 +398,7 @@ export default function App() {
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Tim Harmar is a distinguished lawyer with extensive experience in civil litigation,
                 privacy and cybersecurity law, and intellectual property. As the founder of Tim
-                Harmar Legal & Consulting Services, he brings award-winning legal expertise and
+                Harmar: Legal and Consulting Services, he brings award-winning legal expertise and
                 Supreme Court of Canada experience to clients throughout Sault Ste. Marie and
                 Northern Ontario. His practice focuses on delivering innovative legal solutions with
                 cutting-edge technology integration.
@@ -421,7 +441,7 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-4 mb-8">
                 <button
                   className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 font-semibold shadow-medium hover:shadow-large transform hover:scale-105"
                   onClick={() =>
@@ -432,11 +452,92 @@ export default function App() {
                   <Calendar className="inline-block w-4 h-4 mr-2" />
                   Schedule with Tim
                 </button>
-                <button className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-xl hover:bg-primary-50 transition-all duration-200 font-semibold">
-                  <Briefcase className="inline-block w-4 h-4 mr-2" />
-                  View Experience
+                <button 
+                  className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-xl hover:bg-primary-50 transition-all duration-200 font-semibold"
+                  onClick={() => setShowTimBio(!showTimBio)}
+                >
+                  <User className="inline-block w-4 h-4 mr-2" />
+                  {showTimBio ? 'Hide Bio' : 'Read Full Bio'}
                 </button>
               </div>
+
+              {/* Expanded Bio Section */}
+              {showTimBio && (
+                <div className="bg-gradient-to-br from-gray-50 to-primary-50 p-8 rounded-2xl border-2 border-primary-200 shadow-large mb-8 animate-in slide-in-from-top duration-300">
+                  <div className="flex items-center mb-6">
+                    <User className="w-8 h-8 text-primary-600 mr-4" />
+                    <h4 className="text-2xl font-bold text-gray-900 font-heading">
+                      Professional Biography - Tim J. Harmar
+                    </h4>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="space-y-6">
+                      <div>
+                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                          <GraduationCap className="w-5 h-5 mr-2" />
+                          Educational Background
+                        </h5>
+                        <div className="space-y-3 text-gray-700">
+                          <p>
+                            <strong>University of Windsor Faculty of Law (J.D.)</strong><br />
+                            Graduated with distinction, focusing on civil litigation and constitutional law.
+                          </p>
+                          <p>
+                            <strong>York University Osgoode Hall Law School (LL.M.)</strong><br />
+                            Advanced studies in intellectual property and privacy law, with specialized focus on technology law.
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                          <Award className="w-5 h-5 mr-2" />
+                          Professional Recognition
+                        </h5>
+                        <div className="space-y-2 text-gray-700">
+                          <p>• Supreme Court of Canada counsel designation</p>
+                          <p>• Award-winning legal practitioner recognized for excellence</p>
+                          <p>• Featured speaker at Canadian privacy law conferences</p>
+                          <p>• Certified in advanced cybersecurity law frameworks</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-6">
+                      <div>
+                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                          <Scale className="w-5 h-5 mr-2" />
+                          Practice Areas & Expertise
+                        </h5>
+                        <div className="space-y-2 text-gray-700">
+                          <p><strong>Civil Litigation:</strong> Complex commercial disputes, contract litigation, and appellate practice with a proven track record in both trial and appellate courts.</p>
+                          <p><strong>Privacy & Cybersecurity Law:</strong> PIPEDA compliance, data breach response, cross-border data transfers, and emerging cybersecurity regulations.</p>
+                          <p><strong>Intellectual Property:</strong> Trademark strategy, copyright protection, trade secrets, and IP licensing for technology companies.</p>
+                          <p><strong>Business Law:</strong> Corporate governance, regulatory compliance, and strategic legal consulting for emerging businesses.</p>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                          <Building2 className="w-5 h-5 mr-2" />
+                          Professional Philosophy
+                        </h5>
+                        <p className="text-gray-700 italic">
+                          "My approach combines traditional legal excellence with innovative technology solutions. I believe in providing clients with not just legal advice, but strategic guidance that positions them for long-term success in an increasingly complex regulatory environment."
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 p-6 bg-white rounded-xl border border-primary-200">
+                    <h5 className="text-lg font-bold text-gray-900 mb-3">Community Involvement & Leadership</h5>
+                    <p className="text-gray-700">
+                      Tim is actively involved in the Northern Ontario legal community, serving as a mentor to young lawyers and contributing to legal education initiatives. He regularly provides pro bono services to local non-profits and startups, demonstrating his commitment to supporting economic development in Sault Ste. Marie and the surrounding region.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Kelly Burton */}
@@ -533,7 +634,7 @@ export default function App() {
 
           {/* Why Choose Section */}
           <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-700 p-10 rounded-3xl text-white text-center shadow-large">
-            <h3 className="text-3xl font-bold mb-8 font-heading">Why Choose Tim Harmar Legal?</h3>
+            <h3 className="text-3xl font-bold mb-8 font-heading">Why Choose Tim Harmar: Legal and Consulting Services?</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="flex flex-col items-center group">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-all duration-200">
@@ -627,7 +728,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="md:col-span-2">
               <h3 className="text-2xl font-bold mb-6 font-heading">
-                Tim Harmar Legal & Consulting Services
+                Tim Harmar: Legal and Consulting Services
               </h3>
               <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                 Providing expert legal solutions in civil litigation, privacy and cybersecurity law,
@@ -710,7 +811,7 @@ export default function App() {
           <div className="border-t border-gray-700 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-center md:text-left mb-4 md:mb-0">
-                &copy; 2025 Tim Harmar Legal & Consulting Services. All rights reserved.
+                &copy; 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 text-sm text-gray-400">
                 <a href="#" className="hover:text-primary-400 transition-colors">
