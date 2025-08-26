@@ -237,16 +237,16 @@ export default function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-gradient-to-br from-gray-50 to-white">
+      <section id="services" className="py-24 bg-gradient-to-br from-primary-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">
+          <div className="text-center mb-20 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6 font-heading">
               Comprehensive Legal Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
               Award-winning legal expertise with cutting-edge solutions for your business needs.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto mt-6 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-accent-600 mx-auto mt-6 rounded-full shadow-glow"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
@@ -256,7 +256,7 @@ export default function App() {
                 description:
                   'Expert representation in complex civil matters with a track record of success.',
                 icon: Scale,
-                color: 'from-primary-500 to-primary-600',
+                color: 'from-primary-600 to-primary-700',
                 detailed:
                   'Our civil litigation practice encompasses comprehensive legal representation for businesses and individuals in complex disputes. We handle contract disputes, tort claims, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience and strategic case management, we provide aggressive advocacy while exploring cost-effective resolution strategies including mediation and arbitration.',
               },
@@ -265,7 +265,7 @@ export default function App() {
                 description:
                   'Comprehensive privacy compliance, data protection, and cybersecurity strategies.',
                 icon: Shield,
-                color: 'from-secondary-500 to-secondary-600',
+                color: 'from-trust-600 to-trust-700',
                 detailed:
                   'Navigate the complex landscape of Canadian privacy and cybersecurity laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, cybersecurity compliance audits, incident response planning, and regulatory compliance guidance for businesses of all sizes in the digital age.',
               },
@@ -281,7 +281,7 @@ export default function App() {
                 title: 'Business Law',
                 description: 'Strategic legal counsel for business growth and compliance.',
                 icon: Building2,
-                color: 'from-primary-600 to-primary-700',
+                color: 'from-secondary-600 to-secondary-700',
                 detailed:
                   'Full-spectrum business law services including corporate formation and governance, shareholder agreements, commercial contracts, regulatory compliance, employment law matters, and corporate restructuring. We serve as outside general counsel for emerging companies and established businesses, providing strategic legal guidance for sustainable growth.',
               },
@@ -290,7 +290,7 @@ export default function App() {
                 description:
                   'Comprehensive legal guidance for entrepreneurs and new business ventures.',
                 icon: Rocket,
-                color: 'from-secondary-600 to-secondary-700',
+                color: 'from-primary-700 to-primary-800',
                 detailed:
                   "End-to-end legal support for entrepreneurs launching new ventures including business entity selection and formation, founders' agreements, intellectual property strategy, regulatory compliance roadmaps, employment policies, privacy frameworks, and strategic partnerships. We help startups build solid legal foundations while remaining agile and cost-effective.",
               },
@@ -307,17 +307,18 @@ export default function App() {
               return (
                 <div
                   key={index}
-                  className="group bg-white p-8 rounded-2xl hover:shadow-large transition-all duration-300 cursor-pointer border border-gray-100 hover:border-primary-200 transform hover:scale-105"
+                  className="group bg-white p-8 rounded-2xl hover:shadow-xl transition-all duration-500 cursor-pointer border border-primary-100 hover:border-accent-300 transform hover:scale-105 hover:-translate-y-2 animate-slide-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => setExpandedService(expandedService === index ? null : index)}
                 >
                   <div
-                    className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-medium hover:shadow-glow`}
                   >
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center justify-between font-heading">
+                  <h3 className="text-xl font-bold text-primary-900 mb-4 flex items-center justify-between font-heading">
                     {service.title}
-                    <span className="text-primary-600 group-hover:text-primary-700 transition-colors">
+                    <span className="text-accent-600 group-hover:text-accent-700 transition-colors">
                       {expandedService === index ? (
                         <ChevronUp className="w-5 h-5" />
                       ) : (
@@ -325,12 +326,12 @@ export default function App() {
                       )}
                     </span>
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
+                  <p className="text-secondary-600 mb-4 leading-relaxed">{service.description}</p>
                   {expandedService === index && (
-                    <div className="mt-6 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border-l-4 border-primary-500">
-                      <p className="text-gray-700 leading-relaxed mb-4">{service.detailed}</p>
+                    <div className="mt-6 p-6 bg-gradient-to-r from-primary-50 to-accent-50 rounded-xl border-l-4 border-accent-500 animate-slide-down">
+                      <p className="text-secondary-700 leading-relaxed mb-4">{service.detailed}</p>
                       <button
-                        className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-2 rounded-lg hover:from-primary-700 hover:to-primary-800 font-semibold text-sm transition-all duration-200 transform hover:scale-105 shadow-medium"
+                        className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-medium hover:shadow-glow"
                         onClick={() =>
                           (window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - ${service.title}&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation regarding ${service.title}.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!`)
                         }
@@ -348,15 +349,16 @@ export default function App() {
       </section>
 
       {/* Interactive Features Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-br from-secondary-50 to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4 font-heading">
               Innovative Legal Technology
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-secondary-600 max-w-2xl mx-auto">
               Experience the future of legal services with our cutting-edge tools and assessments.
             </p>
+            <div className="w-20 h-1 bg-gradient-to-r from-accent-500 to-accent-600 mx-auto mt-4 rounded-full shadow-glow"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
@@ -374,42 +376,42 @@ export default function App() {
       {/* About Section */}
       <section id="about" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">
+          <div className="text-center mb-20 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6 font-heading">
               Meet Our Team
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto mt-6 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-accent-600 mx-auto mt-6 rounded-full shadow-glow"></div>
           </div>
 
           {/* Team Members */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-20">
             {/* Tim J. Harmar - Featured prominently */}
-            <div className="lg:col-span-2 bg-gradient-to-br from-primary-50 to-secondary-50 p-10 rounded-3xl border-2 border-primary-200 shadow-large hover:shadow-xl transition-all duration-300">
+            <div className="lg:col-span-2 bg-gradient-to-br from-primary-50 to-accent-50 p-10 rounded-3xl border-2 border-accent-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 animate-slide-up">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white p-4 rounded-xl mr-6 shadow-medium">
+                <div className="bg-gradient-to-r from-primary-700 to-primary-800 text-white p-4 rounded-xl mr-6 shadow-medium hover:shadow-glow transition-all duration-300">
                   <Scale className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 font-heading">
+                  <h3 className="text-3xl md:text-4xl font-bold text-primary-900 font-heading">
                     Tim J. Harmar
                   </h3>
-                  <p className="text-primary-600 font-bold text-xl">Principal Lawyer & Founder</p>
+                  <p className="text-accent-600 font-bold text-xl">Principal Lawyer & Founder</p>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white p-6 rounded-xl mb-8 shadow-medium">
+              <div className="bg-gradient-to-r from-accent-500 to-accent-600 text-white p-6 rounded-xl mb-8 shadow-medium hover:shadow-glow transition-all duration-300">
                 <p className="font-bold text-xl flex items-center mb-2">
                   <Award className="w-6 h-6 mr-3" />
                   Award-Winning Legal Excellence
                 </p>
-                <p className="text-primary-100 text-lg">
+                <p className="text-accent-100 text-lg">
                   Supreme Court of Canada Experience • 15+ Years Practice
                 </p>
               </div>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-secondary-600 mb-8 leading-relaxed">
                 Tim Harmar is a distinguished lawyer with extensive experience in civil litigation,
                 privacy and cybersecurity law, and intellectual property. As the founder of Tim
                 Harmar: Legal and Consulting Services, he brings award-winning legal expertise and
@@ -445,19 +447,19 @@ export default function App() {
                   </div>
                   <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                     <Shield className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">
+                    <span className="text-secondary-700 font-medium">
                       Privacy & Cybersecurity Expert
                     </span>
                   </div>
                   <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Lightbulb className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">IP Strategy Advisor</span>
+                    <Lightbulb className="text-accent-600 mr-3 w-5 h-5" />
+                    <span className="text-secondary-700 font-medium">IP Strategy Advisor</span>
                   </div>
                 </div>
               </div>
               <div className="flex gap-4 mb-8">
                 <button
-                  className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 font-semibold shadow-medium hover:shadow-large transform hover:scale-105"
+                  className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                   onClick={() =>
                     (window.location.href =
                       'mailto:kburton@timharmar.com?subject=Schedule Consultation with Tim Harmar&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation with Tim Harmar.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -467,7 +469,7 @@ export default function App() {
                   Schedule with Tim
                 </button>
                 <button
-                  className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-xl hover:bg-primary-50 transition-all duration-200 font-semibold"
+                  className="border-2 border-accent-500 text-accent-600 hover:text-accent-700 px-6 py-3 rounded-xl hover:bg-accent-50 hover:border-accent-600 transition-all duration-300 font-semibold transform hover:scale-105"
                   onClick={() => setShowTimBio(!showTimBio)}
                 >
                   <User className="inline-block w-4 h-4 mr-2" />
@@ -477,10 +479,10 @@ export default function App() {
 
               {/* Expanded Bio Section */}
               {showTimBio && (
-                <div className="bg-gradient-to-br from-gray-50 to-primary-50 p-8 rounded-2xl border-2 border-primary-200 shadow-large mb-8 animate-in slide-in-from-top duration-300">
+                <div className="bg-gradient-to-br from-primary-50 to-accent-50 p-8 rounded-2xl border-2 border-accent-200 shadow-xl mb-8 animate-slide-down">
                   <div className="flex items-center mb-6">
-                    <User className="w-8 h-8 text-primary-600 mr-4" />
-                    <h4 className="text-2xl font-bold text-gray-900 font-heading">
+                    <User className="w-8 h-8 text-accent-600 mr-4" />
+                    <h4 className="text-2xl font-bold text-primary-900 font-heading">
                       Professional Biography - Tim J. Harmar
                     </h4>
                   </div>
@@ -582,43 +584,43 @@ export default function App() {
             </div>
 
             {/* Kelly Burton */}
-            <div className="bg-gradient-to-br from-secondary-50 to-gray-50 p-8 rounded-2xl border border-secondary-200 shadow-medium hover:shadow-large transition-all duration-300">
+            <div className="bg-gradient-to-br from-trust-50 to-primary-50 p-8 rounded-2xl border border-trust-200 shadow-medium hover:shadow-xl transition-all duration-500 transform hover:scale-105 animate-slide-up delay-100">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-secondary-600 to-secondary-700 text-white p-3 rounded-xl mr-4 shadow-medium">
+                <div className="bg-gradient-to-r from-trust-600 to-trust-700 text-white p-3 rounded-xl mr-4 shadow-medium hover:shadow-glow transition-all duration-300">
                   <UserCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 font-heading">Kelly Burton</h3>
-                  <p className="text-secondary-600 font-semibold text-lg">Legal Assistant</p>
+                  <h3 className="text-2xl font-bold text-primary-900 font-heading">Kelly Burton</h3>
+                  <p className="text-trust-600 font-semibold text-lg">Legal Assistant</p>
                 </div>
               </div>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-secondary-600 mb-6 leading-relaxed">
                 Kelly Burton provides dedicated support as our Legal Assistant, ensuring seamless
                 client communication and efficient case management. With expertise in legal research
                 and document preparation, Kelly plays a crucial role in our team's success.
               </p>
               <div className="space-y-3 mb-6">
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <FileText className="text-secondary-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">
+                  <FileText className="text-trust-600 mr-3 w-4 h-4" />
+                  <span className="text-secondary-700 text-sm font-medium">
                     Legal research and case management
                   </span>
                 </div>
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <FileText className="text-secondary-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">
+                  <FileText className="text-trust-600 mr-3 w-4 h-4" />
+                  <span className="text-secondary-700 text-sm font-medium">
                     Document preparation and coordination
                   </span>
                 </div>
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Scale className="text-secondary-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">
+                  <Scale className="text-trust-600 mr-3 w-4 h-4" />
+                  <span className="text-secondary-700 text-sm font-medium">
                     Professional standards excellence
                   </span>
                 </div>
               </div>
               <button
-                className="w-full bg-gradient-to-r from-secondary-600 to-secondary-700 text-white px-4 py-3 rounded-xl font-semibold shadow-medium"
+                className="w-full bg-gradient-to-r from-trust-600 to-trust-700 hover:from-trust-700 hover:to-trust-800 text-white px-4 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:kburton@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -627,17 +629,17 @@ export default function App() {
             </div>
 
             {/* Josh Ochoa */}
-            <div className="bg-gradient-to-br from-accent-50 to-gray-50 p-8 rounded-2xl border border-accent-200 shadow-medium hover:shadow-large transition-all duration-300">
+            <div className="bg-gradient-to-br from-accent-50 to-secondary-50 p-8 rounded-2xl border border-accent-200 shadow-medium hover:shadow-xl transition-all duration-500 transform hover:scale-105 animate-slide-up delay-200">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-accent-600 to-accent-700 text-white p-3 rounded-xl mr-4 shadow-medium">
+                <div className="bg-gradient-to-r from-accent-600 to-accent-700 text-white p-3 rounded-xl mr-4 shadow-medium hover:shadow-glow transition-all duration-300">
                   <Briefcase className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 font-heading">Josh Ochoa</h3>
+                  <h3 className="text-2xl font-bold text-primary-900 font-heading">Josh Ochoa</h3>
                   <p className="text-accent-600 font-semibold text-lg">Office Administrator</p>
                 </div>
               </div>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-secondary-600 mb-6 leading-relaxed">
                 Josh Ochoa serves as our Office Administrator, providing essential administrative
                 support and ensuring smooth daily operations. With expertise in office management
                 and client relations, Josh maintains our high standards of professional service and
@@ -646,25 +648,25 @@ export default function App() {
               <div className="space-y-3 mb-6">
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                   <Building2 className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">
+                  <span className="text-secondary-700 text-sm font-medium">
                     Office operations and administration
                   </span>
                 </div>
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                   <Phone className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">
+                  <span className="text-secondary-700 text-sm font-medium">
                     Client relations and communication
                   </span>
                 </div>
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                   <Monitor className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">
+                  <span className="text-secondary-700 text-sm font-medium">
                     Administrative systems management
                   </span>
                 </div>
               </div>
               <button
-                className="w-full bg-gradient-to-r from-accent-600 to-accent-700 text-white px-4 py-3 rounded-xl font-semibold shadow-medium"
+                className="w-full bg-gradient-to-r from-accent-600 to-accent-700 hover:from-accent-700 hover:to-accent-800 text-white px-4 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:admin@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -674,26 +676,26 @@ export default function App() {
           </div>
 
           {/* Why Choose Section */}
-          <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-700 p-10 rounded-3xl text-white text-center shadow-large">
+          <div className="bg-gradient-to-br from-primary-800 via-primary-900 to-secondary-900 p-10 rounded-3xl text-white text-center shadow-2xl border border-accent-500/20">
             <h3 className="text-3xl font-bold mb-8 font-heading">
               Why Choose Tim Harmar: Legal and Consulting Services?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-all duration-200">
-                  <Award className="text-white w-8 h-8" />
+                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
+                  <Award className="text-accent-300 w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Award-winning legal expertise</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-all duration-200">
-                  <Monitor className="text-white w-8 h-8" />
+                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
+                  <Monitor className="text-accent-300 w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Cutting-edge legal technology</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-all duration-200">
-                  <Users className="text-white w-8 h-8" />
+                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
+                  <Users className="text-accent-300 w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Personalized service approach</span>
               </div>
