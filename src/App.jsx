@@ -88,56 +88,45 @@ export default function App() {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none"
+              className="md:hidden p-2 rounded-xl text-gray-700 hover:text-primary-600 hover:bg-primary-50 focus:outline-none transition-all duration-200"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {mobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
 
           {/* Mobile Navigation Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-gray-200">
-              <nav className="flex flex-col space-y-4 pt-4">
+            <div className="md:hidden pb-6 border-t border-primary-200 bg-gradient-to-br from-primary-50 to-white">
+              <nav className="flex flex-col space-y-2 pt-6">
                 <a
                   href="#services"
-                  className="text-gray-700 hover:text-blue-600 font-medium py-2 px-2 rounded transition-colors"
+                  className="text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-xl hover:bg-primary-50 transition-all duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
                 </a>
                 <a
                   href="#about"
-                  className="text-gray-700 hover:text-blue-600 font-medium py-2 px-2 rounded transition-colors"
+                  className="text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-xl hover:bg-primary-50 transition-all duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </a>
                 <a
                   href="#contact"
-                  className="text-gray-700 hover:text-blue-600 font-medium py-2 px-2 rounded transition-colors"
+                  className="text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-xl hover:bg-primary-50 transition-all duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
                 </a>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors w-full text-left">
+                <button className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 font-semibold shadow-medium mx-2">
+                  <Calendar className="inline-block w-4 h-4 mr-2" />
                   Schedule Consultation
                 </button>
               </nav>
@@ -567,60 +556,88 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
+      <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="md:col-span-2">
-              <h3 className="text-xl font-bold mb-4">Tim Harmar Legal & Consulting Services</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-2xl font-bold mb-6 font-heading">Tim Harmar Legal & Consulting Services</h3>
+              <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                 Providing expert legal solutions in civil litigation, privacy law, intellectual
                 property, and business startup consulting.
               </p>
               <div className="flex space-x-4">
                 <a
                   href="https://www.linkedin.com/company/tim-harmar-legal-consulting-services"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="bg-primary-600 hover:bg-primary-700 p-3 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-medium"
                 >
-                  LinkedIn
+                  <Globe className="w-5 h-5" />
                 </a>
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="text-xl font-bold mb-6 font-heading flex items-center">
+                <Scale className="w-5 h-5 mr-2 text-primary-400" />
+                Services
+              </h4>
+              <ul className="space-y-3 text-gray-300">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                    <Scale className="w-4 h-4 mr-2 text-primary-500" />
                     Civil Litigation
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                    <Shield className="w-4 h-4 mr-2 text-secondary-500" />
                     Privacy Law
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                    <Lightbulb className="w-4 h-4 mr-2 text-accent-500" />
                     Intellectual Property
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                    <Rocket className="w-4 h-4 mr-2 text-secondary-500" />
                     Business Start Up & Strategy
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Sault Ste. Marie, ON</li>
-                <li>+1 (705) 943-5049</li>
-                <li>kburton@timharmar.com</li>
+              <h4 className="text-xl font-bold mb-6 font-heading flex items-center">
+                <MapPin className="w-5 h-5 mr-2 text-primary-400" />
+                Contact Info
+              </h4>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center">
+                  <MapPin className="w-4 h-4 mr-2 text-accent-500" />
+                  Sault Ste. Marie, ON
+                </li>
+                <li className="flex items-center">
+                  <Phone className="w-4 h-4 mr-2 text-secondary-500" />
+                  +1 (705) 943-5049
+                </li>
+                <li className="flex items-center">
+                  <Mail className="w-4 h-4 mr-2 text-primary-500" />
+                  kburton@timharmar.com
+                </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Tim Harmar Legal & Consulting Services. All rights reserved.</p>
+          <div className="border-t border-gray-700 mt-12 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-400 text-center md:text-left mb-4 md:mb-0">
+                &copy; 2025 Tim Harmar Legal & Consulting Services. All rights reserved.
+              </p>
+              <div className="flex items-center space-x-6 text-sm text-gray-400">
+                <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-primary-400 transition-colors">Terms of Service</a>
+                <a href="#" className="hover:text-primary-400 transition-colors">Legal Notices</a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
