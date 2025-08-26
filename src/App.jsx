@@ -42,20 +42,20 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
       {/* Header/Navigation */}
-      <header className="bg-white/95 backdrop-blur-sm shadow-soft sticky top-0 z-40 border-b border-primary-100">
+      <header className="bg-white/95 backdrop-blur-sm shadow-medium sticky top-0 z-40 border-b border-primary-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4 md:py-6">
             <div className="flex items-center">
               <img
                 src={logoImage}
                 alt="Tim Harmar: Legal and Consulting Services"
-                className="h-12 w-auto md:h-16"
+                className="h-12 w-auto md:h-16 drop-shadow-sm"
               />
               <div className="ml-4">
-                <h1 className="text-xl md:text-2xl font-bold text-gray-900 font-heading">
+                <h1 className="text-xl md:text-2xl font-bold text-primary-900 font-heading">
                   Tim Harmar: Legal and Consulting Services
                 </h1>
-                <p className="text-sm text-primary-600 font-semibold">
+                <p className="text-sm text-accent-600 font-semibold tracking-wide">
                   Excellence in Legal Solutions
                 </p>
               </div>
@@ -69,31 +69,34 @@ export default function App() {
             >
               <a
                 href="#services"
-                className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
+                className="text-secondary-700 hover:text-primary-800 font-medium transition-all duration-300 hover:scale-105 relative group"
                 aria-label="Navigate to services section"
               >
                 Services
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#about"
-                className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
+                className="text-secondary-700 hover:text-primary-800 font-medium transition-all duration-300 hover:scale-105 relative group"
                 aria-label="Navigate to about section"
               >
                 About
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#contact"
-                className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
+                className="text-secondary-700 hover:text-primary-800 font-medium transition-all duration-300 hover:scale-105 relative group"
                 aria-label="Navigate to contact section"
               >
                 Contact
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </nav>
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
               <button
-                className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-medium hover:shadow-large transform hover:scale-105 font-semibold"
+                className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-8 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 border border-accent-400"
                 onClick={() =>
                   (window.location.href =
                     'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -107,7 +110,7 @@ export default function App() {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-xl text-gray-700 hover:text-primary-600 hover:bg-primary-50 focus:outline-none transition-all duration-200"
+              className="md:hidden p-2 rounded-xl text-secondary-700 hover:text-primary-800 hover:bg-primary-100 focus:outline-none transition-all duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -117,31 +120,31 @@ export default function App() {
 
           {/* Mobile Navigation Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-6 border-t border-primary-200 bg-gradient-to-br from-primary-50 to-white">
+            <div className="md:hidden pb-6 border-t border-primary-200 bg-gradient-to-br from-primary-50 to-white shadow-large">
               <nav className="flex flex-col space-y-2 pt-6">
                 <a
                   href="#services"
-                  className="text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-xl hover:bg-primary-50 transition-all duration-200"
+                  className="text-secondary-700 hover:text-primary-800 font-medium py-3 px-4 rounded-xl hover:bg-primary-100 transition-all duration-300 mx-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
                 </a>
                 <a
                   href="#about"
-                  className="text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-xl hover:bg-primary-50 transition-all duration-200"
+                  className="text-secondary-700 hover:text-primary-800 font-medium py-3 px-4 rounded-xl hover:bg-primary-100 transition-all duration-300 mx-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </a>
                 <a
                   href="#contact"
-                  className="text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-xl hover:bg-primary-50 transition-all duration-200"
+                  className="text-secondary-700 hover:text-primary-800 font-medium py-3 px-4 rounded-xl hover:bg-primary-100 transition-all duration-300 mx-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
                 </a>
                 <button
-                  className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 font-semibold shadow-medium mx-2"
+                  className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 mx-2 mt-4"
                   onClick={() =>
                     (window.location.href =
                       'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -157,72 +160,73 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-800 text-white py-24 md:py-40 overflow-hidden">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/50 to-secondary-900/50"></div>
+      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 text-white py-24 md:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/60 to-secondary-900/40"></div>
 
         {/* Animated background elements */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-600/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl animate-bounce-subtle"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-trust-500/10 rounded-full blur-3xl animate-bounce-subtle delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-accent-400/5 rounded-full blur-3xl animate-pulse"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             {/* Prominent Logo Display */}
-            <div className="mb-12 flex justify-center">
-              <div className="bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+            <div className="mb-12 flex justify-center animate-fade-in">
+              <div className="bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-500 hover:shadow-glow-lg">
                 <img
                   src={logoImage}
                   alt="Tim Harmar: Legal and Consulting Services Logo"
-                  className="h-24 w-auto md:h-32 mx-auto mb-4"
+                  className="h-24 w-auto md:h-32 mx-auto mb-4 drop-shadow-sm"
                 />
-                <div className="text-gray-900">
+                <div className="text-primary-900">
                   <h3 className="text-xl md:text-2xl font-bold font-heading mb-2">
                     Tim Harmar: Legal and Consulting Services
                   </h3>
-                  <p className="text-primary-600 font-semibold text-lg">
+                  <p className="text-accent-600 font-semibold text-lg tracking-wide">
                     Excellence in Legal Solutions
                   </p>
                 </div>
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 font-heading leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 font-heading leading-tight animate-slide-up">
               Expert Legal Solutions for Your
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-secondary-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-accent-400 drop-shadow-sm">
                 {' '}
                 Business
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-gray-100">
+            <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-primary-100 animate-slide-up delay-100">
               Award-winning legal expertise specialized in civil litigation, privacy and
               cybersecurity law, intellectual property, and business strategy consulting in Sault
               Ste. Marie, Ontario.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up delay-200">
               <button
-                className="group bg-gradient-to-r from-accent-500 to-secondary-500 hover:from-accent-600 hover:to-secondary-600 text-white px-10 py-5 rounded-2xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-white/20 hover:border-white/40"
+                className="group bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-10 py-5 rounded-2xl font-bold shadow-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 border-2 border-accent-400/30 hover:border-accent-300/50 hover:shadow-glow-lg active:scale-95"
                 onClick={() =>
                   document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
                 }
                 aria-label="Navigate to contact section to schedule a free consultation"
               >
                 <Calendar
-                  className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse"
+                  className="inline-block w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300"
                   aria-hidden="true"
                 />
                 Schedule Free Consultation
               </button>
               <button
-                className="group border-3 border-white/80 hover:border-white text-white hover:bg-white/10 px-10 py-5 rounded-2xl font-semibold backdrop-blur-sm transform hover:scale-105 transition-all duration-300 shadow-xl"
+                className="group border-3 border-white/80 hover:border-accent-400 text-white hover:bg-accent-500/20 px-10 py-5 rounded-2xl font-semibold backdrop-blur-sm transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-xl hover:shadow-glow active:scale-95"
                 onClick={() =>
                   document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
                 }
                 aria-label="Navigate to services section to explore our legal services"
               >
                 <Scale
-                  className="inline-block w-6 h-6 mr-3 group-hover:animate-pulse"
+                  className="inline-block w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300"
                   aria-hidden="true"
                 />
                 Explore Our Legal Services
