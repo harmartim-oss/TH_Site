@@ -24,7 +24,11 @@ import {
   Calendar,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  GraduationCap,
+  Briefcase,
+  FileText,
+  UserCheck
 } from 'lucide-react'
 import logoImage from './assets/tim_harmar_logo_updated.png'
 
@@ -314,36 +318,40 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">Meet Our Team</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
             </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto mt-6 rounded-full"></div>
           </div>
 
           {/* Team Members */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-20">
             {/* Tim J. Harmar - Featured prominently */}
-            <div className="lg:col-span-2 bg-gradient-to-br from-blue-50 to-gray-50 p-8 rounded-2xl border-2 border-blue-200">
-              <div className="flex items-center mb-4">
-                <div className="bg-blue-600 text-white p-2 rounded-lg mr-4">
-                  <span className="text-2xl">👨‍⚖️</span>
+            <div className="lg:col-span-2 bg-gradient-to-br from-primary-50 to-secondary-50 p-10 rounded-3xl border-2 border-primary-200 shadow-large hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white p-4 rounded-xl mr-6 shadow-medium">
+                  <Scale className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900">Tim J. Harmar</h3>
-                  <p className="text-blue-600 font-bold text-lg">Principal Lawyer & Founder</p>
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 font-heading">Tim J. Harmar</h3>
+                  <p className="text-primary-600 font-bold text-xl">Principal Lawyer & Founder</p>
                 </div>
               </div>
-              <div className="bg-blue-600 text-white p-4 rounded-lg mb-6">
-                <p className="font-semibold text-lg">🏆 Award-Winning Legal Excellence</p>
-                <p className="text-blue-100">
+              <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white p-6 rounded-xl mb-8 shadow-medium">
+                <p className="font-bold text-xl flex items-center mb-2">
+                  <Award className="w-6 h-6 mr-3" />
+                  Award-Winning Legal Excellence
+                </p>
+                <p className="text-primary-100 text-lg">
                   Supreme Court of Canada Experience • 15+ Years Practice
                 </p>
               </div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Tim Harmar is a distinguished lawyer with extensive experience in civil litigation,
                 privacy law, and intellectual property. As the founder of Tim Harmar Legal &
                 Consulting Services, he brings award-winning legal expertise and Supreme Court of
@@ -351,123 +359,129 @@ export default function App() {
                 practice focuses on delivering innovative legal solutions with cutting-edge
                 technology integration.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-3 text-lg">🎓</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-4">
+                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                    <GraduationCap className="text-primary-600 mr-3 w-5 h-5" />
                     <span className="text-gray-700 font-medium">
                       University of Windsor Faculty of Law
                     </span>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-3 text-lg">🎓</span>
+                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                    <GraduationCap className="text-primary-600 mr-3 w-5 h-5" />
                     <span className="text-gray-700 font-medium">
                       York University Osgoode Hall Law School
                     </span>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-3 text-lg">🏆</span>
+                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                    <Award className="text-primary-600 mr-3 w-5 h-5" />
                     <span className="text-gray-700 font-medium">
                       Supreme Court of Canada Experience
                     </span>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-3 text-lg">⚖️</span>
+                <div className="space-y-4">
+                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                    <Scale className="text-primary-600 mr-3 w-5 h-5" />
                     <span className="text-gray-700 font-medium">Civil Litigation Specialist</span>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-3 text-lg">🔒</span>
+                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                    <Shield className="text-primary-600 mr-3 w-5 h-5" />
                     <span className="text-gray-700 font-medium">Privacy Law Expert</span>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-blue-600 mr-3 text-lg">💡</span>
+                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                    <Lightbulb className="text-primary-600 mr-3 w-5 h-5" />
                     <span className="text-gray-700 font-medium">IP Strategy Advisor</span>
                   </div>
                 </div>
               </div>
               <div className="flex gap-4">
-                <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                <button className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 font-semibold shadow-medium hover:shadow-large transform hover:scale-105">
+                  <Calendar className="inline-block w-4 h-4 mr-2" />
                   Schedule with Tim
                 </button>
-                <button className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-semibold">
+                <button className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-xl hover:bg-primary-50 transition-all duration-200 font-semibold">
+                  <Briefcase className="inline-block w-4 h-4 mr-2" />
                   View Experience
                 </button>
               </div>
             </div>
 
             {/* Kelly Burton */}
-            <div className="bg-gray-50 p-8 rounded-2xl">
-              <div className="flex items-center mb-4">
-                <div className="bg-gray-600 text-white p-2 rounded-lg mr-3">
-                  <span className="text-xl">👩‍💼</span>
+            <div className="bg-gradient-to-br from-secondary-50 to-gray-50 p-8 rounded-2xl border border-secondary-200 shadow-medium hover:shadow-large transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="bg-gradient-to-r from-secondary-600 to-secondary-700 text-white p-3 rounded-xl mr-4 shadow-medium">
+                  <UserCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Kelly Burton</h3>
-                  <p className="text-gray-600 font-semibold">Legal Assistant</p>
+                  <h3 className="text-2xl font-bold text-gray-900 font-heading">Kelly Burton</h3>
+                  <p className="text-secondary-600 font-semibold text-lg">Legal Assistant</p>
                 </div>
               </div>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 leading-relaxed">
                 Kelly Burton provides dedicated support as our Legal Assistant, ensuring seamless
                 client communication and efficient case management. With expertise in legal research
                 and document preparation, Kelly plays a crucial role in our team's success.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center">
-                  <span className="text-gray-600 mr-3">📋</span>
-                  <span className="text-gray-700 text-sm">Legal research and case management</span>
+                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                  <FileText className="text-secondary-600 mr-3 w-4 h-4" />
+                  <span className="text-gray-700 text-sm font-medium">
+                    Legal research and case management
+                  </span>
                 </div>
-                <div className="flex items-center">
-                  <span className="text-gray-600 mr-3">📝</span>
-                  <span className="text-gray-700 text-sm">
+                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                  <FileText className="text-secondary-600 mr-3 w-4 h-4" />
+                  <span className="text-gray-700 text-sm font-medium">
                     Document preparation and coordination
                   </span>
                 </div>
-                <div className="flex items-center">
-                  <span className="text-gray-600 mr-3">⚖️</span>
-                  <span className="text-gray-700 text-sm">Professional standards excellence</span>
+                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                  <Scale className="text-secondary-600 mr-3 w-4 h-4" />
+                  <span className="text-gray-700 text-sm font-medium">Professional standards excellence</span>
                 </div>
               </div>
-              <button className="w-full bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+              <button className="w-full bg-gradient-to-r from-secondary-600 to-secondary-700 text-white px-4 py-3 rounded-xl hover:from-secondary-700 hover:to-secondary-800 transition-all duration-200 font-semibold shadow-medium transform hover:scale-105">
+                <Mail className="inline-block w-4 h-4 mr-2" />
                 Contact Kelly
               </button>
             </div>
 
             {/* Josh Ochoa */}
-            <div className="bg-teal-50 p-8 rounded-2xl">
-              <div className="flex items-center mb-4">
-                <div className="bg-teal-600 text-white p-2 rounded-lg mr-3">
-                  <span className="text-xl">👨‍💼</span>
+            <div className="bg-gradient-to-br from-accent-50 to-gray-50 p-8 rounded-2xl border border-accent-200 shadow-medium hover:shadow-large transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="bg-gradient-to-r from-accent-600 to-accent-700 text-white p-3 rounded-xl mr-4 shadow-medium">
+                  <Briefcase className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Josh Ochoa</h3>
-                  <p className="text-gray-600 font-semibold">Office Administrator</p>
+                  <h3 className="text-2xl font-bold text-gray-900 font-heading">Josh Ochoa</h3>
+                  <p className="text-accent-600 font-semibold text-lg">Office Administrator</p>
                 </div>
               </div>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 leading-relaxed">
                 Josh Ochoa serves as our Office Administrator, providing essential administrative
                 support and ensuring smooth daily operations. With expertise in office management
                 and client relations, Josh maintains our high standards of professional service and
                 organizational excellence.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center">
-                  <span className="text-gray-600 mr-3">🏢</span>
-                  <span className="text-gray-700 text-sm">
+                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                  <Building2 className="text-accent-600 mr-3 w-4 h-4" />
+                  <span className="text-gray-700 text-sm font-medium">
                     Office operations and administration
                   </span>
                 </div>
-                <div className="flex items-center">
-                  <span className="text-gray-600 mr-3">📞</span>
-                  <span className="text-gray-700 text-sm">Client relations and communication</span>
+                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                  <Phone className="text-accent-600 mr-3 w-4 h-4" />
+                  <span className="text-gray-700 text-sm font-medium">Client relations and communication</span>
                 </div>
-                <div className="flex items-center">
-                  <span className="text-gray-600 mr-3">📊</span>
-                  <span className="text-gray-700 text-sm">Administrative systems management</span>
+                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
+                  <Monitor className="text-accent-600 mr-3 w-4 h-4" />
+                  <span className="text-gray-700 text-sm font-medium">Administrative systems management</span>
                 </div>
               </div>
-              <button className="w-full bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+              <button className="w-full bg-gradient-to-r from-accent-600 to-accent-700 text-white px-4 py-3 rounded-xl hover:from-accent-700 hover:to-accent-800 transition-all duration-200 font-semibold shadow-medium transform hover:scale-105">
+                <Mail className="inline-block w-4 h-4 mr-2" />
                 Contact Josh
               </button>
             </div>
