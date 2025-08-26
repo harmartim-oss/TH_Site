@@ -34,10 +34,273 @@ import {
 } from 'lucide-react'
 import logoImage from './assets/tim_harmar_logo_updated.png'
 
+// Policy Content
+const PRIVACY_POLICY = `Privacy Policy for www.timharmar.com
+
+Last Updated: August 26, 2025
+
+At Tim Harmar Law (operating www.timharmar.com), we are committed to protecting your privacy and personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and other applicable laws in Ontario, Canada. This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information as a law firm providing legal services. By using our website or engaging our services, you consent to the practices described in this policy.
+
+1. Information We Collect
+
+We may collect the following types of personal information:
+
+• Client Information: Name, address, email, phone number, and other details provided when you engage our legal services, submit inquiries, or complete forms.
+
+• Case-Related Information: Sensitive information related to your legal matter, such as financial details, health information, or other personal data necessary for representation.
+
+• Automatically Collected Information: Data such as IP address, browser type, device information, and website usage (e.g., pages visited, time spent) collected via cookies or analytics tools.
+
+• Communication Data: Records of correspondence, including emails or phone calls, related to your legal matters or inquiries.
+
+2. How We Use Your Information
+
+We use your personal information to:
+
+• Provide legal services, including case management, representation, and advice.
+• Communicate with you about your legal matters or respond to inquiries.
+• Improve our website and services through analytics (e.g., Google Analytics).
+• Comply with legal and professional obligations, including those set by the Law Society of Ontario.
+• Protect against fraud, unauthorized access, or security threats.
+
+3. Legal Basis for Processing
+
+We process personal information based on:
+
+• Contract: To fulfill our agreement to provide legal services.
+• Consent: When you provide explicit consent, such as for newsletters or cookies.
+• Legal Obligation: To comply with PIPEDA, court orders, or Law Society requirements.
+• Legitimate Interests: For website analytics or security, provided your rights are not overridden.
+
+4. Disclosure of Your Information
+
+We may disclose your information to:
+
+• Service Providers: Third parties (e.g., cloud storage, billing software, or analytics providers) who assist in our operations, bound by strict confidentiality agreements.
+• Courts or Authorities: When required by law, court order, or to comply with regulatory obligations.
+• Other Parties: With your consent, or as necessary for your legal representation (e.g., sharing with opposing counsel or mediators).
+• Professional Obligations: To comply with audits or investigations by the Law Society of Ontario.
+
+We do not sell your personal information.
+
+5. Cookies and Tracking Technologies
+
+Our website uses cookies to enhance functionality and analyze usage. You can manage cookie preferences through our cookie consent tool or your browser settings. For details, see our Cookie Policy (linked in the website footer).
+
+6. Data Security
+
+We implement robust security measures, including encryption (e.g., SSL), access controls, and secure storage, to protect your data. As a law firm, we adhere to the Law Society of Ontario's guidelines for safeguarding client information. However, no system is entirely secure, and we cannot guarantee absolute security.
+
+7. Data Retention
+
+We retain personal information only as long as necessary for the purposes outlined or as required by law. Client files are retained in accordance with the Law Society of Ontario's retention guidelines (typically 7–15 years for certain records) or until no longer needed for your legal matter.
+
+8. Your Rights Under PIPEDA
+
+You have the following rights regarding your personal information:
+
+• Access: Request access to your personal data we hold.
+• Correction: Request correction of inaccurate or incomplete data.
+• Withdrawal of Consent: Withdraw consent for non-essential processing (e.g., marketing).
+• Complaint: Lodge a complaint with us or the Office of the Privacy Commissioner of Canada.
+
+To exercise these rights, contact us at privacy@timharmar.com. We will respond within 30 days, as required by PIPEDA.
+
+9. Third-Party Links
+
+Our website may link to external sites. We are not responsible for their privacy practices. Please review their policies before sharing information.
+
+10. Children's Privacy
+
+Our services are not directed to individuals under 19, the age of majority in Ontario. We do not knowingly collect data from minors without parental consent. Contact us if you believe we have such data.
+
+11. International Data Transfers
+
+Your data is primarily stored in Canada. If transferred outside Canada (e.g., to US-based service providers), we ensure compliance with PIPEDA through safeguards like contractual agreements.
+
+12. Updates to This Policy
+
+We may update this policy to reflect changes in law or our practices. We will notify you of material changes via email or a website notice at least 7 days in advance. The updated policy takes effect upon posting.
+
+13. Contact Us
+
+For questions, concerns, or to exercise your rights, contact our Privacy Officer, Kelly Burton at privacy@timharmar.com.
+
+You may also contact the Office of the Privacy Commissioner of Canada at www.priv.gc.ca or 1-800-282-1376 for complaints.`
+
+const TERMS_OF_SERVICE = `Terms of Service for www.timharmar.com
+
+Last Updated: August 26, 2025
+
+Welcome to Tim Harmar: Legal and Consulting Services ("we," "us," or "our"). These Terms of Service ("Terms") govern your use of our website www.timharmar.com and related services. By accessing or using our website, you agree to be bound by these Terms and our Privacy Policy.
+
+1. Acceptance of Terms
+
+By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, please do not use our website.
+
+2. Legal Services
+
+Tim Harmar: Legal and Consulting Services is a law firm licensed to practice in Ontario, Canada. Our services include:
+• Civil litigation
+• Privacy and cybersecurity law
+• Intellectual property law
+• Business law and startup consulting
+• Legal consulting services
+
+3. No Attorney-Client Relationship
+
+Use of this website does not create an attorney-client relationship. An attorney-client relationship is established only through a formal engagement agreement signed by both parties. Information provided through this website is for general informational purposes only and does not constitute legal advice.
+
+4. Confidentiality
+
+While we take measures to protect the security of our website, communications through this website are not guaranteed to be confidential. Do not send sensitive or confidential information through this website until an attorney-client relationship has been established.
+
+5. Website Use and Restrictions
+
+You may use our website for lawful purposes only. You agree not to:
+• Use the website in any way that violates applicable laws or regulations
+• Transmit any material that is defamatory, offensive, or inappropriate
+• Attempt to gain unauthorized access to our systems
+• Interfere with the proper functioning of the website
+• Use automated tools to access or copy content without permission
+
+6. Intellectual Property
+
+All content on this website, including text, graphics, logos, and software, is owned by Tim Harmar: Legal and Consulting Services or our licensors and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our written permission.
+
+7. Third-Party Links
+
+Our website may contain links to third-party websites. We are not responsible for the content, privacy practices, or terms of use of these external sites. Your use of third-party websites is at your own risk.
+
+8. Disclaimers
+
+TO THE FULLEST EXTENT PERMITTED BY LAW:
+• Our website is provided "as is" without warranties of any kind
+• We do not guarantee the accuracy, completeness, or timeliness of information
+• We are not liable for any damages arising from your use of the website
+• Information on this website may not reflect the most current legal developments
+
+9. Limitation of Liability
+
+In no event shall Tim Harmar: Legal and Consulting Services be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website, even if we have been advised of the possibility of such damages.
+
+10. Governing Law
+
+These Terms are governed by the laws of Ontario, Canada. Any disputes arising from these Terms or your use of our website shall be resolved in the courts of Ontario.
+
+11. Changes to Terms
+
+We reserve the right to update these Terms at any time. Changes will be posted on this page with an updated "Last Updated" date. Your continued use of the website after changes constitutes acceptance of the new Terms.
+
+12. Contact Information
+
+For questions about these Terms, please contact us at:
+Tim Harmar: Legal and Consulting Services
+Email: info@timharmar.com
+Phone: +1 (705) 943-5049
+
+If you have legal questions or need representation, please contact us to schedule a consultation.`
+
+const LEGAL_NOTICES = `Legal Notices for www.timharmar.com
+
+Last Updated: August 26, 2025
+
+1. Professional Licensing
+
+Tim Harmar is a licensed lawyer in good standing with the Law Society of Ontario (LSO). License details are available through the LSO directory at lso.ca.
+
+2. Jurisdictional Limitations
+
+Our legal services are provided in accordance with Ontario law and regulations. We are not licensed to practice law in other jurisdictions unless specifically noted. Legal advice provided is based on Ontario and Canadian law.
+
+3. Language of Service
+
+Services are provided primarily in English. French language services may be available upon request, subject to availability.
+
+4. Professional Standards
+
+Our practice adheres to the Rules of Professional Conduct established by the Law Society of Ontario. We maintain professional liability insurance as required by the LSO.
+
+5. Fee Structure and Billing
+
+Legal fees are established by written agreement. We provide transparent billing practices and detailed statements. Payment terms and methods are outlined in our engagement letters.
+
+6. Conflict of Interest
+
+We maintain strict conflict-checking procedures to ensure we can provide loyal and competent representation. We will identify and address any potential conflicts before accepting new matters.
+
+7. File Retention
+
+Client files are retained in accordance with LSO guidelines, typically for a minimum of 7-15 years depending on the matter type. Electronic records are maintained securely and backed up regularly.
+
+8. Accessibility
+
+We are committed to providing accessible services. If you require accommodation to access our services, please contact us to discuss available options.
+
+9. Complaints Process
+
+If you have concerns about our services, please contact us directly. If issues cannot be resolved, you may contact the Law Society of Ontario's complaints process at lso.ca.
+
+10. Professional Associations
+
+Tim Harmar is a member of:
+• Law Society of Ontario
+• Canadian Bar Association
+• Ontario Bar Association
+
+11. Technology and Security
+
+We use industry-standard security measures to protect client information. Our technology systems are regularly updated and monitored for security compliance.
+
+12. Emergency Procedures
+
+For urgent legal matters outside business hours, contact information is provided to existing clients. New clients should contact emergency legal services through Legal Aid Ontario if immediate assistance is required.
+
+13. Disclaimer of Warranties
+
+Legal outcomes cannot be guaranteed. While we provide competent and diligent representation, the success of any legal matter depends on various factors including applicable law, facts, and court decisions.
+
+14. Copyright Notice
+
+© 2025 Tim Harmar: Legal and Consulting Services. All rights reserved. Reproduction of website content without permission is prohibited.
+
+15. Contact for Legal Notices
+
+For matters related to these legal notices, contact:
+Tim Harmar: Legal and Consulting Services
+Email: legal@timharmar.com
+Phone: +1 (705) 943-5049`
+
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedService, setExpandedService] = useState(null)
   const [showTimBio, setShowTimBio] = useState(false)
+  const [showPolicyModal, setShowPolicyModal] = useState(false)
+  const [currentPolicy, setCurrentPolicy] = useState('')
+
+  const openPolicyModal = (policyType) => {
+    let policyContent = ''
+    switch (policyType) {
+      case 'privacy':
+        policyContent = PRIVACY_POLICY
+        break
+      case 'terms':
+        policyContent = TERMS_OF_SERVICE
+        break
+      case 'legal':
+        policyContent = LEGAL_NOTICES
+        break
+      default:
+        return
+    }
+    setCurrentPolicy(policyContent)
+    setShowPolicyModal(true)
+  }
+
+  const closePolicyModal = () => {
+    setShowPolicyModal(false)
+    setCurrentPolicy('')
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
@@ -859,15 +1122,24 @@ export default function App() {
                 &copy; 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 text-sm text-gray-400">
-                <a href="#" className="hover:text-primary-400 transition-colors">
+                <button 
+                  onClick={() => openPolicyModal('privacy')}
+                  className="hover:text-primary-400 transition-colors cursor-pointer"
+                >
                   Privacy Policy
-                </a>
-                <a href="#" className="hover:text-primary-400 transition-colors">
+                </button>
+                <button 
+                  onClick={() => openPolicyModal('terms')}
+                  className="hover:text-primary-400 transition-colors cursor-pointer"
+                >
                   Terms of Service
-                </a>
-                <a href="#" className="hover:text-primary-400 transition-colors">
+                </button>
+                <button 
+                  onClick={() => openPolicyModal('legal')}
+                  className="hover:text-primary-400 transition-colors cursor-pointer"
+                >
                   Legal Notices
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -876,6 +1148,68 @@ export default function App() {
 
       {/* AI Assistant Chat Widget */}
       <AILegalAssistant />
+
+      {/* Policy Modal */}
+      {showPolicyModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="flex min-h-screen items-center justify-center px-4">
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+              onClick={closePolicyModal}
+            ></div>
+            
+            {/* Modal Content */}
+            <div className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-xl shadow-2xl overflow-hidden">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-accent-50">
+                <h2 className="text-2xl font-bold text-primary-900">
+                  {currentPolicy.includes('Privacy Policy') ? 'Privacy Policy' :
+                   currentPolicy.includes('Terms of Service') ? 'Terms of Service' :
+                   'Legal Notices'}
+                </h2>
+                <button
+                  onClick={closePolicyModal}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close policy modal"
+                >
+                  <X className="w-6 h-6 text-gray-600" />
+                </button>
+              </div>
+              
+              {/* Content */}
+              <div className="p-6 overflow-y-auto max-h-[70vh]">
+                <div className="prose prose-lg max-w-none">
+                  <pre className="whitespace-pre-wrap font-sans text-gray-700 leading-relaxed">
+                    {currentPolicy}
+                  </pre>
+                </div>
+              </div>
+              
+              {/* Footer */}
+              <div className="p-6 border-t border-gray-200 bg-gray-50">
+                <div className="flex justify-between items-center">
+                  <p className="text-sm text-gray-600">
+                    For questions, please contact us at{' '}
+                    <a 
+                      href="mailto:info@timharmar.com" 
+                      className="text-primary-600 hover:text-primary-700 underline"
+                    >
+                      info@timharmar.com
+                    </a>
+                  </p>
+                  <button
+                    onClick={closePolicyModal}
+                    className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
