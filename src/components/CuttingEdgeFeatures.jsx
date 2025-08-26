@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import jsPDF from 'jspdf'
 import {
   MessageCircle,
   Calendar,
@@ -122,6 +121,31 @@ export const SmartScheduler = () => {
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTime, setSelectedTime] = useState('')
   const [consultationType, setConsultationType] = useState('')
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  const [userPhone, setUserPhone] = useState('')
+  const [additionalInfo, setAdditionalInfo] = useState('')
+
+  const handleScheduleSubmit = () => {
+    if (!consultationType || !selectedDate || !selectedTime || !userName || !userEmail) {
+      alert('Please fill in all required fields.')
+      return
+    }
+
+    const emailBody = `Hello,%0D%0A%0D%0A` +
+      `I would like to schedule a consultation with the following details:%0D%0A%0D%0A` +
+      `Name: ${userName}%0D%0A` +
+      `Email: ${userEmail}%0D%0A` +
+      `Phone: ${userPhone}%0D%0A` +
+      `Consultation Type: ${consultationType}%0D%0A` +
+      `Preferred Date: ${selectedDate}%0D%0A` +
+      `Preferred Time: ${selectedTime}%0D%0A%0D%0A` +
+      `Additional Information:%0D%0A${additionalInfo}%0D%0A%0D%0A` +
+      `Thank you!`
+
+    const subject = `Consultation Request - ${consultationType}`
+    window.location.href = `mailto:kburton@timharmar.com?subject=${subject}&body=${emailBody}`
+  }
 
   const availableTimes = ['9:00 AM', '10:30 AM', '2:00 PM', '3:30 PM', '4:30 PM']
   const consultationTypes = [
@@ -145,11 +169,47 @@ export const SmartScheduler = () => {
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Consultation Type</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
+          <input
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            placeholder="Enter your full name"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+          <input
+            type="email"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
+            placeholder="Enter your email address"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+          <input
+            type="tel"
+            value={userPhone}
+            onChange={(e) => setUserPhone(e.target.value)}
+            placeholder="Enter your phone number"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Consultation Type *</label>
           <select
             value={consultationType}
             onChange={(e) => setConsultationType(e.target.value)}
             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            required
           >
             <option value="">Select consultation type</option>
             {consultationTypes.map((type, index) => (
@@ -161,18 +221,19 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
           <input
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
             min={new Date().toISOString().split('T')[0]}
             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Available Times</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Available Times *</label>
           <div className="grid grid-cols-2 gap-2">
             {availableTimes.map((time, index) => (
               <button
@@ -190,9 +251,21 @@ export const SmartScheduler = () => {
           </div>
         </div>
 
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
+          <textarea
+            value={additionalInfo}
+            onChange={(e) => setAdditionalInfo(e.target.value)}
+            placeholder="Please provide any additional details about your legal needs..."
+            rows="3"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          />
+        </div>
+
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          onClick={handleScheduleSubmit}
           className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white p-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
         >
           Schedule Consultation
@@ -206,457 +279,360 @@ export const SmartScheduler = () => {
 export const LegalResourcesLibrary = () => {
   const [selectedCategory, setSelectedCategory] = useState('guides')
 
-  // Function to generate and download Privacy Compliance Guide PDF
-  const downloadPrivacyGuide = () => {
-    const doc = new jsPDF()
+  // Function to open Privacy Compliance Guide in new window
+  const openPrivacyGuide = () => {
+    const content = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Compliance Guide for Small Business</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #1f2937; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
+        h2 { color: #374151; margin-top: 30px; }
+        h3 { color: #4b5563; }
+        .step { margin-bottom: 20px; padding: 15px; background: #f9fafb; border-left: 4px solid #3b82f6; }
+        .disclaimer { background: #fef3c7; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .footer { text-align: center; margin-top: 40px; padding: 20px; background: #f3f4f6; }
+    </style>
+</head>
+<body>
+    <h1>Privacy Compliance Guide for Small Business</h1>
+    <h2>Essential Steps to Ensure Your Business Complies with Canadian Privacy Laws</h2>
+    
+    <h3>Introduction</h3>
+    <p>This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including the Personal Information Protection and Electronic Documents Act (PIPEDA) and Ontario's privacy regulations.</p>
+    
+    <h3>Key Steps for Privacy Compliance</h3>
+    
+    <div class="step">
+        <h4>1. Understand Applicable Laws</h4>
+        <p>PIPEDA applies to private-sector organizations in Canada that collect, use, or disclose personal information during commercial activities.</p>
+    </div>
+    
+    <div class="step">
+        <h4>2. Appoint a Privacy Officer</h4>
+        <p>Designate a person responsible for overseeing privacy compliance and handling privacy policies and complaints.</p>
+    </div>
+    
+    <div class="step">
+        <h4>3. Develop a Privacy Policy</h4>
+        <p>Create a clear, accessible privacy policy that explains how your business collects, uses, stores, and protects personal information.</p>
+    </div>
+    
+    <div class="step">
+        <h4>4. Obtain Consent</h4>
+        <p>Obtain explicit or implied consent before collecting personal information and clearly explain why the information is needed.</p>
+    </div>
+    
+    <div class="step">
+        <h4>5. Secure Personal Information</h4>
+        <p>Implement safeguards such as encryption, secure storage, and restricted access to personal data.</p>
+    </div>
+    
+    <div class="step">
+        <h4>6. Limit Data Retention</h4>
+        <p>Retain personal information only as long as necessary for the identified purpose.</p>
+    </div>
+    
+    <div class="step">
+        <h4>7. Respond to Access Requests</h4>
+        <p>Allow individuals to access their personal information and respond to requests within 30 days.</p>
+    </div>
+    
+    <div class="step">
+        <h4>8. Prepare for Data Breaches</h4>
+        <p>Develop a data breach response plan and document all breaches to prevent recurrence.</p>
+    </div>
+    
+    <h3>Resources</h3>
+    <ul>
+        <li>Office of the Privacy Commissioner of Canada: <a href="https://www.priv.gc.ca" target="_blank">https://www.priv.gc.ca</a></li>
+        <li>PIPEDA Compliance Guide: <a href="https://www.priv.gc.ca/en/for-businesses" target="_blank">https://www.priv.gc.ca/en/for-businesses</a></li>
+    </ul>
+    
+    <div class="disclaimer">
+        <h4>Disclaimer</h4>
+        <p>This guide is for informational purposes only and does not constitute legal advice. Consult a qualified lawyer to ensure compliance with all applicable laws.</p>
+    </div>
+    
+    <div class="footer">
+        <p>Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario</p>
+    </div>
+</body>
+</html>
+    `
 
-    // Set font size and add title
-    doc.setFontSize(20)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Privacy Compliance Guide for Small Business', 20, 30)
-
-    doc.setFontSize(14)
-    doc.setFont('helvetica', 'normal')
-    doc.text('Essential Steps to Ensure Your Business Complies with Canadian Privacy Laws', 20, 45)
-
-    // Add introduction
-    doc.setFontSize(16)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Introduction', 20, 65)
-
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const introText =
-      "This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including the Personal Information Protection and Electronic Documents Act (PIPEDA) and Ontario's privacy regulations."
-    doc.text(doc.splitTextToSize(introText, 170), 20, 75)
-
-    // Add key steps
-    doc.setFontSize(16)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Key Steps for Privacy Compliance', 20, 100)
-
-    let yPosition = 115
-    const steps = [
-      {
-        title: '1. Understand Applicable Laws',
-        content:
-          'PIPEDA applies to private-sector organizations in Canada that collect, use, or disclose personal information during commercial activities.',
-      },
-      {
-        title: '2. Appoint a Privacy Officer',
-        content:
-          'Designate a person responsible for overseeing privacy compliance and handling privacy policies and complaints.',
-      },
-      {
-        title: '3. Develop a Privacy Policy',
-        content:
-          'Create a clear, accessible privacy policy that explains how your business collects, uses, stores, and protects personal information.',
-      },
-      {
-        title: '4. Obtain Consent',
-        content:
-          'Obtain explicit or implied consent before collecting personal information and clearly explain why the information is needed.',
-      },
-      {
-        title: '5. Secure Personal Information',
-        content:
-          'Implement safeguards such as encryption, secure storage, and restricted access to personal data.',
-      },
-      {
-        title: '6. Limit Data Retention',
-        content:
-          'Retain personal information only as long as necessary for the identified purpose.',
-      },
-      {
-        title: '7. Respond to Access Requests',
-        content:
-          'Allow individuals to access their personal information and respond to requests within 30 days.',
-      },
-      {
-        title: '8. Prepare for Data Breaches',
-        content:
-          'Develop a data breach response plan and document all breaches to prevent recurrence.',
-      },
-    ]
-
-    doc.setFontSize(11)
-    steps.forEach((step) => {
-      if (yPosition > 250) {
-        doc.addPage()
-        yPosition = 30
-      }
-
-      doc.setFont('helvetica', 'bold')
-      doc.text(step.title, 20, yPosition)
-      yPosition += 8
-
-      doc.setFont('helvetica', 'normal')
-      const stepText = doc.splitTextToSize(step.content, 170)
-      doc.text(stepText, 20, yPosition)
-      yPosition += stepText.length * 5 + 8
-    })
-
-    // Add resources
-    if (yPosition > 220) {
-      doc.addPage()
-      yPosition = 30
-    }
-
-    doc.setFontSize(16)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Resources', 20, yPosition)
-    yPosition += 15
-
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    doc.text('Office of the Privacy Commissioner of Canada: https://www.priv.gc.ca', 20, yPosition)
-    yPosition += 8
-    doc.text('PIPEDA Compliance Guide: https://www.priv.gc.ca/en/for-businesses', 20, yPosition)
-    yPosition += 15
-
-    // Add disclaimer
-    doc.setFontSize(16)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Disclaimer', 20, yPosition)
-    yPosition += 10
-
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const disclaimerText =
-      'This guide is for informational purposes only and does not constitute legal advice. Consult a qualified lawyer to ensure compliance with all applicable laws.'
-    doc.text(doc.splitTextToSize(disclaimerText, 170), 20, yPosition)
-
-    // Add footer
-    doc.setFontSize(9)
-    doc.text(
-      'Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario',
-      20,
-      280
-    )
-
-    // Download the PDF
-    doc.save('Privacy-Compliance-Guide-for-Small-Business.pdf')
+    const newWindow = window.open('', '_blank')
+    newWindow.document.write(content)
+    newWindow.document.close()
   }
 
-  // Function to generate and download Contract Review Checklist PDF
-  const downloadContractChecklist = () => {
-    const doc = new jsPDF()
+  // Function to open Contract Review Checklist in new window
+  const openContractChecklist = () => {
+    const content = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Review Checklist</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #1f2937; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
+        h2 { color: #374151; margin-top: 30px; }
+        h3 { color: #4b5563; }
+        .section { margin-bottom: 25px; padding: 15px; background: #f9fafb; border-left: 4px solid #3b82f6; }
+        .checklist-item { margin: 8px 0; padding-left: 20px; }
+        .disclaimer { background: #fef3c7; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .footer { text-align: center; margin-top: 40px; padding: 20px; background: #f3f4f6; }
+        ul { list-style-type: none; }
+        li:before { content: "☐ "; margin-right: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Contract Review Checklist</h1>
+    <h2>Key Elements to Review Before Signing Any Business Contract</h2>
+    
+    <p>This checklist is designed as a quick reference for small business owners and entrepreneurs to ensure they've thoroughly evaluated a contract before committing. It's not a substitute for professional legal advice—consult a lawyer for complex agreements.</p>
+    
+    <div class="section">
+        <h3>1. Parties and Identification</h3>
+        <ul>
+            <li>Confirm all parties are correctly identified (full legal names, addresses, and roles)</li>
+            <li>Verify authority: Does the signer have the right to bind the party (e.g., officer, partner)?</li>
+            <li>Check for any subsidiaries, affiliates, or third parties involved</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>2. Scope of Work/Services/Goods</h3>
+        <ul>
+            <li>Clearly define what is being provided (deliverables, timelines, quality standards)</li>
+            <li>Look for ambiguities: Are terms like "reasonable efforts" or "as needed" defined?</li>
+            <li>Identify any exclusions or limitations on what's included</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>3. Payment Terms</h3>
+        <ul>
+            <li>Review amounts, payment schedule, methods (e.g., wire, check), and currency</li>
+            <li>Check for milestones, retainers, late fees, interest, or penalties</li>
+            <li>Understand conditions for payment (e.g., upon delivery, approval)</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>4. Term and Termination</h3>
+        <ul>
+            <li>Note the start date, duration (fixed term or ongoing), and renewal options</li>
+            <li>Examine termination clauses: For cause (breach), without cause (notice period)</li>
+            <li>Look for survival clauses: What obligations continue post-termination?</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>5. Confidentiality and Non-Disclosure</h3>
+        <ul>
+            <li>Define what information is confidential and how it must be protected</li>
+            <li>Check duration of confidentiality (e.g., perpetual or time-limited)</li>
+            <li>Identify exceptions (e.g., public information, court orders)</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>6. Intellectual Property (IP) Rights</h3>
+        <ul>
+            <li>Clarify ownership: Who owns new IP created under the contract?</li>
+            <li>Review licenses granted: Exclusive/non-exclusive, duration, territory</li>
+            <li>Ensure protections against infringement claims</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>7. Warranties and Representations</h3>
+        <ul>
+            <li>Assess promises made (e.g., quality, compliance with laws, no conflicts)</li>
+            <li>Check disclaimers: Are warranties limited or "as-is"?</li>
+            <li>Understand remedies for breach of warranties</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>8. Liability and Indemnification</h3>
+        <ul>
+            <li>Review caps on liability (e.g., limited to contract value)</li>
+            <li>Check indemnification: Who covers losses from claims?</li>
+            <li>Note insurance requirements</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>9. Dispute Resolution</h3>
+        <ul>
+            <li>Identify method: Litigation, arbitration, mediation?</li>
+            <li>Specify venue, jurisdiction, and applicable rules</li>
+            <li>Look for attorney fees provisions (who pays in a dispute)</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h3>10. Governing Law and Miscellaneous</h3>
+        <ul>
+            <li>Confirm governing law (e.g., state/country) and jurisdiction</li>
+            <li>Check force majeure (excuses for non-performance due to unforeseen events)</li>
+            <li>Review boilerplate: Assignment, amendments, entire agreement clause</li>
+            <li>Ensure no unfair terms (e.g., one-sided clauses)</li>
+        </ul>
+    </div>
+    
+    <h3>Tips for Review:</h3>
+    <ul style="margin-left: 20px;">
+        <li>Read the entire contract multiple times</li>
+        <li>Highlight unclear language and seek clarification</li>
+        <li>Compare against industry standards or similar contracts</li>
+        <li>Consider potential worst-case scenarios</li>
+    </ul>
+    
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.</p>
+    </div>
+    
+    <div class="footer">
+        <p>Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario</p>
+    </div>
+</body>
+</html>
+    `
 
-    // Set font size and add title
-    doc.setFontSize(20)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Contract Review Checklist', 20, 30)
-
-    doc.setFontSize(14)
-    doc.setFont('helvetica', 'normal')
-    doc.text('Key Elements to Review Before Signing Any Business Contract', 20, 45)
-
-    // Add introduction
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const introText =
-      "This checklist is designed as a quick reference for small business owners and entrepreneurs to ensure they've thoroughly evaluated a contract before committing. It's not a substitute for professional legal advice—consult a lawyer for complex agreements."
-    doc.text(doc.splitTextToSize(introText, 170), 20, 60)
-
-    let yPosition = 85
-
-    // Add checklist items
-    const checklistItems = [
-      {
-        title: '1. Parties and Identification',
-        items: [
-          'Confirm all parties are correctly identified (full legal names, addresses, and roles)',
-          'Verify authority: Does the signer have the right to bind the party (e.g., officer, partner)?',
-          'Check for any subsidiaries, affiliates, or third parties involved',
-        ],
-      },
-      {
-        title: '2. Scope of Work/Services/Goods',
-        items: [
-          'Clearly define what is being provided (deliverables, timelines, quality standards)',
-          'Look for ambiguities: Are terms like "reasonable efforts" or "as needed" defined?',
-          "Identify any exclusions or limitations on what's included",
-        ],
-      },
-      {
-        title: '3. Payment Terms',
-        items: [
-          'Review amounts, payment schedule, methods (e.g., wire, check), and currency',
-          'Check for milestones, retainers, late fees, interest, or penalties',
-          'Understand conditions for payment (e.g., upon delivery, approval)',
-        ],
-      },
-      {
-        title: '4. Term and Termination',
-        items: [
-          'Note the start date, duration (fixed term or ongoing), and renewal options',
-          'Examine termination clauses: For cause (breach), without cause (notice period)',
-          'Look for survival clauses: What obligations continue post-termination?',
-        ],
-      },
-      {
-        title: '5. Confidentiality and Non-Disclosure',
-        items: [
-          'Define what information is confidential and how it must be protected',
-          'Check duration of confidentiality (e.g., perpetual or time-limited)',
-          'Identify exceptions (e.g., public information, court orders)',
-        ],
-      },
-      {
-        title: '6. Intellectual Property (IP) Rights',
-        items: [
-          'Clarify ownership: Who owns new IP created under the contract?',
-          'Review licenses granted: Exclusive/non-exclusive, duration, territory',
-          'Ensure protections against infringement claims',
-        ],
-      },
-      {
-        title: '7. Warranties and Representations',
-        items: [
-          'Assess promises made (e.g., quality, compliance with laws, no conflicts)',
-          'Check disclaimers: Are warranties limited or "as-is"?',
-          'Understand remedies for breach of warranties',
-        ],
-      },
-      {
-        title: '8. Liability and Indemnification',
-        items: [
-          'Review caps on liability (e.g., limited to contract value)',
-          'Check indemnification: Who covers losses from claims?',
-          'Note insurance requirements',
-        ],
-      },
-      {
-        title: '9. Dispute Resolution',
-        items: [
-          'Identify method: Litigation, arbitration, mediation?',
-          'Specify venue, jurisdiction, and applicable rules',
-          'Look for attorney fees provisions (who pays in a dispute)',
-        ],
-      },
-      {
-        title: '10. Governing Law and Miscellaneous',
-        items: [
-          'Confirm governing law (e.g., state/country) and jurisdiction',
-          'Check force majeure (excuses for non-performance due to unforeseen events)',
-          'Review boilerplate: Assignment, amendments, entire agreement clause',
-          'Ensure no unfair terms (e.g., one-sided clauses)',
-        ],
-      },
-    ]
-
-    doc.setFontSize(11)
-    checklistItems.forEach((section) => {
-      if (yPosition > 250) {
-        doc.addPage()
-        yPosition = 30
-      }
-
-      doc.setFont('helvetica', 'bold')
-      doc.text(section.title, 20, yPosition)
-      yPosition += 8
-
-      doc.setFont('helvetica', 'normal')
-      section.items.forEach((item) => {
-        const checkboxText = `☐ ${item}`
-        const wrappedText = doc.splitTextToSize(checkboxText, 165)
-        doc.text(wrappedText, 25, yPosition)
-        yPosition += wrappedText.length * 5 + 3
-      })
-      yPosition += 5
-    })
-
-    // Add tips
-    if (yPosition > 230) {
-      doc.addPage()
-      yPosition = 30
-    }
-
-    doc.setFontSize(14)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Tips for Review:', 20, yPosition)
-    yPosition += 10
-
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const tips = [
-      'Read the entire contract multiple times',
-      'Highlight unclear language and seek clarification',
-      'Compare against industry standards or similar contracts',
-      'Consider potential worst-case scenarios',
-    ]
-
-    tips.forEach((tip) => {
-      doc.text(`• ${tip}`, 25, yPosition)
-      yPosition += 7
-    })
-
-    // Add disclaimer
-    yPosition += 10
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const disclaimerText =
-      'Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.'
-    doc.text(doc.splitTextToSize(disclaimerText, 170), 20, yPosition)
-
-    // Download the PDF
-    doc.save('Contract-Review-Checklist.pdf')
+    const newWindow = window.open('', '_blank')
+    newWindow.document.write(content)
+    newWindow.document.close()
   }
 
-  // Function to generate and download IP Protection Basics PDF
-  const downloadIPGuide = () => {
-    const doc = new jsPDF()
+  // Function to open IP Protection Basics in new window
+  const openIPGuide = () => {
+    const content = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Protection Basics</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #1f2937; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
+        h2 { color: #374151; margin-top: 30px; }
+        h3 { color: #4b5563; }
+        .section { margin-bottom: 30px; padding: 20px; background: #f9fafb; border-left: 4px solid #3b82f6; }
+        .subsection { margin: 15px 0; }
+        .disclaimer { background: #fef3c7; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .footer { text-align: center; margin-top: 40px; padding: 20px; background: #f3f4f6; }
+        ul { margin: 10px 0; }
+        li { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>IP Protection Basics</h1>
+    <h2>Understanding Trademarks, Copyrights, and Trade Secrets for Your Business</h2>
+    
+    <h3>Introduction to IP</h3>
+    <p>Intellectual property refers to creations of the mind, such as inventions, designs, brands, and artistic works. Protecting IP helps prevent others from using your ideas without permission, potentially saving your business from costly disputes. The three main types relevant to most small businesses are trademarks, copyrights, and trade secrets.</p>
+    
+    <div class="section">
+        <h3>1. Trademarks</h3>
+        <div class="subsection">
+            <h4>What They Are:</h4>
+            <p>Trademarks protect brand identifiers like names, logos, slogans, and symbols that distinguish your goods/services from others. Examples: Your company name, product logos, or taglines like "Just Do It."</p>
+        </div>
+        
+        <div class="subsection">
+            <h4>How to Protect:</h4>
+            <ul>
+                <li>Conduct a search: Use the USPTO database or tools like Google to check for existing marks</li>
+                <li>Register: Federal registration (via USPTO) provides nationwide protection</li>
+                <li>Use properly: Always use ™ for unregistered marks or ® for registered</li>
+                <li>Monitor and enforce: Watch for infringers and send cease-and-desist letters if needed</li>
+            </ul>
+        </div>
+        
+        <div class="subsection">
+            <h4>Common Pitfalls:</h4>
+            <p>Choosing generic terms (e.g., "Coffee Shop") that can't be trademarked, or not renewing registrations (every 10 years).</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>2. Copyrights</h3>
+        <div class="subsection">
+            <h4>What They Are:</h4>
+            <p>Copyrights protect original works of authorship fixed in a tangible medium, such as writings, music, art, software code, websites, photos, and videos. They don't protect ideas, only the expression of ideas.</p>
+        </div>
+        
+        <div class="subsection">
+            <h4>How to Protect:</h4>
+            <ul>
+                <li>Automatic protection: Copyright exists from the moment of creation—no registration needed</li>
+                <li>Register: With the U.S. Copyright Office for stronger enforcement</li>
+                <li>Document creation: Keep records of drafts, dates, and authors</li>
+                <li>Licenses and contracts: Use agreements for collaborations or employee works</li>
+            </ul>
+        </div>
+        
+        <div class="subsection">
+            <h4>Common Pitfalls:</h4>
+            <p>Assuming "fair use" covers everything (it's limited), or using others' works without permission.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>3. Trade Secrets</h3>
+        <div class="subsection">
+            <h4>What They Are:</h4>
+            <p>Confidential business information that provides a competitive advantage, such as formulas, processes, customer lists, recipes, or algorithms. Examples: Coca-Cola's formula or Google's search algorithm.</p>
+        </div>
+        
+        <div class="subsection">
+            <h4>How to Protect:</h4>
+            <ul>
+                <li>Identify secrets: Label documents as "confidential" and restrict access</li>
+                <li>Use NDAs: Require non-disclosure agreements for employees, contractors, and partners</li>
+                <li>Security measures: Implement passwords, restricted access, employee training</li>
+                <li>Enforce: Sue for misappropriation if stolen (e.g., by ex-employees)</li>
+            </ul>
+        </div>
+        
+        <div class="subsection">
+            <h4>Common Pitfalls:</h4>
+            <p>Not having written policies, or publicly disclosing info, which destroys secrecy.</p>
+        </div>
+    </div>
+    
+    <h3>Next Steps for Your Business</h3>
+    <ul>
+        <li>Audit your IP: List assets and assess risks</li>
+        <li>Develop an IP strategy: Prioritize protections based on business needs</li>
+        <li>Seek professional help: A lawyer can handle searches, registrations, and contracts</li>
+        <li>Stay informed: IP laws evolve—monitor changes via resources like USPTO.gov</li>
+    </ul>
+    
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.</p>
+    </div>
+    
+    <div class="footer">
+        <p>Prepared by Tim Harmar Legal & Consulting Services - Sault Ste. Marie, Ontario</p>
+    </div>
+</body>
+</html>
+    `
 
-    // Set font size and add title
-    doc.setFontSize(20)
-    doc.setFont('helvetica', 'bold')
-    doc.text('IP Protection Basics', 20, 30)
-
-    doc.setFontSize(14)
-    doc.setFont('helvetica', 'normal')
-    doc.text('Understanding Trademarks, Copyrights, and Trade Secrets for Your Business', 20, 45)
-
-    // Add introduction
-    doc.setFontSize(16)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Introduction to IP', 20, 65)
-
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const introText =
-      'Intellectual property refers to creations of the mind, such as inventions, designs, brands, and artistic works. Protecting IP helps prevent others from using your ideas without permission, potentially saving your business from costly disputes. The three main types relevant to most small businesses are trademarks, copyrights, and trade secrets.'
-    doc.text(doc.splitTextToSize(introText, 170), 20, 75)
-
-    let yPosition = 110
-
-    // Add IP sections
-    const ipSections = [
-      {
-        title: '1. Trademarks',
-        subtitle: 'What They Are:',
-        content:
-          'Trademarks protect brand identifiers like names, logos, slogans, and symbols that distinguish your goods/services from others. Examples: Your company name, product logos, or taglines like "Just Do It."',
-        howToProtect: [
-          'Conduct a search: Use the USPTO database or tools like Google to check for existing marks',
-          'Register: Federal registration (via USPTO) provides nationwide protection',
-          'Use properly: Always use ™ for unregistered marks or ® for registered',
-          'Monitor and enforce: Watch for infringers and send cease-and-desist letters if needed',
-        ],
-        pitfalls:
-          'Choosing generic terms (e.g., "Coffee Shop") that can\'t be trademarked, or not renewing registrations (every 10 years).',
-      },
-      {
-        title: '2. Copyrights',
-        subtitle: 'What They Are:',
-        content:
-          "Copyrights protect original works of authorship fixed in a tangible medium, such as writings, music, art, software code, websites, photos, and videos. They don't protect ideas, only the expression of ideas.",
-        howToProtect: [
-          'Automatic protection: Copyright exists from the moment of creation—no registration needed',
-          'Register: With the U.S. Copyright Office for stronger enforcement',
-          'Document creation: Keep records of drafts, dates, and authors',
-          'Licenses and contracts: Use agreements for collaborations or employee works',
-        ],
-        pitfalls:
-          'Assuming "fair use" covers everything (it\'s limited), or using others\' works without permission.',
-      },
-      {
-        title: '3. Trade Secrets',
-        subtitle: 'What They Are:',
-        content:
-          "Confidential business information that provides a competitive advantage, such as formulas, processes, customer lists, recipes, or algorithms. Examples: Coca-Cola's formula or Google's search algorithm.",
-        howToProtect: [
-          'Identify secrets: Label documents as "confidential" and restrict access',
-          'Use NDAs: Require non-disclosure agreements for employees, contractors, and partners',
-          'Security measures: Implement passwords, restricted access, employee training',
-          'Enforce: Sue for misappropriation if stolen (e.g., by ex-employees)',
-        ],
-        pitfalls:
-          'Not having written policies, or publicly disclosing info, which destroys secrecy.',
-      },
-    ]
-
-    ipSections.forEach((section) => {
-      if (yPosition > 240) {
-        doc.addPage()
-        yPosition = 30
-      }
-
-      // Section title
-      doc.setFontSize(14)
-      doc.setFont('helvetica', 'bold')
-      doc.text(section.title, 20, yPosition)
-      yPosition += 10
-
-      // Subtitle and content
-      doc.setFontSize(11)
-      doc.setFont('helvetica', 'bold')
-      doc.text(section.subtitle, 20, yPosition)
-      yPosition += 7
-
-      doc.setFont('helvetica', 'normal')
-      const contentText = doc.splitTextToSize(section.content, 170)
-      doc.text(contentText, 20, yPosition)
-      yPosition += contentText.length * 5 + 8
-
-      // How to protect
-      doc.setFont('helvetica', 'bold')
-      doc.text('How to Protect:', 20, yPosition)
-      yPosition += 7
-
-      doc.setFont('helvetica', 'normal')
-      section.howToProtect.forEach((item) => {
-        const itemText = doc.splitTextToSize(`• ${item}`, 165)
-        doc.text(itemText, 25, yPosition)
-        yPosition += itemText.length * 5 + 3
-      })
-
-      // Common pitfalls
-      yPosition += 5
-      doc.setFont('helvetica', 'bold')
-      doc.text('Common Pitfalls:', 20, yPosition)
-      yPosition += 7
-
-      doc.setFont('helvetica', 'normal')
-      const pitfallText = doc.splitTextToSize(section.pitfalls, 170)
-      doc.text(pitfallText, 20, yPosition)
-      yPosition += pitfallText.length * 5 + 15
-    })
-
-    // Add next steps
-    if (yPosition > 220) {
-      doc.addPage()
-      yPosition = 30
-    }
-
-    doc.setFontSize(14)
-    doc.setFont('helvetica', 'bold')
-    doc.text('Next Steps for Your Business', 20, yPosition)
-    yPosition += 10
-
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const nextSteps = [
-      'Audit your IP: List assets and assess risks',
-      'Develop an IP strategy: Prioritize protections based on business needs',
-      'Seek professional help: A lawyer can handle searches, registrations, and contracts',
-      'Stay informed: IP laws evolve—monitor changes via resources like USPTO.gov',
-    ]
-
-    nextSteps.forEach((step) => {
-      doc.text(`• ${step}`, 25, yPosition)
-      yPosition += 7
-    })
-
-    // Add disclaimer
-    yPosition += 10
-    doc.setFontSize(11)
-    doc.setFont('helvetica', 'normal')
-    const disclaimerText =
-      'Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.'
-    doc.text(doc.splitTextToSize(disclaimerText, 170), 20, yPosition)
-
-    // Download the PDF
-    doc.save('IP-Protection-Basics.pdf')
+    const newWindow = window.open('', '_blank')
+    newWindow.document.write(content)
+    newWindow.document.close()
   }
 
   const resources = {
@@ -667,7 +643,7 @@ export const LegalResourcesLibrary = () => {
         type: 'PDF Guide',
         icon: '🔒',
         downloadable: true,
-        downloadAction: downloadPrivacyGuide,
+        downloadAction: openPrivacyGuide,
       },
       {
         title: 'Contract Review Checklist',
@@ -675,7 +651,7 @@ export const LegalResourcesLibrary = () => {
         type: 'Checklist',
         icon: '✅',
         downloadable: true,
-        downloadAction: downloadContractChecklist,
+        downloadAction: openContractChecklist,
       },
       {
         title: 'IP Protection Basics',
@@ -683,7 +659,7 @@ export const LegalResourcesLibrary = () => {
         type: 'Guide',
         icon: '💡',
         downloadable: true,
-        downloadAction: downloadIPGuide,
+        downloadAction: openIPGuide,
       },
     ],
     faqs: [
@@ -786,7 +762,7 @@ export const LegalResourcesLibrary = () => {
                   className="ml-4 flex items-center space-x-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Download PDF</span>
+                  <span>View Guide</span>
                 </button>
               )}
             </div>
@@ -1049,7 +1025,21 @@ export const LegalAssessment = () => {
             >
               Retake Assessment
             </button>
-            <button className="flex-1 bg-purple-600 text-white p-3 rounded-lg hover:bg-purple-700 transition-colors">
+            <button 
+              onClick={() => {
+                const emailBody = `Hello,%0D%0A%0D%0A` +
+                  `I have completed the legal needs assessment and would like to schedule a consultation.%0D%0A%0D%0A` +
+                  `Assessment Results:%0D%0A` +
+                  `Business Type: ${answers.business_type}%0D%0A` +
+                  `Primary Concern: ${answers.legal_concerns}%0D%0A` +
+                  `Timeline: ${answers.urgency}%0D%0A%0D%0A` +
+                  `Please let me know your availability.%0D%0A%0D%0A` +
+                  `Thank you!`
+                
+                window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - Legal Assessment Complete&body=${emailBody}`
+              }}
+              className="flex-1 bg-purple-600 text-white p-3 rounded-lg hover:bg-purple-700 transition-colors"
+            >
               Schedule Consultation
             </button>
           </div>
