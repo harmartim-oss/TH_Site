@@ -271,7 +271,7 @@ export const SmartScheduler = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleScheduleSubmit}
-          className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white p-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+          className="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white p-3 rounded-lg font-semibold hover:shadow-glow transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
         >
           Schedule Consultation
         </motion.button>
@@ -1044,7 +1044,7 @@ export const LegalAssessment = () => {
 
                 window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - Legal Assessment Complete&body=${emailBody}`
               }}
-              className="flex-1 bg-purple-600 text-white p-3 rounded-lg hover:bg-purple-700 transition-colors"
+              className="flex-1 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white p-3 rounded-lg font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
             >
               Schedule Consultation
             </button>
