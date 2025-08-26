@@ -6,12 +6,12 @@ import {
   LegalNewsFeed,
   LegalAssessment,
 } from './components/CuttingEdgeFeatures'
-import { 
-  Scale, 
-  Shield, 
-  Lightbulb, 
-  Building2, 
-  Rocket, 
+import {
+  Scale,
+  Shield,
+  Lightbulb,
+  Building2,
+  Rocket,
   Target,
   Award,
   Monitor,
@@ -28,7 +28,7 @@ import {
   GraduationCap,
   Briefcase,
   FileText,
-  UserCheck
+  UserCheck,
 } from 'lucide-react'
 import logoImage from './assets/tim_harmar_logo_updated.png'
 
@@ -52,7 +52,9 @@ export default function App() {
                 <h1 className="text-xl md:text-2xl font-bold text-gray-900 font-heading">
                   Tim Harmar Legal & Consulting Services
                 </h1>
-                <p className="text-sm text-primary-600 font-semibold">Excellence in Legal Solutions</p>
+                <p className="text-sm text-primary-600 font-semibold">
+                  Excellence in Legal Solutions
+                </p>
               </div>
             </div>
 
@@ -92,11 +94,7 @@ export default function App() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
 
@@ -139,11 +137,11 @@ export default function App() {
       <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-800 text-white py-24 md:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/50 to-secondary-900/50"></div>
-        
+
         {/* Animated background elements */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-600/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-8">
@@ -152,8 +150,11 @@ export default function App() {
               </span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 font-heading leading-tight">
-              Expert Legal Solutions for Your 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-secondary-300"> Business</span>
+              Expert Legal Solutions for Your
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-secondary-300">
+                {' '}
+                Business
+              </span>
             </h1>
             <div className="mb-8">
               <h2 className="text-2xl md:text-3xl font-semibold text-primary-100 mb-4">
@@ -256,13 +257,19 @@ export default function App() {
                   className="group bg-white p-8 rounded-2xl hover:shadow-large transition-all duration-300 cursor-pointer border border-gray-100 hover:border-primary-200 transform hover:scale-105"
                   onClick={() => setExpandedService(expandedService === index ? null : index)}
                 >
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center justify-between font-heading">
                     {service.title}
                     <span className="text-primary-600 group-hover:text-primary-700 transition-colors">
-                      {expandedService === index ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                      {expandedService === index ? (
+                        <ChevronUp className="w-5 h-5" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" />
+                      )}
                     </span>
                   </h3>
                   <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
@@ -310,7 +317,9 @@ export default function App() {
       <section id="about" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">Meet Our Team</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">
+              Meet Our Team
+            </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
@@ -327,7 +336,9 @@ export default function App() {
                   <Scale className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 font-heading">Tim J. Harmar</h3>
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 font-heading">
+                    Tim J. Harmar
+                  </h3>
                   <p className="text-primary-600 font-bold text-xl">Principal Lawyer & Founder</p>
                 </div>
               </div>
@@ -427,7 +438,9 @@ export default function App() {
                 </div>
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                   <Scale className="text-secondary-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">Professional standards excellence</span>
+                  <span className="text-gray-700 text-sm font-medium">
+                    Professional standards excellence
+                  </span>
                 </div>
               </div>
               <button className="w-full bg-gradient-to-r from-secondary-600 to-secondary-700 text-white px-4 py-3 rounded-xl hover:from-secondary-700 hover:to-secondary-800 transition-all duration-200 font-semibold shadow-medium transform hover:scale-105">
@@ -462,11 +475,15 @@ export default function App() {
                 </div>
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                   <Phone className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">Client relations and communication</span>
+                  <span className="text-gray-700 text-sm font-medium">
+                    Client relations and communication
+                  </span>
                 </div>
                 <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                   <Monitor className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-gray-700 text-sm font-medium">Administrative systems management</span>
+                  <span className="text-gray-700 text-sm font-medium">
+                    Administrative systems management
+                  </span>
                 </div>
               </div>
               <button className="w-full bg-gradient-to-r from-accent-600 to-accent-700 text-white px-4 py-3 rounded-xl hover:from-accent-700 hover:to-accent-800 transition-all duration-200 font-semibold shadow-medium transform hover:scale-105">
@@ -510,10 +527,15 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      <section
+        id="contact"
+        className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading">Ready to Get Started?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading">
+              Ready to Get Started?
+            </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Contact us today for a consultation and discover how our legal expertise can help your
               business thrive.
@@ -527,7 +549,10 @@ export default function App() {
                 <Mail className="text-white w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold mb-4 font-heading">Email</h3>
-              <a href="mailto:kburton@timharmar.com" className="text-primary-400 hover:text-primary-300 text-lg transition-colors">
+              <a
+                href="mailto:kburton@timharmar.com"
+                className="text-primary-400 hover:text-primary-300 text-lg transition-colors"
+              >
                 kburton@timharmar.com
               </a>
             </div>
@@ -536,7 +561,10 @@ export default function App() {
                 <Phone className="text-white w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold mb-4 font-heading">Phone</h3>
-              <a href="tel:+17059435049" className="text-secondary-400 hover:text-secondary-300 text-lg transition-colors">
+              <a
+                href="tel:+17059435049"
+                className="text-secondary-400 hover:text-secondary-300 text-lg transition-colors"
+              >
                 +1 (705) 943-5049
               </a>
             </div>
@@ -560,7 +588,9 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-6 font-heading">Tim Harmar Legal & Consulting Services</h3>
+              <h3 className="text-2xl font-bold mb-6 font-heading">
+                Tim Harmar Legal & Consulting Services
+              </h3>
               <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                 Providing expert legal solutions in civil litigation, privacy law, intellectual
                 property, and business startup consulting.
@@ -581,25 +611,37 @@ export default function App() {
               </h4>
               <ul className="space-y-3 text-gray-300">
                 <li>
-                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                  <a
+                    href="#"
+                    className="hover:text-primary-400 transition-colors flex items-center"
+                  >
                     <Scale className="w-4 h-4 mr-2 text-primary-500" />
                     Civil Litigation
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                  <a
+                    href="#"
+                    className="hover:text-primary-400 transition-colors flex items-center"
+                  >
                     <Shield className="w-4 h-4 mr-2 text-secondary-500" />
                     Privacy Law
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                  <a
+                    href="#"
+                    className="hover:text-primary-400 transition-colors flex items-center"
+                  >
                     <Lightbulb className="w-4 h-4 mr-2 text-accent-500" />
                     Intellectual Property
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-primary-400 transition-colors flex items-center">
+                  <a
+                    href="#"
+                    className="hover:text-primary-400 transition-colors flex items-center"
+                  >
                     <Rocket className="w-4 h-4 mr-2 text-secondary-500" />
                     Business Start Up & Strategy
                   </a>
@@ -633,9 +675,15 @@ export default function App() {
                 &copy; 2025 Tim Harmar Legal & Consulting Services. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 text-sm text-gray-400">
-                <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-primary-400 transition-colors">Terms of Service</a>
-                <a href="#" className="hover:text-primary-400 transition-colors">Legal Notices</a>
+                <a href="#" className="hover:text-primary-400 transition-colors">
+                  Privacy Policy
+                </a>
+                <a href="#" className="hover:text-primary-400 transition-colors">
+                  Terms of Service
+                </a>
+                <a href="#" className="hover:text-primary-400 transition-colors">
+                  Legal Notices
+                </a>
               </div>
             </div>
           </div>
