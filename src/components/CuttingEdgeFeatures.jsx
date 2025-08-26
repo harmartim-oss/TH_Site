@@ -367,72 +367,72 @@ export const LegalResourcesLibrary = () => {
         items: [
           'Confirm all parties are correctly identified (full legal names, addresses, and roles)',
           'Verify authority: Does the signer have the right to bind the party (e.g., officer, partner)?',
-          'Check for any subsidiaries, affiliates, or third parties involved'
-        ]
+          'Check for any subsidiaries, affiliates, or third parties involved',
+        ],
       },
       {
         title: '2. Scope of Work/Services/Goods',
         items: [
           'Clearly define what is being provided (deliverables, timelines, quality standards)',
           'Look for ambiguities: Are terms like "reasonable efforts" or "as needed" defined?',
-          'Identify any exclusions or limitations on what\'s included'
-        ]
+          "Identify any exclusions or limitations on what's included",
+        ],
       },
       {
         title: '3. Payment Terms',
         items: [
           'Review amounts, payment schedule, methods (e.g., wire, check), and currency',
           'Check for milestones, retainers, late fees, interest, or penalties',
-          'Understand conditions for payment (e.g., upon delivery, approval)'
-        ]
+          'Understand conditions for payment (e.g., upon delivery, approval)',
+        ],
       },
       {
         title: '4. Term and Termination',
         items: [
           'Note the start date, duration (fixed term or ongoing), and renewal options',
           'Examine termination clauses: For cause (breach), without cause (notice period)',
-          'Look for survival clauses: What obligations continue post-termination?'
-        ]
+          'Look for survival clauses: What obligations continue post-termination?',
+        ],
       },
       {
         title: '5. Confidentiality and Non-Disclosure',
         items: [
           'Define what information is confidential and how it must be protected',
           'Check duration of confidentiality (e.g., perpetual or time-limited)',
-          'Identify exceptions (e.g., public information, court orders)'
-        ]
+          'Identify exceptions (e.g., public information, court orders)',
+        ],
       },
       {
         title: '6. Intellectual Property (IP) Rights',
         items: [
           'Clarify ownership: Who owns new IP created under the contract?',
           'Review licenses granted: Exclusive/non-exclusive, duration, territory',
-          'Ensure protections against infringement claims'
-        ]
+          'Ensure protections against infringement claims',
+        ],
       },
       {
         title: '7. Warranties and Representations',
         items: [
           'Assess promises made (e.g., quality, compliance with laws, no conflicts)',
           'Check disclaimers: Are warranties limited or "as-is"?',
-          'Understand remedies for breach of warranties'
-        ]
+          'Understand remedies for breach of warranties',
+        ],
       },
       {
         title: '8. Liability and Indemnification',
         items: [
           'Review caps on liability (e.g., limited to contract value)',
           'Check indemnification: Who covers losses from claims?',
-          'Note insurance requirements'
-        ]
+          'Note insurance requirements',
+        ],
       },
       {
         title: '9. Dispute Resolution',
         items: [
           'Identify method: Litigation, arbitration, mediation?',
           'Specify venue, jurisdiction, and applicable rules',
-          'Look for attorney fees provisions (who pays in a dispute)'
-        ]
+          'Look for attorney fees provisions (who pays in a dispute)',
+        ],
       },
       {
         title: '10. Governing Law and Miscellaneous',
@@ -440,9 +440,9 @@ export const LegalResourcesLibrary = () => {
           'Confirm governing law (e.g., state/country) and jurisdiction',
           'Check force majeure (excuses for non-performance due to unforeseen events)',
           'Review boilerplate: Assignment, amendments, entire agreement clause',
-          'Ensure no unfair terms (e.g., one-sided clauses)'
-        ]
-      }
+          'Ensure no unfair terms (e.g., one-sided clauses)',
+        ],
+      },
     ]
 
     doc.setFontSize(11)
@@ -483,7 +483,7 @@ export const LegalResourcesLibrary = () => {
       'Read the entire contract multiple times',
       'Highlight unclear language and seek clarification',
       'Compare against industry standards or similar contracts',
-      'Consider potential worst-case scenarios'
+      'Consider potential worst-case scenarios',
     ]
 
     tips.forEach((tip) => {
@@ -534,39 +534,45 @@ export const LegalResourcesLibrary = () => {
       {
         title: '1. Trademarks',
         subtitle: 'What They Are:',
-        content: 'Trademarks protect brand identifiers like names, logos, slogans, and symbols that distinguish your goods/services from others. Examples: Your company name, product logos, or taglines like "Just Do It."',
+        content:
+          'Trademarks protect brand identifiers like names, logos, slogans, and symbols that distinguish your goods/services from others. Examples: Your company name, product logos, or taglines like "Just Do It."',
         howToProtect: [
           'Conduct a search: Use the USPTO database or tools like Google to check for existing marks',
           'Register: Federal registration (via USPTO) provides nationwide protection',
           'Use properly: Always use ™ for unregistered marks or ® for registered',
-          'Monitor and enforce: Watch for infringers and send cease-and-desist letters if needed'
+          'Monitor and enforce: Watch for infringers and send cease-and-desist letters if needed',
         ],
-        pitfalls: 'Choosing generic terms (e.g., "Coffee Shop") that can\'t be trademarked, or not renewing registrations (every 10 years).'
+        pitfalls:
+          'Choosing generic terms (e.g., "Coffee Shop") that can\'t be trademarked, or not renewing registrations (every 10 years).',
       },
       {
         title: '2. Copyrights',
         subtitle: 'What They Are:',
-        content: 'Copyrights protect original works of authorship fixed in a tangible medium, such as writings, music, art, software code, websites, photos, and videos. They don\'t protect ideas, only the expression of ideas.',
+        content:
+          "Copyrights protect original works of authorship fixed in a tangible medium, such as writings, music, art, software code, websites, photos, and videos. They don't protect ideas, only the expression of ideas.",
         howToProtect: [
           'Automatic protection: Copyright exists from the moment of creation—no registration needed',
           'Register: With the U.S. Copyright Office for stronger enforcement',
           'Document creation: Keep records of drafts, dates, and authors',
-          'Licenses and contracts: Use agreements for collaborations or employee works'
+          'Licenses and contracts: Use agreements for collaborations or employee works',
         ],
-        pitfalls: 'Assuming "fair use" covers everything (it\'s limited), or using others\' works without permission.'
+        pitfalls:
+          'Assuming "fair use" covers everything (it\'s limited), or using others\' works without permission.',
       },
       {
         title: '3. Trade Secrets',
         subtitle: 'What They Are:',
-        content: 'Confidential business information that provides a competitive advantage, such as formulas, processes, customer lists, recipes, or algorithms. Examples: Coca-Cola\'s formula or Google\'s search algorithm.',
+        content:
+          "Confidential business information that provides a competitive advantage, such as formulas, processes, customer lists, recipes, or algorithms. Examples: Coca-Cola's formula or Google's search algorithm.",
         howToProtect: [
           'Identify secrets: Label documents as "confidential" and restrict access',
           'Use NDAs: Require non-disclosure agreements for employees, contractors, and partners',
           'Security measures: Implement passwords, restricted access, employee training',
-          'Enforce: Sue for misappropriation if stolen (e.g., by ex-employees)'
+          'Enforce: Sue for misappropriation if stolen (e.g., by ex-employees)',
         ],
-        pitfalls: 'Not having written policies, or publicly disclosing info, which destroys secrecy.'
-      }
+        pitfalls:
+          'Not having written policies, or publicly disclosing info, which destroys secrecy.',
+      },
     ]
 
     ipSections.forEach((section) => {
@@ -633,7 +639,7 @@ export const LegalResourcesLibrary = () => {
       'Audit your IP: List assets and assess risks',
       'Develop an IP strategy: Prioritize protections based on business needs',
       'Seek professional help: A lawyer can handle searches, registrations, and contracts',
-      'Stay informed: IP laws evolve—monitor changes via resources like USPTO.gov'
+      'Stay informed: IP laws evolve—monitor changes via resources like USPTO.gov',
     ]
 
     nextSteps.forEach((step) => {
