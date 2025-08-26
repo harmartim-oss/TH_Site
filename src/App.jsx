@@ -163,16 +163,21 @@ export default function App() {
               <div className="w-40 h-1 bg-gradient-to-r from-accent-400 to-secondary-400 mx-auto rounded-full"></div>
             </div>
             <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto leading-relaxed text-gray-100">
-              Award-winning legal expertise specialized in civil litigation, privacy law,
+              Award-winning legal expertise specialized in civil litigation, privacy and cybersecurity law,
               intellectual property, and business strategy consulting in Sault Ste. Marie, Ontario.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="bg-gradient-to-r from-white to-gray-50 text-primary-900 px-8 py-4 rounded-xl font-bold hover:from-gray-50 hover:to-white transition-all duration-200 shadow-large hover:shadow-xl transform hover:scale-105">
+              <button 
+                className="bg-gradient-to-r from-white to-gray-50 text-primary-900 px-8 py-4 rounded-xl font-bold shadow-large"
+                onClick={() =>
+                  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+                }
+              >
                 <Calendar className="inline-block w-5 h-5 mr-2" />
                 Schedule Free Consultation
               </button>
               <button
-                className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 hover:border-white transition-all duration-200 backdrop-blur-sm"
+                className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-semibold backdrop-blur-sm"
                 onClick={() =>
                   document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
                 }
@@ -209,12 +214,12 @@ export default function App() {
                   'Our civil litigation practice encompasses comprehensive legal representation for businesses and individuals in complex disputes. We handle contract disputes, tort claims, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience and strategic case management, we provide aggressive advocacy while exploring cost-effective resolution strategies including mediation and arbitration.',
               },
               {
-                title: 'Privacy Law',
-                description: 'Comprehensive privacy compliance and data protection strategies.',
+                title: 'Privacy and Cybersecurity Law',
+                description: 'Comprehensive privacy compliance, data protection, and cybersecurity strategies.',
                 icon: Shield,
                 color: 'from-secondary-500 to-secondary-600',
                 detailed:
-                  'Navigate the complex landscape of Canadian privacy laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, and regulatory compliance audits for businesses of all sizes.',
+                  'Navigate the complex landscape of Canadian privacy and cybersecurity laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, cybersecurity compliance audits, incident response planning, and regulatory compliance guidance for businesses of all sizes in the digital age.',
               },
               {
                 title: 'Intellectual Property',
@@ -353,7 +358,7 @@ export default function App() {
               </div>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Tim Harmar is a distinguished lawyer with extensive experience in civil litigation,
-                privacy law, and intellectual property. As the founder of Tim Harmar Legal &
+                privacy and cybersecurity law, and intellectual property. As the founder of Tim Harmar Legal &
                 Consulting Services, he brings award-winning legal expertise and Supreme Court of
                 Canada experience to clients throughout Sault Ste. Marie and Northern Ontario. His
                 practice focuses on delivering innovative legal solutions with cutting-edge
@@ -387,7 +392,7 @@ export default function App() {
                   </div>
                   <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                     <Shield className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">Privacy Law Expert</span>
+                    <span className="text-gray-700 font-medium">Privacy & Cybersecurity Expert</span>
                   </div>
                   <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
                     <Lightbulb className="text-primary-600 mr-3 w-5 h-5" />
@@ -443,7 +448,10 @@ export default function App() {
                   </span>
                 </div>
               </div>
-              <button className="w-full bg-gradient-to-r from-secondary-600 to-secondary-700 text-white px-4 py-3 rounded-xl hover:from-secondary-700 hover:to-secondary-800 transition-all duration-200 font-semibold shadow-medium transform hover:scale-105">
+              <button 
+                className="w-full bg-gradient-to-r from-secondary-600 to-secondary-700 text-white px-4 py-3 rounded-xl font-semibold shadow-medium"
+                onClick={() => window.location.href = 'mailto:kburton@timharmar.com'}
+              >
                 <Mail className="inline-block w-4 h-4 mr-2" />
                 Contact Kelly
               </button>
@@ -486,7 +494,10 @@ export default function App() {
                   </span>
                 </div>
               </div>
-              <button className="w-full bg-gradient-to-r from-accent-600 to-accent-700 text-white px-4 py-3 rounded-xl hover:from-accent-700 hover:to-accent-800 transition-all duration-200 font-semibold shadow-medium transform hover:scale-105">
+              <button 
+                className="w-full bg-gradient-to-r from-accent-600 to-accent-700 text-white px-4 py-3 rounded-xl font-semibold shadow-medium"
+                onClick={() => window.location.href = 'mailto:admin@timharmar.com'}
+              >
                 <Mail className="inline-block w-4 h-4 mr-2" />
                 Contact Josh
               </button>
@@ -592,7 +603,7 @@ export default function App() {
                 Tim Harmar Legal & Consulting Services
               </h3>
               <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                Providing expert legal solutions in civil litigation, privacy law, intellectual
+                Providing expert legal solutions in civil litigation, privacy and cybersecurity law, intellectual
                 property, and business startup consulting.
               </p>
               <div className="flex space-x-4">
@@ -625,7 +636,7 @@ export default function App() {
                     className="hover:text-primary-400 transition-colors flex items-center"
                   >
                     <Shield className="w-4 h-4 mr-2 text-secondary-500" />
-                    Privacy Law
+                    Privacy & Cybersecurity Law
                   </a>
                 </li>
                 <li>

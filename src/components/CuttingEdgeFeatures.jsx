@@ -338,6 +338,321 @@ export const LegalResourcesLibrary = () => {
     doc.save('Privacy-Compliance-Guide-for-Small-Business.pdf')
   }
 
+  // Function to generate and download Contract Review Checklist PDF
+  const downloadContractChecklist = () => {
+    const doc = new jsPDF()
+
+    // Set font size and add title
+    doc.setFontSize(20)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Contract Review Checklist', 20, 30)
+
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'normal')
+    doc.text('Key Elements to Review Before Signing Any Business Contract', 20, 45)
+
+    // Add introduction
+    doc.setFontSize(11)
+    doc.setFont('helvetica', 'normal')
+    const introText =
+      "This checklist is designed as a quick reference for small business owners and entrepreneurs to ensure they've thoroughly evaluated a contract before committing. It's not a substitute for professional legal advice—consult a lawyer for complex agreements."
+    doc.text(doc.splitTextToSize(introText, 170), 20, 60)
+
+    let yPosition = 85
+
+    // Add checklist items
+    const checklistItems = [
+      {
+        title: '1. Parties and Identification',
+        items: [
+          'Confirm all parties are correctly identified (full legal names, addresses, and roles)',
+          'Verify authority: Does the signer have the right to bind the party (e.g., officer, partner)?',
+          'Check for any subsidiaries, affiliates, or third parties involved'
+        ]
+      },
+      {
+        title: '2. Scope of Work/Services/Goods',
+        items: [
+          'Clearly define what is being provided (deliverables, timelines, quality standards)',
+          'Look for ambiguities: Are terms like "reasonable efforts" or "as needed" defined?',
+          'Identify any exclusions or limitations on what\'s included'
+        ]
+      },
+      {
+        title: '3. Payment Terms',
+        items: [
+          'Review amounts, payment schedule, methods (e.g., wire, check), and currency',
+          'Check for milestones, retainers, late fees, interest, or penalties',
+          'Understand conditions for payment (e.g., upon delivery, approval)'
+        ]
+      },
+      {
+        title: '4. Term and Termination',
+        items: [
+          'Note the start date, duration (fixed term or ongoing), and renewal options',
+          'Examine termination clauses: For cause (breach), without cause (notice period)',
+          'Look for survival clauses: What obligations continue post-termination?'
+        ]
+      },
+      {
+        title: '5. Confidentiality and Non-Disclosure',
+        items: [
+          'Define what information is confidential and how it must be protected',
+          'Check duration of confidentiality (e.g., perpetual or time-limited)',
+          'Identify exceptions (e.g., public information, court orders)'
+        ]
+      },
+      {
+        title: '6. Intellectual Property (IP) Rights',
+        items: [
+          'Clarify ownership: Who owns new IP created under the contract?',
+          'Review licenses granted: Exclusive/non-exclusive, duration, territory',
+          'Ensure protections against infringement claims'
+        ]
+      },
+      {
+        title: '7. Warranties and Representations',
+        items: [
+          'Assess promises made (e.g., quality, compliance with laws, no conflicts)',
+          'Check disclaimers: Are warranties limited or "as-is"?',
+          'Understand remedies for breach of warranties'
+        ]
+      },
+      {
+        title: '8. Liability and Indemnification',
+        items: [
+          'Review caps on liability (e.g., limited to contract value)',
+          'Check indemnification: Who covers losses from claims?',
+          'Note insurance requirements'
+        ]
+      },
+      {
+        title: '9. Dispute Resolution',
+        items: [
+          'Identify method: Litigation, arbitration, mediation?',
+          'Specify venue, jurisdiction, and applicable rules',
+          'Look for attorney fees provisions (who pays in a dispute)'
+        ]
+      },
+      {
+        title: '10. Governing Law and Miscellaneous',
+        items: [
+          'Confirm governing law (e.g., state/country) and jurisdiction',
+          'Check force majeure (excuses for non-performance due to unforeseen events)',
+          'Review boilerplate: Assignment, amendments, entire agreement clause',
+          'Ensure no unfair terms (e.g., one-sided clauses)'
+        ]
+      }
+    ]
+
+    doc.setFontSize(11)
+    checklistItems.forEach((section) => {
+      if (yPosition > 250) {
+        doc.addPage()
+        yPosition = 30
+      }
+
+      doc.setFont('helvetica', 'bold')
+      doc.text(section.title, 20, yPosition)
+      yPosition += 8
+
+      doc.setFont('helvetica', 'normal')
+      section.items.forEach((item) => {
+        const checkboxText = `☐ ${item}`
+        const wrappedText = doc.splitTextToSize(checkboxText, 165)
+        doc.text(wrappedText, 25, yPosition)
+        yPosition += wrappedText.length * 5 + 3
+      })
+      yPosition += 5
+    })
+
+    // Add tips
+    if (yPosition > 230) {
+      doc.addPage()
+      yPosition = 30
+    }
+
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Tips for Review:', 20, yPosition)
+    yPosition += 10
+
+    doc.setFontSize(11)
+    doc.setFont('helvetica', 'normal')
+    const tips = [
+      'Read the entire contract multiple times',
+      'Highlight unclear language and seek clarification',
+      'Compare against industry standards or similar contracts',
+      'Consider potential worst-case scenarios'
+    ]
+
+    tips.forEach((tip) => {
+      doc.text(`• ${tip}`, 25, yPosition)
+      yPosition += 7
+    })
+
+    // Add disclaimer
+    yPosition += 10
+    doc.setFontSize(11)
+    doc.setFont('helvetica', 'normal')
+    const disclaimerText =
+      'Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.'
+    doc.text(doc.splitTextToSize(disclaimerText, 170), 20, yPosition)
+
+    // Download the PDF
+    doc.save('Contract-Review-Checklist.pdf')
+  }
+
+  // Function to generate and download IP Protection Basics PDF
+  const downloadIPGuide = () => {
+    const doc = new jsPDF()
+
+    // Set font size and add title
+    doc.setFontSize(20)
+    doc.setFont('helvetica', 'bold')
+    doc.text('IP Protection Basics', 20, 30)
+
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'normal')
+    doc.text('Understanding Trademarks, Copyrights, and Trade Secrets for Your Business', 20, 45)
+
+    // Add introduction
+    doc.setFontSize(16)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Introduction to IP', 20, 65)
+
+    doc.setFontSize(11)
+    doc.setFont('helvetica', 'normal')
+    const introText =
+      'Intellectual property refers to creations of the mind, such as inventions, designs, brands, and artistic works. Protecting IP helps prevent others from using your ideas without permission, potentially saving your business from costly disputes. The three main types relevant to most small businesses are trademarks, copyrights, and trade secrets.'
+    doc.text(doc.splitTextToSize(introText, 170), 20, 75)
+
+    let yPosition = 110
+
+    // Add IP sections
+    const ipSections = [
+      {
+        title: '1. Trademarks',
+        subtitle: 'What They Are:',
+        content: 'Trademarks protect brand identifiers like names, logos, slogans, and symbols that distinguish your goods/services from others. Examples: Your company name, product logos, or taglines like "Just Do It."',
+        howToProtect: [
+          'Conduct a search: Use the USPTO database or tools like Google to check for existing marks',
+          'Register: Federal registration (via USPTO) provides nationwide protection',
+          'Use properly: Always use ™ for unregistered marks or ® for registered',
+          'Monitor and enforce: Watch for infringers and send cease-and-desist letters if needed'
+        ],
+        pitfalls: 'Choosing generic terms (e.g., "Coffee Shop") that can\'t be trademarked, or not renewing registrations (every 10 years).'
+      },
+      {
+        title: '2. Copyrights',
+        subtitle: 'What They Are:',
+        content: 'Copyrights protect original works of authorship fixed in a tangible medium, such as writings, music, art, software code, websites, photos, and videos. They don\'t protect ideas, only the expression of ideas.',
+        howToProtect: [
+          'Automatic protection: Copyright exists from the moment of creation—no registration needed',
+          'Register: With the U.S. Copyright Office for stronger enforcement',
+          'Document creation: Keep records of drafts, dates, and authors',
+          'Licenses and contracts: Use agreements for collaborations or employee works'
+        ],
+        pitfalls: 'Assuming "fair use" covers everything (it\'s limited), or using others\' works without permission.'
+      },
+      {
+        title: '3. Trade Secrets',
+        subtitle: 'What They Are:',
+        content: 'Confidential business information that provides a competitive advantage, such as formulas, processes, customer lists, recipes, or algorithms. Examples: Coca-Cola\'s formula or Google\'s search algorithm.',
+        howToProtect: [
+          'Identify secrets: Label documents as "confidential" and restrict access',
+          'Use NDAs: Require non-disclosure agreements for employees, contractors, and partners',
+          'Security measures: Implement passwords, restricted access, employee training',
+          'Enforce: Sue for misappropriation if stolen (e.g., by ex-employees)'
+        ],
+        pitfalls: 'Not having written policies, or publicly disclosing info, which destroys secrecy.'
+      }
+    ]
+
+    ipSections.forEach((section) => {
+      if (yPosition > 240) {
+        doc.addPage()
+        yPosition = 30
+      }
+
+      // Section title
+      doc.setFontSize(14)
+      doc.setFont('helvetica', 'bold')
+      doc.text(section.title, 20, yPosition)
+      yPosition += 10
+
+      // Subtitle and content
+      doc.setFontSize(11)
+      doc.setFont('helvetica', 'bold')
+      doc.text(section.subtitle, 20, yPosition)
+      yPosition += 7
+
+      doc.setFont('helvetica', 'normal')
+      const contentText = doc.splitTextToSize(section.content, 170)
+      doc.text(contentText, 20, yPosition)
+      yPosition += contentText.length * 5 + 8
+
+      // How to protect
+      doc.setFont('helvetica', 'bold')
+      doc.text('How to Protect:', 20, yPosition)
+      yPosition += 7
+
+      doc.setFont('helvetica', 'normal')
+      section.howToProtect.forEach((item) => {
+        const itemText = doc.splitTextToSize(`• ${item}`, 165)
+        doc.text(itemText, 25, yPosition)
+        yPosition += itemText.length * 5 + 3
+      })
+
+      // Common pitfalls
+      yPosition += 5
+      doc.setFont('helvetica', 'bold')
+      doc.text('Common Pitfalls:', 20, yPosition)
+      yPosition += 7
+
+      doc.setFont('helvetica', 'normal')
+      const pitfallText = doc.splitTextToSize(section.pitfalls, 170)
+      doc.text(pitfallText, 20, yPosition)
+      yPosition += pitfallText.length * 5 + 15
+    })
+
+    // Add next steps
+    if (yPosition > 220) {
+      doc.addPage()
+      yPosition = 30
+    }
+
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Next Steps for Your Business', 20, yPosition)
+    yPosition += 10
+
+    doc.setFontSize(11)
+    doc.setFont('helvetica', 'normal')
+    const nextSteps = [
+      'Audit your IP: List assets and assess risks',
+      'Develop an IP strategy: Prioritize protections based on business needs',
+      'Seek professional help: A lawyer can handle searches, registrations, and contracts',
+      'Stay informed: IP laws evolve—monitor changes via resources like USPTO.gov'
+    ]
+
+    nextSteps.forEach((step) => {
+      doc.text(`• ${step}`, 25, yPosition)
+      yPosition += 7
+    })
+
+    // Add disclaimer
+    yPosition += 10
+    doc.setFontSize(11)
+    doc.setFont('helvetica', 'normal')
+    const disclaimerText =
+      'Prepared by Tim Harmar Legal & Consulting Services – For informational purposes only. This is not legal advice.'
+    doc.text(doc.splitTextToSize(disclaimerText, 170), 20, yPosition)
+
+    // Download the PDF
+    doc.save('IP-Protection-Basics.pdf')
+  }
+
   const resources = {
     guides: [
       {
@@ -353,12 +668,16 @@ export const LegalResourcesLibrary = () => {
         description: 'Key elements to review before signing any business contract.',
         type: 'Checklist',
         icon: '✅',
+        downloadable: true,
+        downloadAction: downloadContractChecklist,
       },
       {
         title: 'IP Protection Basics',
         description: 'Understanding trademarks, copyrights, and trade secrets for your business.',
         type: 'Guide',
         icon: '💡',
+        downloadable: true,
+        downloadAction: downloadIPGuide,
       },
     ],
     faqs: [
