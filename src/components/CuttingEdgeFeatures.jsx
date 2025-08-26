@@ -132,7 +132,8 @@ export const SmartScheduler = () => {
       return
     }
 
-    const emailBody = `Hello,%0D%0A%0D%0A` +
+    const emailBody =
+      `Hello,%0D%0A%0D%0A` +
       `I would like to schedule a consultation with the following details:%0D%0A%0D%0A` +
       `Name: ${userName}%0D%0A` +
       `Email: ${userEmail}%0D%0A` +
@@ -204,7 +205,9 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Consultation Type *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Consultation Type *
+          </label>
           <select
             value={consultationType}
             onChange={(e) => setConsultationType(e.target.value)}
@@ -252,7 +255,9 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Additional Information
+          </label>
           <textarea
             value={additionalInfo}
             onChange={(e) => setAdditionalInfo(e.target.value)}
@@ -1025,9 +1030,10 @@ export const LegalAssessment = () => {
             >
               Retake Assessment
             </button>
-            <button 
+            <button
               onClick={() => {
-                const emailBody = `Hello,%0D%0A%0D%0A` +
+                const emailBody =
+                  `Hello,%0D%0A%0D%0A` +
                   `I have completed the legal needs assessment and would like to schedule a consultation.%0D%0A%0D%0A` +
                   `Assessment Results:%0D%0A` +
                   `Business Type: ${answers.business_type}%0D%0A` +
@@ -1035,7 +1041,7 @@ export const LegalAssessment = () => {
                   `Timeline: ${answers.urgency}%0D%0A%0D%0A` +
                   `Please let me know your availability.%0D%0A%0D%0A` +
                   `Thank you!`
-                
+
                 window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - Legal Assessment Complete&body=${emailBody}`
               }}
               className="flex-1 bg-purple-600 text-white p-3 rounded-lg hover:bg-purple-700 transition-colors"

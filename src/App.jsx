@@ -82,9 +82,12 @@ export default function App() {
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
-              <button 
+              <button
                 className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-medium hover:shadow-large transform hover:scale-105 font-semibold"
-                onClick={() => (window.location.href = 'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')}
+                onClick={() =>
+                  (window.location.href =
+                    'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
+                }
               >
                 <Calendar className="inline-block w-4 h-4 mr-2" />
                 Schedule Consultation
@@ -126,9 +129,12 @@ export default function App() {
                 >
                   Contact
                 </a>
-                <button 
+                <button
                   className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 font-semibold shadow-medium mx-2"
-                  onClick={() => (window.location.href = 'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')}
+                  onClick={() =>
+                    (window.location.href =
+                      'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
+                  }
                 >
                   <Calendar className="inline-block w-4 h-4 mr-2" />
                   Schedule Consultation
@@ -289,9 +295,11 @@ export default function App() {
                   {expandedService === index && (
                     <div className="mt-6 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border-l-4 border-primary-500">
                       <p className="text-gray-700 leading-relaxed mb-4">{service.detailed}</p>
-                      <button 
+                      <button
                         className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-2 rounded-lg hover:from-primary-700 hover:to-primary-800 font-semibold text-sm transition-all duration-200 transform hover:scale-105 shadow-medium"
-                        onClick={() => (window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - ${service.title}&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation regarding ${service.title}.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!`)}
+                        onClick={() =>
+                          (window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - ${service.title}&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation regarding ${service.title}.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!`)
+                        }
                       >
                         <Calendar className="inline-block w-4 h-4 mr-2" />
                         Schedule Consultation
@@ -414,9 +422,12 @@ export default function App() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <button 
+                <button
                   className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-200 font-semibold shadow-medium hover:shadow-large transform hover:scale-105"
-                  onClick={() => (window.location.href = 'mailto:kburton@timharmar.com?subject=Schedule Consultation with Tim Harmar&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation with Tim Harmar.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')}
+                  onClick={() =>
+                    (window.location.href =
+                      'mailto:kburton@timharmar.com?subject=Schedule Consultation with Tim Harmar&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation with Tim Harmar.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
+                  }
                 >
                   <Calendar className="inline-block w-4 h-4 mr-2" />
                   Schedule with Tim
