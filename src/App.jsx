@@ -219,7 +219,7 @@ export default function App() {
                 Schedule Free Consultation
               </button>
               <button
-                className="group border-3 border-white/80 hover:border-accent-400 text-white hover:bg-accent-500/20 px-10 py-5 rounded-2xl font-semibold backdrop-blur-sm transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-xl hover:shadow-glow active:scale-95"
+                className="group border-2 border-white/80 hover:border-accent-400 text-white hover:text-primary-900 bg-transparent hover:bg-white/90 px-10 py-5 rounded-2xl font-semibold transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-xl hover:shadow-glow active:scale-95"
                 onClick={() =>
                   document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
                 }
