@@ -1122,19 +1122,19 @@ export default function App() {
                 &copy; 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 text-sm text-gray-400">
-                <button 
+                <button
                   onClick={() => openPolicyModal('privacy')}
                   className="hover:text-primary-400 transition-colors cursor-pointer"
                 >
                   Privacy Policy
                 </button>
-                <button 
+                <button
                   onClick={() => openPolicyModal('terms')}
                   className="hover:text-primary-400 transition-colors cursor-pointer"
                 >
                   Terms of Service
                 </button>
-                <button 
+                <button
                   onClick={() => openPolicyModal('legal')}
                   className="hover:text-primary-400 transition-colors cursor-pointer"
                 >
@@ -1154,19 +1154,21 @@ export default function App() {
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex min-h-screen items-center justify-center px-4">
             {/* Backdrop */}
-            <div 
+            <div
               className="fixed inset-0 bg-black/50 backdrop-blur-sm"
               onClick={closePolicyModal}
             ></div>
-            
+
             {/* Modal Content */}
             <div className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-xl shadow-2xl overflow-hidden">
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-accent-50">
                 <h2 className="text-2xl font-bold text-primary-900">
-                  {currentPolicy.includes('Privacy Policy') ? 'Privacy Policy' :
-                   currentPolicy.includes('Terms of Service') ? 'Terms of Service' :
-                   'Legal Notices'}
+                  {currentPolicy.includes('Privacy Policy')
+                    ? 'Privacy Policy'
+                    : currentPolicy.includes('Terms of Service')
+                      ? 'Terms of Service'
+                      : 'Legal Notices'}
                 </h2>
                 <button
                   onClick={closePolicyModal}
@@ -1176,7 +1178,7 @@ export default function App() {
                   <X className="w-6 h-6 text-gray-600" />
                 </button>
               </div>
-              
+
               {/* Content */}
               <div className="p-6 overflow-y-auto max-h-[70vh]">
                 <div className="prose prose-lg max-w-none">
@@ -1185,14 +1187,14 @@ export default function App() {
                   </pre>
                 </div>
               </div>
-              
+
               {/* Footer */}
               <div className="p-6 border-t border-gray-200 bg-gray-50">
                 <div className="flex justify-between items-center">
                   <p className="text-sm text-gray-600">
                     For questions, please contact us at{' '}
-                    <a 
-                      href="mailto:info@timharmar.com" 
+                    <a
+                      href="mailto:info@timharmar.com"
                       className="text-primary-600 hover:text-primary-700 underline"
                     >
                       info@timharmar.com
