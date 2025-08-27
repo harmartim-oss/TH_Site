@@ -689,7 +689,7 @@ export default function App() {
                 Excellence in Legal Solutions
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-brand-secondary-light">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-text-secondary">
                 Award-winning legal expertise specialized in civil litigation, privacy and
                 cybersecurity law, intellectual property, and business strategy consulting in Sault
                 Ste. Marie, Ontario.
@@ -697,7 +697,7 @@ export default function App() {
 
               <div className="animate-slide-up delay-200">
                 <button
-                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-8 md:px-10 py-4 md:py-5 rounded-token-sm font-bold text-base md:text-lg shadow-token-sm hover:shadow-medium transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95"
+                  className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 md:px-10 py-4 md:py-5 rounded-token-sm font-bold text-base md:text-lg shadow-token-md hover:shadow-button-hover transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95"
                   onClick={() =>
                     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
                   }
@@ -729,13 +729,13 @@ export default function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-surface-alt">
+      <section id="services" className="py-24 bg-gradient-brand-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
               Comprehensive Legal Services
             </h2>
-            <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
               Award-winning legal expertise with cutting-edge solutions for your business needs.
             </p>
             <div className="flex justify-center mt-6">
@@ -872,7 +872,7 @@ export default function App() {
             <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
               Meet Our Team
             </h2>
-            <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
             </p>
@@ -884,7 +884,7 @@ export default function App() {
           {/* Team Members */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-20">
             {/* Tim J. Harmar - Featured prominently */}
-            <div className="lg:col-span-2 bg-surface-alt p-10 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up">
+            <div className="lg:col-span-2 card-enhanced p-10 rounded-token-md shadow-token-md hover:shadow-card-hover transition-all duration-500 transform hover:scale-102 animate-slide-up">
               <div className="flex items-center mb-6">
                 <div className="bg-brand-primary text-text-inverse p-4 rounded-token-sm mr-6 shadow-token-sm">
                   <Scale className="w-8 h-8" />
@@ -955,7 +955,7 @@ export default function App() {
               </div>
               <div className="flex gap-4 mb-8">
                 <button
-                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                  className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-6 py-3 rounded-token-sm font-semibold shadow-token-md hover:shadow-button-hover transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                   onClick={() =>
                     (window.location.href =
                       'mailto:kburton@timharmar.com?subject=Schedule Consultation with Tim Harmar&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation with Tim Harmar.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -1080,7 +1080,7 @@ export default function App() {
             </div>
 
             {/* Kelly Burton */}
-            <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up delay-100">
+            <div className="card-enhanced p-8 rounded-token-md shadow-token-md hover:shadow-card-hover transition-all duration-500 transform hover:scale-102 animate-slide-up delay-100">
               <div className="flex items-center mb-6">
                 <div className="bg-brand-accent text-text-inverse p-3 rounded-token-sm mr-4 shadow-token-sm">
                   <UserCheck className="w-6 h-6" />
@@ -1118,7 +1118,7 @@ export default function App() {
                 </div>
               </div>
               <button
-                className="w-full bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                className="w-full bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-md hover:shadow-button-hover transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:kburton@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -1127,7 +1127,7 @@ export default function App() {
             </div>
 
             {/* Josh Ochoa */}
-            <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up delay-200">
+            <div className="card-enhanced p-8 rounded-token-md shadow-token-md hover:shadow-card-hover transition-all duration-500 transform hover:scale-102 animate-slide-up delay-200">
               <div className="flex items-center mb-6">
                 <div className="bg-brand-accent text-text-inverse p-3 rounded-token-sm mr-4 shadow-token-sm">
                   <Briefcase className="w-6 h-6" />
@@ -1164,7 +1164,7 @@ export default function App() {
                 </div>
               </div>
               <button
-                className="w-full bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                className="w-full bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-md hover:shadow-button-hover transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:admin@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -1221,7 +1221,7 @@ export default function App() {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
-              className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 active:scale-95"
+              className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-md hover:shadow-button-hover transition-all duration-300 transform hover:scale-105 active:scale-95"
               onClick={() =>
                 (window.location.href =
                   'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -1245,13 +1245,13 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-surface-alt">
+      <section id="contact" className="py-24 bg-gradient-brand-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-brand-primary">
               Contact Information
             </h2>
-            <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
               Get in touch with our legal team for expert guidance and consultation.
             </p>
             <div className="flex justify-center mt-6">
@@ -1486,14 +1486,14 @@ export default function App() {
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors"
                   aria-label="Close policy modal"
                 >
-                  <X className="w-6 h-6 text-gray-600" />
+                  <X className="w-6 h-6 text-gray-500" />
                 </button>
               </div>
 
               {/* Content */}
               <div className="p-6 overflow-y-auto max-h-[70vh]">
                 <div className="prose prose-lg max-w-none">
-                  <pre className="whitespace-pre-wrap font-sans text-gray-700 leading-relaxed">
+                  <pre className="whitespace-pre-wrap font-sans text-gray-600 leading-relaxed">
                     {currentPolicy}
                   </pre>
                 </div>
@@ -1502,7 +1502,7 @@ export default function App() {
               {/* Footer */}
               <div className="p-6 border-t border-gray-200 bg-gray-50">
                 <div className="flex justify-between items-center">
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-500">
                     For questions, please contact us at{' '}
                     <a
                       href="mailto:info@timharmar.com"

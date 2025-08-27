@@ -4,21 +4,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        // New Modern Authority Brand System
+        // Enhanced Modern Authority Brand System with improved contrast
         brand: {
           primary: '#0A2351', // Deep Blue
-          secondary: '#C5CBD3', // Cool Platinum
-          'secondary-light': '#D1D6DC', // Light Cool Platinum for taglines
+          secondary: '#8B95A1', // Enhanced Cool Platinum with better contrast
+          'secondary-light': '#6B7280', // Improved contrast for taglines (WCAG AA compliant)
           accent: '#17907F', // Darkened Emerald Teal for CTAs and link hover states
+          'accent-light': '#20A893', // Lighter accent for hover states
         },
         surface: {
           default: '#FFFFFF', // White
-          alt: '#F4F5F7', // Soft Gray
+          alt: '#F8FAFC', // Enhanced Soft Gray with better contrast
+          muted: '#F1F5F9', // Additional muted background option
         },
         text: {
           primary: '#0A2351', // Deep Blue on light
+          secondary: '#4B5563', // Enhanced secondary text with better contrast
+          muted: '#6B7280', // Muted text with WCAG AA compliance
           inverse: '#FFFFFF', // White on brand surfaces
           neutral: '#111318', // Neutral Ink
+        },
+        // Enhanced gray scale with better contrast ratios
+        gray: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280', // Primary gray text (WCAG AA compliant)
+          600: '#4B5563', // Secondary gray text (enhanced contrast)
+          700: '#374151', // Strong gray text
+          800: '#1F2937',
+          900: '#111827',
+          950: '#030712',
         },
         // Legacy colors for backward compatibility during transition
         primary: {
@@ -38,13 +56,13 @@ export default {
           50: '#f9fafb',
           100: '#f3f4f6',
           200: '#e5e7eb',
-          300: '#C5CBD3', // Updated to Cool Platinum
-          400: '#C5CBD3',
-          500: '#C5CBD3',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#1f2937',
-          900: '#111827',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#8B95A1', // Enhanced Cool Platinum with better contrast
+          600: '#6b7280',
+          700: '#4b5563',
+          800: '#374151',
+          900: '#1f2937',
           950: '#030712',
         },
         accent: {
@@ -72,6 +90,33 @@ export default {
           800: '#075985',
           900: '#0c4a6e',
           950: '#082f49',
+        },
+        // Enhanced color additions for better visual hierarchy
+        emerald: {
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          200: '#a7f3d0',
+          300: '#6ee7b7',
+          400: '#34d399',
+          500: '#17907F', // Primary emerald matching brand accent
+          600: '#059669',
+          700: '#047857',
+          800: '#065f46',
+          900: '#064e3b',
+          950: '#022c22',
+        },
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          950: '#020617',
         },
         lawfirm: {
           navy: {
@@ -181,17 +226,21 @@ export default {
         full: '9999px',
       },
       boxShadow: {
-        // Design tokens for shadows
-        'token-sm': '0 2px 8px rgba(0,0,0,0.06)', // For cards, sticky header
-        'service-card-hover': '0 4px 14px rgba(0,0,0,0.08)', // For service card hover
-        // Existing shadows
-        soft: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
-        medium: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-        large: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
-        xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-        inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
-        glow: '0 0 20px rgba(251, 191, 36, 0.3)',
-        'glow-lg': '0 0 40px rgba(251, 191, 36, 0.4)',
+        // Enhanced design tokens for shadows with better visual hierarchy
+        'token-sm': '0 2px 8px rgba(0,0,0,0.08)', // Enhanced cards, sticky header
+        'token-md': '0 4px 12px rgba(0,0,0,0.1)', // Enhanced medium depth
+        'service-card-hover': '0 6px 20px rgba(0,0,0,0.12)', // Enhanced service card hover
+        // Enhanced existing shadows with better contrast
+        soft: '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+        medium: '0 4px 8px -1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+        large: '0 12px 20px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+        xl: '0 24px 32px -5px rgba(0, 0, 0, 0.18), 0 8px 12px -6px rgba(0, 0, 0, 0.1)',
+        inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        glow: '0 0 20px rgba(23, 144, 127, 0.25)', // Updated to use brand accent
+        'glow-lg': '0 0 40px rgba(23, 144, 127, 0.3)', // Updated to use brand accent
+        // New enhanced shadows
+        'button-hover': '0 4px 12px rgba(23, 144, 127, 0.2)',
+        'card-hover': '0 8px 24px rgba(0, 0, 0, 0.12)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

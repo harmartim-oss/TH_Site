@@ -23,16 +23,74 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Updates */
+/* Enhanced Typography Updates */
 body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.65; /* Updated line-height for better readability */
+  color: #374151; /* Enhanced base text color with better contrast */
 }
 
 h1,
 h2 {
   font-weight: 800; /* Increased from 700 to 800 */
   letter-spacing: -0.5px; /* Tightened letter-spacing */
+  color: #0A2351; /* Ensure headings use the primary brand color */
+}
+
+h3,
+h4 {
+  font-weight: 700;
+  color: #0A2351;
+}
+
+/* Enhanced visual elements and gradients */
+.bg-gradient-brand-subtle {
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+}
+
+.bg-gradient-brand-primary {
+  background: linear-gradient(135deg, #0A2351 0%, #1e40af 100%);
+}
+
+.bg-gradient-brand-accent {
+  background: linear-gradient(135deg, #17907F 0%, #059669 100%);
+}
+
+.bg-gradient-surface-enhanced {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+}
+
+/* Enhanced card styling */
+.card-enhanced {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid rgba(203, 213, 225, 0.3);
+  transition: all 0.3s ease;
+}
+
+.card-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Enhanced text gradients */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #0A2351 0%, #17907F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced interactive elements */
+.interactive-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.interactive-scale:hover {
+  transform: scale(1.02);
+}
+
+.interactive-scale:active {
+  transform: scale(0.98);
 }
 
 /* Form Styling */
@@ -55,19 +113,46 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(23, 144, 127, 0.2);
 }
 
-/* Primary Button Styling */
+/* Enhanced Primary Button Styling */
 .btn-primary {
   background-color: var(--color-accent);
   color: white;
-  border-radius: 4px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 6px; /* Slightly more rounded */
+  padding: 0.875rem 1.75rem; /* Enhanced padding */
   font-weight: 600;
-  transition: all 0.25s ease;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(23, 144, 127, 0.15);
+  border: none;
 }
 
 .btn-primary:hover {
   background-color: #0f6b5c; /* Slightly darker on hover */
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 144, 127, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(23, 144, 127, 0.15);
+}
+
+/* Enhanced secondary button styling */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 144, 127, 0.2);
 }
 
 /* Hover effects respect prefers-reduced-motion */

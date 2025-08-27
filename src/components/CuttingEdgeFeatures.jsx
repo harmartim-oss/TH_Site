@@ -165,12 +165,12 @@ export const SmartScheduler = () => {
     >
       <div className="flex items-center mb-6">
         <Calendar className="w-8 h-8 text-teal-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-900">Smart Scheduler</h3>
+        <h3 className="text-2xl font-bold text-gray-800">Smart Scheduler</h3>
       </div>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
+          <label className="block text-sm font-medium text-gray-500 mb-2">Your Name *</label>
           <input
             type="text"
             value={userName}
@@ -182,7 +182,7 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+          <label className="block text-sm font-medium text-gray-500 mb-2">Email Address *</label>
           <input
             type="email"
             value={userEmail}
@@ -194,7 +194,7 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+          <label className="block text-sm font-medium text-gray-500 mb-2">Phone Number</label>
           <input
             type="tel"
             value={userPhone}
@@ -205,7 +205,7 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-500 mb-2">
             Consultation Type *
           </label>
           <select
@@ -224,7 +224,7 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
+          <label className="block text-sm font-medium text-gray-500 mb-2">Preferred Date *</label>
           <input
             type="date"
             value={selectedDate}
@@ -236,7 +236,7 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Available Times *</label>
+          <label className="block text-sm font-medium text-gray-500 mb-2">Available Times *</label>
           <div className="grid grid-cols-2 gap-2">
             {availableTimes.map((time, index) => (
               <button
@@ -245,7 +245,7 @@ export const SmartScheduler = () => {
                 className={`p-2 rounded-md border transition-all ${
                   selectedTime === time
                     ? 'bg-brand-accent text-white border-brand-accent'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-brand-accent'
+                    : 'bg-white text-gray-500 border-gray-300 hover:border-brand-accent'
                 }`}
               >
                 {time}
@@ -255,7 +255,7 @@ export const SmartScheduler = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-500 mb-2">
             Additional Information
           </label>
           <textarea
@@ -739,10 +739,10 @@ export const LegalResourcesLibrary = () => {
     >
       <div className="flex items-center mb-6">
         <FileText className="w-8 h-8 text-blue-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-900">Legal Resources Library</h3>
+        <h3 className="text-2xl font-bold text-gray-800">Legal Resources Library</h3>
       </div>
 
-      <p className="text-gray-600 mb-6">
+      <p className="text-gray-500 mb-6">
         Access helpful legal resources, guides, and tools to support your business.
       </p>
 
@@ -754,7 +754,7 @@ export const LegalResourcesLibrary = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors capitalize ${
               selectedCategory === category
                 ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 hover:bg-gray-100'
+                : 'bg-white text-gray-500 hover:bg-gray-100'
             }`}
           >
             {category}
@@ -775,8 +775,8 @@ export const LegalResourcesLibrary = () => {
               <div className="flex items-start flex-1">
                 <span className="text-2xl mr-3">{resource.icon}</span>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900 mb-1">{resource.title}</h4>
-                  <p className="text-gray-600 text-sm mb-2">{resource.description}</p>
+                  <h4 className="font-semibold text-gray-800 mb-1">{resource.title}</h4>
+                  <p className="text-gray-500 text-sm mb-2">{resource.description}</p>
                   <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
                     {resource.type}
                   </span>
@@ -883,7 +883,7 @@ export const LegalNewsFeed = () => {
     >
       <div className="flex items-center mb-6">
         <Bell className="w-8 h-8 text-teal-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-900">In the News</h3>
+        <h3 className="text-2xl font-bold text-gray-800">In the News</h3>
       </div>
 
       <div className="flex space-x-4 mb-6">
@@ -894,7 +894,7 @@ export const LegalNewsFeed = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === tab
                 ? 'bg-teal-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
             }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -917,10 +917,10 @@ export const LegalNewsFeed = () => {
               rel="noopener noreferrer"
               className="block hover:bg-gray-50 rounded-lg p-2 transition-colors"
             >
-              <h4 className="font-semibold text-gray-900 hover:text-teal-600 transition-colors">
+              <h4 className="font-semibold text-gray-800 hover:text-teal-600 transition-colors">
                 {item.title}
               </h4>
-              <div className="flex items-center text-sm text-gray-600 mt-1">
+              <div className="flex items-center text-sm text-gray-500 mt-1">
                 <Clock className="w-4 h-4 mr-1" />
                 {item.date} • {item.category}
               </div>
@@ -988,13 +988,13 @@ export const LegalAssessment = () => {
     >
       <div className="flex items-center mb-6">
         <Brain className="w-8 h-8 text-purple-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-900">Legal Needs Assessment</h3>
+        <h3 className="text-2xl font-bold text-gray-800">Legal Needs Assessment</h3>
       </div>
 
       {!showResults ? (
         <div>
           <div className="mb-4">
-            <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <div className="flex justify-between text-sm text-gray-500 mb-2">
               <span>
                 Question {currentQuestion + 1} of {questions.length}
               </span>
@@ -1028,7 +1028,7 @@ export const LegalAssessment = () => {
         <div>
           <h4 className="text-lg font-semibold mb-4">Assessment Complete!</h4>
           <div className="bg-white p-6 rounded-lg mb-4">
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-500 mb-4">
               Based on your responses, Tim Harmar can help you with specialized legal services
               tailored to your needs.
             </p>
