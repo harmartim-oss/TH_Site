@@ -4,16 +4,32 @@ export default {
   theme: {
     extend: {
       colors: {
+        // New Modern Authority Brand System
+        brand: {
+          primary: '#0A2351', // Deep Blue
+          secondary: '#C5CBD3', // Cool Platinum
+          accent: '#1FA295', // Emerald Teal
+        },
+        surface: {
+          default: '#FFFFFF', // White
+          alt: '#F4F5F7', // Soft Gray
+        },
+        text: {
+          primary: '#0A2351', // Deep Blue on light
+          inverse: '#FFFFFF', // White on brand surfaces
+          neutral: '#111318', // Neutral Ink
+        },
+        // Legacy colors for backward compatibility during transition
         primary: {
           50: '#f8fafc',
           100: '#f1f5f9',
           200: '#e2e8f0',
           300: '#cbd5e1',
           400: '#94a3b8',
-          500: '#1e3a8a',
-          600: '#1e40af',
-          700: '#1d4ed8',
-          800: '#1e3a8a',
+          500: '#0A2351', // Updated to Deep Blue
+          600: '#0A2351',
+          700: '#0A2351',
+          800: '#0A2351',
           900: '#1e293b',
           950: '#0f172a',
         },
@@ -21,9 +37,9 @@ export default {
           50: '#f9fafb',
           100: '#f3f4f6',
           200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
+          300: '#C5CBD3', // Updated to Cool Platinum
+          400: '#C5CBD3',
+          500: '#C5CBD3',
           600: '#4b5563',
           700: '#374151',
           800: '#1f2937',
@@ -31,17 +47,17 @@ export default {
           950: '#030712',
         },
         accent: {
-          50: '#fefdf8',
-          100: '#fdf6e3',
-          200: '#fbeaa0',
-          300: '#f9dc5c',
-          400: '#f7d032',
-          500: '#eab308',
-          600: '#ca8a04',
-          700: '#a16207',
-          800: '#854d0e',
-          900: '#713f12',
-          950: '#422006',
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#1FA295', // Updated to Emerald Teal
+          600: '#1FA295',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
+          950: '#042f2e',
         },
         trust: {
           50: '#f0f9ff',
@@ -87,6 +103,7 @@ export default {
       },
       fontFamily: {
         sans: [
+          'Montserrat',
           'Source Sans Pro',
           'Inter',
           '-apple-system',
@@ -97,6 +114,7 @@ export default {
           'sans-serif',
         ],
         heading: [
+          'Montserrat',
           'Crimson Text',
           'Playfair Display',
           'Georgia',
@@ -130,7 +148,41 @@ export default {
         '8xl': ['6rem', { lineHeight: '1' }],
         '9xl': ['8rem', { lineHeight: '1' }],
       },
+      scale: {
+        '0': '0',
+        '50': '.5',
+        '75': '.75',
+        '90': '.9',
+        '95': '.95',
+        '100': '1',
+        '102': '1.02',
+        '105': '1.05',
+        '110': '1.1',
+        '125': '1.25',
+        '150': '1.5',
+      },
+      spacing: {
+        // Design token: space.base = 8px
+        'token-base': '8px',
+      },
+      borderRadius: {
+        // Design tokens for radius
+        'token-sm': '4px', // For buttons, chips
+        'token-md': '8px', // For cards
+        'none': '0px',
+        'sm': '0.125rem',
+        DEFAULT: '0.25rem',
+        'md': '0.375rem',
+        'lg': '0.5rem',
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+        'full': '9999px',
+      },
       boxShadow: {
+        // Design tokens for shadows
+        'token-sm': '0 2px 8px rgba(0,0,0,0.06)', // For cards, sticky header
+        // Existing shadows
         soft: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
         medium: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
         large: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',

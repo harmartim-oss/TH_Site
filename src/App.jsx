@@ -554,9 +554,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <div className="min-h-screen bg-surface-default">
       {/* Header/Navigation */}
-      <header className="bg-white/98 backdrop-blur-sm shadow-medium sticky top-0 z-40 border-b border-lawfirm-navy-200">
+      <header className="bg-surface-default/98 backdrop-blur-sm shadow-token-sm sticky top-0 z-40 border-b border-brand-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4 md:py-6">
             <div className="flex items-center">
@@ -566,10 +566,10 @@ export default function App() {
                 className="h-12 w-auto md:h-16 drop-shadow-sm"
               />
               <div className="ml-4">
-                <h1 className="text-xl md:text-2xl font-bold text-lawfirm-navy-800 font-heading">
+                <h1 className="text-xl md:text-2xl font-bold text-brand-primary font-heading">
                   Tim Harmar: Legal and Consulting Services
                 </h1>
-                <p className="text-sm text-lawfirm-gold-600 font-semibold tracking-wide">
+                <p className="text-sm text-brand-secondary font-semibold tracking-wide">
                   Excellence in Legal Solutions
                 </p>
               </div>
@@ -583,34 +583,34 @@ export default function App() {
             >
               <a
                 href="#services"
-                className="text-lawfirm-navy-700 hover:text-lawfirm-navy-900 font-medium transition-all duration-300 hover:scale-105 relative group"
+                className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
                 aria-label="Navigate to services section"
               >
                 Services
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lawfirm-gold-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#about"
-                className="text-lawfirm-navy-700 hover:text-lawfirm-navy-900 font-medium transition-all duration-300 hover:scale-105 relative group"
+                className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
                 aria-label="Navigate to about section"
               >
                 About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lawfirm-gold-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#contact"
-                className="text-lawfirm-navy-700 hover:text-lawfirm-navy-900 font-medium transition-all duration-300 hover:scale-105 relative group"
+                className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
                 aria-label="Navigate to contact section"
               >
                 Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lawfirm-gold-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
             </nav>
 
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
               <button
-                className="bg-gradient-to-r from-lawfirm-gold-500 to-lawfirm-gold-600 hover:from-lawfirm-gold-600 hover:to-lawfirm-gold-700 text-white px-8 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 border border-lawfirm-gold-400"
+                className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-8 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 border border-brand-accent/20"
                 onClick={() =>
                   (window.location.href =
                     'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -624,7 +624,7 @@ export default function App() {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-xl text-lawfirm-navy-700 hover:text-lawfirm-navy-900 hover:bg-lawfirm-navy-100 focus:outline-none transition-all duration-300"
+              className="md:hidden p-2 rounded-token-sm text-brand-primary hover:text-brand-accent hover:bg-brand-secondary/20 focus:outline-none transition-all duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -634,31 +634,31 @@ export default function App() {
 
           {/* Mobile Navigation Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-6 border-t border-lawfirm-navy-200 bg-gradient-to-br from-primary-50 to-white shadow-large">
+            <div className="md:hidden pb-6 border-t border-brand-secondary/30 bg-surface-default shadow-large">
               <nav className="flex flex-col space-y-2 pt-6">
                 <a
                   href="#services"
-                  className="text-lawfirm-navy-700 hover:text-lawfirm-navy-900 font-medium py-3 px-4 rounded-xl hover:bg-lawfirm-navy-100 transition-all duration-300 mx-2"
+                  className="text-brand-primary hover:text-brand-accent font-medium py-3 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
                 </a>
                 <a
                   href="#about"
-                  className="text-lawfirm-navy-700 hover:text-lawfirm-navy-900 font-medium py-3 px-4 rounded-xl hover:bg-lawfirm-navy-100 transition-all duration-300 mx-2"
+                  className="text-brand-primary hover:text-brand-accent font-medium py-3 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </a>
                 <a
                   href="#contact"
-                  className="text-lawfirm-navy-700 hover:text-lawfirm-navy-900 font-medium py-3 px-4 rounded-xl hover:bg-lawfirm-navy-100 transition-all duration-300 mx-2"
+                  className="text-brand-primary hover:text-brand-accent font-medium py-3 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
                 </a>
                 <button
-                  className="bg-gradient-to-r from-lawfirm-gold-500 to-lawfirm-gold-600 hover:from-lawfirm-gold-600 hover:to-lawfirm-gold-700 text-white px-6 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 mx-2 mt-4"
+                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 mx-2 mt-4"
                   onClick={() =>
                     (window.location.href =
                       'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -674,93 +674,71 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-lawfirm-navy-700 via-lawfirm-navy-800 to-lawfirm-navy-900 text-white min-h-screen desktop:min-h-[100vh] aspect-16-9:min-h-[56.25vw] py-24 md:py-32 lg:py-40 overflow-hidden flex items-center">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-lawfirm-navy-700/80 to-lawfirm-navy-900/60"></div>
-
-        {/* Animated background elements */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-lawfirm-gold-500/15 rounded-full blur-3xl animate-bounce-subtle"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-trust-500/10 rounded-full blur-3xl animate-bounce-subtle delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-lawfirm-gold-400/8 rounded-full blur-3xl animate-pulse"></div>
+      <section className="relative bg-surface-default text-text-primary py-24 md:py-32 lg:py-40 overflow-hidden">
+        {/* Optional 5% opacity shield-outline watermark pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-brand-primary rounded-full"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 border-2 border-brand-primary rounded-full"></div>
+        </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center">
-            {/* Prominent Logo Display */}
-            <div className="mb-12 flex justify-center animate-fade-in">
-              <div className="bg-white/98 backdrop-blur-sm p-6 md:p-10 lg:p-12 rounded-3xl shadow-2xl border border-white/30 transform hover:scale-105 transition-all duration-500 hover:shadow-glow-lg">
-                <img
-                  src={logoImage}
-                  alt="Tim Harmar: Legal and Consulting Services Logo"
-                  className="h-20 w-auto sm:h-28 md:h-36 lg:h-40 mx-auto mb-4 drop-shadow-sm"
-                />
-                <div className="text-lawfirm-navy-800">
-                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-heading mb-2">
-                    Tim Harmar: Legal and Consulting Services
-                  </h3>
-                  <p className="text-lawfirm-gold-600 font-semibold text-sm sm:text-base md:text-lg tracking-wide">
-                    Excellence in Legal Solutions
-                  </p>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Content */}
+            <div className="animate-slide-up">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold mb-6 font-heading leading-tight text-brand-primary">
+                Excellence in Legal Solutions
+              </h1>
+              
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-brand-secondary">
+                Award-winning legal expertise specialized in civil litigation, privacy and
+                cybersecurity law, intellectual property, and business strategy consulting in Sault
+                Ste. Marie, Ontario.
+              </p>
+
+              <div className="animate-slide-up delay-200">
+                <button
+                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-8 md:px-10 py-4 md:py-5 rounded-token-sm font-bold text-base md:text-lg shadow-token-sm hover:shadow-medium transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95"
+                  onClick={() =>
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+                  }
+                  aria-label="Navigate to contact section to schedule a free consultation"
+                >
+                  <Calendar
+                    className="inline-block w-5 h-5 mr-3 transition-transform duration-300"
+                    aria-hidden="true"
+                  />
+                  Schedule Free Consultation
+                </button>
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 font-heading leading-tight animate-slide-up">
-              Expert Legal Solutions for Your
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-lawfirm-gold-300 to-lawfirm-gold-500 drop-shadow-sm">
-                {' '}
-                Business
-              </span>
-            </h1>
-
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-12 max-w-5xl mx-auto leading-relaxed text-primary-100 animate-slide-up delay-100">
-              Award-winning legal expertise specialized in civil litigation, privacy and
-              cybersecurity law, intellectual property, and business strategy consulting in Sault
-              Ste. Marie, Ontario.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up delay-200">
-              <button
-                className="group bg-gradient-to-r from-lawfirm-gold-500 to-lawfirm-gold-600 hover:from-lawfirm-gold-600 hover:to-lawfirm-gold-700 text-white px-8 md:px-10 lg:px-12 py-4 md:py-5 lg:py-6 rounded-2xl font-bold text-sm md:text-base lg:text-lg shadow-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 border-2 border-lawfirm-gold-400/30 hover:border-lawfirm-gold-300/50 hover:shadow-glow-lg active:scale-95"
-                onClick={() =>
-                  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
-                }
-                aria-label="Navigate to contact section to schedule a free consultation"
-              >
-                <Calendar
-                  className="inline-block w-5 h-5 md:w-6 md:h-6 mr-3 group-hover:rotate-12 transition-transform duration-300"
-                  aria-hidden="true"
+            {/* Right Column: Circular headshot */}
+            <div className="flex justify-center lg:justify-end animate-slide-up delay-100">
+              <div className="relative">
+                <img
+                  src={logoImage}
+                  alt="Tim Harmar: Legal and Consulting Services"
+                  className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full object-cover shadow-token-sm border-4 border-brand-secondary/30"
                 />
-                Schedule Free Consultation
-              </button>
-              <button
-                className="group border-2 border-white/80 hover:border-lawfirm-gold-400 text-white hover:text-lawfirm-navy-900 bg-transparent hover:bg-white/95 px-8 md:px-10 lg:px-12 py-4 md:py-5 lg:py-6 rounded-2xl font-semibold text-sm md:text-base lg:text-lg transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-xl hover:shadow-glow active:scale-95"
-                onClick={() =>
-                  document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
-                }
-                aria-label="Navigate to services section to explore our legal services"
-              >
-                <Scale
-                  className="inline-block w-5 h-5 md:w-6 md:h-6 mr-3 group-hover:rotate-12 transition-transform duration-300"
-                  aria-hidden="true"
-                />
-                Explore Our Legal Services
-              </button>
+                {/* Decorative elements */}
+                <div className="absolute -inset-4 rounded-full border-2 border-brand-accent/20 animate-pulse"></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-gradient-to-br from-primary-50 to-white">
+      <section id="services" className="py-24 bg-surface-alt">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6 font-heading">
+            <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
               Comprehensive Legal Services
             </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-brand-secondary max-w-3xl mx-auto leading-relaxed">
               Award-winning legal expertise with cutting-edge solutions for your business needs.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-accent-600 mx-auto mt-6 rounded-full shadow-glow"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
@@ -821,18 +799,16 @@ export default function App() {
               return (
                 <div
                   key={index}
-                  className="group bg-white p-8 rounded-2xl hover:shadow-xl transition-all duration-500 cursor-pointer border border-primary-100 hover:border-accent-300 transform hover:scale-105 hover:-translate-y-2 animate-slide-up"
+                  className="group bg-surface-default p-8 rounded-token-md hover:shadow-medium transition-all duration-500 cursor-pointer border border-brand-secondary/30 hover:border-brand-accent transform hover:scale-102 animate-slide-up"
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => setExpandedService(expandedService === index ? null : index)}
                 >
-                  <div
-                    className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-medium hover:shadow-glow`}
-                  >
-                    <IconComponent className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 rounded-token-sm bg-brand-accent/20 p-4 mb-6 group-hover:bg-brand-accent/30 transition-all duration-300">
+                    <IconComponent className="w-8 h-8 text-brand-accent" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary-900 mb-4 flex items-center justify-between font-heading">
+                  <h3 className="text-xl font-bold text-brand-primary mb-4 flex items-center justify-between font-heading">
                     {service.title}
-                    <span className="text-accent-600 group-hover:text-accent-700 transition-colors">
+                    <span className="text-brand-accent transition-colors">
                       {expandedService === index ? (
                         <ChevronUp className="w-5 h-5" />
                       ) : (
@@ -840,12 +816,12 @@ export default function App() {
                       )}
                     </span>
                   </h3>
-                  <p className="text-secondary-600 mb-4 leading-relaxed">{service.description}</p>
+                  <p className="text-text-neutral mb-4 leading-relaxed">{service.description}</p>
                   {expandedService === index && (
-                    <div className="mt-6 p-6 bg-gradient-to-r from-primary-50 to-accent-50 rounded-xl border-l-4 border-accent-500 animate-slide-down">
-                      <p className="text-secondary-700 leading-relaxed mb-4">{service.detailed}</p>
+                    <div className="mt-6 p-6 bg-surface-alt rounded-token-sm border-l-4 border-brand-accent animate-slide-down">
+                      <p className="text-text-neutral leading-relaxed mb-4">{service.detailed}</p>
                       <button
-                        className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-medium hover:shadow-glow"
+                        className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-token-sm hover:shadow-medium"
                         onClick={() =>
                           (window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - ${service.title}&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation regarding ${service.title}.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!`)
                         }
@@ -888,44 +864,44 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 bg-white">
+      <section id="about" className="py-24 bg-surface-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6 font-heading">
+            <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
               Meet Our Team
             </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-brand-secondary max-w-3xl mx-auto leading-relaxed">
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-accent-600 mx-auto mt-6 rounded-full shadow-glow"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
           </div>
 
           {/* Team Members */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-20">
             {/* Tim J. Harmar - Featured prominently */}
-            <div className="lg:col-span-2 bg-gradient-to-br from-primary-50 to-accent-50 p-10 rounded-3xl border-2 border-accent-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 animate-slide-up">
+            <div className="lg:col-span-2 bg-surface-alt p-10 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-primary-700 to-primary-800 text-white p-4 rounded-xl mr-6 shadow-medium hover:shadow-glow transition-all duration-300">
+                <div className="bg-brand-primary text-text-inverse p-4 rounded-token-sm mr-6 shadow-token-sm">
                   <Scale className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-primary-900 font-heading">
+                  <h3 className="text-3xl md:text-4xl font-bold text-brand-primary font-heading">
                     Tim J. Harmar
                   </h3>
-                  <p className="text-accent-600 font-bold text-xl">Principal Lawyer & Founder</p>
+                  <p className="text-brand-accent font-bold text-xl">Principal Lawyer & Founder</p>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-accent-500 to-accent-600 text-white p-6 rounded-xl mb-8 shadow-medium hover:shadow-glow transition-all duration-300">
+              <div className="bg-brand-accent text-text-inverse p-6 rounded-token-sm mb-8 shadow-token-sm">
                 <p className="font-bold text-xl flex items-center mb-2">
                   <Award className="w-6 h-6 mr-3" />
                   Award-Winning Legal Excellence
                 </p>
-                <p className="text-accent-100 text-lg">
+                <p className="text-text-inverse/90 text-lg">
                   Supreme Court of Canada Experience • 15+ Years Practice
                 </p>
               </div>
-              <p className="text-lg text-secondary-600 mb-8 leading-relaxed">
+              <p className="text-lg text-text-neutral mb-8 leading-relaxed">
                 Tim Harmar is a distinguished lawyer with extensive experience in civil litigation,
                 privacy and cybersecurity law, and intellectual property. As the founder of Tim
                 Harmar: Legal and Consulting Services, he brings award-winning legal expertise and
@@ -935,45 +911,45 @@ export default function App() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="space-y-4">
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <GraduationCap className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <GraduationCap className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       University of Windsor Faculty of Law
                     </span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <GraduationCap className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <GraduationCap className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       York University Osgoode Hall Law School
                     </span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Award className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Award className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       Supreme Court of Canada Experience
                     </span>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Scale className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">Civil Litigation Specialist</span>
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Scale className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">Civil Litigation Specialist</span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Shield className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-secondary-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Shield className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       Privacy & Cybersecurity Expert
                     </span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Lightbulb className="text-accent-600 mr-3 w-5 h-5" />
-                    <span className="text-secondary-700 font-medium">IP Strategy Advisor</span>
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Lightbulb className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">IP Strategy Advisor</span>
                   </div>
                 </div>
               </div>
               <div className="flex gap-4 mb-8">
                 <button
-                  className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                   onClick={() =>
                     (window.location.href =
                       'mailto:kburton@timharmar.com?subject=Schedule Consultation with Tim Harmar&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation with Tim Harmar.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -983,7 +959,7 @@ export default function App() {
                   Schedule with Tim
                 </button>
                 <button
-                  className="border-2 border-accent-500 text-accent-600 hover:text-accent-700 px-6 py-3 rounded-xl hover:bg-accent-50 hover:border-accent-600 transition-all duration-300 font-semibold transform hover:scale-105"
+                  className="border-2 border-brand-accent text-brand-accent hover:text-brand-accent/80 px-6 py-3 rounded-token-sm hover:bg-brand-accent/10 hover:border-brand-accent/80 transition-all duration-300 font-semibold transform hover:scale-105"
                   onClick={() => setShowTimBio(!showTimBio)}
                 >
                   <User className="inline-block w-4 h-4 mr-2" />
@@ -993,10 +969,10 @@ export default function App() {
 
               {/* Expanded Bio Section */}
               {showTimBio && (
-                <div className="bg-gradient-to-br from-primary-50 to-accent-50 p-8 rounded-2xl border-2 border-accent-200 shadow-xl mb-8 animate-slide-down">
+                <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm mb-8 animate-slide-down">
                   <div className="flex items-center mb-6">
-                    <User className="w-8 h-8 text-accent-600 mr-4" />
-                    <h4 className="text-2xl font-bold text-primary-900 font-heading">
+                    <User className="w-8 h-8 text-brand-accent mr-4" />
+                    <h4 className="text-2xl font-bold text-brand-primary font-heading">
                       Professional Biography - Tim J. Harmar
                     </h4>
                   </div>
@@ -1004,11 +980,11 @@ export default function App() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div className="space-y-6">
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <GraduationCap className="w-5 h-5 mr-2" />
                           Educational Background
                         </h5>
-                        <div className="space-y-3 text-gray-700">
+                        <div className="space-y-3 text-text-neutral">
                           <p>
                             <strong>University of Windsor Faculty of Law (J.D.)</strong>
                             <br />
@@ -1025,11 +1001,11 @@ export default function App() {
                       </div>
 
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <Award className="w-5 h-5 mr-2" />
                           Professional Recognition
                         </h5>
-                        <div className="space-y-2 text-gray-700">
+                        <div className="space-y-2 text-text-neutral">
                           <p>• Supreme Court of Canada counsel designation</p>
                           <p>• Award-winning legal practitioner recognized for excellence</p>
                           <p>• Featured speaker at Canadian privacy law conferences</p>
@@ -1040,11 +1016,11 @@ export default function App() {
 
                     <div className="space-y-6">
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <Scale className="w-5 h-5 mr-2" />
                           Practice Areas & Expertise
                         </h5>
-                        <div className="space-y-2 text-gray-700">
+                        <div className="space-y-2 text-text-neutral">
                           <p>
                             <strong>Civil Litigation:</strong> Complex commercial disputes, contract
                             litigation, and appellate practice with a proven track record in both
@@ -1067,11 +1043,11 @@ export default function App() {
                       </div>
 
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <Building2 className="w-5 h-5 mr-2" />
                           Professional Philosophy
                         </h5>
-                        <p className="text-gray-700 italic">
+                        <p className="text-text-neutral italic">
                           "My approach combines traditional legal excellence with innovative
                           technology solutions. I believe in providing clients with not just legal
                           advice, but strategic guidance that positions them for long-term success
@@ -1081,11 +1057,11 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="mt-8 p-6 bg-white rounded-xl border border-primary-200">
-                    <h5 className="text-lg font-bold text-gray-900 mb-3">
+                  <div className="mt-8 p-6 bg-surface-default rounded-token-sm border border-brand-secondary/30">
+                    <h5 className="text-lg font-bold text-brand-primary mb-3">
                       Community Involvement & Leadership
                     </h5>
-                    <p className="text-gray-700">
+                    <p className="text-text-neutral">
                       Tim is actively involved in the Northern Ontario legal community, serving as a
                       mentor to young lawyers and contributing to legal education initiatives. He
                       regularly provides pro bono services to local non-profits and startups,
@@ -1098,43 +1074,43 @@ export default function App() {
             </div>
 
             {/* Kelly Burton */}
-            <div className="bg-gradient-to-br from-trust-50 to-primary-50 p-8 rounded-2xl border border-trust-200 shadow-medium hover:shadow-xl transition-all duration-500 transform hover:scale-105 animate-slide-up delay-100">
+            <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up delay-100">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-trust-600 to-trust-700 text-white p-3 rounded-xl mr-4 shadow-medium hover:shadow-glow transition-all duration-300">
+                <div className="bg-brand-accent text-text-inverse p-3 rounded-token-sm mr-4 shadow-token-sm">
                   <UserCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-primary-900 font-heading">Kelly Burton</h3>
-                  <p className="text-trust-600 font-semibold text-lg">Legal Assistant</p>
+                  <h3 className="text-2xl font-bold text-brand-primary font-heading">Kelly Burton</h3>
+                  <p className="text-brand-accent font-semibold text-lg">Legal Assistant</p>
                 </div>
               </div>
-              <p className="text-secondary-600 mb-6 leading-relaxed">
+              <p className="text-text-neutral mb-6 leading-relaxed">
                 Kelly Burton provides dedicated support as our Legal Assistant, ensuring seamless
                 client communication and efficient case management. With expertise in legal research
                 and document preparation, Kelly plays a crucial role in our team's success.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <FileText className="text-trust-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <FileText className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Legal research and case management
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <FileText className="text-trust-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <FileText className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Document preparation and coordination
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Scale className="text-trust-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Scale className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Professional standards excellence
                   </span>
                 </div>
               </div>
               <button
-                className="w-full bg-gradient-to-r from-trust-600 to-trust-700 hover:from-trust-700 hover:to-trust-800 text-white px-4 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                className="w-full bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:kburton@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -1143,44 +1119,44 @@ export default function App() {
             </div>
 
             {/* Josh Ochoa */}
-            <div className="bg-gradient-to-br from-accent-50 to-secondary-50 p-8 rounded-2xl border border-accent-200 shadow-medium hover:shadow-xl transition-all duration-500 transform hover:scale-105 animate-slide-up delay-200">
+            <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up delay-200">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-accent-600 to-accent-700 text-white p-3 rounded-xl mr-4 shadow-medium hover:shadow-glow transition-all duration-300">
+                <div className="bg-brand-accent text-text-inverse p-3 rounded-token-sm mr-4 shadow-token-sm">
                   <Briefcase className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-primary-900 font-heading">Josh Ochoa</h3>
-                  <p className="text-accent-600 font-semibold text-lg">Office Administrator</p>
+                  <h3 className="text-2xl font-bold text-brand-primary font-heading">Josh Ochoa</h3>
+                  <p className="text-brand-accent font-semibold text-lg">Office Administrator</p>
                 </div>
               </div>
-              <p className="text-secondary-600 mb-6 leading-relaxed">
+              <p className="text-text-neutral mb-6 leading-relaxed">
                 Josh Ochoa serves as our Office Administrator, providing essential administrative
                 support and ensuring smooth daily operations. With expertise in office management
                 and client relations, Josh maintains our high standards of professional service and
                 organizational excellence.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Building2 className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Building2 className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Office operations and administration
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Phone className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Phone className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Client relations and communication
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Monitor className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Monitor className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Administrative systems management
                   </span>
                 </div>
               </div>
               <button
-                className="w-full bg-gradient-to-r from-accent-600 to-accent-700 hover:from-accent-700 hover:to-accent-800 text-white px-4 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                className="w-full bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:admin@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -1190,32 +1166,32 @@ export default function App() {
           </div>
 
           {/* Why Choose Section */}
-          <div className="bg-gradient-to-br from-primary-800 via-primary-900 to-secondary-900 p-10 rounded-3xl text-white text-center shadow-2xl border border-accent-500/20">
+          <div className="bg-brand-primary p-10 rounded-token-md text-text-inverse text-center shadow-token-sm border border-brand-accent/20">
             <h3 className="text-3xl font-bold mb-8 font-heading">
               Why Choose Tim Harmar: Legal and Consulting Services?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
-                  <Award className="text-accent-300 w-8 h-8" />
+                <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-accent/30 transition-all duration-300 group-hover:scale-110">
+                  <Award className="text-brand-accent w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Award-winning legal expertise</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
-                  <Monitor className="text-accent-300 w-8 h-8" />
+                <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-accent/30 transition-all duration-300 group-hover:scale-110">
+                  <Monitor className="text-brand-accent w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Cutting-edge legal technology</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
-                  <Users className="text-accent-300 w-8 h-8" />
+                <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-accent/30 transition-all duration-300 group-hover:scale-110">
+                  <Users className="text-brand-accent w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Personalized service approach</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-all duration-200">
-                  <Globe className="text-white w-8 h-8" />
+                <div className="w-16 h-16 bg-text-inverse/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-text-inverse/30 transition-all duration-200">
+                  <Globe className="text-text-inverse w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Local expertise, global perspective</span>
               </div>
@@ -1224,54 +1200,88 @@ export default function App() {
         </div>
       </section>
 
+      {/* Consultation Call To Action */}
+      <section className="py-20 bg-brand-primary text-text-inverse">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+            Ready to Get Started?
+          </h2>
+          <p className="text-xl mb-8 text-text-inverse/90 leading-relaxed">
+            Contact us today for a consultation and discover how our legal expertise can help your business thrive.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <button
+              className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 active:scale-95"
+              onClick={() =>
+                (window.location.href =
+                  'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
+              }
+              aria-label="Schedule free consultation via email"
+            >
+              <Calendar className="inline-block w-5 h-5 mr-3" aria-hidden="true" />
+              Schedule Free Consultation
+            </button>
+            
+            <a
+              href="tel:+17059435049"
+              className="text-text-inverse hover:text-brand-accent border-b-2 border-transparent hover:border-brand-accent font-semibold text-lg transition-all duration-300"
+              aria-label="Call Tim Harmar Legal Services"
+            >
+              <Phone className="inline-block w-5 h-5 mr-2" aria-hidden="true" />
+              Call (705) 943-5049
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white"
+        className="py-24 bg-surface-alt"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading">
-              Ready to Get Started?
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-brand-primary">
+              Contact Information
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Contact us today for a consultation and discover how our legal expertise can help your
-              business thrive.
+            <p className="text-xl text-brand-secondary max-w-3xl mx-auto leading-relaxed">
+              Get in touch with our legal team for expert guidance and consultation.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-secondary-400 mx-auto mt-6 rounded-full"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 hover:border-primary-500 transition-all duration-200 backdrop-blur-sm hover:shadow-large">
-              <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <Mail className="text-white w-8 h-8" />
+            <div className="bg-surface-default p-8 rounded-token-md border border-brand-secondary/30 hover:border-brand-accent transition-all duration-200 hover:shadow-token-sm">
+              <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <Mail className="text-brand-accent w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-heading">Email</h3>
+              <h3 className="text-2xl font-bold mb-4 font-heading text-brand-primary">Email</h3>
               <a
                 href="mailto:kburton@timharmar.com"
-                className="text-primary-400 hover:text-primary-300 text-lg transition-colors"
+                className="text-brand-accent hover:text-brand-accent/80 text-lg transition-colors"
               >
                 kburton@timharmar.com
               </a>
             </div>
-            <div className="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 hover:border-secondary-500 transition-all duration-200 backdrop-blur-sm hover:shadow-large">
-              <div className="w-16 h-16 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <Phone className="text-white w-8 h-8" />
+            <div className="bg-surface-default p-8 rounded-token-md border border-brand-secondary/30 hover:border-brand-accent transition-all duration-200 hover:shadow-token-sm">
+              <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <Phone className="text-brand-accent w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-heading">Phone</h3>
+              <h3 className="text-2xl font-bold mb-4 font-heading text-brand-primary">Phone</h3>
               <a
                 href="tel:+17059435049"
-                className="text-secondary-400 hover:text-secondary-300 text-lg transition-colors"
+                className="text-brand-accent hover:text-brand-accent/80 text-lg transition-colors"
               >
                 +1 (705) 943-5049
               </a>
             </div>
-            <div className="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 hover:border-accent-500 transition-all duration-200 backdrop-blur-sm hover:shadow-large">
-              <div className="w-16 h-16 bg-gradient-to-r from-accent-500 to-accent-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <MapPin className="text-white w-8 h-8" />
+            <div className="bg-surface-default p-8 rounded-token-md border border-brand-secondary/30 hover:border-brand-accent transition-all duration-200 hover:shadow-token-sm">
+              <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <MapPin className="text-brand-accent w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-heading">Location</h3>
-              <p className="text-gray-300 text-lg">
+              <h3 className="text-2xl font-bold mb-4 font-heading text-brand-primary">Location</h3>
+              <p className="text-brand-secondary text-lg">
                 Sault Ste. Marie
                 <br />
                 Ontario, Canada
@@ -1282,112 +1292,154 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-16">
+      <footer className="bg-brand-primary text-text-inverse py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            {/* Stacked Logo Column */}
             <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-6 font-heading">
-                Tim Harmar: Legal and Consulting Services
-              </h3>
-              <p className="text-gray-300 mb-6 text-lg leading-relaxed">
+              <div className="mb-6">
+                <img
+                  src={logoImage}
+                  alt="Tim Harmar: Legal and Consulting Services"
+                  className="h-16 w-auto mb-4"
+                />
+                <h3 className="text-xl font-bold mb-2 font-heading">
+                  Tim Harmar: Legal and Consulting Services
+                </h3>
+                <p className="text-sm text-text-inverse/80 font-semibold tracking-wide">
+                  Excellence in Legal Solutions
+                </p>
+              </div>
+              <p className="text-text-inverse/90 mb-6 text-base leading-relaxed">
                 Providing expert legal solutions in civil litigation, privacy and cybersecurity law,
-                intellectual property, and business startup consulting.
+                intellectual property, and business startup consulting in Northern Ontario.
               </p>
               <div className="flex space-x-4">
                 <a
                   href="https://www.linkedin.com/company/tim-harmar-legal-consulting-services"
-                  className="bg-primary-600 hover:bg-primary-700 p-3 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-medium"
+                  className="bg-brand-accent hover:bg-brand-accent/90 p-3 rounded-token-sm transition-all duration-200 transform hover:scale-105 shadow-token-sm"
+                  aria-label="Visit our LinkedIn page"
                 >
                   <Globe className="w-5 h-5" />
                 </a>
               </div>
             </div>
+            
+            {/* Quick Links Column */}
             <div>
               <h4 className="text-xl font-bold mb-6 font-heading flex items-center">
-                <Scale className="w-5 h-5 mr-2 text-primary-400" />
+                <Scale className="w-5 h-5 mr-2 text-brand-accent" />
                 Services
               </h4>
-              <ul className="space-y-3 text-gray-300">
+              <ul className="space-y-3 text-text-inverse/90">
                 <li>
                   <a
-                    href="#"
-                    className="hover:text-primary-400 transition-colors flex items-center"
+                    href="#services"
+                    className="hover:text-brand-accent transition-colors flex items-center"
                   >
-                    <Scale className="w-4 h-4 mr-2 text-primary-500" />
+                    <Scale className="w-4 h-4 mr-2 text-brand-accent" />
                     Civil Litigation
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#"
-                    className="hover:text-primary-400 transition-colors flex items-center"
+                    href="#services"
+                    className="hover:text-brand-accent transition-colors flex items-center"
                   >
-                    <Shield className="w-4 h-4 mr-2 text-secondary-500" />
+                    <Shield className="w-4 h-4 mr-2 text-brand-accent" />
                     Privacy & Cybersecurity Law
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#"
-                    className="hover:text-primary-400 transition-colors flex items-center"
+                    href="#services"
+                    className="hover:text-brand-accent transition-colors flex items-center"
                   >
-                    <Lightbulb className="w-4 h-4 mr-2 text-accent-500" />
+                    <Lightbulb className="w-4 h-4 mr-2 text-brand-accent" />
                     Intellectual Property
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#"
-                    className="hover:text-primary-400 transition-colors flex items-center"
+                    href="#services"
+                    className="hover:text-brand-accent transition-colors flex items-center"
                   >
-                    <Rocket className="w-4 h-4 mr-2 text-secondary-500" />
+                    <Building2 className="w-4 h-4 mr-2 text-brand-accent" />
+                    Business Law
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-brand-accent transition-colors flex items-center"
+                  >
+                    <Rocket className="w-4 h-4 mr-2 text-brand-accent" />
                     Business Start Up & Strategy
                   </a>
                 </li>
               </ul>
             </div>
+            
+            {/* Contact Info Column */}
             <div>
               <h4 className="text-xl font-bold mb-6 font-heading flex items-center">
-                <MapPin className="w-5 h-5 mr-2 text-primary-400" />
+                <MapPin className="w-5 h-5 mr-2 text-brand-accent" />
                 Contact Info
               </h4>
-              <ul className="space-y-3 text-gray-300">
+              <ul className="space-y-3 text-text-inverse/90">
                 <li className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-2 text-accent-500" />
+                  <MapPin className="w-4 h-4 mr-2 text-brand-accent" />
                   Sault Ste. Marie, ON
                 </li>
                 <li className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2 text-secondary-500" />
+                  <Phone className="w-4 h-4 mr-2 text-brand-accent" />
                   +1 (705) 943-5049
                 </li>
                 <li className="flex items-center">
-                  <Mail className="w-4 h-4 mr-2 text-primary-500" />
+                  <Mail className="w-4 h-4 mr-2 text-brand-accent" />
                   kburton@timharmar.com
                 </li>
               </ul>
+              
+              {/* Clear consultation pathway */}
+              <div className="mt-6">
+                <button
+                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-token-sm"
+                  onClick={() =>
+                    (window.location.href =
+                      'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
+                  }
+                  aria-label="Schedule consultation via email"
+                >
+                  <Calendar className="inline-block w-4 h-4 mr-2" />
+                  Schedule Consultation
+                </button>
+              </div>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-12 pt-8">
+          
+          {/* Bottom bar with legal links */}
+          <div className="border-t border-text-inverse/20 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400 text-center md:text-left mb-4 md:mb-0">
+              <p className="text-text-inverse/70 text-center md:text-left mb-4 md:mb-0 text-sm">
                 &copy; 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
               </p>
-              <div className="flex items-center space-x-6 text-sm text-gray-400">
+              <div className="flex items-center space-x-6 text-sm text-text-inverse/70">
                 <button
                   onClick={() => openPolicyModal('privacy')}
-                  className="hover:text-primary-400 transition-colors cursor-pointer"
+                  className="hover:text-brand-accent transition-colors cursor-pointer"
                 >
                   Privacy Policy
                 </button>
                 <button
                   onClick={() => openPolicyModal('terms')}
-                  className="hover:text-primary-400 transition-colors cursor-pointer"
+                  className="hover:text-brand-accent transition-colors cursor-pointer"
                 >
                   Terms of Service
                 </button>
                 <button
                   onClick={() => openPolicyModal('legal')}
-                  className="hover:text-primary-400 transition-colors cursor-pointer"
+                  className="hover:text-brand-accent transition-colors cursor-pointer"
                 >
                   Legal Notices
                 </button>
