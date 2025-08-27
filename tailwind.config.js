@@ -82,8 +82,8 @@ export default {
             800: '#854d0e',
             900: '#713f12',
             950: '#422006',
-          }
-        }
+          },
+        },
       },
       fontFamily: {
         sans: [
@@ -97,21 +97,14 @@ export default {
           'sans-serif',
         ],
         heading: [
-          'Crimson Text', 
-          'Playfair Display', 
-          'Georgia', 
-          'Cambria', 
-          'Times New Roman', 
-          'serif'
-        ],
-        legal: [
-          'Source Serif Pro',
-          'Charter',
+          'Crimson Text',
+          'Playfair Display',
           'Georgia',
           'Cambria',
           'Times New Roman',
-          'serif'
+          'serif',
         ],
+        legal: ['Source Serif Pro', 'Charter', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
         mono: [
           'JetBrains Mono',
           'Menlo',
@@ -176,16 +169,16 @@ export default {
         },
       },
       screens: {
-        'xs': '475px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
+        xs: '475px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1536px',
         '16-9': '1777px', // 16:9 aspect ratio at 1000px height
-        'aspect-16-9': { 'raw': '(min-aspect-ratio: 16/9)' },
-        'mobile': { 'raw': '(hover: none) and (pointer: coarse)' },
-        'desktop': { 'raw': '(hover: hover) and (pointer: fine)' },
+        'aspect-16-9': { raw: '(min-aspect-ratio: 16/9)' },
+        mobile: { raw: '(hover: none) and (pointer: coarse)' },
+        desktop: { raw: '(hover: hover) and (pointer: fine)' },
       },
       aspectRatio: {
         '16/9': '16 / 9',
