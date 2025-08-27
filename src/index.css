@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 :root {
+  /* Modern Authority Brand Colors */
+  --color-primary: #0A2351;
+  --color-secondary: #C5CBD3;
+  --color-secondary-light: #D1D6DC;
+  --color-accent: #17907F;
+  
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -15,6 +21,65 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Updates */
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.65; /* Updated line-height for better readability */
+}
+
+h1, h2 {
+  font-weight: 800; /* Increased from 700 to 800 */
+  letter-spacing: -0.5px; /* Tightened letter-spacing */
+}
+
+/* Form Styling */
+input, textarea, select {
+  border-radius: 4px;
+  border: 1px solid var(--color-secondary);
+  padding: 0.75rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(23, 144, 127, 0.2);
+}
+
+/* Primary Button Styling */
+.btn-primary {
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0f6b5c; /* Slightly darker on hover */
+  transform: translateY(-1px);
+}
+
+/* Hover effects respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover {
+    transform: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Disable all transform and scale animations */
+  *:hover {
+    transform: none !important;
+    scale: none !important;
+  }
 }
 
 a {

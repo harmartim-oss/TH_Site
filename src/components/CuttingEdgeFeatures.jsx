@@ -176,7 +176,7 @@ export const SmartScheduler = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             placeholder="Enter your full name"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all duration-300"
             required
           />
         </div>
@@ -188,7 +188,7 @@ export const SmartScheduler = () => {
             value={userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
             placeholder="Enter your email address"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all duration-300"
             required
           />
         </div>
@@ -200,7 +200,7 @@ export const SmartScheduler = () => {
             value={userPhone}
             onChange={(e) => setUserPhone(e.target.value)}
             placeholder="Enter your phone number"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all duration-300"
           />
         </div>
 
@@ -211,7 +211,7 @@ export const SmartScheduler = () => {
           <select
             value={consultationType}
             onChange={(e) => setConsultationType(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all duration-300"
             required
           >
             <option value="">Select consultation type</option>
@@ -230,7 +230,7 @@ export const SmartScheduler = () => {
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
             min={new Date().toISOString().split('T')[0]}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all duration-300"
             required
           />
         </div>
@@ -242,10 +242,10 @@ export const SmartScheduler = () => {
               <button
                 key={index}
                 onClick={() => setSelectedTime(time)}
-                className={`p-2 rounded-lg border transition-all ${
+                className={`p-2 rounded-md border transition-all ${
                   selectedTime === time
-                    ? 'bg-teal-600 text-white border-teal-600'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-teal-500'
+                    ? 'bg-brand-accent text-white border-brand-accent'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-brand-accent'
                 }`}
               >
                 {time}
@@ -263,7 +263,7 @@ export const SmartScheduler = () => {
             onChange={(e) => setAdditionalInfo(e.target.value)}
             placeholder="Please provide any additional details about your legal needs..."
             rows="3"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all duration-300"
           />
         </div>
 
@@ -271,7 +271,7 @@ export const SmartScheduler = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleScheduleSubmit}
-          className="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white p-3 rounded-lg font-semibold hover:shadow-glow transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
+          className="w-full bg-brand-accent hover:bg-brand-accent/90 text-white p-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-token-sm hover:shadow-medium"
         >
           Schedule Consultation
         </motion.button>
