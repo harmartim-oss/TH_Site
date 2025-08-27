@@ -738,7 +738,9 @@ export default function App() {
             <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
               Award-winning legal expertise with cutting-edge solutions for your business needs.
             </p>
-            <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
+            <div className="flex justify-center mt-6">
+              <Shield className="w-5 h-5 text-brand-accent" strokeWidth={1.5} />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto">
@@ -874,7 +876,9 @@ export default function App() {
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
             </p>
-            <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
+            <div className="flex justify-center mt-6">
+              <Shield className="w-5 h-5 text-brand-accent" strokeWidth={1.5} />
+            </div>
           </div>
 
           {/* Team Members */}
@@ -1250,7 +1254,9 @@ export default function App() {
             <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
               Get in touch with our legal team for expert guidance and consultation.
             </p>
-            <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
+            <div className="flex justify-center mt-6">
+              <Shield className="w-5 h-5 text-brand-accent" strokeWidth={1.5} />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
