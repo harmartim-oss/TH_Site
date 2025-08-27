@@ -864,44 +864,44 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 bg-white">
+      <section id="about" className="py-24 bg-surface-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6 font-heading">
+            <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
               Meet Our Team
             </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-brand-secondary max-w-3xl mx-auto leading-relaxed">
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-accent-600 mx-auto mt-6 rounded-full shadow-glow"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
           </div>
 
           {/* Team Members */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-20">
             {/* Tim J. Harmar - Featured prominently */}
-            <div className="lg:col-span-2 bg-gradient-to-br from-primary-50 to-accent-50 p-10 rounded-3xl border-2 border-accent-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 animate-slide-up">
+            <div className="lg:col-span-2 bg-surface-alt p-10 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-primary-700 to-primary-800 text-white p-4 rounded-xl mr-6 shadow-medium hover:shadow-glow transition-all duration-300">
+                <div className="bg-brand-primary text-text-inverse p-4 rounded-token-sm mr-6 shadow-token-sm">
                   <Scale className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-primary-900 font-heading">
+                  <h3 className="text-3xl md:text-4xl font-bold text-brand-primary font-heading">
                     Tim J. Harmar
                   </h3>
-                  <p className="text-accent-600 font-bold text-xl">Principal Lawyer & Founder</p>
+                  <p className="text-brand-accent font-bold text-xl">Principal Lawyer & Founder</p>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-accent-500 to-accent-600 text-white p-6 rounded-xl mb-8 shadow-medium hover:shadow-glow transition-all duration-300">
+              <div className="bg-brand-accent text-text-inverse p-6 rounded-token-sm mb-8 shadow-token-sm">
                 <p className="font-bold text-xl flex items-center mb-2">
                   <Award className="w-6 h-6 mr-3" />
                   Award-Winning Legal Excellence
                 </p>
-                <p className="text-accent-100 text-lg">
+                <p className="text-text-inverse/90 text-lg">
                   Supreme Court of Canada Experience • 15+ Years Practice
                 </p>
               </div>
-              <p className="text-lg text-secondary-600 mb-8 leading-relaxed">
+              <p className="text-lg text-text-neutral mb-8 leading-relaxed">
                 Tim Harmar is a distinguished lawyer with extensive experience in civil litigation,
                 privacy and cybersecurity law, and intellectual property. As the founder of Tim
                 Harmar: Legal and Consulting Services, he brings award-winning legal expertise and
@@ -911,45 +911,45 @@ export default function App() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="space-y-4">
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <GraduationCap className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <GraduationCap className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       University of Windsor Faculty of Law
                     </span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <GraduationCap className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <GraduationCap className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       York University Osgoode Hall Law School
                     </span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Award className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Award className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       Supreme Court of Canada Experience
                     </span>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Scale className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-gray-700 font-medium">Civil Litigation Specialist</span>
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Scale className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">Civil Litigation Specialist</span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Shield className="text-primary-600 mr-3 w-5 h-5" />
-                    <span className="text-secondary-700 font-medium">
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Shield className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">
                       Privacy & Cybersecurity Expert
                     </span>
                   </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                    <Lightbulb className="text-accent-600 mr-3 w-5 h-5" />
-                    <span className="text-secondary-700 font-medium">IP Strategy Advisor</span>
+                  <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                    <Lightbulb className="text-brand-accent mr-3 w-5 h-5" />
+                    <span className="text-text-neutral font-medium">IP Strategy Advisor</span>
                   </div>
                 </div>
               </div>
               <div className="flex gap-4 mb-8">
                 <button
-                  className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                   onClick={() =>
                     (window.location.href =
                       'mailto:kburton@timharmar.com?subject=Schedule Consultation with Tim Harmar&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation with Tim Harmar.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
@@ -959,7 +959,7 @@ export default function App() {
                   Schedule with Tim
                 </button>
                 <button
-                  className="border-2 border-accent-500 text-accent-600 hover:text-accent-700 px-6 py-3 rounded-xl hover:bg-accent-50 hover:border-accent-600 transition-all duration-300 font-semibold transform hover:scale-105"
+                  className="border-2 border-brand-accent text-brand-accent hover:text-brand-accent/80 px-6 py-3 rounded-token-sm hover:bg-brand-accent/10 hover:border-brand-accent/80 transition-all duration-300 font-semibold transform hover:scale-105"
                   onClick={() => setShowTimBio(!showTimBio)}
                 >
                   <User className="inline-block w-4 h-4 mr-2" />
@@ -969,10 +969,10 @@ export default function App() {
 
               {/* Expanded Bio Section */}
               {showTimBio && (
-                <div className="bg-gradient-to-br from-primary-50 to-accent-50 p-8 rounded-2xl border-2 border-accent-200 shadow-xl mb-8 animate-slide-down">
+                <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm mb-8 animate-slide-down">
                   <div className="flex items-center mb-6">
-                    <User className="w-8 h-8 text-accent-600 mr-4" />
-                    <h4 className="text-2xl font-bold text-primary-900 font-heading">
+                    <User className="w-8 h-8 text-brand-accent mr-4" />
+                    <h4 className="text-2xl font-bold text-brand-primary font-heading">
                       Professional Biography - Tim J. Harmar
                     </h4>
                   </div>
@@ -980,11 +980,11 @@ export default function App() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div className="space-y-6">
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <GraduationCap className="w-5 h-5 mr-2" />
                           Educational Background
                         </h5>
-                        <div className="space-y-3 text-gray-700">
+                        <div className="space-y-3 text-text-neutral">
                           <p>
                             <strong>University of Windsor Faculty of Law (J.D.)</strong>
                             <br />
@@ -1001,11 +1001,11 @@ export default function App() {
                       </div>
 
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <Award className="w-5 h-5 mr-2" />
                           Professional Recognition
                         </h5>
-                        <div className="space-y-2 text-gray-700">
+                        <div className="space-y-2 text-text-neutral">
                           <p>• Supreme Court of Canada counsel designation</p>
                           <p>• Award-winning legal practitioner recognized for excellence</p>
                           <p>• Featured speaker at Canadian privacy law conferences</p>
@@ -1016,11 +1016,11 @@ export default function App() {
 
                     <div className="space-y-6">
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <Scale className="w-5 h-5 mr-2" />
                           Practice Areas & Expertise
                         </h5>
-                        <div className="space-y-2 text-gray-700">
+                        <div className="space-y-2 text-text-neutral">
                           <p>
                             <strong>Civil Litigation:</strong> Complex commercial disputes, contract
                             litigation, and appellate practice with a proven track record in both
@@ -1043,11 +1043,11 @@ export default function App() {
                       </div>
 
                       <div>
-                        <h5 className="text-xl font-bold text-primary-600 mb-3 flex items-center">
+                        <h5 className="text-xl font-bold text-brand-primary mb-3 flex items-center">
                           <Building2 className="w-5 h-5 mr-2" />
                           Professional Philosophy
                         </h5>
-                        <p className="text-gray-700 italic">
+                        <p className="text-text-neutral italic">
                           "My approach combines traditional legal excellence with innovative
                           technology solutions. I believe in providing clients with not just legal
                           advice, but strategic guidance that positions them for long-term success
@@ -1057,11 +1057,11 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="mt-8 p-6 bg-white rounded-xl border border-primary-200">
-                    <h5 className="text-lg font-bold text-gray-900 mb-3">
+                  <div className="mt-8 p-6 bg-surface-default rounded-token-sm border border-brand-secondary/30">
+                    <h5 className="text-lg font-bold text-brand-primary mb-3">
                       Community Involvement & Leadership
                     </h5>
-                    <p className="text-gray-700">
+                    <p className="text-text-neutral">
                       Tim is actively involved in the Northern Ontario legal community, serving as a
                       mentor to young lawyers and contributing to legal education initiatives. He
                       regularly provides pro bono services to local non-profits and startups,
@@ -1074,43 +1074,43 @@ export default function App() {
             </div>
 
             {/* Kelly Burton */}
-            <div className="bg-gradient-to-br from-trust-50 to-primary-50 p-8 rounded-2xl border border-trust-200 shadow-medium hover:shadow-xl transition-all duration-500 transform hover:scale-105 animate-slide-up delay-100">
+            <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up delay-100">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-trust-600 to-trust-700 text-white p-3 rounded-xl mr-4 shadow-medium hover:shadow-glow transition-all duration-300">
+                <div className="bg-brand-accent text-text-inverse p-3 rounded-token-sm mr-4 shadow-token-sm">
                   <UserCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-primary-900 font-heading">Kelly Burton</h3>
-                  <p className="text-trust-600 font-semibold text-lg">Legal Assistant</p>
+                  <h3 className="text-2xl font-bold text-brand-primary font-heading">Kelly Burton</h3>
+                  <p className="text-brand-accent font-semibold text-lg">Legal Assistant</p>
                 </div>
               </div>
-              <p className="text-secondary-600 mb-6 leading-relaxed">
+              <p className="text-text-neutral mb-6 leading-relaxed">
                 Kelly Burton provides dedicated support as our Legal Assistant, ensuring seamless
                 client communication and efficient case management. With expertise in legal research
                 and document preparation, Kelly plays a crucial role in our team's success.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <FileText className="text-trust-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <FileText className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Legal research and case management
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <FileText className="text-trust-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <FileText className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Document preparation and coordination
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Scale className="text-trust-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Scale className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Professional standards excellence
                   </span>
                 </div>
               </div>
               <button
-                className="w-full bg-gradient-to-r from-trust-600 to-trust-700 hover:from-trust-700 hover:to-trust-800 text-white px-4 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                className="w-full bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:kburton@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -1119,44 +1119,44 @@ export default function App() {
             </div>
 
             {/* Josh Ochoa */}
-            <div className="bg-gradient-to-br from-accent-50 to-secondary-50 p-8 rounded-2xl border border-accent-200 shadow-medium hover:shadow-xl transition-all duration-500 transform hover:scale-105 animate-slide-up delay-200">
+            <div className="bg-surface-alt p-8 rounded-token-md border border-brand-secondary/30 shadow-token-sm hover:shadow-medium transition-all duration-500 transform hover:scale-102 animate-slide-up delay-200">
               <div className="flex items-center mb-6">
-                <div className="bg-gradient-to-r from-accent-600 to-accent-700 text-white p-3 rounded-xl mr-4 shadow-medium hover:shadow-glow transition-all duration-300">
+                <div className="bg-brand-accent text-text-inverse p-3 rounded-token-sm mr-4 shadow-token-sm">
                   <Briefcase className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-primary-900 font-heading">Josh Ochoa</h3>
-                  <p className="text-accent-600 font-semibold text-lg">Office Administrator</p>
+                  <h3 className="text-2xl font-bold text-brand-primary font-heading">Josh Ochoa</h3>
+                  <p className="text-brand-accent font-semibold text-lg">Office Administrator</p>
                 </div>
               </div>
-              <p className="text-secondary-600 mb-6 leading-relaxed">
+              <p className="text-text-neutral mb-6 leading-relaxed">
                 Josh Ochoa serves as our Office Administrator, providing essential administrative
                 support and ensuring smooth daily operations. With expertise in office management
                 and client relations, Josh maintains our high standards of professional service and
                 organizational excellence.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Building2 className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Building2 className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Office operations and administration
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Phone className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Phone className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Client relations and communication
                   </span>
                 </div>
-                <div className="flex items-center bg-white p-3 rounded-lg shadow-soft">
-                  <Monitor className="text-accent-600 mr-3 w-4 h-4" />
-                  <span className="text-secondary-700 text-sm font-medium">
+                <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
+                  <Monitor className="text-brand-accent mr-3 w-4 h-4" />
+                  <span className="text-text-neutral text-sm font-medium">
                     Administrative systems management
                   </span>
                 </div>
               </div>
               <button
-                className="w-full bg-gradient-to-r from-accent-600 to-accent-700 hover:from-accent-700 hover:to-accent-800 text-white px-4 py-3 rounded-xl font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+                className="w-full bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                 onClick={() => (window.location.href = 'mailto:admin@timharmar.com')}
               >
                 <Mail className="inline-block w-4 h-4 mr-2" />
@@ -1166,32 +1166,32 @@ export default function App() {
           </div>
 
           {/* Why Choose Section */}
-          <div className="bg-gradient-to-br from-primary-800 via-primary-900 to-secondary-900 p-10 rounded-3xl text-white text-center shadow-2xl border border-accent-500/20">
+          <div className="bg-brand-primary p-10 rounded-token-md text-text-inverse text-center shadow-token-sm border border-brand-accent/20">
             <h3 className="text-3xl font-bold mb-8 font-heading">
               Why Choose Tim Harmar: Legal and Consulting Services?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
-                  <Award className="text-accent-300 w-8 h-8" />
+                <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-accent/30 transition-all duration-300 group-hover:scale-110">
+                  <Award className="text-brand-accent w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Award-winning legal expertise</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
-                  <Monitor className="text-accent-300 w-8 h-8" />
+                <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-accent/30 transition-all duration-300 group-hover:scale-110">
+                  <Monitor className="text-brand-accent w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Cutting-edge legal technology</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-accent-500/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-500/30 transition-all duration-300 group-hover:scale-110 shadow-glow">
-                  <Users className="text-accent-300 w-8 h-8" />
+                <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-accent/30 transition-all duration-300 group-hover:scale-110">
+                  <Users className="text-brand-accent w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Personalized service approach</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/30 transition-all duration-200">
-                  <Globe className="text-white w-8 h-8" />
+                <div className="w-16 h-16 bg-text-inverse/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-text-inverse/30 transition-all duration-200">
+                  <Globe className="text-text-inverse w-8 h-8" />
                 </div>
                 <span className="font-semibold text-lg">Local expertise, global perspective</span>
               </div>
