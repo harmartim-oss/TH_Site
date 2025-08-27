@@ -32,7 +32,7 @@ import {
   User,
   ExternalLink,
 } from 'lucide-react'
-import logoImage from './assets/tim_harmar_logo_updated.png'
+import logoImage from './assets/th_logo.png'
 
 // Policy Content
 const PRIVACY_POLICY = `Privacy Policy for www.timharmar.com
@@ -563,7 +563,7 @@ export default function App() {
               <img
                 src={logoImage}
                 alt="Tim Harmar: Legal and Consulting Services"
-                className="h-14 w-auto md:h-18 drop-shadow-sm"
+                className="h-16 w-auto md:h-20 drop-shadow-md"
               />
               <div className="ml-4">
                 <h1 className="text-xl md:text-2xl font-bold text-brand-primary font-heading">
@@ -1309,7 +1309,7 @@ export default function App() {
                 <img
                   src={logoImage}
                   alt="Tim Harmar: Legal and Consulting Services"
-                  className="h-16 w-auto mb-4 p-3"
+                  className="h-20 w-auto mb-4 p-2 drop-shadow-md"
                 />
                 <h3 className="text-xl font-bold mb-2 font-heading">
                   Tim Harmar: Legal and Consulting Services
