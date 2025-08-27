@@ -680,7 +680,8 @@ export const LegalResourcesLibrary = () => {
       },
       {
         title: 'Intellectual Property Guide',
-        description: 'Comprehensive guide to IP protection under Canadian law for Ontario businesses.',
+        description:
+          'Comprehensive guide to IP protection under Canadian law for Ontario businesses.',
         type: 'Guide',
         icon: '💡',
         downloadable: true,
