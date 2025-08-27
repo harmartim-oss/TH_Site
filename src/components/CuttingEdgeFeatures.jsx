@@ -541,91 +541,111 @@ export const LegalResourcesLibrary = () => {
     </style>
 </head>
 <body>
-    <h1>IP Protection Basics</h1>
-    <h2>Understanding Trademarks, Copyrights, and Trade Secrets for Your Business</h2>
+    <h1>Intellectual Property Guide</h1>
+    <h2>Understanding Trademarks, Copyrights, and Trade Secrets for Your Ontario Business</h2>
     
-    <h3>Introduction to IP</h3>
-    <p>Intellectual property refers to creations of the mind, such as inventions, designs, brands, and artistic works. Protecting IP helps prevent others from using your ideas without permission, potentially saving your business from costly disputes. The three main types relevant to most small businesses are trademarks, copyrights, and trade secrets.</p>
+    <h3>Introduction</h3>
+    <p>Intellectual property (IP) refers to creations of the mind, such as inventions, designs, brand identifiers, and creative works. Protecting your IP is critical for Ontario businesses to prevent unauthorized use, maintain competitive advantage, and avoid costly disputes. This guide, prepared by Tim Harmar Law, outlines the three main types of IP relevant to small businesses in Ontario—trademarks, copyrights, and trade secrets—under Canadian law, including the Trademarks Act (R.S.C., 1985, c. T-13), Copyright Act (R.S.C., 1985, c. C-42), and common law principles for trade secrets.</p>
+    
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> This guide is for informational purposes only and does not constitute legal advice. Contact Tim Harmar Law for personalized legal advice tailored to your business.</p>
+    </div>
     
     <div class="section">
         <h3>1. Trademarks</h3>
+        
         <div class="subsection">
-            <h4>What They Are:</h4>
-            <p>Trademarks protect brand identifiers like names, logos, slogans, and symbols that distinguish your goods/services from others. Examples: Your company name, product logos, or taglines like "Just Do It."</p>
+            <h4>What They Are</h4>
+            <p>Trademarks protect brand identifiers that distinguish your goods or services from others, such as business names, logos, slogans, or symbols. Examples include your company name, product logos, or taglines like "Tim Hortons Always Fresh." In Canada, trademarks are governed by the Trademarks Act and administered by the Canadian Intellectual Property Office (CIPO).</p>
         </div>
         
         <div class="subsection">
-            <h4>How to Protect:</h4>
+            <h4>How to Protect</h4>
             <ul>
-                <li>Conduct a search: Use the USPTO database or tools like Google to check for existing marks</li>
-                <li>Register: Federal registration (via USPTO) provides nationwide protection</li>
-                <li>Use properly: Always use ™ for unregistered marks or ® for registered</li>
-                <li>Monitor and enforce: Watch for infringers and send cease-and-desist letters if needed</li>
+                <li><strong>Conduct a Search:</strong> Before using a trademark, search the CIPO Trademarks Database (available at www.canada.ca/en/services/business/ip/trademarks) to ensure it's not already registered or in use. Additional searches via Google or the Ontario Business Registry can help identify unregistered marks protected by common law.</li>
+                <li><strong>Register with CIPO:</strong> Registering your trademark with CIPO provides nationwide protection for 10 years (renewable). Registration strengthens your legal rights, especially in disputes. File online at www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/h_wr00002.html.</li>
+                <li><strong>Use Properly:</strong> Use ™ for unregistered trademarks or ® for registered marks to signal your claim. Consistent use in commerce (e.g., on packaging, websites) strengthens common law rights, even without registration.</li>
+                <li><strong>Monitor and Enforce:</strong> Regularly monitor for unauthorized use. If infringement occurs, consult a lawyer to send a cease-and-desist letter or pursue action under the Trademarks Act.</li>
             </ul>
         </div>
         
         <div class="subsection">
-            <h4>Common Pitfalls:</h4>
-            <p>Choosing generic terms (e.g., "Coffee Shop") that can't be trademarked, or not renewing registrations (every 10 years).</p>
+            <h4>Common Pitfalls</h4>
+            <ul>
+                <li>Choosing generic or descriptive terms (e.g., "Ontario Legal Services") that cannot be registered under s. 12 of the Trademarks Act.</li>
+                <li>Failing to renew registrations every 10 years, as required by s. 46.</li>
+                <li>Not documenting use of unregistered marks, which weakens common law claims in Ontario.</li>
+            </ul>
         </div>
     </div>
     
     <div class="section">
         <h3>2. Copyrights</h3>
+        
         <div class="subsection">
-            <h4>What They Are:</h4>
-            <p>Copyrights protect original works of authorship fixed in a tangible medium, such as writings, music, art, software code, websites, photos, and videos. They don't protect ideas, only the expression of ideas.</p>
+            <h4>What They Are</h4>
+            <p>Copyright protects original works of authorship fixed in a tangible medium, such as writings, music, artwork, software, websites, photographs, and videos. It covers the expression of ideas, not the ideas themselves. In Canada, copyright is governed by the Copyright Act and automatically applies upon creation.</p>
         </div>
         
         <div class="subsection">
-            <h4>How to Protect:</h4>
+            <h4>How to Protect</h4>
             <ul>
-                <li>Automatic protection: Copyright exists from the moment of creation—no registration needed</li>
-                <li>Register: With the U.S. Copyright Office for stronger enforcement</li>
-                <li>Document creation: Keep records of drafts, dates, and authors</li>
-                <li>Licenses and contracts: Use agreements for collaborations or employee works</li>
+                <li><strong>Automatic Protection:</strong> Under s. 5 of the Copyright Act, copyright exists from the moment a work is created in a fixed form (e.g., written, recorded). No registration is required, but it lasts for the creator's lifetime plus 70 years (as amended in 2022).</li>
+                <li><strong>Register with CIPO:</strong> Voluntary registration (via www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/h_wr00003.html) provides a certificate that strengthens enforcement in disputes, per s. 53. It's recommended for high-value works.</li>
+                <li><strong>Document Creation:</strong> Keep records of drafts, creation dates, and authorship to prove ownership, especially in disputes.</li>
+                <li><strong>Use Agreements:</strong> For works created by employees or contractors, use contracts to clarify ownership (e.g., "work-made-for-hire" agreements). Under s. 13(3), employer ownership applies to employee-created works in the course of employment.</li>
+                <li><strong>Display Notice:</strong> Include a copyright notice (e.g., © 2025 Tim Harmar Law) to deter infringement, though not required under the Copyright Act.</li>
             </ul>
         </div>
         
         <div class="subsection">
-            <h4>Common Pitfalls:</h4>
-            <p>Assuming "fair use" covers everything (it's limited), or using others' works without permission.</p>
+            <h4>Common Pitfalls</h4>
+            <ul>
+                <li>Assuming "fair dealing" (Canada's equivalent to fair use, per s. 29) allows broad use of others' works. Fair dealing is limited to purposes like research, private study, or criticism.</li>
+                <li>Using third-party content (e.g., images, music) without permission or proper licensing, risking infringement claims.</li>
+            </ul>
         </div>
     </div>
     
     <div class="section">
         <h3>3. Trade Secrets</h3>
+        
         <div class="subsection">
-            <h4>What They Are:</h4>
-            <p>Confidential business information that provides a competitive advantage, such as formulas, processes, customer lists, recipes, or algorithms. Examples: Coca-Cola's formula or Google's search algorithm.</p>
+            <h4>What They Are</h4>
+            <p>Trade secrets are confidential business information that provides a competitive edge, such as client lists, business processes, recipes, or proprietary methods. Examples include a law firm's client database or a unique marketing strategy. In Ontario, trade secrets are protected under common law, not a specific statute, though misappropriation may violate contracts or tort law (e.g., breach of confidence).</p>
         </div>
         
         <div class="subsection">
-            <h4>How to Protect:</h4>
+            <h4>How to Protect</h4>
             <ul>
-                <li>Identify secrets: Label documents as "confidential" and restrict access</li>
-                <li>Use NDAs: Require non-disclosure agreements for employees, contractors, and partners</li>
-                <li>Security measures: Implement passwords, restricted access, employee training</li>
-                <li>Enforce: Sue for misappropriation if stolen (e.g., by ex-employees)</li>
+                <li><strong>Identify Secrets:</strong> Clearly mark confidential information as "confidential" and limit access to authorized personnel only.</li>
+                <li><strong>Use Non-Disclosure Agreements (NDAs):</strong> Require employees, contractors, and partners to sign NDAs to protect sensitive information. Ensure NDAs comply with Ontario contract law principles.</li>
+                <li><strong>Implement Security Measures:</strong> Use passwords, encryption, and restricted access to safeguard data. Train employees on confidentiality obligations, aligning with Law Society of Ontario guidelines for client data protection.</li>
+                <li><strong>Enforce Rights:</strong> If a trade secret is misappropriated (e.g., by a former employee), pursue legal remedies like injunctions or damages through Ontario courts for breach of confidence or contract.</li>
             </ul>
         </div>
         
         <div class="subsection">
-            <h4>Common Pitfalls:</h4>
-            <p>Not having written policies, or publicly disclosing info, which destroys secrecy.</p>
+            <h4>Common Pitfalls</h4>
+            <ul>
+                <li>Failing to use written NDAs, which weakens legal recourse.</li>
+                <li>Publicly disclosing confidential information (e.g., on social media), which destroys trade secret status under common law.</li>
+                <li>Not training employees on confidentiality, risking accidental leaks.</li>
+            </ul>
         </div>
     </div>
     
-    <h3>Next Steps for Your Business</h3>
+    <h3>Next Steps for Your Ontario Business</h3>
     <ul>
-        <li>Audit your IP: List assets and assess risks</li>
-        <li>Develop an IP strategy: Prioritize protections based on business needs</li>
-        <li>Seek professional help: A lawyer can handle searches, registrations, and contracts</li>
-        <li>Stay informed: IP laws evolve—monitor changes via resources like USPTO.gov</li>
+        <li><strong>Audit Your IP:</strong> Identify all IP assets (e.g., logos, website content, client lists) and assess risks of infringement or loss.</li>
+        <li><strong>Develop an IP Strategy:</strong> Prioritize protections based on your business goals. For example, register key trademarks with CIPO, document copyrightable works, and secure trade secrets with NDAs.</li>
+        <li><strong>Seek Professional Help:</strong> Consult Tim Harmar Law for trademark searches, copyright registration, or drafting NDAs tailored to Ontario law. We can also assist with enforcement actions.</li>
+        <li><strong>Stay Informed:</strong> Monitor changes to Canadian IP law through CIPO (www.ic.gc.ca) or the Law Society of Ontario for professional obligations.</li>
     </ul>
     
     <div class="disclaimer">
-        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar: Legal and Consulting Services – For informational purposes only. This is not legal advice.</p>
+        <h4>Disclaimer</h4>
+        <p>This guide, prepared by Tim Harmar Law, is for informational purposes only and does not constitute legal advice. For specific legal guidance, contact our firm to discuss your needs.</p>
     </div>
     
     <div class="footer">
@@ -659,8 +679,8 @@ export const LegalResourcesLibrary = () => {
         downloadAction: openContractChecklist,
       },
       {
-        title: 'IP Protection Basics',
-        description: 'Understanding trademarks, copyrights, and trade secrets for your business.',
+        title: 'Intellectual Property Guide',
+        description: 'Comprehensive guide to IP protection under Canadian law for Ontario businesses.',
         type: 'Guide',
         icon: '💡',
         downloadable: true,
