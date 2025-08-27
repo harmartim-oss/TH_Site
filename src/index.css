@@ -34,35 +34,35 @@ h1,
 h2 {
   font-weight: 800; /* Increased from 700 to 800 */
   letter-spacing: -0.5px; /* Tightened letter-spacing */
-  color: #0A2351; /* Ensure headings use the primary brand color */
+  color: #0a2351; /* Ensure headings use the primary brand color */
 }
 
 h3,
 h4 {
   font-weight: 700;
-  color: #0A2351;
+  color: #0a2351;
 }
 
 /* Enhanced visual elements and gradients */
 .bg-gradient-brand-subtle {
-  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
 }
 
 .bg-gradient-brand-primary {
-  background: linear-gradient(135deg, #0A2351 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #0a2351 0%, #1e40af 100%);
 }
 
 .bg-gradient-brand-accent {
-  background: linear-gradient(135deg, #17907F 0%, #059669 100%);
+  background: linear-gradient(135deg, #17907f 0%, #059669 100%);
 }
 
 .bg-gradient-surface-enhanced {
-  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
 }
 
 /* Enhanced card styling */
 .card-enhanced {
-  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
   border: 1px solid rgba(203, 213, 225, 0.3);
   transition: all 0.3s ease;
 }
@@ -74,7 +74,7 @@ h4 {
 
 /* Enhanced text gradients */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #0A2351 0%, #17907F 100%);
+  background: linear-gradient(135deg, #0a2351 0%, #17907f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -82,7 +82,9 @@ h4 {
 
 /* Enhanced interactive elements */
 .interactive-scale {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .interactive-scale:hover {
