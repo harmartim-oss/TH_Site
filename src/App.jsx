@@ -563,7 +563,7 @@ export default function App() {
               <img
                 src={logoImage}
                 alt="Tim Harmar: Legal and Consulting Services"
-                className="h-12 w-auto md:h-16 drop-shadow-sm"
+                className="h-14 w-auto md:h-18 drop-shadow-sm"
               />
               <div className="ml-4">
                 <h1 className="text-xl md:text-2xl font-bold text-brand-primary font-heading">
@@ -674,7 +674,7 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-surface-default text-text-primary py-24 md:py-32 lg:py-40 overflow-hidden">
+      <section className="relative bg-surface-default text-text-primary py-30 md:py-40 lg:py-48 overflow-hidden">
         {/* Optional 5% opacity shield-outline watermark pattern */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-brand-primary rounded-full"></div>
@@ -689,7 +689,7 @@ export default function App() {
                 Excellence in Legal Solutions
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-brand-secondary">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-brand-secondary-light">
                 Award-winning legal expertise specialized in civil litigation, privacy and
                 cybersecurity law, intellectual property, and business strategy consulting in Sault
                 Ste. Marie, Ontario.
@@ -713,7 +713,7 @@ export default function App() {
             </div>
 
             {/* Right Column: Circular headshot */}
-            <div className="flex justify-center lg:justify-end animate-slide-up delay-100">
+            <div className="flex justify-center lg:justify-end animate-slide-up delay-100 mr-8">
               <div className="relative">
                 <img
                   src={logoImage}
@@ -735,13 +735,13 @@ export default function App() {
             <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
               Comprehensive Legal Services
             </h2>
-            <p className="text-xl text-brand-secondary max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
               Award-winning legal expertise with cutting-edge solutions for your business needs.
             </p>
             <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto">
             {[
               {
                 title: 'Civil Litigation',
@@ -799,7 +799,7 @@ export default function App() {
               return (
                 <div
                   key={index}
-                  className="group bg-surface-default p-8 rounded-token-md hover:shadow-medium transition-all duration-500 cursor-pointer border border-brand-secondary/30 hover:border-brand-accent transform hover:scale-102 animate-slide-up"
+                  className="group bg-surface-default p-8 rounded-token-md hover:shadow-service-card-hover transition-all duration-500 cursor-pointer border border-brand-secondary/30 hover:border-brand-accent transform hover:scale-102 animate-slide-up max-w-[340px] mx-auto"
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => setExpandedService(expandedService === index ? null : index)}
                 >
@@ -870,7 +870,7 @@ export default function App() {
             <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
               Meet Our Team
             </h2>
-            <p className="text-xl text-brand-secondary max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
               Our dedicated legal professionals are committed to providing exceptional service and
               expertise to every client.
             </p>
@@ -1247,7 +1247,7 @@ export default function App() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-brand-primary">
               Contact Information
             </h2>
-            <p className="text-xl text-brand-secondary max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-brand-secondary-light max-w-3xl mx-auto leading-relaxed">
               Get in touch with our legal team for expert guidance and consultation.
             </p>
             <div className="w-24 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
@@ -1298,12 +1298,12 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Stacked Logo Column */}
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 logo-col" style={{ flex: '1.5' }}>
               <div className="mb-6">
                 <img
                   src={logoImage}
                   alt="Tim Harmar: Legal and Consulting Services"
-                  className="h-16 w-auto mb-4"
+                  className="h-16 w-auto mb-4 p-3"
                 />
                 <h3 className="text-xl font-bold mb-2 font-heading">
                   Tim Harmar: Legal and Consulting Services
@@ -1333,7 +1333,7 @@ export default function App() {
                 <Scale className="w-5 h-5 mr-2 text-brand-accent" />
                 Services
               </h4>
-              <ul className="space-y-3 text-text-inverse/90">
+              <ul className="space-y-3 text-text-inverse/90 text-sm">
                 <li>
                   <a
                     href="#services"

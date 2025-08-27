@@ -8,7 +8,8 @@ export default {
         brand: {
           primary: '#0A2351', // Deep Blue
           secondary: '#C5CBD3', // Cool Platinum
-          accent: '#1FA295', // Emerald Teal
+          'secondary-light': '#D1D6DC', // Light Cool Platinum for taglines
+          accent: '#17907F', // Darkened Emerald Teal for CTAs and link hover states
         },
         surface: {
           default: '#FFFFFF', // White
@@ -52,8 +53,8 @@ export default {
           200: '#99f6e4',
           300: '#5eead4',
           400: '#2dd4bf',
-          500: '#1FA295', // Updated to Emerald Teal
-          600: '#1FA295',
+          500: '#17907F', // Updated to Darkened Emerald Teal
+          600: '#17907F',
           700: '#0f766e',
           800: '#115e59',
           900: '#134e4a',
@@ -182,6 +183,7 @@ export default {
       boxShadow: {
         // Design tokens for shadows
         'token-sm': '0 2px 8px rgba(0,0,0,0.06)', // For cards, sticky header
+        'service-card-hover': '0 4px 14px rgba(0,0,0,0.08)', // For service card hover
         // Existing shadows
         soft: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
         medium: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
