@@ -1432,7 +1432,7 @@ export default function App() {
               <p className="text-text-inverse/70 text-center md:text-left mb-4 md:mb-0 text-sm">
                 &copy; 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
               </p>
-              <div className="flex items-center space-x-6 text-sm text-text-inverse/70">
+              <div className="flex items-center space-x-6 text-sm text-text-inverse">
                 <button
                   onClick={() => openPolicyModal('privacy')}
                   className="hover:text-brand-accent transition-colors cursor-pointer"
