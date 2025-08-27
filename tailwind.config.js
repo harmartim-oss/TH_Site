@@ -149,17 +149,17 @@ export default {
         '9xl': ['8rem', { lineHeight: '1' }],
       },
       scale: {
-        '0': '0',
-        '50': '.5',
-        '75': '.75',
-        '90': '.9',
-        '95': '.95',
-        '100': '1',
-        '102': '1.02',
-        '105': '1.05',
-        '110': '1.1',
-        '125': '1.25',
-        '150': '1.5',
+        0: '0',
+        50: '.5',
+        75: '.75',
+        90: '.9',
+        95: '.95',
+        100: '1',
+        102: '1.02',
+        105: '1.05',
+        110: '1.1',
+        125: '1.25',
+        150: '1.5',
       },
       spacing: {
         // Design token: space.base = 8px
@@ -169,15 +169,15 @@ export default {
         // Design tokens for radius
         'token-sm': '4px', // For buttons, chips
         'token-md': '8px', // For cards
-        'none': '0px',
-        'sm': '0.125rem',
+        none: '0px',
+        sm: '0.125rem',
         DEFAULT: '0.25rem',
-        'md': '0.375rem',
-        'lg': '0.5rem',
-        'xl': '0.75rem',
+        md: '0.375rem',
+        lg: '0.5rem',
+        xl: '0.75rem',
         '2xl': '1rem',
         '3xl': '1.5rem',
-        'full': '9999px',
+        full: '9999px',
       },
       boxShadow: {
         // Design tokens for shadows

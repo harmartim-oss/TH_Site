@@ -688,7 +688,7 @@ export default function App() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold mb-6 font-heading leading-tight text-brand-primary">
                 Excellence in Legal Solutions
               </h1>
-              
+
               <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-brand-secondary">
                 Award-winning legal expertise specialized in civil litigation, privacy and
                 cybersecurity law, intellectual property, and business strategy consulting in Sault
@@ -933,7 +933,9 @@ export default function App() {
                 <div className="space-y-4">
                   <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
                     <Scale className="text-brand-accent mr-3 w-5 h-5" />
-                    <span className="text-text-neutral font-medium">Civil Litigation Specialist</span>
+                    <span className="text-text-neutral font-medium">
+                      Civil Litigation Specialist
+                    </span>
                   </div>
                   <div className="flex items-center bg-surface-default p-3 rounded-token-sm shadow-token-sm">
                     <Shield className="text-brand-accent mr-3 w-5 h-5" />
@@ -1080,7 +1082,9 @@ export default function App() {
                   <UserCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-brand-primary font-heading">Kelly Burton</h3>
+                  <h3 className="text-2xl font-bold text-brand-primary font-heading">
+                    Kelly Burton
+                  </h3>
                   <p className="text-brand-accent font-semibold text-lg">Legal Assistant</p>
                 </div>
               </div>
@@ -1207,9 +1211,10 @@ export default function App() {
             Ready to Get Started?
           </h2>
           <p className="text-xl mb-8 text-text-inverse/90 leading-relaxed">
-            Contact us today for a consultation and discover how our legal expertise can help your business thrive.
+            Contact us today for a consultation and discover how our legal expertise can help your
+            business thrive.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
               className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 active:scale-95"
@@ -1222,7 +1227,7 @@ export default function App() {
               <Calendar className="inline-block w-5 h-5 mr-3" aria-hidden="true" />
               Schedule Free Consultation
             </button>
-            
+
             <a
               href="tel:+17059435049"
               className="text-text-inverse hover:text-brand-accent border-b-2 border-transparent hover:border-brand-accent font-semibold text-lg transition-all duration-300"
@@ -1236,10 +1241,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-24 bg-surface-alt"
-      >
+      <section id="contact" className="py-24 bg-surface-alt">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-brand-primary">
@@ -1324,7 +1326,7 @@ export default function App() {
                 </a>
               </div>
             </div>
-            
+
             {/* Quick Links Column */}
             <div>
               <h4 className="text-xl font-bold mb-6 font-heading flex items-center">
@@ -1379,7 +1381,7 @@ export default function App() {
                 </li>
               </ul>
             </div>
-            
+
             {/* Contact Info Column */}
             <div>
               <h4 className="text-xl font-bold mb-6 font-heading flex items-center">
@@ -1400,7 +1402,7 @@ export default function App() {
                   kburton@timharmar.com
                 </li>
               </ul>
-              
+
               {/* Clear consultation pathway */}
               <div className="mt-6">
                 <button
@@ -1417,7 +1419,7 @@ export default function App() {
               </div>
             </div>
           </div>
-          
+
           {/* Bottom bar with legal links */}
           <div className="border-t border-text-inverse/20 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
