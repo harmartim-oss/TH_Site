@@ -128,148 +128,399 @@ For questions, concerns, or to exercise your rights, contact our Privacy Officer
 
 You may also contact the Office of the Privacy Commissioner of Canada at www.priv.gc.ca or 1-800-282-1376 for complaints.`
 
-const TERMS_OF_SERVICE = `Terms of Service for www.timharmar.com
+const TERMS_OF_SERVICE = `Terms of Use for www.timharmar.com
 
-Last Updated: August 26, 2025
+Last Updated: January 27, 2025
 
-Welcome to Tim Harmar: Legal and Consulting Services ("we," "us," or "our"). These Terms of Service ("Terms") govern your use of our website www.timharmar.com and related services. By accessing or using our website, you agree to be bound by these Terms and our Privacy Policy.
+Welcome to Tim Harmar: Legal and Consulting Services ("we," "us," or "our"). These Terms of Use ("Terms") govern your access to and use of our website www.timharmar.com and all related services provided by our law firm. By accessing or using our website, you agree to be bound by these Terms and our Privacy Policy, which is incorporated herein by reference.
 
-1. Acceptance of Terms
+1. ACCEPTANCE OF TERMS
 
-By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, please do not use our website.
+By accessing, browsing, or using this website, you acknowledge that you have read, understood, and agree to be bound by these Terms and all applicable laws and regulations in Ontario, Canada. If you do not agree to these Terms, you must not use this website.
 
-2. Legal Services
+2. ABOUT OUR FIRM
 
-Tim Harmar: Legal and Consulting Services is a law firm licensed to practice in Ontario, Canada. Our services include:
-• Civil litigation
+Tim Harmar: Legal and Consulting Services is a law firm licensed to practice law in Ontario, Canada, under the regulatory authority of the Law Society of Ontario (LSO). Our principal lawyer, Tim J. Harmar, is a member in good standing with the LSO.
+
+Our areas of practice include:
+• Civil litigation and dispute resolution
 • Privacy and cybersecurity law
 • Intellectual property law
-• Business law and startup consulting
-• Legal consulting services
+• Business law and corporate counsel
+• Business startup and strategy consulting
+• General legal consulting services
 
-3. No Attorney-Client Relationship
+3. NO SOLICITOR-CLIENT RELATIONSHIP
 
-Use of this website does not create an attorney-client relationship. An attorney-client relationship is established only through a formal engagement agreement signed by both parties. Information provided through this website is for general informational purposes only and does not constitute legal advice.
+IMPORTANT: Use of this website does not create a solicitor-client relationship between you and Tim Harmar: Legal and Consulting Services. A solicitor-client relationship is established only through:
+a) A signed retainer agreement or engagement letter
+b) Formal acceptance of representation by our firm
+c) Payment of a retainer fee, where applicable
 
-4. Confidentiality
+Information provided on this website is for general informational purposes only and does not constitute legal advice. You should not act or refrain from acting based solely on information from this website without seeking appropriate legal counsel.
 
-While we take measures to protect the security of our website, communications through this website are not guaranteed to be confidential. Do not send sensitive or confidential information through this website until an attorney-client relationship has been established.
+4. CONFIDENTIALITY AND COMMUNICATIONS
 
-5. Website Use and Restrictions
+Communications sent through this website, including contact forms and emails, are not confidential and do not enjoy solicitor-client privilege until a formal solicitor-client relationship has been established. 
 
-You may use our website for lawful purposes only. You agree not to:
-• Use the website in any way that violates applicable laws or regulations
-• Transmit any material that is defamatory, offensive, or inappropriate
-• Attempt to gain unauthorized access to our systems
-• Interfere with the proper functioning of the website
-• Use automated tools to access or copy content without permission
+Do not send confidential, sensitive, or privileged information through:
+• Contact forms on this website
+• Unsecured email
+• Public messaging systems
 
-6. Intellectual Property
+For secure communications, please contact us directly to establish proper confidential communication channels.
 
-All content on this website, including text, graphics, logos, and software, is owned by Tim Harmar: Legal and Consulting Services or our licensors and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our written permission.
+5. WEBSITE USE AND PROHIBITED CONDUCT
 
-7. Third-Party Links
+You may use our website for lawful purposes consistent with these Terms. You agree NOT to:
 
-Our website may contain links to third-party websites. We are not responsible for the content, privacy practices, or terms of use of these external sites. Your use of third-party websites is at your own risk.
+a) Use the website for any unlawful purpose or in violation of any local, provincial, or federal laws
+b) Transmit any content that is defamatory, harassing, threatening, or obscene
+c) Infringe on intellectual property rights of any party
+d) Attempt to gain unauthorized access to our systems, networks, or accounts
+e) Interfere with or disrupt the website's functionality or servers
+f) Use automated tools, bots, or scrapers to access or collect information
+g) Distribute malware, viruses, or harmful code
+h) Impersonate our firm or any of our lawyers or staff
 
-8. Disclaimers
+6. INTELLECTUAL PROPERTY RIGHTS
 
-TO THE FULLEST EXTENT PERMITTED BY LAW:
-• Our website is provided "as is" without warranties of any kind
-• We do not guarantee the accuracy, completeness, or timeliness of information
-• We are not liable for any damages arising from your use of the website
-• Information on this website may not reflect the most current legal developments
+All content on this website, including but not limited to:
+• Text, articles, and written materials
+• Graphics, images, and multimedia content
+• Website design and layout
+• Software and source code
+• Trademarks and service marks
+• Legal resources and guides
 
-9. Limitation of Liability
+Is owned by Tim Harmar: Legal and Consulting Services or our licensors and is protected by Canadian copyright law, trademark law, and other intellectual property laws.
 
-In no event shall Tim Harmar: Legal and Consulting Services be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website, even if we have been advised of the possibility of such damages.
+You may view and print content for personal, non-commercial use only. You may not reproduce, distribute, modify, create derivative works, publicly display, or commercially exploit any content without our express written permission.
 
-10. Governing Law
+7. THIRD-PARTY LINKS AND RESOURCES
 
-These Terms are governed by the laws of Ontario, Canada. Any disputes arising from these Terms or your use of our website shall be resolved in the courts of Ontario.
+Our website may contain links to third-party websites, legal databases, government resources, or other external sites. These links are provided for convenience only. We do not:
+• Endorse or control third-party content
+• Guarantee the accuracy of external information
+• Accept responsibility for third-party privacy practices
+• Warrant the security of external websites
 
-11. Changes to Terms
+Your use of third-party websites is entirely at your own risk and subject to their terms of use.
 
-We reserve the right to update these Terms at any time. Changes will be posted on this page with an updated "Last Updated" date. Your continued use of the website after changes constitutes acceptance of the new Terms.
+8. DISCLAIMERS AND LIMITATIONS
 
-12. Contact Information
+TO THE MAXIMUM EXTENT PERMITTED BY ONTARIO LAW:
 
-For questions about these Terms, please contact us at:
+a) WEBSITE PROVIDED "AS IS": This website is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied.
+
+b) NO GUARANTEE OF ACCURACY: We do not warrant that information on this website is accurate, complete, current, or reliable. Legal information may become outdated due to changes in law.
+
+c) NO GUARANTEE OF AVAILABILITY: We do not guarantee uninterrupted access to this website or that it will be error-free.
+
+d) PROFESSIONAL OUTCOMES: We cannot guarantee any specific legal outcomes or results. Success in legal matters depends on numerous factors including applicable law, facts, judicial discretion, and opposing parties.
+
+9. LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY ONTARIO LAW:
+
+Tim Harmar: Legal and Consulting Services shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from:
+• Your use of or inability to use this website
+• Any content or information obtained through this website
+• Unauthorized access to or alteration of your transmissions or data
+• Statements or conduct of any third party on the website
+• Any other matter relating to this website or our services
+
+This limitation applies regardless of the theory of liability (contract, tort, negligence, strict liability, or otherwise) and even if we have been advised of the possibility of such damages.
+
+10. INDEMNIFICATION
+
+You agree to indemnify, defend, and hold harmless Tim Harmar: Legal and Consulting Services, our lawyers, employees, and agents from any claims, losses, damages, liabilities, costs, and expenses (including reasonable legal fees) arising from:
+• Your use of this website
+• Your violation of these Terms
+• Your violation of any rights of another party
+• Any content you submit or transmit through this website
+
+11. GOVERNING LAW AND JURISDICTION
+
+These Terms are governed by and construed in accordance with the laws of Ontario, Canada, without regard to conflict of law principles.
+
+Any legal action or proceeding arising under these Terms shall be brought exclusively in the courts of Ontario, and you hereby consent to the personal jurisdiction of such courts.
+
+12. PRIVACY AND DATA PROTECTION
+
+Your privacy is important to us. Our collection, use, and disclosure of personal information is governed by our Privacy Policy, which complies with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Ontario privacy laws.
+
+13. CHANGES TO THESE TERMS
+
+We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting on this website with an updated "Last Updated" date. Your continued use of the website after changes constitutes acceptance of the modified Terms.
+
+We encourage you to review these Terms periodically to stay informed of any updates.
+
+14. ACCESSIBILITY
+
+We are committed to ensuring our website is accessible to persons with disabilities. If you experience difficulty accessing any part of our website, please contact us for assistance.
+
+15. SEVERABILITY
+
+If any provision of these Terms is found to be unenforceable or invalid by a court of competent jurisdiction, that provision shall be severed, and the remaining provisions shall remain in full force and effect.
+
+16. ENTIRE AGREEMENT
+
+These Terms, together with our Privacy Policy, constitute the entire agreement between you and Tim Harmar: Legal and Consulting Services regarding use of this website.
+
+17. CONTACT INFORMATION
+
+For questions about these Terms of Use or our legal services:
+
 Tim Harmar: Legal and Consulting Services
-Email: info@timharmar.com
+Sault Ste. Marie, Ontario, Canada
+Email: legal@timharmar.com
 Phone: +1 (705) 943-5049
+Website: www.timharmar.com
 
-If you have legal questions or need representation, please contact us to schedule a consultation.`
+For immediate legal consultation, please call during business hours or submit a consultation request through our secure contact form.
+
+© 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.`
 
 const LEGAL_NOTICES = `Legal Notices for www.timharmar.com
 
-Last Updated: August 26, 2025
+Last Updated: January 27, 2025
 
-1. Professional Licensing
+IMPORTANT LEGAL INFORMATION FOR WEBSITE USERS
 
-Tim Harmar is a licensed lawyer in good standing with the Law Society of Ontario (LSO). License details are available through the LSO directory at lso.ca.
+1. PROFESSIONAL LICENSING AND REGULATORY AUTHORITY
 
-2. Jurisdictional Limitations
+Tim J. Harmar is a lawyer licensed to practice law in Ontario, Canada, and is a member in good standing with the Law Society of Ontario (LSO). 
 
-Our legal services are provided in accordance with Ontario law and regulations. We are not licensed to practice law in other jurisdictions unless specifically noted. Legal advice provided is based on Ontario and Canadian law.
+License Information:
+• Law Society of Ontario Member Number: [Available upon request]
+• Current practicing certificate issued by the LSO
+• Professional liability insurance maintained as required by LSO regulations
+• Member directory information available at: lso.ca
 
-3. Language of Service
+The Law Society of Ontario regulates the practice of law in Ontario and establishes professional standards for lawyers. For information about our regulatory obligations, visit lso.ca.
 
-Services are provided primarily in English. French language services may be available upon request, subject to availability.
+2. JURISDICTIONAL SCOPE AND LIMITATIONS
 
-4. Professional Standards
+ONTARIO JURISDICTION: Our legal services are provided in accordance with Ontario and Canadian federal law. Tim Harmar: Legal and Consulting Services is licensed to practice law only in Ontario, Canada.
 
-Our practice adheres to the Rules of Professional Conduct established by the Law Society of Ontario. We maintain professional liability insurance as required by the LSO.
+MULTI-JURISDICTIONAL MATTERS: We may provide legal services in other Canadian provinces through:
+• Temporary admission for specific matters (where permitted)
+• Association with local counsel
+• Referral to qualified lawyers in other jurisdictions
 
-5. Fee Structure and Billing
+INTERNATIONAL MATTERS: For matters involving foreign law, we work with qualified international counsel or provide referrals to appropriate legal professionals.
 
-Legal fees are established by written agreement. We provide transparent billing practices and detailed statements. Payment terms and methods are outlined in our engagement letters.
+LIMITATION NOTICE: Legal advice and representation are provided based on Ontario and Canadian federal law. We do not provide advice on laws of other countries or provinces unless specifically qualified to do so.
 
-6. Conflict of Interest
+3. PROFESSIONAL STANDARDS AND CONDUCT
 
-We maintain strict conflict-checking procedures to ensure we can provide loyal and competent representation. We will identify and address any potential conflicts before accepting new matters.
+Our law firm operates in strict accordance with:
+• Law Society of Ontario Rules of Professional Conduct
+• Canadian Bar Association Code of Professional Conduct
+• Provincial and federal laws governing legal practice
+• Professional confidentiality and privilege requirements
 
-7. File Retention
+PROFESSIONAL OBLIGATIONS include:
+• Duty of loyalty to clients
+• Competent representation
+• Confidentiality protection
+• Conflict of interest management
+• Proper client fund management
+• Continuing legal education requirements
 
-Client files are retained in accordance with LSO guidelines, typically for a minimum of 7-15 years depending on the matter type. Electronic records are maintained securely and backed up regularly.
+4. LANGUAGE OF SERVICE
 
-8. Accessibility
+PRIMARY LANGUAGE: Legal services are provided primarily in English, which is the working language of our firm.
 
-We are committed to providing accessible services. If you require accommodation to access our services, please contact us to discuss available options.
+FRENCH LANGUAGE SERVICES: As required under the French Language Services Act (Ontario), we can arrange for French language legal services upon request, subject to:
+• Availability of qualified French-speaking counsel
+• Nature and complexity of the legal matter
+• Advance notice requirements
 
-9. Complaints Process
+TRANSLATION SERVICES: For clients requiring document translation or interpretation in other languages, we can provide referrals to certified translation services at the client's expense.
 
-If you have concerns about our services, please contact us directly. If issues cannot be resolved, you may contact the Law Society of Ontario's complaints process at lso.ca.
+5. FEE STRUCTURE AND BILLING TRANSPARENCY
 
-10. Professional Associations
+WRITTEN FEE AGREEMENTS: All legal fees are established by written retainer agreement or engagement letter before commencing legal services.
 
-Tim Harmar is a member of:
-• Law Society of Ontario
+BILLING PRACTICES:
+• Transparent hourly rates or fixed fee arrangements
+• Detailed time records and expense tracking
+• Regular billing statements with clear descriptions
+• HST (Harmonized Sales Tax) applied as required by law
+• Trust account management for client funds
+
+PAYMENT TERMS: Payment terms, accepted methods, and collection procedures are outlined in our retainer agreements.
+
+FEE DISPUTES: Clients have the right to seek fee assessment through the Law Society of Ontario if fee disputes cannot be resolved directly.
+
+6. CONFLICT OF INTEREST MANAGEMENT
+
+CONFLICT CHECKING: We maintain comprehensive conflict-checking procedures using professional software systems to identify potential conflicts before accepting new matters.
+
+CONFLICT RESOLUTION: When conflicts are identified, we will:
+• Decline representation if conflicts cannot be resolved
+• Seek written consent from affected parties where appropriate
+• Implement appropriate safeguards (Chinese walls) when permitted
+• Withdraw from representation if conflicts develop during retainer
+
+CONFLICT TYPES include:
+• Client vs. client conflicts
+• Personal interest conflicts
+• Business relationship conflicts
+• Former client conflicts
+
+7. CLIENT FILE MANAGEMENT AND RETENTION
+
+RETENTION PERIODS: Client files are retained in accordance with Law Society of Ontario guidelines:
+• Active files: Duration of retainer plus applicable limitation periods
+• Closed files: Minimum 7-15 years depending on matter type
+• Will and estate files: Permanent retention recommended
+• Real estate files: 15+ years or as required by law
+
+ELECTRONIC RECORDS: Digital files are maintained with:
+• Secure cloud storage with Canadian data residency
+• Regular backup procedures
+• Access controls and audit trails
+• Encryption for sensitive documents
+
+FILE RETRIEVAL: Former clients may request file copies subject to:
+• Payment of outstanding fees
+• Reasonable copying costs
+• Applicable limitation periods
+• Confidentiality obligations to other parties
+
+8. ACCESSIBILITY AND ACCOMMODATION
+
+ACCESSIBILITY COMMITMENT: We are committed to providing accessible legal services in compliance with the Accessibility for Ontarians with Disabilities Act (AODA).
+
+AVAILABLE ACCOMMODATIONS:
+• Alternative format documents
+• Sign language interpretation (arranged in advance)
+• Accessible meeting locations
+• Extended appointment times when needed
+• Alternative communication methods
+
+ACCOMMODATION REQUESTS: Clients requiring accommodation should contact us as early as possible to arrange appropriate services.
+
+9. COMPLAINTS AND PROFESSIONAL RESPONSIBILITY
+
+INTERNAL COMPLAINTS PROCESS:
+1. Contact Tim Harmar directly to discuss concerns
+2. Formal written complaint to firm management
+3. Mediation services if available and appropriate
+
+LAW SOCIETY COMPLAINTS: If internal resolution is unsuccessful, clients may file complaints with:
+• Law Society of Ontario Complaints Process
+• Online at: lso.ca
+• Phone: 1-800-668-7380
+• Mail: Law Society of Ontario, 130 Queen Street West, Toronto, ON M5H 2N6
+
+COMPLAINT TYPES include:
+• Professional misconduct
+• Competence concerns
+• Fee disputes
+• Service quality issues
+
+10. PROFESSIONAL ASSOCIATIONS AND MEMBERSHIPS
+
+Tim J. Harmar maintains active membership in:
+• Law Society of Ontario (Mandatory professional body)
 • Canadian Bar Association
 • Ontario Bar Association
+• Specialized practice sections relevant to areas of expertise
 
-11. Technology and Security
+CONTINUING EDUCATION: Ongoing professional development through:
+• Mandatory continuing professional development (CPD) programs
+• Legal conferences and seminars
+• Professional skills training
+• Ethics and professionalism courses
 
-We use industry-standard security measures to protect client information. Our technology systems are regularly updated and monitored for security compliance.
+11. TECHNOLOGY, SECURITY, AND DATA PROTECTION
 
-12. Emergency Procedures
+SECURITY MEASURES:
+• Industry-standard encryption for electronic communications
+• Secure document management systems
+• Regular security audits and updates
+• Access controls and authentication procedures
+• Backup and disaster recovery protocols
 
-For urgent legal matters outside business hours, contact information is provided to existing clients. New clients should contact emergency legal services through Legal Aid Ontario if immediate assistance is required.
+DATA PROTECTION: Client information is protected under:
+• Personal Information Protection and Electronic Documents Act (PIPEDA)
+• Law Society confidentiality requirements
+• Professional privilege protections
+• Firm privacy policies and procedures
 
-13. Disclaimer of Warranties
+CYBERSECURITY: We implement current cybersecurity best practices and regularly update our security protocols to protect client information.
 
-Legal outcomes cannot be guaranteed. While we provide competent and diligent representation, the success of any legal matter depends on various factors including applicable law, facts, and court decisions.
+12. EMERGENCY PROCEDURES AND AFTER-HOURS CONTACT
 
-14. Copyright Notice
+EXISTING CLIENTS: Emergency contact procedures are provided in retainer agreements for urgent legal matters outside regular business hours.
 
-© 2025 Tim Harmar: Legal and Consulting Services. All rights reserved. Reproduction of website content without permission is prohibited.
+NEW CLIENTS: For immediate legal assistance outside business hours:
+• Contact Legal Aid Ontario: 1-800-668-8258
+• Duty Counsel services at local courts
+• Emergency legal clinics in your area
 
-15. Contact for Legal Notices
+COURT EMERGENCIES: For urgent court matters, contact the appropriate court registry or duty counsel services.
 
-For matters related to these legal notices, contact:
+13. PROFESSIONAL LIABILITY AND INSURANCE
+
+PROFESSIONAL LIABILITY INSURANCE: We maintain professional liability insurance coverage as required by the Law Society of Ontario, including:
+• Minimum coverage amounts as mandated by LSO
+• Extended reporting period coverage
+• Coverage for past and present partners and associates
+
+INSURANCE DETAILS: Specific insurance information is available upon client request as required by professional conduct rules.
+
+14. REGULATORY COMPLIANCE AND PROFESSIONAL UPDATES
+
+REGULATORY CHANGES: We monitor and comply with ongoing changes to:
+• Law Society regulations and rules
+• Federal and provincial legislation
+• Court rules and procedures
+• Professional conduct requirements
+
+PROFESSIONAL DEVELOPMENT: Continuous updates through mandatory and voluntary professional development to ensure current knowledge of legal developments.
+
+15. WEBSITE DISCLAIMERS AND LIMITATIONS
+
+INFORMATION CURRENCY: While we strive to maintain current information, legal developments occur regularly. Website content may not reflect the most recent changes in law.
+
+NO LEGAL ADVICE: Information on this website is for general informational purposes only and does not constitute legal advice for specific situations.
+
+LIMITATION OF WARRANTIES: This website is provided "as is" without warranties of any kind regarding accuracy, completeness, or fitness for any particular purpose.
+
+16. COPYRIGHT AND INTELLECTUAL PROPERTY NOTICE
+
+COPYRIGHT NOTICE: © 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
+
+CONTENT PROTECTION: All website content is protected by Canadian copyright law. Unauthorized reproduction, distribution, or commercial use is prohibited without express written permission.
+
+TRADEMARK NOTICE: Tim Harmar: Legal and Consulting Services and associated logos are trademarks of our firm.
+
+17. CONTACT INFORMATION FOR LEGAL NOTICES
+
+For matters related to these legal notices, professional compliance, or regulatory concerns:
+
 Tim Harmar: Legal and Consulting Services
+Principal Lawyer: Tim J. Harmar
+Location: Sault Ste. Marie, Ontario, Canada
 Email: legal@timharmar.com
-Phone: +1 (705) 943-5049`
+Phone: +1 (705) 943-5049
+
+PROFESSIONAL INQUIRIES:
+• Law Society complaints: lso.ca
+• Fee assessment: Law Society of Ontario
+• Professional conduct issues: Contact the Law Society directly
+
+BUSINESS HOURS: Monday to Friday, 9:00 AM to 5:00 PM EST
+After-hours emergency procedures are provided to retained clients.
+
+This legal notice is governed by Ontario law and is subject to the exclusive jurisdiction of Ontario courts.
+
+© 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.`
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
