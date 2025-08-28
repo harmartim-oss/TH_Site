@@ -1,0 +1,22 @@
+# GitHub Pages configuration
+# This file helps with proper handling of SPAs on GitHub Pages
+
+# Include the CNAME file
+include:
+  - CNAME
+
+# Exclude unnecessary files from the site
+exclude:
+  - node_modules/
+  - package*.json
+  - *.md
+  - .gitignore
+  - .github/
+  - src/
+  - vite.config.js
+  - postcss.config.js
+  - tailwind.config.js
+  - eslint.config.js
+  - components.json
+  - .prettierrc
+  - .prettierignore
