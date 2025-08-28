@@ -125,12 +125,16 @@ export const SmartScheduler = () => {
   const [userEmail, setUserEmail] = useState('')
   const [userPhone, setUserPhone] = useState('')
   const [additionalInfo, setAdditionalInfo] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleScheduleSubmit = () => {
     if (!consultationType || !selectedDate || !selectedTime || !userName || !userEmail) {
       alert('Please fill in all required fields.')
       return
     }
+
+    // Show confirmation message
+    setIsSubmitted(true)
 
     const emailBody =
       `Hello,%0D%0A%0D%0A` +
@@ -145,7 +149,11 @@ export const SmartScheduler = () => {
       `Thank you!`
 
     const subject = `Consultation Request - ${consultationType}`
-    window.location.href = `mailto:kburton@timharmar.com?subject=${subject}&body=${emailBody}`
+    
+    // Delay the email redirect to allow user to see the confirmation message
+    setTimeout(() => {
+      window.location.href = `mailto:kburton@timharmar.com?subject=${subject}&body=${emailBody}`
+    }, 1500)
   }
 
   const availableTimes = ['9:00 AM', '10:30 AM', '2:00 PM', '3:30 PM', '4:30 PM']
@@ -267,13 +275,42 @@ export const SmartScheduler = () => {
           />
         </div>
 
+        {/* Show confirmation message when submitted */}
+        {isSubmitted && (
+          <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-md">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-green-800">
+                  Consultation Request Submitted!
+                </h3>
+                <div className="mt-2 text-sm text-green-700">
+                  <p>
+                    Thank you for your consultation request. We will be in touch with you shortly to finalize the details of your appointment.
+                    Your request is being sent to our legal team for review.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleScheduleSubmit}
-          className="w-full bg-brand-accent hover:bg-brand-accent/90 text-white p-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-token-sm hover:shadow-medium"
+          disabled={isSubmitted}
+          className={`w-full p-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-token-sm hover:shadow-medium ${
+            isSubmitted 
+              ? 'bg-gray-400 text-gray-600 cursor-not-allowed' 
+              : 'bg-brand-accent hover:bg-brand-accent/90 text-white'
+          }`}
         >
-          Schedule Consultation
+          {isSubmitted ? 'Request Submitted' : 'Schedule Consultation'}
         </motion.button>
       </div>
     </motion.div>
