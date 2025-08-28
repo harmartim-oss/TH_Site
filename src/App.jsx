@@ -1433,24 +1433,39 @@ export default function App() {
                 &copy; 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 text-sm">
-                <button
-                  onClick={() => openPolicyModal('privacy')}
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    openPolicyModal('privacy')
+                  }}
                   className="text-text-inverse hover:text-brand-accent transition-colors cursor-pointer underline underline-offset-2"
+                  aria-label="View Privacy Policy"
                 >
                   Privacy Policy
-                </button>
-                <button
-                  onClick={() => openPolicyModal('terms')}
+                </a>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    openPolicyModal('terms')
+                  }}
                   className="text-text-inverse hover:text-brand-accent transition-colors cursor-pointer underline underline-offset-2"
+                  aria-label="View Terms of Service"
                 >
                   Terms of Service
-                </button>
-                <button
-                  onClick={() => openPolicyModal('legal')}
+                </a>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    openPolicyModal('legal')
+                  }}
                   className="text-text-inverse hover:text-brand-accent transition-colors cursor-pointer underline underline-offset-2"
+                  aria-label="View Legal Notices"
                 >
                   Legal Notices
-                </button>
+                </a>
               </div>
             </div>
           </div>
