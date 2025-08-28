@@ -1432,22 +1432,22 @@ export default function App() {
               <p className="text-text-inverse/70 text-center md:text-left mb-4 md:mb-0 text-sm">
                 &copy; 2025 Tim Harmar: Legal and Consulting Services. All rights reserved.
               </p>
-              <div className="flex items-center space-x-6 text-sm text-text-inverse">
+              <div className="flex items-center space-x-6 text-sm">
                 <button
                   onClick={() => openPolicyModal('privacy')}
-                  className="hover:text-brand-accent transition-colors cursor-pointer"
+                  className="text-text-inverse hover:text-brand-accent transition-colors cursor-pointer underline underline-offset-2"
                 >
                   Privacy Policy
                 </button>
                 <button
                   onClick={() => openPolicyModal('terms')}
-                  className="hover:text-brand-accent transition-colors cursor-pointer"
+                  className="text-text-inverse hover:text-brand-accent transition-colors cursor-pointer underline underline-offset-2"
                 >
                   Terms of Service
                 </button>
                 <button
                   onClick={() => openPolicyModal('legal')}
-                  className="hover:text-brand-accent transition-colors cursor-pointer"
+                  className="text-text-inverse hover:text-brand-accent transition-colors cursor-pointer underline underline-offset-2"
                 >
                   Legal Notices
                 </button>
