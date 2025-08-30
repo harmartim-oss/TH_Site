@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   AILegalAssistant,
   SmartScheduler,
@@ -6,6 +6,7 @@ import {
   LegalNewsFeed,
   LegalAssessment,
 } from './components/CuttingEdgeFeatures'
+import LoadingScreen from './components/LoadingScreen'
 import {
   Scale,
   Shield,
@@ -31,6 +32,10 @@ import {
   UserCheck,
   User,
   ExternalLink,
+  CheckCircle,
+  ArrowRight,
+  Star,
+  TrendingUp,
 } from 'lucide-react'
 import logoImage from './assets/th_logo.png'
 
@@ -528,6 +533,23 @@ export default function App() {
   const [showTimBio, setShowTimBio] = useState(false)
   const [showPolicyModal, setShowPolicyModal] = useState(false)
   const [currentPolicy, setCurrentPolicy] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+  const [assetsLoaded, setAssetsLoaded] = useState(false)
+
+  // Enhanced loading management
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1000) // Minimum loading time for UX
+
+    // Check if critical assets are loaded
+    const img = new Image()
+    img.onload = () => setAssetsLoaded(true)
+    img.onerror = () => setAssetsLoaded(true) // Continue even if image fails
+    img.src = logoImage
+
+    return () => clearTimeout(timer)
+  }, [])
 
   const openPolicyModal = (policyType) => {
     let policyContent = ''
@@ -554,8 +576,12 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-surface-default">
-      {/* Header/Navigation */}
+    <>
+      {isLoading ? (
+        <LoadingScreen message="Loading Tim Harmar Legal Services" />
+      ) : (
+        <div className="min-h-screen bg-surface-default">
+          {/* Header/Navigation */}
       <header className="bg-surface-default/98 backdrop-blur-sm shadow-token-sm sticky top-0 z-40 border-b border-brand-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4 md:py-6">
@@ -674,41 +700,100 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-surface-default text-text-primary py-30 md:py-40 lg:py-48 overflow-hidden">
-        {/* Optional 5% opacity shield-outline watermark pattern */}
+      <section className="relative bg-gradient-to-br from-surface-default via-surface-alt to-surface-default text-text-primary py-16 md:py-24 lg:py-32 overflow-hidden">
+        {/* Enhanced background elements */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-brand-primary rounded-full"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 border-2 border-brand-primary rounded-full"></div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-brand-primary rounded-full animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 border-2 border-brand-primary rounded-full animate-pulse delay-300"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-brand-accent rounded-full animate-pulse delay-100"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column: Content */}
-            <div className="animate-slide-up">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold mb-6 font-heading leading-tight text-brand-primary">
-                Excellence in Legal Solutions
+            {/* Left Column: Enhanced Content */}
+            <div className="animate-slide-up space-y-8">
+              {/* Trust indicators */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-brand-accent/10 text-brand-accent border border-brand-accent/20">
+                  <Star className="w-3 h-3 mr-1" />
+                  Award-Winning
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                  <TrendingUp className="w-3 h-3 mr-1" />
+                  15+ Years Experience
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  Supreme Court Approved
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold mb-6 font-heading leading-tight">
+                <span className="text-gradient-primary">Excellence</span> in Legal Solutions
               </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-text-secondary">
-                Award-winning legal expertise specialized in civil litigation, privacy and
-                cybersecurity law, intellectual property, and business strategy consulting in Sault
+                Award-winning legal expertise specialized in <strong className="text-brand-accent">civil litigation</strong>, <strong className="text-brand-accent">privacy and
+                cybersecurity law</strong>, <strong className="text-brand-accent">intellectual property</strong>, and <strong className="text-brand-accent">business strategy consulting</strong> in Sault
                 Ste. Marie, Ontario.
               </p>
 
-              <div className="animate-slide-up delay-200">
-                <button
-                  className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 md:px-10 py-4 md:py-5 rounded-token-sm font-bold text-base md:text-lg shadow-token-md hover:shadow-button-hover transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95"
-                  onClick={() =>
-                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
-                  }
-                  aria-label="Navigate to contact section to schedule a free consultation"
-                >
-                  <Calendar
-                    className="inline-block w-5 h-5 mr-3 transition-transform duration-300"
-                    aria-hidden="true"
-                  />
-                  Schedule Free Consultation
-                </button>
+              {/* Enhanced CTA Section */}
+              <div className="animate-slide-up delay-200 space-y-6">
+                {/* Primary CTA */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-md hover:shadow-button-hover transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group"
+                    onClick={() =>
+                      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+                    }
+                    aria-label="Navigate to contact section to schedule a free consultation"
+                  >
+                    <Calendar className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                    Schedule Free Consultation
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                  
+                  <button
+                    className="border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white px-8 py-4 rounded-token-sm font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3"
+                    onClick={() =>
+                      document.getElementById('services').scrollIntoView({ behavior: 'smooth' })
+                    }
+                    aria-label="Learn more about our legal services"
+                  >
+                    <Scale className="w-5 h-5" />
+                    Our Services
+                  </button>
+                </div>
+
+                {/* Quick contact options */}
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <a
+                    href="tel:+17059435049"
+                    className="inline-flex items-center gap-2 text-brand-accent hover:text-brand-accent/80 font-medium transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    +1 (705) 943-5049
+                  </a>
+                  <a
+                    href="mailto:kburton@timharmar.com"
+                    className="inline-flex items-center gap-2 text-brand-accent hover:text-brand-accent/80 font-medium transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
+                    kburton@timharmar.com
+                  </a>
+                </div>
+
+                {/* Assurance message */}
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-6">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-green-800">Free Initial Consultation</p>
+                      <p className="text-xs text-green-700 mt-1">No obligation • Confidential discussion • Expert guidance</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -728,111 +813,169 @@ export default function App() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-24 bg-gradient-brand-subtle">
+      {/* Enhanced Services Section */}
+      <section id="services" className="py-24 bg-gradient-to-br from-surface-default via-surface-alt to-surface-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-brand-accent/10 text-brand-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <Award className="w-4 h-4" />
+              Award-Winning Legal Services
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 font-heading">
-              Comprehensive Legal Services
+              Comprehensive <span className="text-gradient-primary">Legal Solutions</span>
             </h2>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              Award-winning legal expertise with cutting-edge solutions for your business needs.
+              Expert legal guidance with cutting-edge technology and personalized service for your success.
             </p>
-            <div className="flex justify-center mt-6">
-              <Shield className="w-5 h-5 text-brand-accent" strokeWidth={1.5} />
+            <div className="flex justify-center mt-8">
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-accent to-brand-accent/50 rounded-full"></div>
             </div>
           </div>
 
+          {/* Interactive Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto">
             {[
               {
                 title: 'Civil Litigation',
                 description:
-                  'Expert representation in complex civil matters with a track record of success.',
+                  'Expert representation in complex civil matters with a proven track record of success.',
                 icon: Scale,
                 color: 'from-primary-600 to-primary-700',
+                bgColor: 'bg-blue-50 border-blue-200',
+                iconColor: 'text-blue-600',
                 detailed:
                   'Our civil litigation practice encompasses comprehensive legal representation for businesses and individuals in complex disputes. We handle contract disputes, tort claims, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience and strategic case management, we provide aggressive advocacy while exploring cost-effective resolution strategies including mediation and arbitration.',
+                features: ['Contract Disputes', 'Employment Litigation', 'Commercial Disputes', 'Appellate Matters', 'Strategic Mediation']
               },
               {
-                title: 'Privacy and Cybersecurity Law',
+                title: 'Privacy & Cybersecurity Law',
                 description:
-                  'Comprehensive privacy compliance, data protection, and cybersecurity strategies.',
+                  'Comprehensive privacy compliance, data protection, and cybersecurity strategies for the digital age.',
                 icon: Shield,
                 color: 'from-trust-600 to-trust-700',
+                bgColor: 'bg-green-50 border-green-200',
+                iconColor: 'text-green-600',
                 detailed:
                   'Navigate the complex landscape of Canadian privacy and cybersecurity laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, cybersecurity compliance audits, incident response planning, and regulatory compliance guidance for businesses of all sizes in the digital age.',
+                features: ['PIPEDA Compliance', 'Data Breach Response', 'Cybersecurity Audits', 'CASL Compliance', 'Privacy Policies']
               },
               {
                 title: 'Intellectual Property',
-                description: 'Protecting your innovations and creative assets in the digital age.',
+                description: 'Protecting your innovations and creative assets in the competitive marketplace.',
                 icon: Lightbulb,
                 color: 'from-accent-500 to-accent-600',
+                bgColor: 'bg-purple-50 border-purple-200',
+                iconColor: 'text-purple-600',
                 detailed:
                   'Comprehensive intellectual property protection including trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, IP due diligence for mergers and acquisitions, and IP portfolio management. We help businesses protect their most valuable intangible assets and develop strategic IP licensing and monetization strategies.',
+                features: ['Trademark Registration', 'Copyright Protection', 'Trade Secrets', 'IP Licensing', 'Portfolio Management']
               },
               {
                 title: 'Business Law',
-                description: 'Strategic legal counsel for business growth and compliance.',
+                description: 'Strategic legal counsel for sustainable business growth and regulatory compliance.',
                 icon: Building2,
                 color: 'from-secondary-600 to-secondary-700',
+                bgColor: 'bg-gray-50 border-gray-200',
+                iconColor: 'text-gray-600',
                 detailed:
                   'Full-spectrum business law services including corporate formation and governance, shareholder agreements, commercial contracts, regulatory compliance, employment law matters, and corporate restructuring. We serve as outside general counsel for emerging companies and established businesses, providing strategic legal guidance for sustainable growth.',
+                features: ['Corporate Formation', 'Shareholder Agreements', 'Commercial Contracts', 'Regulatory Compliance', 'Employment Law']
               },
               {
-                title: 'Business Start Up and Strategy',
+                title: 'Business Start Up & Strategy',
                 description:
-                  'Comprehensive legal guidance for entrepreneurs and new business ventures.',
+                  'Comprehensive legal foundation and strategic guidance for entrepreneurs and new ventures.',
                 icon: Rocket,
                 color: 'from-primary-700 to-primary-800',
+                bgColor: 'bg-teal-50 border-teal-200',
+                iconColor: 'text-teal-600',
                 detailed:
                   "End-to-end legal support for entrepreneurs launching new ventures including business entity selection and formation, founders' agreements, intellectual property strategy, regulatory compliance roadmaps, employment policies, privacy frameworks, and strategic partnerships. We help startups build solid legal foundations while remaining agile and cost-effective.",
+                features: ['Business Formation', 'Founders Agreements', 'IP Strategy', 'Compliance Roadmaps', 'Strategic Partnerships']
               },
               {
                 title: 'Legal Consulting',
-                description: 'Strategic advice and risk management for complex legal challenges.',
+                description: 'Strategic advisory services and risk management for complex legal challenges.',
                 icon: Target,
                 color: 'from-accent-600 to-accent-700',
+                bgColor: 'bg-orange-50 border-orange-200',
+                iconColor: 'text-orange-600',
                 detailed:
                   'Strategic legal consulting for complex business challenges including regulatory compliance reviews, risk assessment and mitigation strategies, legal project management, and specialized advisory services. We provide senior-level legal expertise for organizations requiring sophisticated legal analysis and strategic guidance.',
+                features: ['Regulatory Reviews', 'Risk Assessment', 'Legal Project Management', 'Strategic Advisory', 'Compliance Analysis']
               },
             ].map((service, index) => {
               const IconComponent = service.icon
               return (
                 <div
                   key={index}
-                  className="group bg-surface-default p-8 rounded-token-md hover:shadow-service-card-hover transition-all duration-500 cursor-pointer border border-brand-secondary/30 hover:border-brand-accent transform hover:scale-102 animate-slide-up max-w-[340px] mx-auto"
+                  className={`group bg-surface-default p-8 rounded-token-md hover:shadow-service-card-hover transition-all duration-500 cursor-pointer border ${service.bgColor} hover:border-brand-accent transform hover:scale-102 animate-slide-up max-w-[400px] mx-auto interactive-scale`}
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => setExpandedService(expandedService === index ? null : index)}
                 >
-                  <div className="w-16 h-16 rounded-token-sm bg-brand-accent/20 p-4 mb-6 group-hover:bg-brand-accent/30 transition-all duration-300">
-                    <IconComponent className="w-8 h-8 text-brand-accent" />
+                  <div className={`w-16 h-16 rounded-token-sm ${service.bgColor} p-4 mb-6 group-hover:shadow-glow transition-all duration-300`}>
+                    <IconComponent className={`w-8 h-8 ${service.iconColor}`} />
                   </div>
+                  
                   <h3 className="text-xl font-bold text-brand-primary mb-4 flex items-center justify-between font-heading">
                     {service.title}
-                    <span className="text-brand-accent transition-colors">
-                      {expandedService === index ? (
-                        <ChevronUp className="w-5 h-5" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5" />
-                      )}
+                    <span className="text-brand-accent transition-transform duration-300">
+                      {expandedService === index ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                     </span>
                   </h3>
-                  <p className="text-text-neutral mb-4 leading-relaxed">{service.description}</p>
-                  {expandedService === index && (
-                    <div className="mt-6 p-6 bg-surface-alt rounded-token-sm border-l-4 border-brand-accent animate-slide-down">
-                      <p className="text-text-neutral leading-relaxed mb-4">{service.detailed}</p>
+                  
+                  <p className="text-text-secondary leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+
+                  {/* Quick Features Preview */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {service.features.slice(0, 3).map((feature, idx) => (
+                      <span key={idx} className="text-xs bg-brand-accent/10 text-brand-accent px-2 py-1 rounded-full">
+                        {feature}
+                      </span>
+                    ))}
+                    {service.features.length > 3 && (
+                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
+                        +{service.features.length - 3} more
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Expandable content */}
+                  <div className={`transition-all duration-500 overflow-hidden ${
+                    expandedService === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}>
+                    <div className="border-t border-brand-secondary/20 pt-4 mt-4">
+                      <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                        {service.detailed}
+                      </p>
+                      
+                      {/* All Features */}
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-brand-primary">Key Services:</h4>
+                        <div className="grid grid-cols-1 gap-1">
+                          {service.features.map((feature, idx) => (
+                            <div key={idx} className="flex items-center gap-2 text-sm text-text-secondary">
+                              <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
+                              {feature}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
                       <button
-                        className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-token-sm hover:shadow-medium"
-                        onClick={() =>
-                          (window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - ${service.title}&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation regarding ${service.title}.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!`)
-                        }
+                        className="mt-4 bg-brand-accent hover:bg-brand-accent/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          window.location.href = `mailto:kburton@timharmar.com?subject=Inquiry about ${service.title}&body=Hello,%0D%0A%0D%0AI would like to learn more about your ${service.title} services.%0D%0A%0D%0APlease contact me to discuss my legal needs.%0D%0A%0D%0AThank you!`
+                        }}
                       >
-                        <Calendar className="inline-block w-4 h-4 mr-2" />
-                        Schedule Consultation
+                        <Mail className="w-4 h-4" />
+                        Get Consultation
                       </button>
                     </div>
-                  )}
+                  </div>
                 </div>
               )
             })}
@@ -1539,5 +1682,7 @@ export default function App() {
         </div>
       )}
     </div>
+        )}
+    </>
   )
 }
