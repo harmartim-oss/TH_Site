@@ -16,7 +16,7 @@ window.addEventListener('unhandledrejection', (event) => {
 // Check if DOM is ready
 const init = () => {
   const rootElement = document.getElementById('root')
-  
+
   if (!rootElement) {
     console.error('Root element not found - this may indicate a deployment issue')
     document.body.innerHTML = `
