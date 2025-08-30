@@ -32,7 +32,9 @@ import {
   User,
   ExternalLink,
 } from 'lucide-react'
-import logoImage from './assets/th_logo.png'
+import logoImage from './assets/tim_harmar_logo_updated.png'
+import heroBackground from './assets/hero_background.png'
+import cybersecurityImage from './assets/services_cybersecurity.png'
 
 // Policy Content
 const PRIVACY_POLICY = `Privacy Policy for www.timharmar.com
@@ -675,6 +677,12 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="relative bg-surface-default text-text-primary py-30 md:py-40 lg:py-48 overflow-hidden">
+        {/* Hero Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          style={{ backgroundImage: `url(${heroBackground})` }}
+        ></div>
+        
         {/* Optional 5% opacity shield-outline watermark pattern */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-brand-primary rounded-full"></div>
@@ -759,6 +767,7 @@ export default function App() {
                 description:
                   'Comprehensive privacy compliance, data protection, and cybersecurity strategies.',
                 icon: Shield,
+                image: cybersecurityImage,
                 color: 'from-trust-600 to-trust-700',
                 detailed:
                   'Navigate the complex landscape of Canadian privacy and cybersecurity laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, cybersecurity compliance audits, incident response planning, and regulatory compliance guidance for businesses of all sizes in the digital age.',
@@ -821,6 +830,15 @@ export default function App() {
                   <p className="text-text-neutral mb-4 leading-relaxed">{service.description}</p>
                   {expandedService === index && (
                     <div className="mt-6 p-6 bg-surface-alt rounded-token-sm border-l-4 border-brand-accent animate-slide-down">
+                      {service.image && (
+                        <div className="mb-4">
+                          <img 
+                            src={service.image} 
+                            alt={`${service.title} illustration`}
+                            className="w-full h-48 object-cover rounded-token-sm shadow-token-md"
+                          />
+                        </div>
+                      )}
                       <p className="text-text-neutral leading-relaxed mb-4">{service.detailed}</p>
                       <button
                         className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-token-sm hover:shadow-medium"
