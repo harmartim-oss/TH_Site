@@ -1,5 +1,4 @@
-<!-- GitHub Pages deployment fallback -->
-<script>
+// GitHub Pages deployment fallback script
 // Fallback script for GitHub Pages deployment issues
 (function() {
     'use strict';
@@ -85,4 +84,3 @@
         setTimeout(checkReactApp, 1000);
     }
 })();
-</script>
