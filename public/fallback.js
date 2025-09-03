@@ -1,33 +1,33 @@
 // GitHub Pages deployment fallback script
 // Fallback script for GitHub Pages deployment issues
-(function() {
-    'use strict';
-    
-    // Check if React app has loaded
-    let reactCheckCount = 0;
-    const maxChecks = 10;
-    
-    function checkReactApp() {
-        const rootElement = document.getElementById('root');
-        
-        if (!rootElement) {
-            console.error('Root element not found');
-            showFallbackContent();
-            return;
-        }
-        
-        // Check if React has rendered content
-        if (rootElement.children.length === 0 && reactCheckCount < maxChecks) {
-            reactCheckCount++;
-            setTimeout(checkReactApp, 500);
-        } else if (rootElement.children.length === 0) {
-            console.warn('React app failed to load, showing fallback');
-            showFallbackContent();
-        }
+;(function () {
+  'use strict'
+
+  // Check if React app has loaded
+  let reactCheckCount = 0
+  const maxChecks = 10
+
+  function checkReactApp() {
+    const rootElement = document.getElementById('root')
+
+    if (!rootElement) {
+      console.error('Root element not found')
+      showFallbackContent()
+      return
     }
-    
-    function showFallbackContent() {
-        const fallbackHTML = `
+
+    // Check if React has rendered content
+    if (rootElement.children.length === 0 && reactCheckCount < maxChecks) {
+      reactCheckCount++
+      setTimeout(checkReactApp, 500)
+    } else if (rootElement.children.length === 0) {
+      console.warn('React app failed to load, showing fallback')
+      showFallbackContent()
+    }
+  }
+
+  function showFallbackContent() {
+    const fallbackHTML = `
             <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #ffffff; padding: 2rem;">
                 <div style="max-width: 600px; text-align: center;">
                     <img src="/assets/th_logo-5o64kHzm.png" alt="Tim Harmar Legal Logo" style="width: 120px; height: 120px; margin: 0 auto 2rem; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'">
@@ -70,17 +70,17 @@
                     </div>
                 </div>
             </div>
-        `;
-        
-        document.body.innerHTML = fallbackHTML;
-    }
-    
-    // Start checking after page load
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(checkReactApp, 1000);
-        });
-    } else {
-        setTimeout(checkReactApp, 1000);
-    }
-})();
+        `
+
+    document.body.innerHTML = fallbackHTML
+  }
+
+  // Start checking after page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(checkReactApp, 1000)
+    })
+  } else {
+    setTimeout(checkReactApp, 1000)
+  }
+})()
