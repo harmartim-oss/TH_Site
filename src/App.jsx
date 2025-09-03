@@ -534,19 +534,12 @@ export default function App() {
   const [showPolicyModal, setShowPolicyModal] = useState(false)
   const [currentPolicy, setCurrentPolicy] = useState('')
   const [isLoading, setIsLoading] = useState(true)
-  const [assetsLoaded, setAssetsLoaded] = useState(false)
 
   // Enhanced loading management
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
     }, 1000) // Minimum loading time for UX
-
-    // Check if critical assets are loaded
-    const img = new Image()
-    img.onload = () => setAssetsLoaded(true)
-    img.onerror = () => setAssetsLoaded(true) // Continue even if image fails
-    img.src = logoImage
 
     return () => clearTimeout(timer)
   }, [])
@@ -700,7 +693,7 @@ export default function App() {
           </header>
 
           {/* Hero Section */}
-          <section className="relative bg-gradient-to-br from-surface-default via-surface-alt to-surface-default text-text-primary py-16 md:py-24 lg:py-32 overflow-hidden">
+          <section className="relative bg-gradient-hero text-text-primary py-16 md:py-24 lg:py-32 overflow-hidden">
             {/* Enhanced background elements */}
             <div className="absolute inset-0 opacity-5 pointer-events-none">
               <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-brand-primary rounded-full animate-pulse"></div>
@@ -729,7 +722,7 @@ export default function App() {
                   </div>
 
                   <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold mb-6 font-heading leading-tight">
-                    <span className="text-gradient-primary">Excellence</span> in Legal Solutions
+                    <span className="text-gradient-enhanced">Excellence</span> in Legal Solutions
                   </h1>
 
                   <p className="text-lg sm:text-xl md:text-2xl lg:text-xl mb-8 leading-relaxed text-text-secondary">
@@ -746,7 +739,7 @@ export default function App() {
                     {/* Primary CTA */}
                     <div className="flex flex-col sm:flex-row gap-4">
                       <button
-                        className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-md hover:shadow-button-hover transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group"
+                        className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-md hover:shadow-button-hover transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group btn-enhanced animate-pulse-glow"
                         onClick={() =>
                           document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
                         }
@@ -806,7 +799,7 @@ export default function App() {
 
                 {/* Right Column: Circular headshot */}
                 <div className="flex justify-center lg:justify-end animate-slide-up delay-100 mr-8">
-                  <div className="relative">
+                  <div className="relative animate-float">
                     <img
                       src={logoImage}
                       alt="Tim Harmar: Legal and Consulting Services"
@@ -823,7 +816,7 @@ export default function App() {
           {/* Enhanced Services Section */}
           <section
             id="services"
-            className="py-24 bg-gradient-to-br from-surface-default via-surface-alt to-surface-default"
+            className="py-24 bg-gradient-section"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-20 animate-fade-in">
@@ -959,7 +952,7 @@ export default function App() {
                   return (
                     <div
                       key={index}
-                      className={`group bg-surface-default p-8 rounded-token-md hover:shadow-service-card-hover transition-all duration-500 cursor-pointer border ${service.bgColor} hover:border-brand-accent transform hover:scale-102 animate-slide-up max-w-[400px] mx-auto interactive-scale`}
+                      className={`group service-card p-8 rounded-token-md cursor-pointer border ${service.bgColor} hover:border-brand-accent animate-slide-up max-w-[400px] mx-auto`}
                       style={{ animationDelay: `${index * 100}ms` }}
                       onClick={() => setExpandedService(expandedService === index ? null : index)}
                     >
