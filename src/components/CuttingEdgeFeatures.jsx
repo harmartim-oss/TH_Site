@@ -14,6 +14,9 @@ import {
   Users,
   TrendingUp,
   Download,
+  ChevronDown,
+  ChevronUp,
+  CheckCircle,
 } from 'lucide-react'
 
 // AI-Powered Legal Assistant Chat Widget
@@ -325,6 +328,7 @@ export const SmartScheduler = () => {
 // Legal Resources Library
 export const LegalResourcesLibrary = () => {
   const [selectedCategory, setSelectedCategory] = useState('guides')
+  const [expandedItem, setExpandedItem] = useState(null)
 
   // Function to open Privacy Compliance Guide in new window
   const openPrivacyGuide = () => {
@@ -736,18 +740,103 @@ export const LegalResourcesLibrary = () => {
         description: 'Learn the critical moments when legal counsel becomes essential.',
         type: 'FAQ',
         icon: '❓',
+        expandable: true,
+        detailed: `Legal counsel becomes essential at several key stages of your startup journey:
+
+**Formation Stage:** When choosing your business structure (corporation, LLC, partnership), registering your business, and understanding liability implications.
+
+**Intellectual Property Protection:** Before publicly disclosing your product or service, to protect trademarks, copyrights, and trade secrets.
+
+**Fundraising:** When seeking investment, drafting term sheets, or negotiating with investors to ensure favorable terms and compliance.
+
+**Employment Issues:** When hiring your first employees, creating employment agreements, and understanding labor law compliance.
+
+**Contracts & Partnerships:** Before signing significant contracts, partnerships, or strategic alliances that could impact your business.
+
+**Regulatory Compliance:** When entering regulated industries or dealing with specific compliance requirements like privacy laws or industry standards.`,
+        features: [
+          'Business structure selection and incorporation',
+          'IP strategy and protection filing',
+          'Investment and fundraising documentation',
+          'Employment law compliance and agreements',
+          'Contract negotiation and risk assessment',
+          'Regulatory compliance planning'
+        ]
       },
       {
         title: 'Understanding PIPEDA compliance',
         description: 'Common questions about Canadian privacy law requirements.',
         type: 'FAQ',
         icon: '🛡️',
+        expandable: true,
+        detailed: `PIPEDA (Personal Information Protection and Electronic Documents Act) is Canada's federal privacy law that governs how private sector organizations collect, use, and disclose personal information:
+
+**Key Principles:**
+- **Consent:** Organizations must obtain meaningful consent before collecting personal information
+- **Purpose Limitation:** Personal information can only be used for the purposes for which it was collected
+- **Data Minimization:** Collect only what is necessary for the stated purpose
+
+**Compliance Requirements:**
+- Implement privacy policies and procedures
+- Conduct privacy impact assessments
+- Provide individuals access to their personal information
+- Report privacy breaches to the Privacy Commissioner
+- Ensure adequate safeguards for personal information
+
+**Common Compliance Challenges:**
+- Cross-border data transfers to the US or other countries
+- Employee personal information handling
+- Customer data retention and disposal
+- Third-party service provider agreements`,
+        features: [
+          'Privacy policy development and implementation',
+          'Consent management procedures',
+          'Privacy impact assessment guidance',
+          'Data breach response planning',
+          'Cross-border transfer compliance',
+          'Employee privacy training programs'
+        ]
       },
       {
         title: 'Employment law basics',
         description: 'Key employment law considerations for Canadian businesses.',
         type: 'FAQ',
         icon: '👥',
+        expandable: true,
+        detailed: `Employment law in Canada varies by province but includes several fundamental principles that all employers must understand:
+
+**Hiring Process:**
+- Human rights compliance in job postings and interviews
+- Background checks and reference verification limits
+- Probationary period rules and limitations
+
+**Employment Standards:**
+- Minimum wage, overtime, and vacation pay requirements
+- Hours of work and rest period regulations
+- Statutory holidays and leaves of absence
+
+**Termination and Severance:**
+- Notice periods for termination without cause
+- Severance pay calculations and entitlements
+- Constructive dismissal and wrongful termination
+
+**Workplace Rights:**
+- Occupational health and safety obligations
+- Accommodation duties for disabilities
+- Protection against harassment and discrimination
+
+**Contract Essentials:**
+- Terms of employment and job descriptions
+- Confidentiality and non-competition clauses
+- Intellectual property assignment provisions`,
+        features: [
+          'Employment contract drafting and review',
+          'Workplace policy development',
+          'Termination and severance planning',
+          'Human rights compliance training',
+          'Workplace investigation procedures',
+          'Labour standards compliance audits'
+        ]
       },
     ],
     tools: [
@@ -756,18 +845,109 @@ export const LegalResourcesLibrary = () => {
         description: 'Estimate legal costs for common business services.',
         type: 'Tool',
         icon: '💰',
+        expandable: true,
+        detailed: `Our interactive legal budget calculator helps you estimate costs for various legal services and plan your legal expenses effectively:
+
+**Service Categories:**
+- **Business Formation:** Corporation setup, partnership agreements, and regulatory filings
+- **Contract Services:** Drafting, review, and negotiation of business agreements
+- **Employment Law:** Employment contracts, workplace policies, and compliance
+- **Intellectual Property:** Trademark registration, copyright protection, and licensing
+- **Litigation Support:** Dispute resolution, court proceedings, and settlement negotiations
+
+**Cost Factors Considered:**
+- Complexity and scope of legal work required
+- Time estimates based on similar matters
+- Court fees, filing costs, and third-party expenses
+- Ongoing legal support and maintenance requirements
+
+**Budget Planning Features:**
+- Monthly and annual legal expense projections
+- Comparison of different service options
+- Cost-benefit analysis for preventive legal measures
+- Financing and payment plan options`,
+        features: [
+          'Customized cost estimates by practice area',
+          'Monthly and annual budget projections',
+          'Cost comparison for different service levels',
+          'ROI analysis for preventive legal services',
+          'Payment plan and financing options',
+          'Regular budget review and adjustment recommendations'
+        ]
       },
       {
         title: 'Contract Template Library',
         description: 'Basic templates for common business agreements.',
         type: 'Templates',
         icon: '📄',
+        expandable: true,
+        detailed: `Access our comprehensive library of legal contract templates designed specifically for Canadian businesses:
+
+**Available Templates:**
+- **Employment Agreements:** Full-time, part-time, and contractor agreements
+- **Service Agreements:** Professional services, consulting, and vendor contracts
+- **Partnership Agreements:** Business partnerships, joint ventures, and collaborations
+- **Licensing Agreements:** Intellectual property licensing and technology transfers
+- **Non-Disclosure Agreements:** Mutual and unilateral confidentiality agreements
+- **Purchase Orders:** Goods and services procurement agreements
+
+**Template Features:**
+- Province-specific legal compliance
+- Industry-specific customization options
+- Built-in legal protection clauses
+- Easy-to-understand language and formatting
+- Guidance notes for completion
+
+**Customization Support:**
+- Step-by-step completion guides
+- Legal review and modification services
+- Industry-specific adaptations
+- Ongoing template updates based on law changes`,
+        features: [
+          'Province-specific legal compliance built-in',
+          'Industry customization for various sectors',
+          'Step-by-step completion guidance',
+          'Professional legal review services available',
+          'Regular updates reflecting law changes',
+          'Secure document management and storage'
+        ]
       },
       {
         title: 'Compliance Calendar',
         description: 'Track important legal deadlines and requirements.',
         type: 'Calendar',
         icon: '📅',
+        expandable: true,
+        detailed: `Stay on top of your legal obligations with our comprehensive compliance calendar system:
+
+**Key Compliance Areas:**
+- **Corporate Filings:** Annual returns, director resolutions, and corporate maintenance
+- **Employment Standards:** Payroll remittances, vacation pay calculations, and statutory reporting
+- **Privacy Law:** PIPEDA compliance reviews, breach notification timelines, and policy updates
+- **Intellectual Property:** Trademark renewals, patent maintenance, and copyright registrations
+- **Tax Obligations:** Corporate tax filings, HST remittances, and payroll tax deadlines
+- **Industry-Specific:** Sector regulations, licensing renewals, and professional requirements
+
+**Calendar Features:**
+- Automated deadline reminders and alerts
+- Customizable notification preferences
+- Integration with popular calendar applications
+- Document management for compliance filings
+- Regulatory change notifications and impact analysis
+
+**Proactive Management:**
+- Early warning systems for upcoming deadlines
+- Annual compliance planning and scheduling
+- Regulatory change impact assessments
+- Priority ranking for critical compliance matters`,
+        features: [
+          'Automated deadline tracking and reminders',
+          'Integration with business calendar systems',
+          'Regulatory change notifications and updates',
+          'Document management for compliance filings',
+          'Custom compliance schedules by industry',
+          'Annual compliance planning and strategy sessions'
+        ]
       },
     ],
   }
@@ -811,13 +991,31 @@ export const LegalResourcesLibrary = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors"
+            className={`bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors ${
+              resource.expandable ? 'cursor-pointer' : ''
+            }`}
+            onClick={() => {
+              if (resource.expandable) {
+                setExpandedItem(expandedItem === index ? null : index)
+              }
+            }}
           >
             <div className="flex items-start justify-between">
               <div className="flex items-start flex-1">
                 <span className="text-2xl mr-3">{resource.icon}</span>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-800 mb-1">{resource.title}</h4>
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold text-gray-800 mb-1">{resource.title}</h4>
+                    {resource.expandable && (
+                      <span className="text-blue-600 transition-transform duration-300">
+                        {expandedItem === index ? (
+                          <ChevronUp className="w-5 h-5" />
+                        ) : (
+                          <ChevronDown className="w-5 h-5" />
+                        )}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-gray-500 text-sm mb-2">{resource.description}</p>
                   <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
                     {resource.type}
@@ -826,7 +1024,10 @@ export const LegalResourcesLibrary = () => {
               </div>
               {resource.downloadable && (
                 <button
-                  onClick={resource.downloadAction}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    resource.downloadAction()
+                  }}
                   className="ml-4 flex items-center space-x-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                 >
                   <Download className="w-4 h-4" />
@@ -834,6 +1035,41 @@ export const LegalResourcesLibrary = () => {
                 </button>
               )}
             </div>
+            
+            {/* Expandable content for FAQs and Tools */}
+            {resource.expandable && (
+              <div
+                className={`transition-all duration-500 overflow-hidden ${
+                  expandedItem === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="border-t border-gray-200 pt-4 mt-4">
+                  <div className="text-gray-700 text-sm leading-relaxed mb-4 whitespace-pre-line">
+                    {resource.detailed}
+                  </div>
+
+                  {/* Features list */}
+                  {resource.features && (
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-blue-600">
+                        Key Services:
+                      </h4>
+                      <div className="grid grid-cols-1 gap-1">
+                        {resource.features.map((feature, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center gap-2 text-sm text-gray-600"
+                          >
+                            <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
+                            {feature}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
@@ -853,65 +1089,91 @@ export const LegalResourcesLibrary = () => {
 export const LegalNewsFeed = () => {
   const [activeTab, setActiveTab] = useState('privacy')
 
+  // Function to get current date in YYYY-MM-DD format
+  const getCurrentDate = (daysAgo = 0) => {
+    const date = new Date()
+    date.setDate(date.getDate() - daysAgo)
+    return date.toISOString().split('T')[0]
+  }
+
+  // Auto-updating news items with current dates
   const newsItems = {
     privacy: [
       {
-        title: 'New PIPEDA Amendments Coming in 2025',
-        date: '2025-01-15',
+        title: 'Bill C-27 Consumer Privacy Protection Act Updates',
+        date: getCurrentDate(2),
         category: 'Privacy Law',
-        link: 'https://www.priv.gc.ca/en/about-the-opc/what-we-do/provincial-and-territorial-collaboration/provincial-and-territorial-privacy-laws-and-oversight/',
+        link: 'https://www.parl.ca/DocumentViewer/en/44-1/bill/C-27/third-reading',
       },
       {
-        title: 'Supreme Court Rules on Digital Privacy Rights',
-        date: '2025-01-10',
+        title: 'Privacy Commissioner Guidance on AI and Algorithmic Impact',
+        date: getCurrentDate(5),
         category: 'Privacy Law',
-        link: 'https://www.scc-csc.ca/case-dossier/info/sum-som-eng.aspx',
+        link: 'https://www.priv.gc.ca/en/privacy-topics/technology/artificial-intelligence/',
       },
       {
-        title: 'CASL Enforcement Trends for Small Business',
-        date: '2025-01-05',
+        title: 'CASL Anti-Spam Compliance for Digital Marketing',
+        date: getCurrentDate(8),
         category: 'Privacy Law',
         link: 'https://crtc.gc.ca/eng/casl-lcap/',
+      },
+      {
+        title: 'Cross-Border Data Transfer Requirements Update',
+        date: getCurrentDate(12),
+        category: 'Privacy Law',
+        link: 'https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/pipeda/',
       },
     ],
     litigation: [
       {
-        title: 'Ontario Court of Appeal Updates Civil Procedure Rules',
-        date: '2025-01-12',
+        title: 'Ontario Superior Court Practice Direction Updates',
+        date: getCurrentDate(1),
         category: 'Civil Litigation',
-        link: 'https://www.ontariocourts.ca/coa/en/',
+        link: 'https://www.ontariocourts.ca/scj/practice/',
       },
       {
-        title: 'New Anti-SLAPP Legislation Developments',
-        date: '2025-01-08',
-        category: 'Civil Litigation',
-        link: 'https://www.ontario.ca/laws/statute/10015',
-      },
-      {
-        title: 'Commercial Dispute Resolution Trends',
-        date: '2025-01-03',
+        title: 'Class Action Certification Trends in Canada',
+        date: getCurrentDate(4),
         category: 'Civil Litigation',
         link: 'https://www.ontariocourts.ca/scj/en/',
+      },
+      {
+        title: 'Commercial Arbitration vs Court Proceedings',
+        date: getCurrentDate(7),
+        category: 'Civil Litigation',
+        link: 'https://www.adric.ca/',
+      },
+      {
+        title: 'Limitation Periods and COVID-19 Impact',
+        date: getCurrentDate(10),
+        category: 'Civil Litigation',
+        link: 'https://www.ontario.ca/laws/statute/02061',
       },
     ],
     business: [
       {
-        title: 'Economic Development Incentives for Northern Ontario',
-        date: '2025-01-14',
+        title: 'Northern Ontario Development Incentives 2025',
+        date: getCurrentDate(3),
         category: 'Business Law',
         link: 'https://www.ontario.ca/page/northern-ontario-heritage-fund',
       },
       {
-        title: 'Corporate Governance Best Practices Update',
-        date: '2025-01-09',
+        title: 'Corporate Governance Best Practices for SMEs',
+        date: getCurrentDate(6),
         category: 'Business Law',
-        link: 'https://www.osc.ca/en',
+        link: 'https://www.ic.gc.ca/eic/site/cd-dgc.nsf/eng/home',
       },
       {
-        title: 'IP Strategy for Tech Startups',
-        date: '2025-01-06',
+        title: 'Intellectual Property Strategy for Tech Startups',
+        date: getCurrentDate(9),
         category: 'Business Law',
         link: 'https://www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/home',
+      },
+      {
+        title: 'Employment Standards Act Updates Ontario',
+        date: getCurrentDate(13),
+        category: 'Business Law',
+        link: 'https://www.ontario.ca/laws/statute/00041',
       },
     ],
   }
