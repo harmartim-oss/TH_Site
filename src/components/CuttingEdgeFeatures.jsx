@@ -760,8 +760,8 @@ export const LegalResourcesLibrary = () => {
           'Investment and fundraising documentation',
           'Employment law compliance and agreements',
           'Contract negotiation and risk assessment',
-          'Regulatory compliance planning'
-        ]
+          'Regulatory compliance planning',
+        ],
       },
       {
         title: 'Understanding PIPEDA compliance',
@@ -794,8 +794,8 @@ export const LegalResourcesLibrary = () => {
           'Privacy impact assessment guidance',
           'Data breach response planning',
           'Cross-border transfer compliance',
-          'Employee privacy training programs'
-        ]
+          'Employee privacy training programs',
+        ],
       },
       {
         title: 'Employment law basics',
@@ -835,8 +835,8 @@ export const LegalResourcesLibrary = () => {
           'Termination and severance planning',
           'Human rights compliance training',
           'Workplace investigation procedures',
-          'Labour standards compliance audits'
-        ]
+          'Labour standards compliance audits',
+        ],
       },
     ],
     tools: [
@@ -872,8 +872,8 @@ export const LegalResourcesLibrary = () => {
           'Cost comparison for different service levels',
           'ROI analysis for preventive legal services',
           'Payment plan and financing options',
-          'Regular budget review and adjustment recommendations'
-        ]
+          'Regular budget review and adjustment recommendations',
+        ],
       },
       {
         title: 'Contract Template Library',
@@ -909,8 +909,8 @@ export const LegalResourcesLibrary = () => {
           'Step-by-step completion guidance',
           'Professional legal review services available',
           'Regular updates reflecting law changes',
-          'Secure document management and storage'
-        ]
+          'Secure document management and storage',
+        ],
       },
       {
         title: 'Compliance Calendar',
@@ -946,8 +946,8 @@ export const LegalResourcesLibrary = () => {
           'Regulatory change notifications and updates',
           'Document management for compliance filings',
           'Custom compliance schedules by industry',
-          'Annual compliance planning and strategy sessions'
-        ]
+          'Annual compliance planning and strategy sessions',
+        ],
       },
     ],
   }
@@ -1035,7 +1035,7 @@ export const LegalResourcesLibrary = () => {
                 </button>
               )}
             </div>
-            
+
             {/* Expandable content for FAQs and Tools */}
             {resource.expandable && (
               <div
@@ -1051,15 +1051,10 @@ export const LegalResourcesLibrary = () => {
                   {/* Features list */}
                   {resource.features && (
                     <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-blue-600">
-                        Key Services:
-                      </h4>
+                      <h4 className="text-sm font-semibold text-blue-600">Key Services:</h4>
                       <div className="grid grid-cols-1 gap-1">
                         {resource.features.map((feature, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center gap-2 text-sm text-gray-600"
-                          >
+                          <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
                             <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
                             {feature}
                           </div>
