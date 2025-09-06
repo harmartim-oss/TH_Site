@@ -43,64 +43,92 @@ export const AILegalAssistant = () => {
   // Enhanced AI response logic
   const generateAIResponse = (userMessage) => {
     const message = userMessage.toLowerCase()
-    
+
     // More sophisticated response logic
-    if (message.includes('startup') || message.includes('business formation') || message.includes('new business')) {
+    if (
+      message.includes('startup') ||
+      message.includes('business formation') ||
+      message.includes('new business')
+    ) {
       return {
         text: "For startups, Tim offers comprehensive legal support including business entity selection, founders' agreements, IP strategy, and regulatory compliance. Our Business Start Up & Strategy service provides end-to-end legal foundation for new ventures. Would you like to schedule a consultation or learn more about a specific aspect?",
-        quickActions: ['Schedule Consultation', 'Business Formation Guide', 'IP Strategy Info']
+        quickActions: ['Schedule Consultation', 'Business Formation Guide', 'IP Strategy Info'],
       }
     }
-    
-    if (message.includes('privacy') || message.includes('data') || message.includes('cybersecurity') || message.includes('pipeda')) {
+
+    if (
+      message.includes('privacy') ||
+      message.includes('data') ||
+      message.includes('cybersecurity') ||
+      message.includes('pipeda')
+    ) {
       return {
-        text: "Tim specializes in privacy and cybersecurity law, including PIPEDA compliance, data breach response, and cybersecurity audits. We help businesses navigate Canadian privacy laws and implement robust data protection strategies. What specific privacy concerns do you have?",
-        quickActions: ['Privacy Consultation', 'PIPEDA Compliance Guide', 'Data Breach Response']
+        text: 'Tim specializes in privacy and cybersecurity law, including PIPEDA compliance, data breach response, and cybersecurity audits. We help businesses navigate Canadian privacy laws and implement robust data protection strategies. What specific privacy concerns do you have?',
+        quickActions: ['Privacy Consultation', 'PIPEDA Compliance Guide', 'Data Breach Response'],
       }
     }
-    
-    if (message.includes('litigation') || message.includes('dispute') || message.includes('contract') || message.includes('lawsuit')) {
+
+    if (
+      message.includes('litigation') ||
+      message.includes('dispute') ||
+      message.includes('contract') ||
+      message.includes('lawsuit')
+    ) {
       return {
-        text: "Our civil litigation practice handles contract disputes, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience, we provide strategic advocacy while exploring cost-effective resolution options. What type of legal dispute are you facing?",
-        quickActions: ['Litigation Consultation', 'Contract Review', 'Dispute Assessment']
+        text: 'Our civil litigation practice handles contract disputes, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience, we provide strategic advocacy while exploring cost-effective resolution options. What type of legal dispute are you facing?',
+        quickActions: ['Litigation Consultation', 'Contract Review', 'Dispute Assessment'],
       }
     }
-    
-    if (message.includes('intellectual property') || message.includes('trademark') || message.includes('copyright') || message.includes('ip')) {
+
+    if (
+      message.includes('intellectual property') ||
+      message.includes('trademark') ||
+      message.includes('copyright') ||
+      message.includes('ip')
+    ) {
       return {
-        text: "We provide comprehensive IP protection including trademark registration, copyright matters, trade secret protection, and licensing agreements. Our IP services help protect your innovations and creative assets. What intellectual property needs do you have?",
-        quickActions: ['IP Consultation', 'Trademark Search', 'IP Strategy Guide']
+        text: 'We provide comprehensive IP protection including trademark registration, copyright matters, trade secret protection, and licensing agreements. Our IP services help protect your innovations and creative assets. What intellectual property needs do you have?',
+        quickActions: ['IP Consultation', 'Trademark Search', 'IP Strategy Guide'],
       }
     }
-    
-    if (message.includes('cost') || message.includes('price') || message.includes('fee') || message.includes('consultation')) {
+
+    if (
+      message.includes('cost') ||
+      message.includes('price') ||
+      message.includes('fee') ||
+      message.includes('consultation')
+    ) {
       return {
-        text: "We offer a free initial consultation to discuss your legal needs and provide transparent pricing. Our fees are competitive and we work with clients to find cost-effective solutions. Would you like to schedule your free consultation?",
-        quickActions: ['Schedule Free Consultation', 'Contact Us', 'Learn About Services']
+        text: 'We offer a free initial consultation to discuss your legal needs and provide transparent pricing. Our fees are competitive and we work with clients to find cost-effective solutions. Would you like to schedule your free consultation?',
+        quickActions: ['Schedule Free Consultation', 'Contact Us', 'Learn About Services'],
       }
     }
-    
-    if (message.includes('schedule') || message.includes('appointment') || message.includes('meet')) {
+
+    if (
+      message.includes('schedule') ||
+      message.includes('appointment') ||
+      message.includes('meet')
+    ) {
       return {
-        text: "I can help you schedule a consultation with Tim. We offer flexible scheduling and initial consultations are free. You can use our Smart Scheduler below or contact us directly. What works best for your schedule?",
-        quickActions: ['Use Smart Scheduler', 'Call Now', 'Email Us']
+        text: 'I can help you schedule a consultation with Tim. We offer flexible scheduling and initial consultations are free. You can use our Smart Scheduler below or contact us directly. What works best for your schedule?',
+        quickActions: ['Use Smart Scheduler', 'Call Now', 'Email Us'],
       }
     }
-    
+
     // Default response with helpful information
     return {
-      text: "Tim Harmar Legal provides expert legal services in civil litigation, privacy & cybersecurity law, intellectual property, business law, and startup consulting in Northern Ontario. Our award-winning practice combines legal expertise with cutting-edge technology. What specific area interests you?",
-      quickActions: ['View All Services', 'Schedule Consultation', 'Resource Library']
+      text: 'Tim Harmar Legal provides expert legal services in civil litigation, privacy & cybersecurity law, intellectual property, business law, and startup consulting in Northern Ontario. Our award-winning practice combines legal expertise with cutting-edge technology. What specific area interests you?',
+      quickActions: ['View All Services', 'Schedule Consultation', 'Resource Library'],
     }
   }
 
   const handleSendMessage = () => {
     if (inputValue.trim()) {
-      const newMessage = { 
-        id: Date.now(), 
-        text: inputValue, 
+      const newMessage = {
+        id: Date.now(),
+        text: inputValue,
         sender: 'user',
-        timestamp: new Date().toLocaleTimeString()
+        timestamp: new Date().toLocaleTimeString(),
       }
       setMessages([...messages, newMessage])
       setInputValue('')
@@ -114,7 +142,7 @@ export const AILegalAssistant = () => {
           text: aiResponse.text,
           sender: 'bot',
           timestamp: new Date().toLocaleTimeString(),
-          quickActions: aiResponse.quickActions
+          quickActions: aiResponse.quickActions,
         }
         setMessages((prev) => [...prev, botResponse])
         setIsTyping(false)
@@ -123,40 +151,44 @@ export const AILegalAssistant = () => {
   }
 
   const handleQuickAction = (action) => {
-    const actionMessage = { 
-      id: Date.now(), 
-      text: action, 
+    const actionMessage = {
+      id: Date.now(),
+      text: action,
       sender: 'user',
-      timestamp: new Date().toLocaleTimeString()
+      timestamp: new Date().toLocaleTimeString(),
     }
-    setMessages(prev => [...prev, actionMessage])
+    setMessages((prev) => [...prev, actionMessage])
     setIsTyping(true)
 
     setTimeout(() => {
-      let responseText = ""
-      
-      switch(action) {
+      let responseText = ''
+
+      switch (action) {
         case 'Schedule Consultation':
         case 'Schedule Free Consultation':
-          responseText = "Perfect! I'll help you schedule a consultation. Please use our Smart Scheduler below or contact us directly at (705) 943-5049 or kburton@timharmar.com. Initial consultations are always free and confidential."
+          responseText =
+            "Perfect! I'll help you schedule a consultation. Please use our Smart Scheduler below or contact us directly at (705) 943-5049 or kburton@timharmar.com. Initial consultations are always free and confidential."
           break
         case 'View All Services':
-          responseText = "Our comprehensive legal services include: Civil Litigation, Privacy & Cybersecurity Law, Intellectual Property, Business Law, Business Start Up & Strategy, and Legal Consulting. Each service area combines legal expertise with innovative technology solutions."
+          responseText =
+            'Our comprehensive legal services include: Civil Litigation, Privacy & Cybersecurity Law, Intellectual Property, Business Law, Business Start Up & Strategy, and Legal Consulting. Each service area combines legal expertise with innovative technology solutions.'
           break
         case 'Resource Library':
-          responseText = "Access our Legal Resources Library below for helpful guides, including our Privacy Compliance Guide, Contract Review Checklist, and IP Protection Guide. These resources provide valuable insights for your business needs."
+          responseText =
+            'Access our Legal Resources Library below for helpful guides, including our Privacy Compliance Guide, Contract Review Checklist, and IP Protection Guide. These resources provide valuable insights for your business needs.'
           break
         default:
-          responseText = "I'd be happy to help you with that. Please contact our office at (705) 943-5049 or email kburton@timharmar.com for detailed assistance with your specific needs."
+          responseText =
+            "I'd be happy to help you with that. Please contact our office at (705) 943-5049 or email kburton@timharmar.com for detailed assistance with your specific needs."
       }
 
       const botResponse = {
         id: Date.now() + 1,
         text: responseText,
         sender: 'bot',
-        timestamp: new Date().toLocaleTimeString()
+        timestamp: new Date().toLocaleTimeString(),
       }
-      setMessages(prev => [...prev, botResponse])
+      setMessages((prev) => [...prev, botResponse])
       setIsTyping(false)
     }, 1000)
   }
@@ -169,14 +201,11 @@ export const AILegalAssistant = () => {
         className="fixed bottom-24 right-8 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4 rounded-full shadow-lg z-50 hover:shadow-xl transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        animate={{ 
-          boxShadow: isOpen ? '0 0 20px rgba(59, 130, 246, 0.5)' : '0 10px 25px rgba(0,0,0,0.3)' 
+        animate={{
+          boxShadow: isOpen ? '0 0 20px rgba(59, 130, 246, 0.5)' : '0 10px 25px rgba(0,0,0,0.3)',
         }}
       >
-        <motion.div
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <motion.div animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.3 }}>
           {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
         </motion.div>
       </motion.button>
@@ -226,9 +255,13 @@ export const AILegalAssistant = () => {
                       {message.text}
                     </div>
                     {message.timestamp && (
-                      <p className={`text-xs mt-1 ${
-                        message.sender === 'user' ? 'text-right text-gray-500' : 'text-left text-gray-500'
-                      }`}>
+                      <p
+                        className={`text-xs mt-1 ${
+                          message.sender === 'user'
+                            ? 'text-right text-gray-500'
+                            : 'text-left text-gray-500'
+                        }`}
+                      >
                         {message.timestamp}
                       </p>
                     )}
@@ -250,7 +283,7 @@ export const AILegalAssistant = () => {
                   </div>
                 </motion.div>
               ))}
-              
+
               {isTyping && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -1438,8 +1471,9 @@ export const LegalAssessment = () => {
       learningModule: {
         title: 'Business Structure Fundamentals',
         description: 'Learn about different business structures and their legal implications',
-        content: 'Understanding your business type is crucial for determining the right legal structure, compliance requirements, and risk management strategies...'
-      }
+        content:
+          'Understanding your business type is crucial for determining the right legal structure, compliance requirements, and risk management strategies...',
+      },
     },
     {
       id: 'legal_concerns',
@@ -1454,8 +1488,9 @@ export const LegalAssessment = () => {
       learningModule: {
         title: 'Legal Risk Assessment',
         description: 'Identify and prioritize legal risks in your business',
-        content: 'Different businesses face different legal challenges. Understanding your primary concerns helps prioritize legal resources and develop protective strategies...'
-      }
+        content:
+          'Different businesses face different legal challenges. Understanding your primary concerns helps prioritize legal resources and develop protective strategies...',
+      },
     },
     {
       id: 'urgency',
@@ -1464,19 +1499,27 @@ export const LegalAssessment = () => {
       learningModule: {
         title: 'Legal Planning & Timing',
         description: 'Strategic timing for legal consultations and implementations',
-        content: 'Timing is critical in legal matters. Early planning allows for more comprehensive solutions and can prevent costly legal issues...'
-      }
+        content:
+          'Timing is critical in legal matters. Early planning allows for more comprehensive solutions and can prevent costly legal issues...',
+      },
     },
     {
       id: 'budget_concern',
       question: 'What is your approximate budget for legal services?',
-      options: ['Under $5,000', '$5,000 - $15,000', '$15,000 - $50,000', 'Over $50,000', 'Need guidance on budgeting'],
+      options: [
+        'Under $5,000',
+        '$5,000 - $15,000',
+        '$15,000 - $50,000',
+        'Over $50,000',
+        'Need guidance on budgeting',
+      ],
       learningModule: {
         title: 'Legal Services Investment',
         description: 'Understanding legal service costs and value',
-        content: 'Legal services are an investment in your business protection and growth. Understanding costs helps make informed decisions...'
-      }
-    }
+        content:
+          'Legal services are an investment in your business protection and growth. Understanding costs helps make informed decisions...',
+      },
+    },
   ]
 
   const handleAnswer = (answer) => {
@@ -1509,15 +1552,31 @@ export const LegalAssessment = () => {
     }
 
     if (legal_concerns === 'Privacy Compliance') {
-      recommendations.push('PIPEDA Compliance Assessment', 'Privacy Policy Development', 'Data Audit Services')
+      recommendations.push(
+        'PIPEDA Compliance Assessment',
+        'Privacy Policy Development',
+        'Data Audit Services'
+      )
     } else if (legal_concerns === 'IP Protection') {
-      recommendations.push('Trademark Search and Registration', 'IP Portfolio Assessment', 'Trade Secret Protection')
+      recommendations.push(
+        'Trademark Search and Registration',
+        'IP Portfolio Assessment',
+        'Trade Secret Protection'
+      )
     } else if (legal_concerns === 'Contract Review') {
-      recommendations.push('Contract Template Development', 'Risk Assessment Review', 'Negotiation Strategy')
+      recommendations.push(
+        'Contract Template Development',
+        'Risk Assessment Review',
+        'Negotiation Strategy'
+      )
     }
 
     if (business_type === 'Technology Startup') {
-      recommendations.push('Startup Legal Package', 'Terms of Service Review', 'Employment Agreement Templates')
+      recommendations.push(
+        'Startup Legal Package',
+        'Terms of Service Review',
+        'Employment Agreement Templates'
+      )
     }
 
     return { recommendations, priority }
@@ -1558,7 +1617,9 @@ export const LegalAssessment = () => {
           className="bg-white p-6 rounded-lg border border-purple-200"
         >
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-lg font-semibold text-purple-700">{questions[currentModule].learningModule.title}</h4>
+            <h4 className="text-lg font-semibold text-purple-700">
+              {questions[currentModule].learningModule.title}
+            </h4>
             <button
               onClick={() => setCurrentModule(null)}
               className="text-gray-500 hover:text-gray-700"
@@ -1566,7 +1627,9 @@ export const LegalAssessment = () => {
               <X className="w-5 h-5" />
             </button>
           </div>
-          <p className="text-gray-600 mb-4">{questions[currentModule].learningModule.description}</p>
+          <p className="text-gray-600 mb-4">
+            {questions[currentModule].learningModule.description}
+          </p>
           <div className="bg-purple-50 p-4 rounded-lg mb-4">
             <p className="text-sm text-gray-700 leading-relaxed">
               {questions[currentModule].learningModule.content}
@@ -1592,7 +1655,9 @@ export const LegalAssessment = () => {
         <div>
           <div className="mb-6">
             <div className="flex justify-between items-center text-sm text-gray-500 mb-2">
-              <span>Question {currentQuestion + 1} of {questions.length}</span>
+              <span>
+                Question {currentQuestion + 1} of {questions.length}
+              </span>
               <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
@@ -1605,7 +1670,9 @@ export const LegalAssessment = () => {
           </div>
 
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-lg font-semibold text-gray-800">{questions[currentQuestion].question}</h4>
+            <h4 className="text-lg font-semibold text-gray-800">
+              {questions[currentQuestion].question}
+            </h4>
             <motion.button
               onClick={() => setCurrentModule(currentQuestion)}
               className="text-sm text-purple-600 hover:text-purple-700 flex items-center"
@@ -1645,15 +1712,12 @@ export const LegalAssessment = () => {
         </div>
       ) : (
         // Results with Recommendations
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center mb-4">
             <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
             <h4 className="text-xl font-semibold text-gray-800">Assessment Complete!</h4>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg mb-6 border border-purple-200">
             <h5 className="font-semibold text-gray-800 mb-3">Your Legal Profile:</h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -1718,7 +1782,7 @@ export const LegalAssessment = () => {
                   `Budget: ${answers.budget_concern || 'Not specified'}%0D%0A` +
                   `Priority Level: ${priority}%0D%0A%0D%0A` +
                   `Recommended Services:%0D%0A` +
-                  recommendations.map(rec => `• ${rec}`).join('%0D%0A') +
+                  recommendations.map((rec) => `• ${rec}`).join('%0D%0A') +
                   `%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!`
 
                 window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - Legal Assessment Complete&body=${emailBody}`
