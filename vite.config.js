@@ -9,10 +9,18 @@ export default defineConfig({
   build: {
     // Explicitly disable Server-Side Rendering
     ssr: false,
+    // Ensure proper asset handling for GitHub Pages
+    assetsDir: 'assets',
+    outDir: 'dist',
   },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+  },
+  // Ensure proper preview server behavior
+  preview: {
+    port: 4173,
+    strictPort: true,
   },
 })
