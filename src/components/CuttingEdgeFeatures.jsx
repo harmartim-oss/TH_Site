@@ -17,6 +17,13 @@ import {
   ChevronDown,
   ChevronUp,
   CheckCircle,
+  Send,
+  X,
+  MoreHorizontal,
+  Scale,
+  Lightbulb,
+  Building2,
+  ArrowRight,
 } from 'lucide-react'
 
 // AI-Powered Legal Assistant Chat Widget
@@ -25,28 +32,133 @@ export const AILegalAssistant = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hello! I'm Tim's AI legal assistant. How can I help you today?",
+      text: "Hello! I'm Tim's AI legal assistant. I can help you with information about our legal services, answer common questions, and guide you to the right resources. How can I assist you today?",
       sender: 'bot',
+      timestamp: new Date().toLocaleTimeString(),
     },
   ])
   const [inputValue, setInputValue] = useState('')
+  const [isTyping, setIsTyping] = useState(false)
+
+  // Enhanced AI response logic
+  const generateAIResponse = (userMessage) => {
+    const message = userMessage.toLowerCase()
+    
+    // More sophisticated response logic
+    if (message.includes('startup') || message.includes('business formation') || message.includes('new business')) {
+      return {
+        text: "For startups, Tim offers comprehensive legal support including business entity selection, founders' agreements, IP strategy, and regulatory compliance. Our Business Start Up & Strategy service provides end-to-end legal foundation for new ventures. Would you like to schedule a consultation or learn more about a specific aspect?",
+        quickActions: ['Schedule Consultation', 'Business Formation Guide', 'IP Strategy Info']
+      }
+    }
+    
+    if (message.includes('privacy') || message.includes('data') || message.includes('cybersecurity') || message.includes('pipeda')) {
+      return {
+        text: "Tim specializes in privacy and cybersecurity law, including PIPEDA compliance, data breach response, and cybersecurity audits. We help businesses navigate Canadian privacy laws and implement robust data protection strategies. What specific privacy concerns do you have?",
+        quickActions: ['Privacy Consultation', 'PIPEDA Compliance Guide', 'Data Breach Response']
+      }
+    }
+    
+    if (message.includes('litigation') || message.includes('dispute') || message.includes('contract') || message.includes('lawsuit')) {
+      return {
+        text: "Our civil litigation practice handles contract disputes, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience, we provide strategic advocacy while exploring cost-effective resolution options. What type of legal dispute are you facing?",
+        quickActions: ['Litigation Consultation', 'Contract Review', 'Dispute Assessment']
+      }
+    }
+    
+    if (message.includes('intellectual property') || message.includes('trademark') || message.includes('copyright') || message.includes('ip')) {
+      return {
+        text: "We provide comprehensive IP protection including trademark registration, copyright matters, trade secret protection, and licensing agreements. Our IP services help protect your innovations and creative assets. What intellectual property needs do you have?",
+        quickActions: ['IP Consultation', 'Trademark Search', 'IP Strategy Guide']
+      }
+    }
+    
+    if (message.includes('cost') || message.includes('price') || message.includes('fee') || message.includes('consultation')) {
+      return {
+        text: "We offer a free initial consultation to discuss your legal needs and provide transparent pricing. Our fees are competitive and we work with clients to find cost-effective solutions. Would you like to schedule your free consultation?",
+        quickActions: ['Schedule Free Consultation', 'Contact Us', 'Learn About Services']
+      }
+    }
+    
+    if (message.includes('schedule') || message.includes('appointment') || message.includes('meet')) {
+      return {
+        text: "I can help you schedule a consultation with Tim. We offer flexible scheduling and initial consultations are free. You can use our Smart Scheduler below or contact us directly. What works best for your schedule?",
+        quickActions: ['Use Smart Scheduler', 'Call Now', 'Email Us']
+      }
+    }
+    
+    // Default response with helpful information
+    return {
+      text: "Tim Harmar Legal provides expert legal services in civil litigation, privacy & cybersecurity law, intellectual property, business law, and startup consulting in Northern Ontario. Our award-winning practice combines legal expertise with cutting-edge technology. What specific area interests you?",
+      quickActions: ['View All Services', 'Schedule Consultation', 'Resource Library']
+    }
+  }
 
   const handleSendMessage = () => {
     if (inputValue.trim()) {
-      const newMessage = { id: Date.now(), text: inputValue, sender: 'user' }
+      const newMessage = { 
+        id: Date.now(), 
+        text: inputValue, 
+        sender: 'user',
+        timestamp: new Date().toLocaleTimeString()
+      }
       setMessages([...messages, newMessage])
       setInputValue('')
+      setIsTyping(true)
 
-      // Simulate AI response
+      // Simulate AI processing and response
       setTimeout(() => {
+        const aiResponse = generateAIResponse(inputValue)
         const botResponse = {
           id: Date.now() + 1,
-          text: 'Thank you for your question. Tim Harmar specializes in privacy law, civil litigation, and economic development. Would you like to schedule a consultation to discuss your specific legal needs?',
+          text: aiResponse.text,
           sender: 'bot',
+          timestamp: new Date().toLocaleTimeString(),
+          quickActions: aiResponse.quickActions
         }
         setMessages((prev) => [...prev, botResponse])
-      }, 1000)
+        setIsTyping(false)
+      }, 1500)
     }
+  }
+
+  const handleQuickAction = (action) => {
+    const actionMessage = { 
+      id: Date.now(), 
+      text: action, 
+      sender: 'user',
+      timestamp: new Date().toLocaleTimeString()
+    }
+    setMessages(prev => [...prev, actionMessage])
+    setIsTyping(true)
+
+    setTimeout(() => {
+      let responseText = ""
+      
+      switch(action) {
+        case 'Schedule Consultation':
+        case 'Schedule Free Consultation':
+          responseText = "Perfect! I'll help you schedule a consultation. Please use our Smart Scheduler below or contact us directly at (705) 943-5049 or kburton@timharmar.com. Initial consultations are always free and confidential."
+          break
+        case 'View All Services':
+          responseText = "Our comprehensive legal services include: Civil Litigation, Privacy & Cybersecurity Law, Intellectual Property, Business Law, Business Start Up & Strategy, and Legal Consulting. Each service area combines legal expertise with innovative technology solutions."
+          break
+        case 'Resource Library':
+          responseText = "Access our Legal Resources Library below for helpful guides, including our Privacy Compliance Guide, Contract Review Checklist, and IP Protection Guide. These resources provide valuable insights for your business needs."
+          break
+        default:
+          responseText = "I'd be happy to help you with that. Please contact our office at (705) 943-5049 or email kburton@timharmar.com for detailed assistance with your specific needs."
+      }
+
+      const botResponse = {
+        id: Date.now() + 1,
+        text: responseText,
+        sender: 'bot',
+        timestamp: new Date().toLocaleTimeString()
+      }
+      setMessages(prev => [...prev, botResponse])
+      setIsTyping(false)
+    }, 1000)
   }
 
   return (
@@ -57,8 +169,16 @@ export const AILegalAssistant = () => {
         className="fixed bottom-24 right-8 bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4 rounded-full shadow-lg z-50 hover:shadow-xl transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        animate={{ 
+          boxShadow: isOpen ? '0 0 20px rgba(59, 130, 246, 0.5)' : '0 10px 25px rgba(0,0,0,0.3)' 
+        }}
       >
-        <MessageCircle size={24} />
+        <motion.div
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        </motion.div>
       </motion.button>
 
       {/* Chat Window */}
@@ -68,33 +188,99 @@ export const AILegalAssistant = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-40 right-8 w-80 h-96 bg-white rounded-lg shadow-2xl z-50 flex flex-col"
+            className="fixed bottom-40 right-8 w-96 h-[500px] bg-white rounded-xl shadow-2xl z-50 flex flex-col overflow-hidden border border-gray-200"
           >
-            <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4 rounded-t-lg">
-              <h3 className="font-semibold">AI Legal Assistant</h3>
-              <p className="text-sm opacity-90">Powered by Tim Harmar Legal</p>
+            <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-lg">AI Legal Assistant</h3>
+                  <p className="text-sm opacity-90">Powered by Tim Harmar Legal</p>
+                </div>
+                <motion.button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1 hover:bg-white/20 rounded-full transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X size={20} />
+                </motion.button>
+              </div>
             </div>
 
-            <div className="flex-1 p-4 overflow-y-auto space-y-3">
+            <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-gray-50">
               {messages.map((message) => (
-                <div
+                <motion.div
                   key={message.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div
-                    className={`max-w-xs p-3 rounded-lg ${
-                      message.sender === 'user'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 text-gray-800'
-                    }`}
-                  >
-                    {message.text}
+                  <div className="max-w-[80%]">
+                    <div
+                      className={`p-3 rounded-lg ${
+                        message.sender === 'user'
+                          ? 'bg-blue-600 text-white rounded-br-none'
+                          : 'bg-white text-gray-800 rounded-bl-none shadow-sm border'
+                      }`}
+                    >
+                      {message.text}
+                    </div>
+                    {message.timestamp && (
+                      <p className={`text-xs mt-1 ${
+                        message.sender === 'user' ? 'text-right text-gray-500' : 'text-left text-gray-500'
+                      }`}>
+                        {message.timestamp}
+                      </p>
+                    )}
+                    {message.quickActions && (
+                      <div className="mt-2 space-y-1">
+                        {message.quickActions.map((action, index) => (
+                          <motion.button
+                            key={index}
+                            onClick={() => handleQuickAction(action)}
+                            className="block w-full text-left p-2 text-sm bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg transition-colors border border-blue-200"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            {action}
+                          </motion.button>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </div>
+                </motion.div>
               ))}
+              
+              {isTyping && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-start"
+                >
+                  <div className="bg-white p-3 rounded-lg rounded-bl-none shadow-sm border">
+                    <div className="flex space-x-1">
+                      <motion.div
+                        className="w-2 h-2 bg-gray-400 rounded-full"
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-gray-400 rounded-full"
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-gray-400 rounded-full"
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
-            <div className="p-4 border-t">
+            <div className="p-4 border-t bg-white">
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -102,14 +288,18 @@ export const AILegalAssistant = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Ask a legal question..."
-                  className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  disabled={isTyping}
                 />
-                <button
+                <motion.button
                   onClick={handleSendMessage}
-                  className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  disabled={!inputValue.trim() || isTyping}
+                  className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <MessageCircle size={16} />
-                </button>
+                  <Send size={18} />
+                </motion.button>
               </div>
             </div>
           </motion.div>
@@ -1232,16 +1422,24 @@ export const LegalNewsFeed = () => {
 }
 
 // Interactive Legal Assessment Tool
+// Enhanced Legal Assessment with Learning Modules
 export const LegalAssessment = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState({})
   const [showResults, setShowResults] = useState(false)
+  const [completedModules, setCompletedModules] = useState([])
+  const [currentModule, setCurrentModule] = useState(null)
 
   const questions = [
     {
       id: 'business_type',
       question: 'What type of business do you operate?',
       options: ['Technology Startup', 'Manufacturing', 'Professional Services', 'Retail', 'Other'],
+      learningModule: {
+        title: 'Business Structure Fundamentals',
+        description: 'Learn about different business structures and their legal implications',
+        content: 'Understanding your business type is crucial for determining the right legal structure, compliance requirements, and risk management strategies...'
+      }
     },
     {
       id: 'legal_concerns',
@@ -1253,12 +1451,32 @@ export const LegalAssessment = () => {
         'Regulatory Compliance',
         'Litigation Risk',
       ],
+      learningModule: {
+        title: 'Legal Risk Assessment',
+        description: 'Identify and prioritize legal risks in your business',
+        content: 'Different businesses face different legal challenges. Understanding your primary concerns helps prioritize legal resources and develop protective strategies...'
+      }
     },
     {
       id: 'urgency',
       question: 'How urgent is your legal need?',
       options: ['Immediate (within 1 week)', 'Soon (within 1 month)', 'Planning ahead (3+ months)'],
+      learningModule: {
+        title: 'Legal Planning & Timing',
+        description: 'Strategic timing for legal consultations and implementations',
+        content: 'Timing is critical in legal matters. Early planning allows for more comprehensive solutions and can prevent costly legal issues...'
+      }
     },
+    {
+      id: 'budget_concern',
+      question: 'What is your approximate budget for legal services?',
+      options: ['Under $5,000', '$5,000 - $15,000', '$15,000 - $50,000', 'Over $50,000', 'Need guidance on budgeting'],
+      learningModule: {
+        title: 'Legal Services Investment',
+        description: 'Understanding legal service costs and value',
+        content: 'Legal services are an investment in your business protection and growth. Understanding costs helps make informed decisions...'
+      }
+    }
   ]
 
   const handleAnswer = (answer) => {
@@ -1272,10 +1490,44 @@ export const LegalAssessment = () => {
     }
   }
 
+  const completeModule = (moduleIndex) => {
+    if (!completedModules.includes(moduleIndex)) {
+      setCompletedModules([...completedModules, moduleIndex])
+    }
+    setCurrentModule(null)
+  }
+
+  const getRecommendations = () => {
+    const { business_type, legal_concerns, urgency, budget_concern } = answers
+
+    let recommendations = []
+    let priority = 'Medium'
+
+    if (urgency === 'Immediate (within 1 week)') {
+      priority = 'High'
+      recommendations.push('Schedule emergency consultation within 24 hours')
+    }
+
+    if (legal_concerns === 'Privacy Compliance') {
+      recommendations.push('PIPEDA Compliance Assessment', 'Privacy Policy Development', 'Data Audit Services')
+    } else if (legal_concerns === 'IP Protection') {
+      recommendations.push('Trademark Search and Registration', 'IP Portfolio Assessment', 'Trade Secret Protection')
+    } else if (legal_concerns === 'Contract Review') {
+      recommendations.push('Contract Template Development', 'Risk Assessment Review', 'Negotiation Strategy')
+    }
+
+    if (business_type === 'Technology Startup') {
+      recommendations.push('Startup Legal Package', 'Terms of Service Review', 'Employment Agreement Templates')
+    }
+
+    return { recommendations, priority }
+  }
+
   const resetAssessment = () => {
     setCurrentQuestion(0)
     setAnswers({})
     setShowResults(false)
+    setCurrentModule(null)
   }
 
   return (
@@ -1283,93 +1535,203 @@ export const LegalAssessment = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-xl shadow-lg"
+      className="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-xl shadow-lg border border-purple-100"
     >
-      <div className="flex items-center mb-6">
-        <Brain className="w-8 h-8 text-purple-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-800">Legal Needs Assessment</h3>
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center">
+          <Brain className="w-8 h-8 text-purple-600 mr-3" />
+          <h3 className="text-2xl font-bold text-gray-800">Legal Needs Assessment</h3>
+        </div>
+        {completedModules.length > 0 && (
+          <div className="flex items-center text-sm text-purple-600">
+            <CheckCircle className="w-4 h-4 mr-1" />
+            {completedModules.length} modules completed
+          </div>
+        )}
       </div>
 
-      {!showResults ? (
+      {currentModule ? (
+        // Learning Module View
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="bg-white p-6 rounded-lg border border-purple-200"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="text-lg font-semibold text-purple-700">{questions[currentModule].learningModule.title}</h4>
+            <button
+              onClick={() => setCurrentModule(null)}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          <p className="text-gray-600 mb-4">{questions[currentModule].learningModule.description}</p>
+          <div className="bg-purple-50 p-4 rounded-lg mb-4">
+            <p className="text-sm text-gray-700 leading-relaxed">
+              {questions[currentModule].learningModule.content}
+            </p>
+          </div>
+          <div className="flex justify-between">
+            <button
+              onClick={() => setCurrentModule(null)}
+              className="px-4 py-2 text-purple-600 border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors"
+            >
+              Back to Assessment
+            </button>
+            <button
+              onClick={() => completeModule(currentModule)}
+              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Mark as Complete
+            </button>
+          </div>
+        </motion.div>
+      ) : !showResults ? (
+        // Assessment Questions
         <div>
-          <div className="mb-4">
-            <div className="flex justify-between text-sm text-gray-500 mb-2">
-              <span>
-                Question {currentQuestion + 1} of {questions.length}
-              </span>
+          <div className="mb-6">
+            <div className="flex justify-between items-center text-sm text-gray-500 mb-2">
+              <span>Question {currentQuestion + 1} of {questions.length}</span>
               <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-purple-600 h-2 rounded-full transition-all duration-300"
-                style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-              ></div>
+            <div className="w-full bg-gray-200 rounded-full h-3">
+              <motion.div
+                className="bg-gradient-to-r from-purple-600 to-blue-600 h-3 rounded-full transition-all duration-500"
+                initial={{ width: 0 }}
+                animate={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+              />
             </div>
           </div>
 
-          <h4 className="text-lg font-semibold mb-4">{questions[currentQuestion].question}</h4>
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="text-lg font-semibold text-gray-800">{questions[currentQuestion].question}</h4>
+            <motion.button
+              onClick={() => setCurrentModule(currentQuestion)}
+              className="text-sm text-purple-600 hover:text-purple-700 flex items-center"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Brain className="w-4 h-4 mr-1" />
+              Learn More
+            </motion.button>
+          </div>
 
-          <div className="space-y-3">
+          <div className="grid gap-3">
             {questions[currentQuestion].options.map((option, index) => (
               <motion.button
                 key={index}
                 onClick={() => handleAnswer(option)}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full p-3 text-left border border-gray-300 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all"
+                className="w-full p-4 text-left border-2 border-gray-200 rounded-lg hover:border-purple-400 hover:bg-purple-50 transition-all duration-200 group"
               >
-                {option}
+                <div className="flex items-center justify-between">
+                  <span className="font-medium">{option}</span>
+                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transform group-hover:translate-x-1 transition-all" />
+                </div>
               </motion.button>
             ))}
           </div>
+
+          {currentQuestion > 0 && (
+            <motion.button
+              onClick={() => setCurrentQuestion(currentQuestion - 1)}
+              className="mt-4 px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              whileHover={{ scale: 1.05 }}
+            >
+              Previous Question
+            </motion.button>
+          )}
         </div>
       ) : (
-        <div>
-          <h4 className="text-lg font-semibold mb-4">Assessment Complete!</h4>
-          <div className="bg-white p-6 rounded-lg mb-4">
-            <p className="text-gray-500 mb-4">
-              Based on your responses, Tim Harmar can help you with specialized legal services
-              tailored to your needs.
-            </p>
+        // Results with Recommendations
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <div className="flex items-center mb-4">
+            <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
+            <h4 className="text-xl font-semibold text-gray-800">Assessment Complete!</h4>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg mb-6 border border-purple-200">
+            <h5 className="font-semibold text-gray-800 mb-3">Your Legal Profile:</h5>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <span className="text-gray-500">Business Type:</span>
+                <p className="font-medium">{answers.business_type}</p>
+              </div>
+              <div>
+                <span className="text-gray-500">Primary Concern:</span>
+                <p className="font-medium">{answers.legal_concerns}</p>
+              </div>
+              <div>
+                <span className="text-gray-500">Timeline:</span>
+                <p className="font-medium">{answers.urgency}</p>
+              </div>
+              {answers.budget_concern && (
+                <div>
+                  <span className="text-gray-500">Budget Range:</span>
+                  <p className="font-medium">{answers.budget_concern}</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6 rounded-lg mb-6">
+            <h5 className="font-semibold mb-3">Recommended Services:</h5>
             <div className="space-y-2">
-              <p>
-                <strong>Business Type:</strong> {answers.business_type}
-              </p>
-              <p>
-                <strong>Primary Concern:</strong> {answers.legal_concerns}
-              </p>
-              <p>
-                <strong>Timeline:</strong> {answers.urgency}
+              {getRecommendations().recommendations.map((rec, index) => (
+                <div key={index} className="flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-2 text-purple-200" />
+                  <span className="text-sm">{rec}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 p-3 bg-white/20 rounded-lg">
+              <p className="text-sm">
+                <strong>Priority Level:</strong> {getRecommendations().priority}
+                {getRecommendations().priority === 'High' && ' - Immediate attention recommended'}
               </p>
             </div>
           </div>
-          <div className="flex space-x-4">
-            <button
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <motion.button
               onClick={resetAssessment}
               className="flex-1 bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               Retake Assessment
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => {
+                const { recommendations, priority } = getRecommendations()
                 const emailBody =
                   `Hello,%0D%0A%0D%0A` +
                   `I have completed the legal needs assessment and would like to schedule a consultation.%0D%0A%0D%0A` +
                   `Assessment Results:%0D%0A` +
                   `Business Type: ${answers.business_type}%0D%0A` +
                   `Primary Concern: ${answers.legal_concerns}%0D%0A` +
-                  `Timeline: ${answers.urgency}%0D%0A%0D%0A` +
-                  `Please let me know your availability.%0D%0A%0D%0A` +
-                  `Thank you!`
+                  `Timeline: ${answers.urgency}%0D%0A` +
+                  `Budget: ${answers.budget_concern || 'Not specified'}%0D%0A` +
+                  `Priority Level: ${priority}%0D%0A%0D%0A` +
+                  `Recommended Services:%0D%0A` +
+                  recommendations.map(rec => `• ${rec}`).join('%0D%0A') +
+                  `%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!`
 
                 window.location.href = `mailto:kburton@timharmar.com?subject=Consultation Request - Legal Assessment Complete&body=${emailBody}`
               }}
-              className="flex-1 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white p-3 rounded-lg font-semibold shadow-medium hover:shadow-glow transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+              className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white p-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
+              <Calendar className="w-4 h-4 inline mr-2" />
               Schedule Consultation
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       )}
     </motion.div>
   )
