@@ -37,7 +37,9 @@ import {
   Star,
   TrendingUp,
 } from 'lucide-react'
-import logoImage from './assets/th_logo.png'
+import logoImage from './assets/tim_harmar_logo_updated.png'
+import heroBackground from './assets/hero_background.png'
+import cybersecurityImage from './assets/services_cybersecurity.png'
 
 // Policy Content
 const PRIVACY_POLICY = `Privacy Policy for www.timharmar.com
@@ -600,6 +602,52 @@ export default function App() {
                   role="navigation"
                   aria-label="Main navigation"
                 >
+ copilot/fix-b2720e1f-8eb4-45a5-9b4c-b07e68d4eeb2
+                  Services
+                </a>
+                <a
+                  href="#about"
+                  className="text-brand-primary hover:text-brand-accent font-medium py-3 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  About
+                </a>
+                <a
+                  href="#contact"
+                  className="text-brand-primary hover:text-brand-accent font-medium py-3 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </a>
+                <button
+                  className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 mx-2 mt-4"
+                  onClick={() =>
+                    (window.location.href =
+                      'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
+                  }
+                >
+                  <Calendar className="inline-block w-4 h-4 mr-2" />
+                  Schedule Consultation
+                </button>
+              </nav>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative bg-surface-default text-text-primary py-30 md:py-40 lg:py-48 overflow-hidden">
+        {/* Hero Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          style={{ backgroundImage: `url(${heroBackground})` }}
+        ></div>
+        
+        {/* Optional 5% opacity shield-outline watermark pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-brand-primary rounded-full"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 border-2 border-brand-primary rounded-full"></div>
+        </div
                   <a
                     href="#services"
                     className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
@@ -624,7 +672,8 @@ export default function App() {
                     Contact
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
                   </a>
-                </nav>
+                </nav
+      main
 
                 {/* Desktop CTA Button */}
                 <div className="hidden md:block">
@@ -700,6 +749,99 @@ export default function App() {
               <div className="absolute bottom-1/4 right-1/4 w-96 h-96 border-2 border-brand-primary rounded-full animate-pulse delay-300"></div>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-brand-accent rounded-full animate-pulse delay-100"></div>
             </div>
+            copilot/fix-b2720e1f-8eb4-45a5-9b4c-b07e68d4eeb2
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto">
+            {[
+              {
+                title: 'Civil Litigation',
+                description:
+                  'Expert representation in complex civil matters with a track record of success.',
+                icon: Scale,
+                color: 'from-primary-600 to-primary-700',
+                detailed:
+                  'Our civil litigation practice encompasses comprehensive legal representation for businesses and individuals in complex disputes. We handle contract disputes, tort claims, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience and strategic case management, we provide aggressive advocacy while exploring cost-effective resolution strategies including mediation and arbitration.',
+              },
+              {
+                title: 'Privacy and Cybersecurity Law',
+                description:
+                  'Comprehensive privacy compliance, data protection, and cybersecurity strategies.',
+                icon: Shield,
+                image: cybersecurityImage,
+                color: 'from-trust-600 to-trust-700',
+                detailed:
+                  'Navigate the complex landscape of Canadian privacy and cybersecurity laws including PIPEDA, provincial privacy legislation, and sector-specific regulations. Our services include privacy impact assessments, data breach response protocols, privacy policy development, CASL compliance, cross-border data transfer agreements, cybersecurity compliance audits, incident response planning, and regulatory compliance guidance for businesses of all sizes in the digital age.',
+              },
+              {
+                title: 'Intellectual Property',
+                description: 'Protecting your innovations and creative assets in the digital age.',
+                icon: Lightbulb,
+                color: 'from-accent-500 to-accent-600',
+                detailed:
+                  'Comprehensive intellectual property protection including trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, IP due diligence for mergers and acquisitions, and IP portfolio management. We help businesses protect their most valuable intangible assets and develop strategic IP licensing and monetization strategies.',
+              },
+              {
+                title: 'Business Law',
+                description: 'Strategic legal counsel for business growth and compliance.',
+                icon: Building2,
+                color: 'from-secondary-600 to-secondary-700',
+                detailed:
+                  'Full-spectrum business law services including corporate formation and governance, shareholder agreements, commercial contracts, regulatory compliance, employment law matters, and corporate restructuring. We serve as outside general counsel for emerging companies and established businesses, providing strategic legal guidance for sustainable growth.',
+              },
+              {
+                title: 'Business Start Up and Strategy',
+                description:
+                  'Comprehensive legal guidance for entrepreneurs and new business ventures.',
+                icon: Rocket,
+                color: 'from-primary-700 to-primary-800',
+                detailed:
+                  "End-to-end legal support for entrepreneurs launching new ventures including business entity selection and formation, founders' agreements, intellectual property strategy, regulatory compliance roadmaps, employment policies, privacy frameworks, and strategic partnerships. We help startups build solid legal foundations while remaining agile and cost-effective.",
+              },
+              {
+                title: 'Legal Consulting',
+                description: 'Strategic advice and risk management for complex legal challenges.',
+                icon: Target,
+                color: 'from-accent-600 to-accent-700',
+                detailed:
+                  'Strategic legal consulting for complex business challenges including regulatory compliance reviews, risk assessment and mitigation strategies, legal project management, and specialized advisory services. We provide senior-level legal expertise for organizations requiring sophisticated legal analysis and strategic guidance.',
+              },
+            ].map((service, index) => {
+              const IconComponent = service.icon
+              return (
+                <div
+                  key={index}
+                  className="group bg-surface-default p-8 rounded-token-md hover:shadow-service-card-hover transition-all duration-500 cursor-pointer border border-brand-secondary/30 hover:border-brand-accent transform hover:scale-102 animate-slide-up max-w-[340px] mx-auto"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                  onClick={() => setExpandedService(expandedService === index ? null : index)}
+                >
+                  <div className="w-16 h-16 rounded-token-sm bg-brand-accent/20 p-4 mb-6 group-hover:bg-brand-accent/30 transition-all duration-300">
+                    <IconComponent className="w-8 h-8 text-brand-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold text-brand-primary mb-4 flex items-center justify-between font-heading">
+                    {service.title}
+                    <span className="text-brand-accent transition-colors">
+                      {expandedService === index ? (
+                        <ChevronUp className="w-5 h-5" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" />
+                      )}
+                    </span>
+                  </h3>
+                  <p className="text-text-neutral mb-4 leading-relaxed">{service.description}</p>
+                  {expandedService === index && (
+                    <div className="mt-6 p-6 bg-surface-alt rounded-token-sm border-l-4 border-brand-accent animate-slide-down">
+                      {service.image && (
+                        <div className="mb-4">
+                          <img 
+                            src={service.image} 
+                            alt={`${service.title} illustration`}
+                            className="w-full h-48 object-cover rounded-token-sm shadow-token-md"
+                          />
+                        </div>
+                      )}
+                      <p className="text-text-neutral leading-relaxed mb-4">{service.detailed}</p>
+
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -749,7 +891,7 @@ export default function App() {
                         Schedule Free Consultation
                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </button>
-
+ main
                       <button
                         className="border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white px-8 py-4 rounded-token-sm font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3"
                         onClick={() =>
