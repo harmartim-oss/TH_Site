@@ -772,13 +772,13 @@ export const SmartScheduler = () => {
 export const LegalResourcesLibrary = () => {
   const [selectedCategory, setSelectedCategory] = useState('guides')
   const [expandedItem, setExpandedItem] = useState(null)
-  
+
   // Budget Calculator state
   const [budgetInputs, setBudgetInputs] = useState({
     serviceType: '',
     complexity: 'medium',
     urgency: 'normal',
-    duration: 'one-time'
+    duration: 'one-time',
   })
   const [budgetResults, setBudgetResults] = useState(null)
 
@@ -790,33 +790,34 @@ export const LegalResourcesLibrary = () => {
       'employment-law': { base: 1500, hourly: 325 },
       'intellectual-property': { base: 2000, hourly: 375 },
       'litigation-support': { base: 5000, hourly: 400 },
-      'privacy-compliance': { base: 2200, hourly: 350 }
+      'privacy-compliance': { base: 2200, hourly: 350 },
     }
 
     const complexityMultipliers = {
-      'simple': 0.7,
-      'medium': 1.0,
-      'complex': 1.5
+      simple: 0.7,
+      medium: 1.0,
+      complex: 1.5,
     }
 
     const urgencyMultipliers = {
-      'normal': 1.0,
-      'urgent': 1.3,
-      'rush': 1.6
+      normal: 1.0,
+      urgent: 1.3,
+      rush: 1.6,
     }
 
     const durationMultipliers = {
       'one-time': 1.0,
-      'ongoing': 0.85,
-      'retainer': 0.75
+      ongoing: 0.85,
+      retainer: 0.75,
     }
 
     if (!budgetInputs.serviceType) return
 
     const service = baseRates[budgetInputs.serviceType]
-    const baseEstimate = service.base * 
-      complexityMultipliers[budgetInputs.complexity] * 
-      urgencyMultipliers[budgetInputs.urgency] * 
+    const baseEstimate =
+      service.base *
+      complexityMultipliers[budgetInputs.complexity] *
+      urgencyMultipliers[budgetInputs.urgency] *
       durationMultipliers[budgetInputs.duration]
 
     const hourlyRate = service.hourly * complexityMultipliers[budgetInputs.complexity]
@@ -826,9 +827,9 @@ export const LegalResourcesLibrary = () => {
       hourlyRate: Math.round(hourlyRate),
       range: {
         low: Math.round(baseEstimate * 0.8),
-        high: Math.round(baseEstimate * 1.4)
+        high: Math.round(baseEstimate * 1.4),
       },
-      monthly: budgetInputs.duration === 'retainer' ? Math.round(baseEstimate * 0.3) : null
+      monthly: budgetInputs.duration === 'retainer' ? Math.round(baseEstimate * 0.3) : null,
     })
   }
 
@@ -928,7 +929,7 @@ export const LegalResourcesLibrary = () => {
     // For now, we'll use the existing popup functionality
     // In a real implementation, you'd use jsPDF to generate a proper PDF
     openPrivacyGuide()
-    
+
     // Add a small delay and then trigger a print dialog which can save as PDF
     setTimeout(() => {
       const newWindow = window.open('', '_blank')
@@ -1654,108 +1655,138 @@ export const LegalResourcesLibrary = () => {
                   )}
 
                   {/* Interactive Budget Calculator for Legal Budget Calculator tool */}
-                  {selectedCategory === 'tools' && index === 0 && resource.title === 'Legal Budget Calculator' && (
-                    <div className="mt-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-                      <h4 className="text-lg font-bold text-blue-800 mb-4 flex items-center">
-                        💰 Interactive Budget Calculator
-                      </h4>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
-                          <select
-                            value={budgetInputs.serviceType}
-                            onChange={(e) => setBudgetInputs({...budgetInputs, serviceType: e.target.value})}
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          >
-                            <option value="">Select a service...</option>
-                            <option value="business-formation">Business Formation</option>
-                            <option value="contract-services">Contract Services</option>
-                            <option value="employment-law">Employment Law</option>
-                            <option value="intellectual-property">Intellectual Property</option>
-                            <option value="litigation-support">Litigation Support</option>
-                            <option value="privacy-compliance">Privacy & Compliance</option>
-                          </select>
+                  {selectedCategory === 'tools' &&
+                    index === 0 &&
+                    resource.title === 'Legal Budget Calculator' && (
+                      <div className="mt-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+                        <h4 className="text-lg font-bold text-blue-800 mb-4 flex items-center">
+                          💰 Interactive Budget Calculator
+                        </h4>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Service Type
+                            </label>
+                            <select
+                              value={budgetInputs.serviceType}
+                              onChange={(e) =>
+                                setBudgetInputs({ ...budgetInputs, serviceType: e.target.value })
+                              }
+                              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                              <option value="">Select a service...</option>
+                              <option value="business-formation">Business Formation</option>
+                              <option value="contract-services">Contract Services</option>
+                              <option value="employment-law">Employment Law</option>
+                              <option value="intellectual-property">Intellectual Property</option>
+                              <option value="litigation-support">Litigation Support</option>
+                              <option value="privacy-compliance">Privacy & Compliance</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Complexity Level
+                            </label>
+                            <select
+                              value={budgetInputs.complexity}
+                              onChange={(e) =>
+                                setBudgetInputs({ ...budgetInputs, complexity: e.target.value })
+                              }
+                              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                              <option value="simple">Simple (-30%)</option>
+                              <option value="medium">Medium (Standard)</option>
+                              <option value="complex">Complex (+50%)</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Urgency
+                            </label>
+                            <select
+                              value={budgetInputs.urgency}
+                              onChange={(e) =>
+                                setBudgetInputs({ ...budgetInputs, urgency: e.target.value })
+                              }
+                              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                              <option value="normal">Normal Timeline</option>
+                              <option value="urgent">Urgent (+30%)</option>
+                              <option value="rush">Rush (+60%)</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Service Duration
+                            </label>
+                            <select
+                              value={budgetInputs.duration}
+                              onChange={(e) =>
+                                setBudgetInputs({ ...budgetInputs, duration: e.target.value })
+                              }
+                              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                              <option value="one-time">One-time Project</option>
+                              <option value="ongoing">Ongoing Support (-15%)</option>
+                              <option value="retainer">Monthly Retainer (-25%)</option>
+                            </select>
+                          </div>
                         </div>
 
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Complexity Level</label>
-                          <select
-                            value={budgetInputs.complexity}
-                            onChange={(e) => setBudgetInputs({...budgetInputs, complexity: e.target.value})}
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          >
-                            <option value="simple">Simple (-30%)</option>
-                            <option value="medium">Medium (Standard)</option>
-                            <option value="complex">Complex (+50%)</option>
-                          </select>
-                        </div>
+                        <button
+                          onClick={calculateBudget}
+                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105"
+                        >
+                          Calculate Estimate
+                        </button>
 
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Urgency</label>
-                          <select
-                            value={budgetInputs.urgency}
-                            onChange={(e) => setBudgetInputs({...budgetInputs, urgency: e.target.value})}
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          >
-                            <option value="normal">Normal Timeline</option>
-                            <option value="urgent">Urgent (+30%)</option>
-                            <option value="rush">Rush (+60%)</option>
-                          </select>
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Service Duration</label>
-                          <select
-                            value={budgetInputs.duration}
-                            onChange={(e) => setBudgetInputs({...budgetInputs, duration: e.target.value})}
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                          >
-                            <option value="one-time">One-time Project</option>
-                            <option value="ongoing">Ongoing Support (-15%)</option>
-                            <option value="retainer">Monthly Retainer (-25%)</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <button
-                        onClick={calculateBudget}
-                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105"
-                      >
-                        Calculate Estimate
-                      </button>
-
-                      {budgetResults && (
-                        <div className="mt-6 p-4 bg-white rounded-lg border border-blue-200">
-                          <h5 className="font-bold text-blue-800 mb-3">Your Estimated Legal Budget</h5>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="bg-blue-50 p-3 rounded-lg">
-                              <div className="text-sm text-gray-600">Base Estimate</div>
-                              <div className="text-xl font-bold text-blue-800">${budgetResults.baseEstimate.toLocaleString()}</div>
-                            </div>
-                            <div className="bg-green-50 p-3 rounded-lg">
-                              <div className="text-sm text-gray-600">Hourly Rate</div>
-                              <div className="text-xl font-bold text-green-800">${budgetResults.hourlyRate}/hr</div>
-                            </div>
-                            <div className="bg-purple-50 p-3 rounded-lg">
-                              <div className="text-sm text-gray-600">Range</div>
-                              <div className="text-lg font-bold text-purple-800">${budgetResults.range.low.toLocaleString()} - ${budgetResults.range.high.toLocaleString()}</div>
-                            </div>
-                            {budgetResults.monthly && (
-                              <div className="bg-orange-50 p-3 rounded-lg">
-                                <div className="text-sm text-gray-600">Monthly Retainer</div>
-                                <div className="text-lg font-bold text-orange-800">${budgetResults.monthly.toLocaleString()}/month</div>
+                        {budgetResults && (
+                          <div className="mt-6 p-4 bg-white rounded-lg border border-blue-200">
+                            <h5 className="font-bold text-blue-800 mb-3">
+                              Your Estimated Legal Budget
+                            </h5>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="bg-blue-50 p-3 rounded-lg">
+                                <div className="text-sm text-gray-600">Base Estimate</div>
+                                <div className="text-xl font-bold text-blue-800">
+                                  ${budgetResults.baseEstimate.toLocaleString()}
+                                </div>
                               </div>
-                            )}
+                              <div className="bg-green-50 p-3 rounded-lg">
+                                <div className="text-sm text-gray-600">Hourly Rate</div>
+                                <div className="text-xl font-bold text-green-800">
+                                  ${budgetResults.hourlyRate}/hr
+                                </div>
+                              </div>
+                              <div className="bg-purple-50 p-3 rounded-lg">
+                                <div className="text-sm text-gray-600">Range</div>
+                                <div className="text-lg font-bold text-purple-800">
+                                  ${budgetResults.range.low.toLocaleString()} - $
+                                  {budgetResults.range.high.toLocaleString()}
+                                </div>
+                              </div>
+                              {budgetResults.monthly && (
+                                <div className="bg-orange-50 p-3 rounded-lg">
+                                  <div className="text-sm text-gray-600">Monthly Retainer</div>
+                                  <div className="text-lg font-bold text-orange-800">
+                                    ${budgetResults.monthly.toLocaleString()}/month
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="mt-4 text-xs text-gray-500">
+                              * Estimates are based on typical matters and may vary depending on
+                              specific circumstances. Contact us for a detailed consultation and
+                              personalized quote.
+                            </div>
                           </div>
-                          <div className="mt-4 text-xs text-gray-500">
-                            * Estimates are based on typical matters and may vary depending on specific circumstances. 
-                            Contact us for a detailed consultation and personalized quote.
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
+                        )}
+                      </div>
+                    )}
                 </div>
               </div>
             )}

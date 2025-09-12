@@ -1712,7 +1712,8 @@ export default function App() {
                   </ul>
                   <div className="mt-4 p-3 bg-yellow-900/20 rounded-lg border border-yellow-500/30">
                     <p className="text-xs text-yellow-200 font-medium">
-                      ⚠️ Legal Disclaimer: Information on this site does not constitute legal advice or create a solicitor-client relationship.
+                      ⚠️ Legal Disclaimer: Information on this site does not constitute legal advice
+                      or create a solicitor-client relationship.
                     </p>
                   </div>
                 </div>
