@@ -38,6 +38,7 @@ import {
   ArrowRight,
   Star,
   TrendingUp,
+  AlertTriangle,
 } from 'lucide-react'
 import logoImage from './assets/tim_harmar_logo_updated.png'
 
@@ -159,12 +160,20 @@ Our areas of practice include:
 
 3. NO SOLICITOR-CLIENT RELATIONSHIP
 
-IMPORTANT: Use of this website does not create a solicitor-client relationship between you and Tim Harmar: Legal and Consulting Services. A solicitor-client relationship is established only through:
+**IMPORTANT: Use of this website does not create a solicitor-client relationship between you and Tim Harmar: Legal and Consulting Services. A solicitor-client relationship is established only through:**
 a) A signed retainer agreement or engagement letter
 b) Formal acceptance of representation by our firm
 c) Payment of a retainer fee, where applicable
 
-Information provided on this website is for general informational purposes only and does not constitute legal advice. You should not act or refrain from acting based solely on information from this website without seeking appropriate legal counsel.
+**LEGAL DISCLAIMER: The information provided on this website is for general informational purposes only and does not constitute legal advice. The content should not be construed as creating a solicitor-client relationship or as providing legal counsel. You should not act or refrain from acting based solely on information from this website without seeking appropriate legal counsel from a qualified lawyer licensed to practice in your jurisdiction.**
+
+**This website and its contents are not intended to:**
+- Replace the need for professional legal advice
+- Create any attorney-client relationship
+- Provide legal advice specific to your situation
+- Guarantee any particular legal outcome
+
+**Every legal situation is unique, and the law can change. Nothing on this website should be used as a substitute for competent legal counsel from a licensed professional attorney.**
 
 4. CONFIDENTIALITY AND COMMUNICATIONS
 
@@ -1569,22 +1578,22 @@ export default function App() {
           <footer className="bg-brand-primary text-text-inverse py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                {/* Stacked Logo Column */}
-                <div className="md:col-span-2 logo-col" style={{ flex: '1.5' }}>
+                {/* Logo Column - Smaller */}
+                <div className="md:col-span-1">
                   <div className="mb-6">
                     <img
                       src={logoImage}
                       alt="Tim Harmar: Legal and Consulting Services"
-                      className="h-20 w-auto mb-4 p-2 drop-shadow-md"
+                      className="h-16 w-auto mb-4 p-2 drop-shadow-md"
                     />
-                    <h3 className="text-xl font-bold mb-2 font-heading">
+                    <h3 className="text-lg font-bold mb-2 font-heading">
                       Tim Harmar: Legal and Consulting Services
                     </h3>
-                    <p className="text-sm text-text-inverse/80 font-semibold tracking-wide">
+                    <p className="text-xs text-text-inverse/80 font-semibold tracking-wide">
                       Excellence in Legal Solutions
                     </p>
                   </div>
-                  <p className="text-text-inverse/90 mb-6 text-base leading-relaxed">
+                  <p className="text-text-inverse/90 mb-6 text-sm leading-relaxed">
                     Providing expert legal solutions in civil litigation, privacy and cybersecurity
                     law, intellectual property, and business startup consulting in Northern Ontario.
                   </p>
@@ -1652,6 +1661,60 @@ export default function App() {
                       </a>
                     </li>
                   </ul>
+                </div>
+
+                {/* Legal Column */}
+                <div>
+                  <h4 className="text-xl font-bold mb-6 font-heading flex items-center">
+                    <FileText className="w-5 h-5 mr-2 text-brand-accent" />
+                    Legal
+                  </h4>
+                  <ul className="space-y-3 text-text-inverse/90 text-sm">
+                    <li>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          openPolicyModal('terms')
+                        }}
+                        className="hover:text-brand-accent transition-colors cursor-pointer flex items-center"
+                      >
+                        <FileText className="w-4 h-4 mr-2 text-brand-accent" />
+                        Terms of Use
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          openPolicyModal('privacy')
+                        }}
+                        className="hover:text-brand-accent transition-colors cursor-pointer flex items-center"
+                      >
+                        <Shield className="w-4 h-4 mr-2 text-brand-accent" />
+                        Privacy Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          openPolicyModal('legal')
+                        }}
+                        className="hover:text-brand-accent transition-colors cursor-pointer flex items-center"
+                      >
+                        <AlertTriangle className="w-4 h-4 mr-2 text-brand-accent" />
+                        Legal Disclaimers
+                      </a>
+                    </li>
+                  </ul>
+                  <div className="mt-4 p-3 bg-yellow-900/20 rounded-lg border border-yellow-500/30">
+                    <p className="text-xs text-yellow-200 font-medium">
+                      ⚠️ Legal Disclaimer: Information on this site does not constitute legal advice or create a solicitor-client relationship.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Contact Info Column */}
