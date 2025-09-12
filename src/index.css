@@ -270,6 +270,32 @@ button:focus-visible {
   }
 }
 
+@keyframes float-enhanced {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-10px) scale(1);
+  }
+  75% {
+    transform: translateY(-5px) scale(0.98);
+  }
+}
+
+@keyframes logo-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  }
+  50% {
+    filter: drop-shadow(0 8px 16px rgba(23, 144, 127, 0.3));
+  }
+}
+
 @keyframes pulse-glow {
   0%,
   100% {
@@ -292,6 +318,14 @@ button:focus-visible {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-enhanced {
+  animation: float-enhanced 4s ease-in-out infinite;
+}
+
+.animate-logo-glow {
+  animation: logo-glow 3s ease-in-out infinite;
 }
 
 .animate-pulse-glow {

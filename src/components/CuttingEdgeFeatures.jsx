@@ -1400,41 +1400,51 @@ export const LegalResourcesLibrary = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-br from-blue-50 to-teal-50 p-8 rounded-xl shadow-lg"
+      className="bg-gradient-to-br from-blue-50 via-white to-teal-50 p-8 rounded-2xl shadow-large border border-blue-100"
     >
-      <div className="flex items-center mb-6">
-        <FileText className="w-8 h-8 text-blue-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-800">Legal Resources Library</h3>
+      <div className="flex items-center mb-8">
+        <div className="bg-blue-600 p-3 rounded-xl mr-4 shadow-medium">
+          <FileText className="w-8 h-8 text-white" />
+        </div>
+        <div>
+          <h3 className="text-3xl font-bold text-gray-800 mb-1">Legal Resources Library</h3>
+          <p className="text-gray-600 text-sm">Professional tools and guides for your business</p>
+        </div>
       </div>
 
-      <p className="text-gray-500 mb-6">
-        Access helpful legal resources, guides, and tools to support your business.
+      <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+        Access comprehensive legal resources, interactive guides, and professional tools designed to support your business growth and compliance.
       </p>
 
-      <div className="flex space-x-2 mb-6">
+      {/* Enhanced category tabs */}
+      <div className="flex flex-wrap gap-3 mb-8 p-2 bg-gray-100 rounded-xl">
         {Object.keys(resources).map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors capitalize ${
+            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 capitalize text-sm relative overflow-hidden ${
               selectedCategory === category
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-500 hover:bg-gray-100'
+                ? 'bg-blue-600 text-white shadow-medium transform scale-105'
+                : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-blue-600 hover:shadow-soft'
             }`}
           >
-            {category}
+            <span className="relative z-10">{category}</span>
+            {selectedCategory === category && (
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg"></div>
+            )}
           </button>
         ))}
       </div>
 
-      <div className="space-y-3">
+      {/* Enhanced resource grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
         {resources[selectedCategory].map((resource, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className={`bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors ${
+            className={`group bg-gradient-to-br from-white to-gray-50 p-6 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-large ${
               resource.expandable ? 'cursor-pointer' : ''
             }`}
             onClick={() => {
@@ -1445,61 +1455,73 @@ export const LegalResourcesLibrary = () => {
           >
             <div className="flex items-start justify-between">
               <div className="flex items-start flex-1">
-                <span className="text-2xl mr-3">{resource.icon}</span>
+                <div className="bg-blue-100 p-3 rounded-xl mr-4 group-hover:bg-blue-200 transition-colors">
+                  <span className="text-2xl">{resource.icon}</span>
+                </div>
                 <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-semibold text-gray-800 mb-1">{resource.title}</h4>
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-bold text-gray-800 text-lg group-hover:text-blue-700 transition-colors">
+                      {resource.title}
+                    </h4>
                     {resource.expandable && (
-                      <span className="text-blue-600 transition-transform duration-300">
+                      <span className="text-blue-600 transition-all duration-300 group-hover:scale-110">
                         {expandedItem === index ? (
-                          <ChevronUp className="w-5 h-5" />
+                          <ChevronUp className="w-6 h-6" />
                         ) : (
-                          <ChevronDown className="w-5 h-5" />
+                          <ChevronDown className="w-6 h-6" />
                         )}
                       </span>
                     )}
                   </div>
-                  <p className="text-gray-500 text-sm mb-2">{resource.description}</p>
-                  <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                    {resource.type}
-                  </span>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{resource.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex items-center bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 text-xs px-3 py-2 rounded-full font-medium">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      {resource.type}
+                    </span>
+                    {resource.downloadable && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          resource.downloadAction()
+                        }}
+                        className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 text-sm font-semibold shadow-medium hover:shadow-large transform hover:scale-105"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>View Guide</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
-              {resource.downloadable && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    resource.downloadAction()
-                  }}
-                  className="ml-4 flex items-center space-x-2 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>View Guide</span>
-                </button>
-              )}
             </div>
 
-            {/* Expandable content for FAQs and Tools */}
+            {/* Enhanced expandable content */}
             {resource.expandable && (
               <div
                 className={`transition-all duration-500 overflow-hidden ${
                   expandedItem === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="border-t border-gray-200 pt-4 mt-4">
-                  <div className="text-gray-700 text-sm leading-relaxed mb-4 whitespace-pre-line">
-                    {resource.detailed}
+                <div className="border-t border-gray-200 pt-6 mt-6">
+                  <div className="bg-gradient-to-r from-blue-50 to-teal-50 p-4 rounded-lg mb-6">
+                    <div className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
+                      {resource.detailed}
+                    </div>
                   </div>
 
-                  {/* Features list */}
+                  {/* Enhanced features list */}
                   {resource.features && (
-                    <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-blue-600">Key Services:</h4>
-                      <div className="grid grid-cols-1 gap-1">
+                    <div className="space-y-4">
+                      <h4 className="text-sm font-bold text-blue-700 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Key Services & Features:
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {resource.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                            <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
-                            {feature}
+                          <div key={idx} className="flex items-start gap-3 text-sm text-gray-700 bg-white p-3 rounded-lg border border-gray-100">
+                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                            <span className="font-medium">{feature}</span>
                           </div>
                         ))}
                       </div>
@@ -1513,11 +1535,12 @@ export const LegalResourcesLibrary = () => {
       </div>
 
       <motion.button
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}
-        className="w-full mt-6 bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+        className="w-full mt-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-xl font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-large hover:shadow-xl relative overflow-hidden"
       >
-        Access Full Resource Library
+        <span className="relative z-10">Access Full Resource Library</span>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
       </motion.button>
     </motion.div>
   )
@@ -1621,29 +1644,39 @@ export const LegalNewsFeed = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-white p-8 rounded-xl shadow-lg"
+      className="bg-gradient-to-br from-white via-teal-50 to-blue-50 p-8 rounded-2xl shadow-large border border-teal-100"
     >
-      <div className="flex items-center mb-6">
-        <Bell className="w-8 h-8 text-teal-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-800">In the News</h3>
+      <div className="flex items-center mb-8">
+        <div className="bg-teal-600 p-3 rounded-xl mr-4 shadow-medium">
+          <Bell className="w-8 h-8 text-white" />
+        </div>
+        <div>
+          <h3 className="text-3xl font-bold text-gray-800 mb-1">Legal News & Updates</h3>
+          <p className="text-gray-600 text-sm">Stay informed with the latest legal developments</p>
+        </div>
       </div>
 
-      <div className="flex space-x-4 mb-6">
+      {/* Enhanced tab navigation */}
+      <div className="flex flex-wrap gap-3 mb-8 p-2 bg-gray-100 rounded-xl">
         {Object.keys(newsItems).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 capitalize text-sm relative overflow-hidden ${
               activeTab === tab
-                ? 'bg-teal-600 text-white'
-                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                ? 'bg-teal-600 text-white shadow-medium transform scale-105'
+                : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-teal-600 hover:shadow-soft'
             }`}
           >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            <span className="relative z-10">{tab.charAt(0).toUpperCase() + tab.slice(1)}</span>
+            {activeTab === tab && (
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg"></div>
+            )}
           </button>
         ))}
       </div>
 
+      {/* Enhanced news items */}
       <div className="space-y-4">
         {newsItems[activeTab].map((item, index) => (
           <motion.div
@@ -1651,24 +1684,55 @@ export const LegalNewsFeed = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="border-l-4 border-teal-500 pl-4 py-2"
+            className="group bg-white rounded-xl border border-gray-200 hover:border-teal-300 transition-all duration-300 hover:shadow-large overflow-hidden"
           >
             <a
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block hover:bg-gray-50 rounded-lg p-2 transition-colors"
+              className="block p-6 hover:bg-gradient-to-br hover:from-teal-50 hover:to-blue-50 transition-all duration-300"
             >
-              <h4 className="font-semibold text-gray-800 hover:text-teal-600 transition-colors">
-                {item.title}
-              </h4>
-              <div className="flex items-center text-sm text-gray-500 mt-1">
-                <Clock className="w-4 h-4 mr-1" />
-                {item.date} • {item.category}
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-start mb-3">
+                    <div className="w-1 h-12 bg-gradient-to-b from-teal-500 to-teal-600 rounded-full mr-4 group-hover:h-16 transition-all duration-300"></div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-gray-800 group-hover:text-teal-700 transition-colors text-lg leading-tight mb-2">
+                        {item.title}
+                      </h4>
+                      <div className="flex items-center text-sm text-gray-600 mb-2">
+                        <Clock className="w-4 h-4 mr-2 text-teal-500" />
+                        <span className="font-medium">{item.date}</span>
+                        <span className="mx-2">•</span>
+                        <span className="inline-flex items-center bg-gradient-to-r from-teal-100 to-blue-100 text-teal-700 px-3 py-1 rounded-full text-xs font-semibold">
+                          {item.category}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="ml-4 text-teal-600 group-hover:text-teal-700 transition-colors">
+                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
+              <div className="mt-3 pl-5">
+                <p className="text-gray-600 text-sm group-hover:text-gray-700 transition-colors">
+                  Click to view the latest updates and official information.
+                </p>
               </div>
             </a>
           </motion.div>
         ))}
+      </div>
+
+      {/* Auto-update indicator */}
+      <div className="mt-8 p-4 bg-gradient-to-r from-green-50 to-teal-50 rounded-xl border border-green-200">
+        <div className="flex items-center justify-center text-sm">
+          <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+          <span className="text-green-700 font-medium">
+            Updates automatically refreshed daily • Last updated: {getCurrentDate()}
+          </span>
+        </div>
       </div>
     </motion.div>
   )
@@ -1761,6 +1825,7 @@ export const LegalAssessment = () => {
   }
 
   const getRecommendations = () => {
+    // eslint-disable-next-line no-unused-vars
     const { business_type, legal_concerns, urgency, budget_concern } = answers
 
     let recommendations = []

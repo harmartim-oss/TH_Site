@@ -7,6 +7,7 @@ import {
   LegalAssessment,
 } from './components/CuttingEdgeFeatures'
 import LoadingScreen from './components/LoadingScreen'
+import { useDeviceDetection, getResponsiveClassName } from './hooks/useDeviceDetection'
 import {
   Scale,
   Shield,
@@ -38,8 +39,6 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import logoImage from './assets/tim_harmar_logo_updated.png'
-import heroBackground from './assets/hero_background.png'
-import cybersecurityImage from './assets/services_cybersecurity.png'
 
 // Policy Content
 const PRIVACY_POLICY = `Privacy Policy for www.timharmar.com
@@ -536,6 +535,9 @@ export default function App() {
   const [showPolicyModal, setShowPolicyModal] = useState(false)
   const [currentPolicy, setCurrentPolicy] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  
+  // Enhanced device detection
+  const deviceInfo = useDeviceDetection()
 
   // Enhanced loading management
   useEffect(() => {
@@ -798,16 +800,34 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Right Column: Circular headshot */}
-                <div className="flex justify-center lg:justify-end animate-slide-up delay-100 mr-8">
-                  <div className="relative animate-float">
+                {/* Right Column: Professional Logo */}
+                <div className={getResponsiveClassName(deviceInfo, {
+                  base: "flex justify-center lg:justify-end animate-slide-up delay-100",
+                  mobile: "mr-4",
+                  tablet: "mr-6", 
+                  desktop: "mr-8"
+                })}>
+                  <div className="relative animate-float-enhanced">
                     <img
                       src={logoImage}
                       alt="Tim Harmar: Legal and Consulting Services"
-                      className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full object-cover shadow-token-sm border-4 border-brand-secondary/30"
+                      className={getResponsiveClassName(deviceInfo, {
+                        base: "object-contain shadow-token-md hover:shadow-large transition-all duration-500 hover:scale-105 animate-logo-glow",
+                        mobile: "w-48 h-auto max-w-full",
+                        tablet: "w-64 h-auto",
+                        desktop: "w-80 h-auto xl:w-96 xl:h-auto"
+                      })}
+                      style={{
+                        filter: deviceInfo.isMobile ? 'none' : 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
+                      }}
                     />
-                    {/* Decorative elements */}
-                    <div className="absolute -inset-4 rounded-full border-2 border-brand-accent/20 animate-pulse"></div>
+                    {/* Enhanced decorative elements - hidden on mobile for cleaner look */}
+                    {!deviceInfo.isMobile && (
+                      <>
+                        <div className="absolute -inset-4 rounded-lg border-2 border-brand-accent/20 animate-pulse opacity-50"></div>
+                        <div className="absolute -inset-2 rounded-lg bg-gradient-to-r from-brand-accent/5 to-brand-primary/5 -z-10"></div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
