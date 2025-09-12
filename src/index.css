@@ -577,4 +577,40 @@ button:focus-visible {
   .animate-float {
     animation: none; /* Disable float animation on mobile for performance */
   }
+  
+  /* Optimize animations for mobile */
+  .animate-float-enhanced {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Reduce motion for better mobile performance */
+  * {
+    animation-duration: 0.3s !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+  
+  .hover\:shadow-large:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Larger touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Enhanced performance mode */
+.enhanced-animations-enabled .animate-logo-glow {
+  animation: logo-glow 3s ease-in-out infinite;
+}
+
+.enhanced-animations-enabled .animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
