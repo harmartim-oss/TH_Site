@@ -1413,7 +1413,8 @@ export const LegalResourcesLibrary = () => {
       </div>
 
       <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-        Access comprehensive legal resources, interactive guides, and professional tools designed to support your business growth and compliance.
+        Access comprehensive legal resources, interactive guides, and professional tools designed to
+        support your business growth and compliance.
       </p>
 
       {/* Enhanced category tabs */}
@@ -1473,7 +1474,9 @@ export const LegalResourcesLibrary = () => {
                       </span>
                     )}
                   </div>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{resource.description}</p>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                    {resource.description}
+                  </p>
                   <div className="flex items-center justify-between">
                     <span className="inline-flex items-center bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 text-xs px-3 py-2 rounded-full font-medium">
                       <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
@@ -1519,7 +1522,10 @@ export const LegalResourcesLibrary = () => {
                       </h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {resource.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-start gap-3 text-sm text-gray-700 bg-white p-3 rounded-lg border border-gray-100">
+                          <div
+                            key={idx}
+                            className="flex items-start gap-3 text-sm text-gray-700 bg-white p-3 rounded-lg border border-gray-100"
+                          >
                             <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                             <span className="font-medium">{feature}</span>
                           </div>

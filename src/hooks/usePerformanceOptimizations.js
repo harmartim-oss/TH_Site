@@ -37,7 +37,7 @@ export const usePerformanceOptimizations = (deviceInfo) => {
         }
       `
       document.head.appendChild(style)
-      
+
       return () => {
         document.head.removeChild(style)
       }
@@ -74,13 +74,13 @@ export const optimizeForDevice = (deviceInfo) => {
   return {
     // Image loading strategy
     imageLoading: deviceInfo.isMobile ? 'lazy' : 'eager',
-    
+
     // Animation preferences
     animationsEnabled: !deviceInfo.isMobile || deviceInfo.hasHover,
-    
+
     // Touch optimizations
     touchOptimized: deviceInfo.isTouchDevice,
-    
+
     // Performance mode
     performanceMode: deviceInfo.isMobile ? 'optimized' : 'enhanced',
   }

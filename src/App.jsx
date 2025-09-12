@@ -536,10 +536,10 @@ export default function App() {
   const [showPolicyModal, setShowPolicyModal] = useState(false)
   const [currentPolicy, setCurrentPolicy] = useState('')
   const [isLoading, setIsLoading] = useState(true)
-  
+
   // Enhanced device detection
   const deviceInfo = useDeviceDetection()
-  
+
   // Performance optimizations based on device
   usePerformanceOptimizations(deviceInfo)
   const deviceOptimizations = optimizeForDevice(deviceInfo)
@@ -653,9 +653,9 @@ export default function App() {
                 {/* Enhanced Mobile menu button */}
                 <button
                   className={getResponsiveClassName(deviceInfo, {
-                    base: "md:hidden p-3 rounded-token-sm text-brand-primary hover:text-brand-accent hover:bg-brand-secondary/20 focus:outline-none transition-all duration-300",
-                    mobile: "min-h-[44px] min-w-[44px]",
-                    touch: "active:scale-95"
+                    base: 'md:hidden p-3 rounded-token-sm text-brand-primary hover:text-brand-accent hover:bg-brand-secondary/20 focus:outline-none transition-all duration-300',
+                    mobile: 'min-h-[44px] min-w-[44px]',
+                    touch: 'active:scale-95',
                   })}
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   aria-label="Toggle mobile menu"
@@ -671,9 +671,9 @@ export default function App() {
                     <a
                       href="#services"
                       className={getResponsiveClassName(deviceInfo, {
-                        base: "text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2",
-                        mobile: "min-h-[44px] text-lg",
-                        touch: "active:bg-brand-secondary/30"
+                        base: 'text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2',
+                        mobile: 'min-h-[44px] text-lg',
+                        touch: 'active:bg-brand-secondary/30',
                       })}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -682,9 +682,9 @@ export default function App() {
                     <a
                       href="#about"
                       className={getResponsiveClassName(deviceInfo, {
-                        base: "text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2",
-                        mobile: "min-h-[44px] text-lg",
-                        touch: "active:bg-brand-secondary/30"
+                        base: 'text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2',
+                        mobile: 'min-h-[44px] text-lg',
+                        touch: 'active:bg-brand-secondary/30',
                       })}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -693,9 +693,9 @@ export default function App() {
                     <a
                       href="#contact"
                       className={getResponsiveClassName(deviceInfo, {
-                        base: "text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2",
-                        mobile: "min-h-[44px] text-lg",
-                        touch: "active:bg-brand-secondary/30"
+                        base: 'text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2',
+                        mobile: 'min-h-[44px] text-lg',
+                        touch: 'active:bg-brand-secondary/30',
                       })}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -703,9 +703,9 @@ export default function App() {
                     </a>
                     <button
                       className={getResponsiveClassName(deviceInfo, {
-                        base: "bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-4 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 mx-2 mt-4",
-                        mobile: "min-h-[44px] text-lg",
-                        touch: "active:scale-98"
+                        base: 'bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-4 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 mx-2 mt-4',
+                        mobile: 'min-h-[44px] text-lg',
+                        touch: 'active:scale-98',
                       })}
                       onClick={() =>
                         (window.location.href =
@@ -826,12 +826,14 @@ export default function App() {
                 </div>
 
                 {/* Right Column: Professional Logo */}
-                <div className={getResponsiveClassName(deviceInfo, {
-                  base: "flex justify-center lg:justify-end animate-slide-up delay-100",
-                  mobile: "mr-4",
-                  tablet: "mr-6", 
-                  desktop: "mr-8"
-                })}>
+                <div
+                  className={getResponsiveClassName(deviceInfo, {
+                    base: 'flex justify-center lg:justify-end animate-slide-up delay-100',
+                    mobile: 'mr-4',
+                    tablet: 'mr-6',
+                    desktop: 'mr-8',
+                  })}
+                >
                   <div className="relative animate-float-enhanced">
                     <img
                       src={logoImage}
@@ -839,13 +841,17 @@ export default function App() {
                       loading={deviceOptimizations.imageLoading}
                       className={getResponsiveClassName(deviceInfo, {
                         base: `object-contain shadow-token-md hover:shadow-large transition-all duration-500 hover:scale-105 ${deviceOptimizations.animationsEnabled ? 'animate-logo-glow' : ''}`,
-                        mobile: "w-48 h-auto max-w-full",
-                        tablet: "w-64 h-auto",
-                        desktop: "w-80 h-auto xl:w-96 xl:h-auto"
+                        mobile: 'w-48 h-auto max-w-full',
+                        tablet: 'w-64 h-auto',
+                        desktop: 'w-80 h-auto xl:w-96 xl:h-auto',
                       })}
                       style={{
-                        filter: deviceInfo.isMobile ? 'none' : 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                        willChange: deviceOptimizations.animationsEnabled ? 'transform, filter' : 'auto'
+                        filter: deviceInfo.isMobile
+                          ? 'none'
+                          : 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+                        willChange: deviceOptimizations.animationsEnabled
+                          ? 'transform, filter'
+                          : 'auto',
                       }}
                     />
                     {/* Enhanced decorative elements - hidden on mobile for cleaner look */}
