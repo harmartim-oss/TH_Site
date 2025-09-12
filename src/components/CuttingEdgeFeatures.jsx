@@ -52,7 +52,7 @@ export const AILegalAssistant = () => {
       message.includes('immediately')
     ) {
       return {
-        text: "I understand this is urgent. For immediate legal assistance, please call us directly at (705) 943-5049. Tim Harmar provides emergency legal consultations for time-sensitive matters. I can also help you schedule an expedited appointment.",
+        text: 'I understand this is urgent. For immediate legal assistance, please call us directly at (705) 943-5049. Tim Harmar provides emergency legal consultations for time-sensitive matters. I can also help you schedule an expedited appointment.',
         quickActions: ['Call Now (705) 943-5049', 'Emergency Consultation', 'Text Us'],
       }
     }
@@ -167,7 +167,7 @@ export const AILegalAssistant = () => {
     ) {
       return {
         text: 'Tim Harmar is an award-winning lawyer with 15+ years of experience and has argued cases at the Supreme Court of Canada. He holds degrees from University of Windsor Faculty of Law and York University Osgoode Hall Law School. Tim is a member in good standing with the Law Society of Ontario and regularly speaks at legal conferences.',
-        quickActions: ['Tim\'s Full Bio', 'Awards & Recognition', 'Schedule with Tim'],
+        quickActions: ["Tim's Full Bio", 'Awards & Recognition', 'Schedule with Tim'],
       }
     }
 
@@ -240,28 +240,36 @@ export const AILegalAssistant = () => {
         case 'Free Consultation':
         case 'Book Free Consultation':
           responseText =
-            "Excellent! Your initial consultation is completely FREE (30 minutes) with no obligation. I can help you schedule immediately. Please use our Smart Scheduler below, or contact us directly: (705) 943-5049 | kburton@timharmar.com. We offer both in-person and virtual consultations."
-          newQuickActions = ['Use Smart Scheduler', 'Call (705) 943-5049', 'Email kburton@timharmar.com']
+            'Excellent! Your initial consultation is completely FREE (30 minutes) with no obligation. I can help you schedule immediately. Please use our Smart Scheduler below, or contact us directly: (705) 943-5049 | kburton@timharmar.com. We offer both in-person and virtual consultations.'
+          newQuickActions = [
+            'Use Smart Scheduler',
+            'Call (705) 943-5049',
+            'Email kburton@timharmar.com',
+          ]
           hasActions = true
           break
-        
+
         case 'Call (705) 943-5049':
         case 'Call Now (705) 943-5049':
         case 'Call Now':
           window.location.href = 'tel:+17059435049'
-          responseText = "Calling (705) 943-5049... If the call doesn't connect automatically, please dial (705) 943-5049 directly. We're available Monday-Friday 9 AM - 5 PM EST."
+          responseText =
+            "Calling (705) 943-5049... If the call doesn't connect automatically, please dial (705) 943-5049 directly. We're available Monday-Friday 9 AM - 5 PM EST."
           break
-          
+
         case 'Send Email':
         case 'Email Us':
         case 'Email kburton@timharmar.com':
-          window.location.href = 'mailto:kburton@timharmar.com?subject=Legal Inquiry from Website&body=Hello,%0D%0A%0D%0AI am interested in legal services and would like to discuss my needs.%0D%0A%0D%0APlease contact me to schedule a consultation.%0D%0A%0D%0AThank you!'
-          responseText = "Opening your email client to contact kburton@timharmar.com... If it doesn't open automatically, please email kburton@timharmar.com directly."
+          window.location.href =
+            'mailto:kburton@timharmar.com?subject=Legal Inquiry from Website&body=Hello,%0D%0A%0D%0AI am interested in legal services and would like to discuss my needs.%0D%0A%0D%0APlease contact me to schedule a consultation.%0D%0A%0D%0AThank you!'
+          responseText =
+            "Opening your email client to contact kburton@timharmar.com... If it doesn't open automatically, please email kburton@timharmar.com directly."
           break
-          
+
         case 'Use Smart Scheduler':
           document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-          responseText = "Perfect! I'm scrolling to our Smart Scheduler below. It's the easiest way to book your free consultation. Just fill in your details and preferred time, and we'll confirm your appointment within 2 hours."
+          responseText =
+            "Perfect! I'm scrolling to our Smart Scheduler below. It's the easiest way to book your free consultation. Just fill in your details and preferred time, and we'll confirm your appointment within 2 hours."
           break
 
         case 'View All Services':
@@ -269,9 +277,10 @@ export const AILegalAssistant = () => {
           responseText =
             'Here are our comprehensive legal services: Civil Litigation (contract disputes, commercial litigation), Privacy & Cybersecurity Law (PIPEDA compliance, data breach response), Intellectual Property (trademarks, copyrights), Business Law (corporate formation, contracts), and Business Start Up & Strategy (comprehensive startup legal support).'
           break
-          
+
         case 'Legal Assessment':
-          responseText = "I can help assess your legal needs! Please tell me: 1) What type of business/situation are you in? 2) What specific legal challenge are you facing? 3) How urgent is this matter? This helps me provide more targeted guidance."
+          responseText =
+            'I can help assess your legal needs! Please tell me: 1) What type of business/situation are you in? 2) What specific legal challenge are you facing? 3) How urgent is this matter? This helps me provide more targeted guidance.'
           break
 
         case 'Resource Library':
@@ -283,40 +292,50 @@ export const AILegalAssistant = () => {
 
         case 'Privacy Assessment':
         case 'PIPEDA Consultation':
-          responseText = "Tim is a recognized expert in Canadian privacy law. Our privacy assessment covers: PIPEDA compliance review, privacy policy development, data breach response planning, employee training, and cross-border data transfer protocols. What specific privacy concerns do you have?"
-          newQuickActions = ['Schedule Privacy Consultation', 'Data Breach Help', 'PIPEDA Compliance']
+          responseText =
+            'Tim is a recognized expert in Canadian privacy law. Our privacy assessment covers: PIPEDA compliance review, privacy policy development, data breach response planning, employee training, and cross-border data transfer protocols. What specific privacy concerns do you have?'
+          newQuickActions = [
+            'Schedule Privacy Consultation',
+            'Data Breach Help',
+            'PIPEDA Compliance',
+          ]
           hasActions = true
           break
 
         case 'Startup Consultation':
         case 'Business Formation Guide':
-          responseText = "Our startup legal package includes: business entity selection (incorporation, partnership, LLC), founders' agreements, IP strategy development, employment policies, regulatory compliance roadmaps, and investor agreements. What stage is your startup currently in?"
+          responseText =
+            "Our startup legal package includes: business entity selection (incorporation, partnership, LLC), founders' agreements, IP strategy development, employment policies, regulatory compliance roadmaps, and investor agreements. What stage is your startup currently in?"
           newQuickActions = ['Incorporation Help', 'Founders Agreements', 'IP Strategy']
           hasActions = true
           break
 
         case 'Litigation Strategy':
         case 'Contract Dispute Help':
-          responseText = "Tim has extensive litigation experience including Supreme Court cases. We handle: contract disputes, employment litigation, commercial disputes, breach of fiduciary duty, and appellate matters. We also offer mediation and strategic resolution options. What type of dispute are you facing?"
+          responseText =
+            'Tim has extensive litigation experience including Supreme Court cases. We handle: contract disputes, employment litigation, commercial disputes, breach of fiduciary duty, and appellate matters. We also offer mediation and strategic resolution options. What type of dispute are you facing?'
           newQuickActions = ['Contract Dispute', 'Employment Issue', 'Commercial Litigation']
           hasActions = true
           break
 
-        case 'Tim\'s Full Bio':
-          responseText = "Tim J. Harmar is an award-winning lawyer with 15+ years experience. Education: University of Windsor Faculty of Law (J.D.), York University Osgoode Hall Law School (LL.M.). Notable achievements: Supreme Court of Canada counsel designation, legal conference speaker, recognized privacy law expert."
+        case "Tim's Full Bio":
+          responseText =
+            'Tim J. Harmar is an award-winning lawyer with 15+ years experience. Education: University of Windsor Faculty of Law (J.D.), York University Osgoode Hall Law School (LL.M.). Notable achievements: Supreme Court of Canada counsel designation, legal conference speaker, recognized privacy law expert.'
           newQuickActions = ['Schedule with Tim', 'Awards & Recognition', 'Supreme Court Cases']
           hasActions = true
           break
 
         case 'Virtual Consultation':
         case 'Virtual Meeting':
-          responseText = "We offer secure virtual consultations via video call for clients anywhere in Ontario. Virtual meetings are perfect for initial consultations, document review, and ongoing legal guidance. Same professional service, convenient access from your location."
+          responseText =
+            'We offer secure virtual consultations via video call for clients anywhere in Ontario. Virtual meetings are perfect for initial consultations, document review, and ongoing legal guidance. Same professional service, convenient access from your location.'
           newQuickActions = ['Book Virtual Meeting', 'Technical Requirements', 'Privacy & Security']
           hasActions = true
           break
 
         case 'Emergency Consultation':
-          responseText = "For urgent legal matters, please call (705) 943-5049 immediately. Tim provides emergency consultations for time-sensitive issues including litigation deadlines, regulatory compliance, data breaches, and business crises. After-hours emergency contact available for existing clients."
+          responseText =
+            'For urgent legal matters, please call (705) 943-5049 immediately. Tim provides emergency consultations for time-sensitive issues including litigation deadlines, regulatory compliance, data breaches, and business crises. After-hours emergency contact available for existing clients.'
           newQuickActions = ['Call Emergency Line', 'Urgent Appointment', 'Crisis Management']
           hasActions = true
           break
@@ -518,7 +537,7 @@ export const SmartScheduler = () => {
 
     // Enhanced email content with professional formatting
     const emailSubject = `🏛️ Consultation Request - ${consultationType} - ${userName}`
-    
+
     const emailBody =
       `Dear Tim Harmar Legal Team,%0D%0A%0D%0A` +
       `I would like to schedule a consultation with the following details:%0D%0A%0D%0A` +
@@ -680,19 +699,19 @@ export const SmartScheduler = () => {
 
         {/* Enhanced confirmation message when submitted */}
         {isSubmitted && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="mb-4 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg shadow-lg"
           >
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <motion.svg 
+                <motion.svg
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="h-8 w-8 text-green-500" 
-                  viewBox="0 0 20 20" 
+                  className="h-8 w-8 text-green-500"
+                  viewBox="0 0 20 20"
                   fill="currentColor"
                 >
                   <path
@@ -708,7 +727,10 @@ export const SmartScheduler = () => {
                 </h3>
                 <div className="mt-3 space-y-2 text-sm text-green-800">
                   <p className="font-semibold">
-                    ✅ Your request for a <span className="text-green-900">{consultationType}</span> on <span className="text-green-900">{selectedDate}</span> at <span className="text-green-900">{selectedTime}</span> has been sent to our legal team.
+                    ✅ Your request for a <span className="text-green-900">{consultationType}</span>{' '}
+                    on <span className="text-green-900">{selectedDate}</span> at{' '}
+                    <span className="text-green-900">{selectedTime}</span> has been sent to our
+                    legal team.
                   </p>
                   <div className="bg-white/50 p-3 rounded border border-green-200">
                     <p className="font-medium text-green-900">What happens next:</p>
