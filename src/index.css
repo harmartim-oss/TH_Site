@@ -60,6 +60,14 @@ h4 {
   background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
 }
 
+.bg-gradient-hero {
+  background: linear-gradient(135deg, #fafbff 0%, #f0f9ff 50%, #ecfeff 100%);
+}
+
+.bg-gradient-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
 /* Enhanced card styling */
 .card-enhanced {
   background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
@@ -79,6 +87,20 @@ h4 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.text-gradient-enhanced {
+  background: linear-gradient(135deg, #0a2351 0%, #1e40af 60%, #17907f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Enhanced interactive elements */
@@ -345,4 +367,161 @@ button:focus-visible {
   background-clip: text;
   background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
+}
+
+/* Advanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(23, 144, 127, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(23, 144, 127, 0.6),
+                0 0 40px rgba(23, 144, 127, 0.3);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(23, 144, 127, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(23, 144, 127, 0.8));
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.4s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+/* Enhanced service cards */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(23, 144, 127, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced shadows */
+.shadow-glow {
+  filter: drop-shadow(0 0 10px rgba(23, 144, 127, 0.4));
+}
+
+.shadow-glow:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Button enhancements */
+.btn-primary {
+  background: linear-gradient(135deg, #17907f 0%, #059669 100%);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(23, 144, 127, 0.4);
+}
+
+/* Scale animations */
+.scale-102:hover {
+  transform: scale(1.02);
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .service-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .animate-float {
+    animation: none; /* Disable float animation on mobile for performance */
+  }
 }

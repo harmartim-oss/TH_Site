@@ -40,85 +40,154 @@ export const AILegalAssistant = () => {
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
 
-  // Enhanced AI response logic
+  // Enhanced AI response logic with appointment integration
   const generateAIResponse = (userMessage) => {
     const message = userMessage.toLowerCase()
 
-    // More sophisticated response logic
+    // Emergency legal help
     if (
-      message.includes('startup') ||
-      message.includes('business formation') ||
-      message.includes('new business')
+      message.includes('urgent') ||
+      message.includes('emergency') ||
+      message.includes('asap') ||
+      message.includes('immediately')
     ) {
       return {
-        text: "For startups, Tim offers comprehensive legal support including business entity selection, founders' agreements, IP strategy, and regulatory compliance. Our Business Start Up & Strategy service provides end-to-end legal foundation for new ventures. Would you like to schedule a consultation or learn more about a specific aspect?",
-        quickActions: ['Schedule Consultation', 'Business Formation Guide', 'IP Strategy Info'],
+        text: "I understand this is urgent. For immediate legal assistance, please call us directly at (705) 943-5049. Tim Harmar provides emergency legal consultations for time-sensitive matters. I can also help you schedule an expedited appointment.",
+        quickActions: ['Call Now (705) 943-5049', 'Emergency Consultation', 'Text Us'],
       }
     }
 
+    // Startup and business formation
+    if (
+      message.includes('startup') ||
+      message.includes('business formation') ||
+      message.includes('new business') ||
+      message.includes('incorporate')
+    ) {
+      return {
+        text: "Great! Tim specializes in startup legal services. Our Business Start Up & Strategy package includes: business entity selection, founders' agreements, IP strategy, regulatory compliance roadmaps, and employment policies. We help you build a solid legal foundation while staying agile and cost-effective. What stage is your startup in?",
+        quickActions: ['Startup Consultation', 'Incorporation Guide', 'Founders Agreement Info'],
+      }
+    }
+
+    // Privacy and cybersecurity
     if (
       message.includes('privacy') ||
       message.includes('data') ||
       message.includes('cybersecurity') ||
-      message.includes('pipeda')
+      message.includes('pipeda') ||
+      message.includes('gdpr') ||
+      message.includes('breach')
     ) {
       return {
-        text: 'Tim specializes in privacy and cybersecurity law, including PIPEDA compliance, data breach response, and cybersecurity audits. We help businesses navigate Canadian privacy laws and implement robust data protection strategies. What specific privacy concerns do you have?',
-        quickActions: ['Privacy Consultation', 'PIPEDA Compliance Guide', 'Data Breach Response'],
+        text: 'Tim is a leading expert in Canadian privacy and cybersecurity law. Our services include PIPEDA compliance, data breach response protocols, privacy impact assessments, CASL compliance, cross-border data transfers, and cybersecurity audits. We help businesses of all sizes navigate the complex privacy landscape. What specific privacy challenge are you facing?',
+        quickActions: ['Privacy Assessment', 'Data Breach Response', 'PIPEDA Consultation'],
       }
     }
 
+    // Litigation and disputes
     if (
       message.includes('litigation') ||
       message.includes('dispute') ||
       message.includes('contract') ||
-      message.includes('lawsuit')
+      message.includes('lawsuit') ||
+      message.includes('sued') ||
+      message.includes('court')
     ) {
       return {
-        text: 'Our civil litigation practice handles contract disputes, employment litigation, commercial disputes, and appellate matters. With extensive courtroom experience, we provide strategic advocacy while exploring cost-effective resolution options. What type of legal dispute are you facing?',
-        quickActions: ['Litigation Consultation', 'Contract Review', 'Dispute Assessment'],
+        text: 'Tim has extensive litigation experience, including cases argued at the Supreme Court of Canada. Our civil litigation practice covers contract disputes, employment litigation, commercial disputes, and appellate matters. We provide strategic advocacy while exploring cost-effective resolution options like mediation. Tell me more about your situation.',
+        quickActions: ['Litigation Strategy', 'Contract Dispute Help', 'Mediation Options'],
       }
     }
 
+    // Intellectual property
     if (
       message.includes('intellectual property') ||
       message.includes('trademark') ||
       message.includes('copyright') ||
-      message.includes('ip')
+      message.includes('patent') ||
+      message.includes('ip') ||
+      message.includes('brand protection')
     ) {
       return {
-        text: 'We provide comprehensive IP protection including trademark registration, copyright matters, trade secret protection, and licensing agreements. Our IP services help protect your innovations and creative assets. What intellectual property needs do you have?',
-        quickActions: ['IP Consultation', 'Trademark Search', 'IP Strategy Guide'],
+        text: 'Our IP practice provides comprehensive protection for your innovations and creative assets. We handle trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, and IP portfolio management. Tim helps businesses develop strategic IP licensing and monetization strategies. What IP assets need protection?',
+        quickActions: ['Trademark Registration', 'IP Strategy Session', 'Copyright Protection'],
       }
     }
 
+    // Pricing and consultation
     if (
       message.includes('cost') ||
       message.includes('price') ||
       message.includes('fee') ||
-      message.includes('consultation')
+      message.includes('consultation') ||
+      message.includes('free')
     ) {
       return {
-        text: 'We offer a free initial consultation to discuss your legal needs and provide transparent pricing. Our fees are competitive and we work with clients to find cost-effective solutions. Would you like to schedule your free consultation?',
-        quickActions: ['Schedule Free Consultation', 'Contact Us', 'Learn About Services'],
+        text: 'We believe in transparent, value-based pricing. Your initial consultation is completely FREE with no obligation. During this 30-minute session, Tim will assess your legal needs and provide strategic guidance. Our fee structures are competitive and we offer flexible payment arrangements. Ready to schedule?',
+        quickActions: ['Book Free Consultation', 'Learn About Fees', 'Payment Options'],
       }
     }
 
+    // Scheduling and appointments
     if (
       message.includes('schedule') ||
       message.includes('appointment') ||
-      message.includes('meet')
+      message.includes('meet') ||
+      message.includes('book') ||
+      message.includes('available')
     ) {
       return {
-        text: 'I can help you schedule a consultation with Tim. We offer flexible scheduling and initial consultations are free. You can use our Smart Scheduler below or contact us directly. What works best for your schedule?',
-        quickActions: ['Use Smart Scheduler', 'Call Now', 'Email Us'],
+        text: 'Perfect! I can help you schedule a consultation with Tim. We offer flexible scheduling including morning, afternoon, and evening slots. Our Smart Scheduler below makes it easy to book your preferred time. Tim also offers virtual consultations via secure video call. What time works best for you?',
+        quickActions: ['Use Smart Scheduler', 'Virtual Meeting', 'Call to Schedule'],
       }
     }
 
-    // Default response with helpful information
+    // Location and service area
+    if (
+      message.includes('location') ||
+      message.includes('where') ||
+      message.includes('sault') ||
+      message.includes('ontario') ||
+      message.includes('office')
+    ) {
+      return {
+        text: 'Tim Harmar Legal is based in Sault Ste. Marie, Ontario, serving clients throughout Northern Ontario and beyond. We offer in-person consultations at our Sault Ste. Marie office, as well as secure virtual meetings for clients anywhere in Ontario. Our practice covers all of Canada for federal matters.',
+        quickActions: ['Virtual Consultation', 'Office Location', 'Service Areas'],
+      }
+    }
+
+    // Legal experience and credentials
+    if (
+      message.includes('experience') ||
+      message.includes('background') ||
+      message.includes('qualified') ||
+      message.includes('credentials') ||
+      message.includes('supreme court')
+    ) {
+      return {
+        text: 'Tim Harmar is an award-winning lawyer with 15+ years of experience and has argued cases at the Supreme Court of Canada. He holds degrees from University of Windsor Faculty of Law and York University Osgoode Hall Law School. Tim is a member in good standing with the Law Society of Ontario and regularly speaks at legal conferences.',
+        quickActions: ['Tim\'s Full Bio', 'Awards & Recognition', 'Schedule with Tim'],
+      }
+    }
+
+    // Contact information
+    if (
+      message.includes('contact') ||
+      message.includes('phone') ||
+      message.includes('email') ||
+      message.includes('reach')
+    ) {
+      return {
+        text: 'You can reach us several ways: Phone: (705) 943-5049 | Email: kburton@timharmar.com | Or use our contact form for non-urgent matters. We typically respond to emails within 2 business hours during office hours (9 AM - 5 PM EST). For urgent matters, please call directly.',
+        quickActions: ['Call (705) 943-5049', 'Send Email', 'Contact Form'],
+      }
+    }
+
+    // Default comprehensive response
     return {
-      text: 'Tim Harmar Legal provides expert legal services in civil litigation, privacy & cybersecurity law, intellectual property, business law, and startup consulting in Northern Ontario. Our award-winning practice combines legal expertise with cutting-edge technology. What specific area interests you?',
-      quickActions: ['View All Services', 'Schedule Consultation', 'Resource Library'],
+      text: 'Welcome! Tim Harmar Legal provides cutting-edge legal solutions in Northern Ontario. Our award-winning practice specializes in civil litigation, privacy & cybersecurity law, intellectual property, business law, and startup consulting. Tim combines 15+ years of experience with innovative technology to deliver exceptional results. What legal challenge can we help you with?',
+      quickActions: ['View All Services', 'Free Consultation', 'Legal Assessment'],
     }
   }
 
@@ -162,24 +231,101 @@ export const AILegalAssistant = () => {
 
     setTimeout(() => {
       let responseText = ''
+      let hasActions = false
+      let newQuickActions = []
 
       switch (action) {
         case 'Schedule Consultation':
         case 'Schedule Free Consultation':
+        case 'Free Consultation':
+        case 'Book Free Consultation':
           responseText =
-            "Perfect! I'll help you schedule a consultation. Please use our Smart Scheduler below or contact us directly at (705) 943-5049 or kburton@timharmar.com. Initial consultations are always free and confidential."
+            "Excellent! Your initial consultation is completely FREE (30 minutes) with no obligation. I can help you schedule immediately. Please use our Smart Scheduler below, or contact us directly: (705) 943-5049 | kburton@timharmar.com. We offer both in-person and virtual consultations."
+          newQuickActions = ['Use Smart Scheduler', 'Call (705) 943-5049', 'Email kburton@timharmar.com']
+          hasActions = true
           break
+        
+        case 'Call (705) 943-5049':
+        case 'Call Now (705) 943-5049':
+        case 'Call Now':
+          window.location.href = 'tel:+17059435049'
+          responseText = "Calling (705) 943-5049... If the call doesn't connect automatically, please dial (705) 943-5049 directly. We're available Monday-Friday 9 AM - 5 PM EST."
+          break
+          
+        case 'Send Email':
+        case 'Email Us':
+        case 'Email kburton@timharmar.com':
+          window.location.href = 'mailto:kburton@timharmar.com?subject=Legal Inquiry from Website&body=Hello,%0D%0A%0D%0AI am interested in legal services and would like to discuss my needs.%0D%0A%0D%0APlease contact me to schedule a consultation.%0D%0A%0D%0AThank you!'
+          responseText = "Opening your email client to contact kburton@timharmar.com... If it doesn't open automatically, please email kburton@timharmar.com directly."
+          break
+          
+        case 'Use Smart Scheduler':
+          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+          responseText = "Perfect! I'm scrolling to our Smart Scheduler below. It's the easiest way to book your free consultation. Just fill in your details and preferred time, and we'll confirm your appointment within 2 hours."
+          break
+
         case 'View All Services':
+          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
           responseText =
-            'Our comprehensive legal services include: Civil Litigation, Privacy & Cybersecurity Law, Intellectual Property, Business Law, Business Start Up & Strategy, and Legal Consulting. Each service area combines legal expertise with innovative technology solutions.'
+            'Here are our comprehensive legal services: Civil Litigation (contract disputes, commercial litigation), Privacy & Cybersecurity Law (PIPEDA compliance, data breach response), Intellectual Property (trademarks, copyrights), Business Law (corporate formation, contracts), and Business Start Up & Strategy (comprehensive startup legal support).'
           break
+          
+        case 'Legal Assessment':
+          responseText = "I can help assess your legal needs! Please tell me: 1) What type of business/situation are you in? 2) What specific legal challenge are you facing? 3) How urgent is this matter? This helps me provide more targeted guidance."
+          break
+
         case 'Resource Library':
           responseText =
-            'Access our Legal Resources Library below for helpful guides, including our Privacy Compliance Guide, Contract Review Checklist, and IP Protection Guide. These resources provide valuable insights for your business needs.'
+            'Our Legal Resources Library includes: Privacy Compliance Guide for Small Business, Contract Review Checklist, and IP Protection Guide. These comprehensive guides are available in the Innovative Legal Technology section below. All resources are free and prepared by Tim Harmar Legal.'
+          newQuickActions = ['Privacy Guide', 'Contract Checklist', 'IP Guide']
+          hasActions = true
           break
+
+        case 'Privacy Assessment':
+        case 'PIPEDA Consultation':
+          responseText = "Tim is a recognized expert in Canadian privacy law. Our privacy assessment covers: PIPEDA compliance review, privacy policy development, data breach response planning, employee training, and cross-border data transfer protocols. What specific privacy concerns do you have?"
+          newQuickActions = ['Schedule Privacy Consultation', 'Data Breach Help', 'PIPEDA Compliance']
+          hasActions = true
+          break
+
+        case 'Startup Consultation':
+        case 'Business Formation Guide':
+          responseText = "Our startup legal package includes: business entity selection (incorporation, partnership, LLC), founders' agreements, IP strategy development, employment policies, regulatory compliance roadmaps, and investor agreements. What stage is your startup currently in?"
+          newQuickActions = ['Incorporation Help', 'Founders Agreements', 'IP Strategy']
+          hasActions = true
+          break
+
+        case 'Litigation Strategy':
+        case 'Contract Dispute Help':
+          responseText = "Tim has extensive litigation experience including Supreme Court cases. We handle: contract disputes, employment litigation, commercial disputes, breach of fiduciary duty, and appellate matters. We also offer mediation and strategic resolution options. What type of dispute are you facing?"
+          newQuickActions = ['Contract Dispute', 'Employment Issue', 'Commercial Litigation']
+          hasActions = true
+          break
+
+        case 'Tim\'s Full Bio':
+          responseText = "Tim J. Harmar is an award-winning lawyer with 15+ years experience. Education: University of Windsor Faculty of Law (J.D.), York University Osgoode Hall Law School (LL.M.). Notable achievements: Supreme Court of Canada counsel designation, legal conference speaker, recognized privacy law expert."
+          newQuickActions = ['Schedule with Tim', 'Awards & Recognition', 'Supreme Court Cases']
+          hasActions = true
+          break
+
+        case 'Virtual Consultation':
+        case 'Virtual Meeting':
+          responseText = "We offer secure virtual consultations via video call for clients anywhere in Ontario. Virtual meetings are perfect for initial consultations, document review, and ongoing legal guidance. Same professional service, convenient access from your location."
+          newQuickActions = ['Book Virtual Meeting', 'Technical Requirements', 'Privacy & Security']
+          hasActions = true
+          break
+
+        case 'Emergency Consultation':
+          responseText = "For urgent legal matters, please call (705) 943-5049 immediately. Tim provides emergency consultations for time-sensitive issues including litigation deadlines, regulatory compliance, data breaches, and business crises. After-hours emergency contact available for existing clients."
+          newQuickActions = ['Call Emergency Line', 'Urgent Appointment', 'Crisis Management']
+          hasActions = true
+          break
+
         default:
           responseText =
-            "I'd be happy to help you with that. Please contact our office at (705) 943-5049 or email kburton@timharmar.com for detailed assistance with your specific needs."
+            "I'd be happy to help you with that. For specific assistance, please contact our office at (705) 943-5049 or email kburton@timharmar.com. Our team provides personalized guidance for your unique legal needs."
+          newQuickActions = ['Schedule Consultation', 'Call Now', 'Email Us']
+          hasActions = true
       }
 
       const botResponse = {
@@ -187,6 +333,7 @@ export const AILegalAssistant = () => {
         text: responseText,
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString(),
+        quickActions: hasActions ? newQuickActions : undefined,
       }
       setMessages((prev) => [...prev, botResponse])
       setIsTyping(false)
@@ -359,27 +506,53 @@ export const SmartScheduler = () => {
       return
     }
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(userEmail)) {
+      alert('Please enter a valid email address.')
+      return
+    }
+
     // Show confirmation message
     setIsSubmitted(true)
 
+    // Enhanced email content with professional formatting
+    const emailSubject = `🏛️ Consultation Request - ${consultationType} - ${userName}`
+    
     const emailBody =
-      `Hello,%0D%0A%0D%0A` +
+      `Dear Tim Harmar Legal Team,%0D%0A%0D%0A` +
       `I would like to schedule a consultation with the following details:%0D%0A%0D%0A` +
-      `Name: ${userName}%0D%0A` +
-      `Email: ${userEmail}%0D%0A` +
-      `Phone: ${userPhone}%0D%0A` +
-      `Consultation Type: ${consultationType}%0D%0A` +
-      `Preferred Date: ${selectedDate}%0D%0A` +
-      `Preferred Time: ${selectedTime}%0D%0A%0D%0A` +
-      `Additional Information:%0D%0A${additionalInfo}%0D%0A%0D%0A` +
-      `Thank you!`
-
-    const subject = `Consultation Request - ${consultationType}`
+      `📋 CLIENT INFORMATION:%0D%0A` +
+      `• Name: ${userName}%0D%0A` +
+      `• Email: ${userEmail}%0D%0A` +
+      `• Phone: ${userPhone || 'Not provided'}%0D%0A%0D%0A` +
+      `⚖️ CONSULTATION DETAILS:%0D%0A` +
+      `• Type: ${consultationType}%0D%0A` +
+      `• Preferred Date: ${selectedDate}%0D%0A` +
+      `• Preferred Time: ${selectedTime}%0D%0A%0D%0A` +
+      `📝 ADDITIONAL INFORMATION:%0D%0A${additionalInfo || 'None provided'}%0D%0A%0D%0A` +
+      `⏰ SUBMISSION TIME: ${new Date().toLocaleString()}%0D%0A%0D%0A` +
+      `This consultation request was submitted through the Tim Harmar Legal website's Smart Scheduler.%0D%0A%0D%0A` +
+      `Please confirm receipt and advise on next steps for scheduling.%0D%0A%0D%0A` +
+      `Thank you for your prompt attention to this matter.%0D%0A%0D%0A` +
+      `Best regards,%0D%0A${userName}`
 
     // Delay the email redirect to allow user to see the confirmation message
     setTimeout(() => {
-      window.location.href = `mailto:kburton@timharmar.com?subject=${subject}&body=${emailBody}`
-    }, 1500)
+      window.location.href = `mailto:kburton@timharmar.com?subject=${emailSubject}&body=${emailBody}`
+    }, 2000)
+
+    // Auto-reset form after 5 seconds for new submissions
+    setTimeout(() => {
+      setIsSubmitted(false)
+      setUserName('')
+      setUserEmail('')
+      setUserPhone('')
+      setConsultationType('')
+      setSelectedDate('')
+      setSelectedTime('')
+      setAdditionalInfo('')
+    }, 5000)
   }
 
   const availableTimes = ['9:00 AM', '10:30 AM', '2:00 PM', '3:30 PM', '4:30 PM']
@@ -388,6 +561,10 @@ export const SmartScheduler = () => {
     'Civil Litigation Review',
     'IP Strategy Session',
     'Business Development Consultation',
+    'Startup Legal Package',
+    'Contract Review & Disputes',
+    'Cybersecurity & Data Protection',
+    'General Legal Consultation',
   ]
 
   return (
@@ -501,33 +678,54 @@ export const SmartScheduler = () => {
           />
         </div>
 
-        {/* Show confirmation message when submitted */}
+        {/* Enhanced confirmation message when submitted */}
         {isSubmitted && (
-          <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-md">
-            <div className="flex items-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mb-4 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg shadow-lg"
+          >
+            <div className="flex items-start">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                <motion.svg 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="h-8 w-8 text-green-500" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
                   <path
                     fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                     clipRule="evenodd"
                   />
-                </svg>
+                </motion.svg>
               </div>
-              <div className="ml-3">
-                <h3 className="text-sm font-medium text-green-800">
-                  Consultation Request Submitted!
+              <div className="ml-4">
+                <h3 className="text-lg font-bold text-green-900">
+                  🎉 Consultation Request Submitted Successfully!
                 </h3>
-                <div className="mt-2 text-sm text-green-700">
-                  <p>
-                    Thank you for your consultation request. We will be in touch with you shortly to
-                    finalize the details of your appointment. Your request is being sent to our
-                    legal team for review.
+                <div className="mt-3 space-y-2 text-sm text-green-800">
+                  <p className="font-semibold">
+                    ✅ Your request for a <span className="text-green-900">{consultationType}</span> on <span className="text-green-900">{selectedDate}</span> at <span className="text-green-900">{selectedTime}</span> has been sent to our legal team.
+                  </p>
+                  <div className="bg-white/50 p-3 rounded border border-green-200">
+                    <p className="font-medium text-green-900">What happens next:</p>
+                    <ul className="mt-1 space-y-1 text-xs">
+                      <li>📧 Email confirmation sent to kburton@timharmar.com</li>
+                      <li>📞 We'll contact you within 2 business hours to confirm</li>
+                      <li>🗓️ Calendar invitation will be sent once confirmed</li>
+                      <li>💼 Your FREE 30-minute consultation is guaranteed</li>
+                    </ul>
+                  </div>
+                  <p className="text-xs text-green-700 italic">
+                    Need immediate assistance? Call (705) 943-5049 directly.
                   </p>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         <motion.button
