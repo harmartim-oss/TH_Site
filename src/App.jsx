@@ -39,6 +39,7 @@ import {
   Star,
   TrendingUp,
   AlertTriangle,
+  Brain,
 } from 'lucide-react'
 import logoImage from './assets/tim_harmar_logo_updated.png'
 
@@ -545,6 +546,7 @@ export default function App() {
   const [showPolicyModal, setShowPolicyModal] = useState(false)
   const [currentPolicy, setCurrentPolicy] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [activeDropdown, setActiveDropdown] = useState(null) // For dropdown menus
 
   // Enhanced device detection
   const deviceInfo = useDeviceDetection()
@@ -612,28 +614,182 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Desktop Navigation */}
+                {/* Enhanced Desktop Navigation with Dropdowns */}
                 <nav
                   className="hidden md:flex space-x-8"
                   role="navigation"
                   aria-label="Main navigation"
                 >
-                  <a
-                    href="#services"
-                    className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
-                    aria-label="Navigate to services section"
-                  >
-                    Services
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
-                  </a>
-                  <a
-                    href="#about"
-                    className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
-                    aria-label="Navigate to about section"
-                  >
-                    About
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
-                  </a>
+                  {/* Services Dropdown */}
+                  <div className="relative">
+                    <button
+                      onMouseEnter={() => setActiveDropdown('services')}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                      className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
+                      aria-label="Services menu"
+                    >
+                      Services
+                      <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
+                    </button>
+                    
+                    {activeDropdown === 'services' && (
+                      <div
+                        onMouseEnter={() => setActiveDropdown('services')}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                        className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-200 py-4 z-50"
+                      >
+                        <div className="px-4 pb-2 border-b border-gray-100">
+                          <h3 className="font-semibold text-brand-primary">Legal Services</h3>
+                          <p className="text-xs text-gray-600">Award-winning expertise</p>
+                        </div>
+                        <div className="py-2">
+                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <Scale className="w-4 h-4 mr-3 text-brand-accent" />
+                            Civil Litigation
+                          </a>
+                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <Shield className="w-4 h-4 mr-3 text-brand-accent" />
+                            Privacy & Cybersecurity Law
+                          </a>
+                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <Lightbulb className="w-4 h-4 mr-3 text-brand-accent" />
+                            Intellectual Property
+                          </a>
+                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <Building2 className="w-4 h-4 mr-3 text-brand-accent" />
+                            Business Law
+                          </a>
+                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <Rocket className="w-4 h-4 mr-3 text-brand-accent" />
+                            Business Start Up & Strategy
+                          </a>
+                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <Target className="w-4 h-4 mr-3 text-brand-accent" />
+                            Legal Consulting
+                          </a>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* About Dropdown */}
+                  <div className="relative">
+                    <button
+                      onMouseEnter={() => setActiveDropdown('about')}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                      className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
+                      aria-label="About menu"
+                    >
+                      About
+                      <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
+                    </button>
+                    
+                    {activeDropdown === 'about' && (
+                      <div
+                        onMouseEnter={() => setActiveDropdown('about')}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200 py-4 z-50"
+                      >
+                        <div className="px-4 pb-2 border-b border-gray-100">
+                          <h3 className="font-semibold text-brand-primary">Our Team</h3>
+                          <p className="text-xs text-gray-600">Meet our legal professionals</p>
+                        </div>
+                        <div className="py-2">
+                          <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <User className="w-4 h-4 mr-3 text-brand-accent" />
+                            Tim J. Harmar - Principal Lawyer
+                          </a>
+                          <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <UserCheck className="w-4 h-4 mr-3 text-brand-accent" />
+                            Kelly Burton - Legal Assistant
+                          </a>
+                          <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <Briefcase className="w-4 h-4 mr-3 text-brand-accent" />
+                            Josh Ochoa - Office Administrator
+                          </a>
+                          <div className="border-t border-gray-100 mt-2 pt-2">
+                            <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                              <Award className="w-4 h-4 mr-3 text-brand-accent" />
+                              Why Choose Us
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Resources Dropdown */}
+                  <div className="relative">
+                    <button
+                      onMouseEnter={() => setActiveDropdown('resources')}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                      className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
+                      aria-label="Resources menu"
+                    >
+                      Resources
+                      <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
+                    </button>
+                    
+                    {activeDropdown === 'resources' && (
+                      <div
+                        onMouseEnter={() => setActiveDropdown('resources')}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                        className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-200 py-4 z-50"
+                      >
+                        <div className="px-4 pb-2 border-b border-gray-100">
+                          <h3 className="font-semibold text-brand-primary">Legal Resources</h3>
+                          <p className="text-xs text-gray-600">Tools, guides & assessments</p>
+                        </div>
+                        <div className="py-2">
+                          <button 
+                            onClick={() => {
+                              document.querySelector('.legal-resources-section')?.scrollIntoView({ behavior: 'smooth' })
+                              setActiveDropdown(null)
+                            }}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
+                            <FileText className="w-4 h-4 mr-3 text-brand-accent" />
+                            Legal Resources Library
+                          </button>
+                          <button 
+                            onClick={() => {
+                              document.querySelector('.legal-assessment-section')?.scrollIntoView({ behavior: 'smooth' })
+                              setActiveDropdown(null)
+                            }}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
+                            <Brain className="w-4 h-4 mr-3 text-brand-accent" />
+                            Legal Needs Assessment
+                          </button>
+                          <button 
+                            onClick={() => {
+                              document.querySelector('.budget-calculator-section')?.scrollIntoView({ behavior: 'smooth' })
+                              setActiveDropdown(null)
+                            }}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
+                            <TrendingUp className="w-4 h-4 mr-3 text-brand-accent" />
+                            Budget Calculator
+                          </button>
+                          <button 
+                            onClick={() => {
+                              document.querySelector('.news-feed-section')?.scrollIntoView({ behavior: 'smooth' })
+                              setActiveDropdown(null)
+                            }}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
+                            <Globe className="w-4 h-4 mr-3 text-brand-accent" />
+                            Legal News & Updates
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Contact Link */}
                   <a
                     href="#contact"
                     className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
@@ -677,39 +833,131 @@ export default function App() {
               {mobileMenuOpen && (
                 <div className="md:hidden pb-6 border-t border-brand-secondary/30 bg-surface-default shadow-large">
                   <nav className="flex flex-col space-y-2 pt-6">
-                    <a
-                      href="#services"
-                      className={getResponsiveClassName(deviceInfo, {
-                        base: 'text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2',
-                        mobile: 'min-h-[44px] text-lg',
-                        touch: 'active:bg-brand-secondary/30',
-                      })}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Services
-                    </a>
-                    <a
-                      href="#about"
-                      className={getResponsiveClassName(deviceInfo, {
-                        base: 'text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2',
-                        mobile: 'min-h-[44px] text-lg',
-                        touch: 'active:bg-brand-secondary/30',
-                      })}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      About
-                    </a>
-                    <a
-                      href="#contact"
-                      className={getResponsiveClassName(deviceInfo, {
-                        base: 'text-brand-primary hover:text-brand-accent font-medium py-4 px-4 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 mx-2',
-                        mobile: 'min-h-[44px] text-lg',
-                        touch: 'active:bg-brand-secondary/30',
-                      })}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Contact
-                    </a>
+                    {/* Services submenu */}
+                    <div className="mx-2">
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">Services</h4>
+                      <a
+                        href="#services"
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block',
+                          mobile: 'min-h-[44px] text-base',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        All Services
+                      </a>
+                      <a
+                        href="#services"
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block text-sm',
+                          mobile: 'min-h-[36px]',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        • Civil Litigation
+                      </a>
+                      <a
+                        href="#services"
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block text-sm',
+                          mobile: 'min-h-[36px]',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        • Privacy & Cybersecurity
+                      </a>
+                      <a
+                        href="#services"
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block text-sm',
+                          mobile: 'min-h-[36px]',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        • Intellectual Property
+                      </a>
+                    </div>
+
+                    {/* About submenu */}
+                    <div className="mx-2">
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">About</h4>
+                      <a
+                        href="#about"
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block',
+                          mobile: 'min-h-[44px] text-base',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Our Team
+                      </a>
+                    </div>
+
+                    {/* Resources submenu */}
+                    <div className="mx-2">
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">Resources</h4>
+                      <button
+                        onClick={() => {
+                          document.querySelector('.legal-resources-section')?.scrollIntoView({ behavior: 'smooth' })
+                          setMobileMenuOpen(false)
+                        }}
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block text-left w-full text-sm',
+                          mobile: 'min-h-[36px]',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                      >
+                        • Legal Resource Library
+                      </button>
+                      <button
+                        onClick={() => {
+                          document.querySelector('.budget-calculator-section')?.scrollIntoView({ behavior: 'smooth' })
+                          setMobileMenuOpen(false)
+                        }}
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block text-left w-full text-sm',
+                          mobile: 'min-h-[36px]',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                      >
+                        • Budget Calculator
+                      </button>
+                      <button
+                        onClick={() => {
+                          document.querySelector('.legal-assessment-section')?.scrollIntoView({ behavior: 'smooth' })
+                          setMobileMenuOpen(false)
+                        }}
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block text-left w-full text-sm',
+                          mobile: 'min-h-[36px]',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                      >
+                        • Legal Assessment
+                      </button>
+                    </div>
+
+                    {/* Contact */}
+                    <div className="mx-2">
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">Contact</h4>
+                      <a
+                        href="#contact"
+                        className={getResponsiveClassName(deviceInfo, {
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block',
+                          mobile: 'min-h-[44px] text-base',
+                          touch: 'active:bg-brand-secondary/30',
+                        })}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Get In Touch
+                      </a>
+                    </div>
+
                     <button
                       className={getResponsiveClassName(deviceInfo, {
                         base: 'bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-4 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 mx-2 mt-4',
@@ -1103,7 +1351,7 @@ export default function App() {
           </section>
 
           {/* Interactive Features Section */}
-          <section className="py-20 bg-gradient-to-br from-secondary-50 to-primary-50">
+          <section className="py-20 bg-gradient-to-br from-secondary-50 to-primary-50 legal-resources-section">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16 animate-fade-in">
                 <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4 font-heading">
@@ -1117,13 +1365,19 @@ export default function App() {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <LegalAssessment />
+                <div className="legal-assessment-section">
+                  <LegalAssessment />
+                </div>
                 <LegalResourcesLibrary />
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <LegalNewsFeed />
-                <SmartScheduler />
+                <div className="news-feed-section">
+                  <LegalNewsFeed />
+                </div>
+                <div className="budget-calculator-section">
+                  <SmartScheduler />
+                </div>
               </div>
             </div>
           </section>

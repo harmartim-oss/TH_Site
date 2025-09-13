@@ -773,30 +773,65 @@ export const LegalResourcesLibrary = () => {
   const [selectedCategory, setSelectedCategory] = useState('guides')
   const [expandedItem, setExpandedItem] = useState(null)
 
-  // Budget Calculator state
+  // Enhanced Budget Calculator state with AI functionality
   const [budgetInputs, setBudgetInputs] = useState({
     serviceType: '',
     complexity: 'medium',
     urgency: 'normal',
     duration: 'one-time',
+    estimatedHours: '',
+    additionalServices: [],
+    clientSize: 'small',
+    industryType: '',
   })
   const [budgetResults, setBudgetResults] = useState(null)
+  const [aiRecommendations, setAiRecommendations] = useState(null)
 
-  // Calculate budget estimate
+  // Tim Harmar hourly rates as specified
+  const HOURLY_RATES = {
+    counsel: 300, // Tim Harmar as counsel
+    admin: 90,    // Admin staff rate
+  }
+
+  // AI-powered budget calculation with enhanced logic
   const calculateBudget = () => {
-    const baseRates = {
-      'business-formation': { base: 2500, hourly: 350 },
-      'contract-services': { base: 1200, hourly: 300 },
-      'employment-law': { base: 1500, hourly: 325 },
-      'intellectual-property': { base: 2000, hourly: 375 },
-      'litigation-support': { base: 5000, hourly: 400 },
-      'privacy-compliance': { base: 2200, hourly: 350 },
-    }
-
-    const complexityMultipliers = {
-      simple: 0.7,
-      medium: 1.0,
-      complex: 1.5,
+    const baseServices = {
+      'business-formation': { 
+        baseHours: 8, 
+        counselHours: 6, 
+        adminHours: 2, 
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.5 } 
+      },
+      'contract-services': { 
+        baseHours: 4, 
+        counselHours: 3, 
+        adminHours: 1, 
+        complexity: { simple: 0.6, medium: 1.0, complex: 1.8 } 
+      },
+      'employment-law': { 
+        baseHours: 5, 
+        counselHours: 4, 
+        adminHours: 1, 
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.6 } 
+      },
+      'intellectual-property': { 
+        baseHours: 6, 
+        counselHours: 5, 
+        adminHours: 1, 
+        complexity: { simple: 0.8, medium: 1.0, complex: 1.7 } 
+      },
+      'litigation-support': { 
+        baseHours: 15, 
+        counselHours: 12, 
+        adminHours: 3, 
+        complexity: { simple: 0.8, medium: 1.0, complex: 2.0 } 
+      },
+      'privacy-compliance': { 
+        baseHours: 7, 
+        counselHours: 5, 
+        adminHours: 2, 
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.4 } 
+      },
     }
 
     const urgencyMultipliers = {
@@ -811,26 +846,203 @@ export const LegalResourcesLibrary = () => {
       retainer: 0.75,
     }
 
+    const clientSizeMultipliers = {
+      small: 1.0,
+      medium: 1.2,
+      large: 1.5,
+      enterprise: 2.0,
+    }
+
     if (!budgetInputs.serviceType) return
 
-    const service = baseRates[budgetInputs.serviceType]
-    const baseEstimate =
-      service.base *
-      complexityMultipliers[budgetInputs.complexity] *
-      urgencyMultipliers[budgetInputs.urgency] *
-      durationMultipliers[budgetInputs.duration]
+    const service = baseServices[budgetInputs.serviceType]
+    const complexityMultiplier = service.complexity[budgetInputs.complexity]
+    const urgencyMultiplier = urgencyMultipliers[budgetInputs.urgency]
+    const durationMultiplier = durationMultipliers[budgetInputs.duration]
+    const clientSizeMultiplier = clientSizeMultipliers[budgetInputs.clientSize]
 
-    const hourlyRate = service.hourly * complexityMultipliers[budgetInputs.complexity]
+    // Calculate hours with all multipliers
+    const adjustedCounselHours = Math.ceil(
+      service.counselHours * 
+      complexityMultiplier * 
+      urgencyMultiplier * 
+      clientSizeMultiplier
+    )
+    
+    const adjustedAdminHours = Math.ceil(
+      service.adminHours * 
+      complexityMultiplier * 
+      urgencyMultiplier * 
+      clientSizeMultiplier
+    )
+
+    // Calculate costs
+    const counselCost = adjustedCounselHours * HOURLY_RATES.counsel
+    const adminCost = adjustedAdminHours * HOURLY_RATES.admin
+    const subtotal = counselCost + adminCost
+
+    // Apply duration discount
+    const totalEstimate = Math.round(subtotal * durationMultiplier)
+
+    // Generate AI recommendations
+    const generateAIRecommendations = () => {
+      const recommendations = []
+      
+      if (budgetInputs.complexity === 'complex') {
+        recommendations.push('Consider phased implementation to manage costs')
+        recommendations.push('Additional research time may be required for complex matters')
+      }
+      
+      if (budgetInputs.urgency === 'rush') {
+        recommendations.push('Rush timeline may require weekend/evening work')
+        recommendations.push('Consider if deadline can be extended to reduce costs')
+      }
+      
+      if (budgetInputs.duration === 'retainer') {
+        recommendations.push('Monthly retainer includes ongoing support and priority access')
+        recommendations.push('Retainer agreements offer 25% cost savings for ongoing needs')
+      }
+      
+      if (budgetInputs.clientSize === 'enterprise') {
+        recommendations.push('Enterprise clients may require additional compliance documentation')
+        recommendations.push('Coordination with in-house legal teams may be necessary')
+      }
+
+      // Service-specific recommendations
+      if (budgetInputs.serviceType === 'privacy-compliance') {
+        recommendations.push('PIPEDA compliance audit recommended as starting point')
+        recommendations.push('Consider employee training as additional service')
+      }
+      
+      if (budgetInputs.serviceType === 'intellectual-property') {
+        recommendations.push('Trademark search should be conducted before registration')
+        recommendations.push('Portfolio review may reveal additional protection opportunities')
+      }
+
+      return recommendations
+    }
 
     setBudgetResults({
-      baseEstimate: Math.round(baseEstimate),
-      hourlyRate: Math.round(hourlyRate),
+      counselHours: adjustedCounselHours,
+      adminHours: adjustedAdminHours,
+      counselCost,
+      adminCost,
+      subtotal,
+      totalEstimate,
+      savings: budgetInputs.duration !== 'one-time' ? subtotal - totalEstimate : 0,
       range: {
-        low: Math.round(baseEstimate * 0.8),
-        high: Math.round(baseEstimate * 1.4),
+        low: Math.round(totalEstimate * 0.85),
+        high: Math.round(totalEstimate * 1.25),
       },
-      monthly: budgetInputs.duration === 'retainer' ? Math.round(baseEstimate * 0.3) : null,
+      monthlyRetainer: budgetInputs.duration === 'retainer' ? Math.round(totalEstimate * 0.4) : null,
     })
+
+    setAiRecommendations(generateAIRecommendations())
+  }
+
+  // Function to download budget calculation as PDF
+  const downloadBudgetPDF = async () => {
+    if (!budgetResults) return
+    
+    const { jsPDF } = await import('jspdf')
+    const doc = new jsPDF()
+    
+    // Header
+    doc.setFontSize(20)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Legal Services Budget Estimate', 20, 20)
+    
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'normal')
+    doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
+    doc.text('Sault Ste. Marie, Ontario', 20, 38)
+    doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 46)
+    
+    let yPosition = 60
+    
+    // Client inputs
+    doc.setFontSize(16)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Service Details', 20, yPosition)
+    yPosition += 15
+    
+    doc.setFontSize(12)
+    doc.setFont('helvetica', 'normal')
+    const inputs = [
+      `Service Type: ${budgetInputs.serviceType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`,
+      `Complexity: ${budgetInputs.complexity.charAt(0).toUpperCase() + budgetInputs.complexity.slice(1)}`,
+      `Timeline: ${budgetInputs.urgency.charAt(0).toUpperCase() + budgetInputs.urgency.slice(1)}`,
+      `Engagement Type: ${budgetInputs.duration.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`,
+      `Client Size: ${budgetInputs.clientSize.charAt(0).toUpperCase() + budgetInputs.clientSize.slice(1)}`,
+    ]
+    
+    inputs.forEach(input => {
+      doc.text(input, 20, yPosition)
+      yPosition += 8
+    })
+    
+    yPosition += 10
+    
+    // Cost breakdown
+    doc.setFontSize(16)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Cost Breakdown', 20, yPosition)
+    yPosition += 15
+    
+    doc.setFontSize(12)
+    doc.setFont('helvetica', 'normal')
+    doc.text(`Counsel Time (${budgetResults.counselHours} hours @ $${HOURLY_RATES.counsel}/hr):`, 20, yPosition)
+    doc.text(`$${budgetResults.counselCost.toLocaleString()}`, 150, yPosition)
+    yPosition += 10
+    
+    doc.text(`Admin Support (${budgetResults.adminHours} hours @ $${HOURLY_RATES.admin}/hr):`, 20, yPosition)
+    doc.text(`$${budgetResults.adminCost.toLocaleString()}`, 150, yPosition)
+    yPosition += 10
+    
+    doc.setFont('helvetica', 'bold')
+    doc.text('Total Estimated Cost:', 20, yPosition)
+    doc.text(`$${budgetResults.totalEstimate.toLocaleString()}`, 150, yPosition)
+    yPosition += 15
+    
+    // Range
+    doc.setFont('helvetica', 'normal')
+    doc.text(`Estimated Range: $${budgetResults.range.low.toLocaleString()} - $${budgetResults.range.high.toLocaleString()}`, 20, yPosition)
+    yPosition += 20
+    
+    // AI Recommendations
+    if (aiRecommendations && aiRecommendations.length > 0) {
+      doc.setFontSize(16)
+      doc.setFont('helvetica', 'bold')
+      doc.text('AI-Powered Recommendations', 20, yPosition)
+      yPosition += 15
+      
+      doc.setFontSize(11)
+      doc.setFont('helvetica', 'normal')
+      aiRecommendations.forEach(rec => {
+        if (yPosition > 270) {
+          doc.addPage()
+          yPosition = 20
+        }
+        const splitRec = doc.splitTextToSize(`• ${rec}`, 170)
+        doc.text(splitRec, 20, yPosition)
+        yPosition += splitRec.length * 6 + 5
+      })
+    }
+    
+    // Footer
+    if (yPosition > 250) {
+      doc.addPage()
+      yPosition = 20
+    }
+    yPosition += 20
+    doc.setFontSize(10)
+    doc.setFont('helvetica', 'italic')
+    doc.text('This estimate is based on typical matters and may vary depending on specific circumstances.', 20, yPosition)
+    doc.text('Contact us for a detailed consultation and personalized quote.', 20, yPosition + 8)
+    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 16)
+    
+    // Download the PDF
+    doc.save(`Legal-Budget-Estimate-${new Date().toISOString().split('T')[0]}.pdf`)
   }
 
   // Function to open Privacy Compliance Guide in new window
@@ -924,334 +1136,292 @@ export const LegalResourcesLibrary = () => {
     newWindow.document.close()
   }
 
-  // Function to download PDF version of Privacy Guide
-  const downloadPrivacyGuidePDF = () => {
-    // For now, we'll use the existing popup functionality
-    // In a real implementation, you'd use jsPDF to generate a proper PDF
-    openPrivacyGuide()
-
-    // Add a small delay and then trigger a print dialog which can save as PDF
-    setTimeout(() => {
-      const newWindow = window.open('', '_blank')
-      newWindow.document.write(`
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Privacy Compliance Guide - Download</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        .download-info { background: #f0f9ff; padding: 20px; border-radius: 8px; border: 2px solid #0ea5e9; }
-    </style>
-</head>
-<body>
-    <div class="download-info">
-        <h2>📄 Privacy Compliance Guide PDF</h2>
-        <p><strong>To download this guide as a PDF:</strong></p>
-        <ol>
-            <li>Press <kbd>Ctrl+P</kbd> (Windows) or <kbd>Cmd+P</kbd> (Mac)</li>
-            <li>Select "Save as PDF" as your printer destination</li>
-            <li>Click "Save" and choose your download location</li>
-        </ol>
-        <p>Or use your browser's "Save as PDF" option from the File menu.</p>
-        <hr>
-        <p><em>This guide is provided by Tim Harmar: Legal and Consulting Services for informational purposes only.</em></p>
-    </div>
-    <script>
-        // Auto-trigger print dialog after a short delay
-        setTimeout(() => {
-            window.print();
-        }, 1000);
-    </script>
-</body>
-</html>
-      `)
-      newWindow.document.close()
-    }, 500)
+  // Function to download PDF version of Privacy Guide using jsPDF
+  const downloadPrivacyGuidePDF = async () => {
+    // Import jsPDF dynamically
+    const { jsPDF } = await import('jspdf')
+    
+    const doc = new jsPDF()
+    
+    // Set up document styling
+    doc.setFontSize(20)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Privacy Compliance Guide for Small Business', 20, 20)
+    
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'normal')
+    doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
+    doc.text('Sault Ste. Marie, Ontario', 20, 38)
+    
+    doc.setFontSize(12)
+    doc.text('Essential Steps to Ensure Your Business Complies with Canadian Privacy Laws', 20, 50)
+    
+    // Add content sections
+    let yPosition = 65
+    
+    // Introduction
+    doc.setFont('helvetica', 'bold')
+    doc.text('Introduction', 20, yPosition)
+    yPosition += 10
+    doc.setFont('helvetica', 'normal')
+    const introText = 'This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including PIPEDA and Ontario privacy regulations.'
+    const splitIntro = doc.splitTextToSize(introText, 170)
+    doc.text(splitIntro, 20, yPosition)
+    yPosition += splitIntro.length * 6 + 10
+    
+    // Key Steps
+    doc.setFont('helvetica', 'bold')
+    doc.text('Key Steps for Privacy Compliance', 20, yPosition)
+    yPosition += 15
+    
+    const steps = [
+      '1. Understand Applicable Laws - PIPEDA applies to private-sector organizations in Canada that collect, use, or disclose personal information.',
+      '2. Appoint a Privacy Officer - Designate a person responsible for overseeing privacy compliance.',
+      '3. Develop a Privacy Policy - Create a clear, accessible privacy policy explaining data practices.',
+      '4. Obtain Consent - Get explicit or implied consent before collecting personal information.',
+      '5. Secure Personal Information - Implement safeguards like encryption and restricted access.',
+      '6. Limit Data Retention - Retain personal information only as long as necessary.',
+      '7. Respond to Access Requests - Allow individuals to access their personal information within 30 days.',
+      '8. Prepare for Data Breaches - Develop a response plan and document all breaches.'
+    ]
+    
+    doc.setFont('helvetica', 'normal')
+    steps.forEach((step) => {
+      if (yPosition > 250) {
+        doc.addPage()
+        yPosition = 20
+      }
+      const splitStep = doc.splitTextToSize(step, 170)
+      doc.text(splitStep, 20, yPosition)
+      yPosition += splitStep.length * 6 + 8
+    })
+    
+    // Add footer
+    if (yPosition > 240) {
+      doc.addPage()
+      yPosition = 20
+    }
+    yPosition += 20
+    doc.setFont('helvetica', 'italic')
+    doc.setFontSize(10)
+    doc.text('This guide is for informational purposes only and does not constitute legal advice.', 20, yPosition)
+    doc.text('Contact Tim Harmar: Legal and Consulting Services for personalized legal advice.', 20, yPosition + 10)
+    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 20)
+    
+    // Auto-download the PDF
+    doc.save('Privacy-Compliance-Guide-Tim-Harmar-Legal.pdf')
   }
 
-  // Function to open Contract Review Checklist in new window
-  const openContractChecklist = () => {
-    const content = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contract Review Checklist</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-        h1 { color: #1f2937; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
-        h2 { color: #374151; margin-top: 30px; }
-        h3 { color: #4b5563; }
-        .section { margin-bottom: 25px; padding: 15px; background: #f9fafb; border-left: 4px solid #3b82f6; }
-        .checklist-item { margin: 8px 0; padding-left: 20px; }
-        .disclaimer { background: #fef3c7; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .footer { text-align: center; margin-top: 40px; padding: 20px; background: #f3f4f6; }
-        ul { list-style-type: none; }
-        li:before { content: "☐ "; margin-right: 8px; }
-    </style>
-</head>
-<body>
-    <h1>Contract Review Checklist</h1>
-    <h2>Key Elements to Review Before Signing Any Business Contract</h2>
+  // Function to download Contract Review Checklist as PDF
+  const downloadContractChecklistPDF = async () => {
+    const { jsPDF } = await import('jspdf')
     
-    <p>This checklist is designed as a quick reference for small business owners and entrepreneurs to ensure they've thoroughly evaluated a contract before committing. It's not a substitute for professional legal advice—consult a lawyer for complex agreements.</p>
+    const doc = new jsPDF()
     
-    <div class="section">
-        <h3>1. Parties and Identification</h3>
-        <ul>
-            <li>Confirm all parties are correctly identified (full legal names, addresses, and roles)</li>
-            <li>Verify authority: Does the signer have the right to bind the party (e.g., officer, partner)?</li>
-            <li>Check for any subsidiaries, affiliates, or third parties involved</li>
-        </ul>
-    </div>
+    // Set up document styling
+    doc.setFontSize(20)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Contract Review Checklist', 20, 20)
     
-    <div class="section">
-        <h3>2. Scope of Work/Services/Goods</h3>
-        <ul>
-            <li>Clearly define what is being provided (deliverables, timelines, quality standards)</li>
-            <li>Look for ambiguities: Are terms like "reasonable efforts" or "as needed" defined?</li>
-            <li>Identify any exclusions or limitations on what's included</li>
-        </ul>
-    </div>
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'normal')
+    doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
+    doc.text('Sault Ste. Marie, Ontario', 20, 38)
     
-    <div class="section">
-        <h3>3. Payment Terms</h3>
-        <ul>
-            <li>Review amounts, payment schedule, methods (e.g., wire, check), and currency</li>
-            <li>Check for milestones, retainers, late fees, interest, or penalties</li>
-            <li>Understand conditions for payment (e.g., upon delivery, approval)</li>
-        </ul>
-    </div>
+    doc.setFontSize(12)
+    doc.text('Key Elements to Review Before Signing Any Business Contract', 20, 50)
     
-    <div class="section">
-        <h3>4. Term and Termination</h3>
-        <ul>
-            <li>Note the start date, duration (fixed term or ongoing), and renewal options</li>
-            <li>Examine termination clauses: For cause (breach), without cause (notice period)</li>
-            <li>Look for survival clauses: What obligations continue post-termination?</li>
-        </ul>
-    </div>
+    let yPosition = 65
     
-    <div class="section">
-        <h3>5. Confidentiality and Non-Disclosure</h3>
-        <ul>
-            <li>Define what information is confidential and how it must be protected</li>
-            <li>Check duration of confidentiality (e.g., perpetual or time-limited)</li>
-            <li>Identify exceptions (e.g., public information, court orders)</li>
-        </ul>
-    </div>
+    // Introduction
+    doc.setFont('helvetica', 'normal')
+    const introText = 'This checklist helps small business owners ensure they thoroughly evaluate contracts before committing. It is not a substitute for professional legal advice.'
+    const splitIntro = doc.splitTextToSize(introText, 170)
+    doc.text(splitIntro, 20, yPosition)
+    yPosition += splitIntro.length * 6 + 15
     
-    <div class="section">
-        <h3>6. Intellectual Property (IP) Rights</h3>
-        <ul>
-            <li>Clarify ownership: Who owns new IP created under the contract?</li>
-            <li>Review licenses granted: Exclusive/non-exclusive, duration, territory</li>
-            <li>Ensure protections against infringement claims</li>
-        </ul>
-    </div>
+    // Checklist sections
+    const sections = [
+      {
+        title: '1. Parties and Identification',
+        items: [
+          '☐ Confirm all parties are correctly identified with full legal names and addresses',
+          '☐ Verify authority: Does the signer have the right to bind the party?',
+          '☐ Check for any subsidiaries, affiliates, or third parties involved'
+        ]
+      },
+      {
+        title: '2. Scope of Work/Services/Goods',
+        items: [
+          '☐ Clearly define what is being provided (deliverables, timelines, quality standards)',
+          '☐ Look for ambiguities: Are terms like "reasonable efforts" defined?',
+          '☐ Identify any exclusions or limitations on what\'s included'
+        ]
+      },
+      {
+        title: '3. Payment Terms',
+        items: [
+          '☐ Review amounts, payment schedule, methods, and currency',
+          '☐ Check for milestones, retainers, late fees, interest, or penalties',
+          '☐ Understand conditions for payment (e.g., upon delivery, approval)'
+        ]
+      },
+      {
+        title: '4. Term and Termination',
+        items: [
+          '☐ Note the start date, duration, and renewal options',
+          '☐ Examine termination clauses: For cause (breach), without cause (notice)',
+          '☐ Look for survival clauses: What obligations continue post-termination?'
+        ]
+      },
+      {
+        title: '5. Liability and Risk',
+        items: [
+          '☐ Review caps on liability (e.g., limited to contract value)',
+          '☐ Check indemnification: Who covers losses from claims?',
+          '☐ Note insurance requirements and coverage expectations'
+        ]
+      }
+    ]
     
-    <div class="section">
-        <h3>7. Warranties and Representations</h3>
-        <ul>
-            <li>Assess promises made (e.g., quality, compliance with laws, no conflicts)</li>
-            <li>Check disclaimers: Are warranties limited or "as-is"?</li>
-            <li>Understand remedies for breach of warranties</li>
-        </ul>
-    </div>
+    sections.forEach((section) => {
+      if (yPosition > 240) {
+        doc.addPage()
+        yPosition = 20
+      }
+      
+      doc.setFont('helvetica', 'bold')
+      doc.text(section.title, 20, yPosition)
+      yPosition += 10
+      
+      doc.setFont('helvetica', 'normal')
+      section.items.forEach((item) => {
+        if (yPosition > 270) {
+          doc.addPage()
+          yPosition = 20
+        }
+        const splitItem = doc.splitTextToSize(item, 165)
+        doc.text(splitItem, 25, yPosition)
+        yPosition += splitItem.length * 6 + 5
+      })
+      yPosition += 10
+    })
     
-    <div class="section">
-        <h3>8. Liability and Indemnification</h3>
-        <ul>
-            <li>Review caps on liability (e.g., limited to contract value)</li>
-            <li>Check indemnification: Who covers losses from claims?</li>
-            <li>Note insurance requirements</li>
-        </ul>
-    </div>
+    // Add footer
+    if (yPosition > 250) {
+      doc.addPage()
+      yPosition = 20
+    }
+    doc.setFont('helvetica', 'italic')
+    doc.setFontSize(10)
+    doc.text('Disclaimer: This checklist is for informational purposes only and does not constitute legal advice.', 20, yPosition)
+    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 10)
     
-    <div class="section">
-        <h3>9. Dispute Resolution</h3>
-        <ul>
-            <li>Identify method: Litigation, arbitration, mediation?</li>
-            <li>Specify venue, jurisdiction, and applicable rules</li>
-            <li>Look for attorney fees provisions (who pays in a dispute)</li>
-        </ul>
-    </div>
-    
-    <div class="section">
-        <h3>10. Governing Law and Miscellaneous</h3>
-        <ul>
-            <li>Confirm governing law (e.g., state/country) and jurisdiction</li>
-            <li>Check force majeure (excuses for non-performance due to unforeseen events)</li>
-            <li>Review boilerplate: Assignment, amendments, entire agreement clause</li>
-            <li>Ensure no unfair terms (e.g., one-sided clauses)</li>
-        </ul>
-    </div>
-    
-    <h3>Tips for Review:</h3>
-    <ul style="margin-left: 20px;">
-        <li>Read the entire contract multiple times</li>
-        <li>Highlight unclear language and seek clarification</li>
-        <li>Compare against industry standards or similar contracts</li>
-        <li>Consider potential worst-case scenarios</li>
-    </ul>
-    
-    <div class="disclaimer">
-        <p><strong>Disclaimer:</strong> Prepared by Tim Harmar: Legal and Consulting Services – For informational purposes only. This is not legal advice.</p>
-    </div>
-    
-    <div class="footer">
-        <p>Prepared by Tim Harmar: Legal and Consulting Services - Sault Ste. Marie, Ontario</p>
-    </div>
-</body>
-</html>
-    `
-
-    const newWindow = window.open('', '_blank')
-    newWindow.document.write(content)
-    newWindow.document.close()
+    // Auto-download the PDF
+    doc.save('Contract-Review-Checklist-Tim-Harmar-Legal.pdf')
   }
 
-  // Function to open IP Protection Basics in new window
-  const openIPGuide = () => {
-    const content = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Protection Basics</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-        h1 { color: #1f2937; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
-        h2 { color: #374151; margin-top: 30px; }
-        h3 { color: #4b5563; }
-        .section { margin-bottom: 30px; padding: 20px; background: #f9fafb; border-left: 4px solid #3b82f6; }
-        .subsection { margin: 15px 0; }
-        .disclaimer { background: #fef3c7; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .footer { text-align: center; margin-top: 40px; padding: 20px; background: #f3f4f6; }
-        ul { margin: 10px 0; }
-        li { margin: 5px 0; }
-    </style>
-</head>
-<body>
-    <h1>Intellectual Property Guide</h1>
-    <h2>Understanding Trademarks, Copyrights, and Trade Secrets for Your Ontario Business</h2>
+  // Function to download IP Protection Guide as PDF
+  const downloadIPGuidePDF = async () => {
+    const { jsPDF } = await import('jspdf')
     
-    <h3>Introduction</h3>
-    <p>Intellectual property (IP) refers to creations of the mind, such as inventions, designs, brand identifiers, and creative works. Protecting your IP is critical for Ontario businesses to prevent unauthorized use, maintain competitive advantage, and avoid costly disputes. This guide, prepared by Tim Harmar Law, outlines the three main types of IP relevant to small businesses in Ontario—trademarks, copyrights, and trade secrets—under Canadian law, including the Trademarks Act (R.S.C., 1985, c. T-13), Copyright Act (R.S.C., 1985, c. C-42), and common law principles for trade secrets.</p>
+    const doc = new jsPDF()
     
-    <div class="disclaimer">
-        <p><strong>Disclaimer:</strong> This guide is for informational purposes only and does not constitute legal advice. Contact Tim Harmar Law for personalized legal advice tailored to your business.</p>
-    </div>
+    // Set up document styling
+    doc.setFontSize(20)
+    doc.setFont('helvetica', 'bold')
+    doc.text('Intellectual Property Protection Guide', 20, 20)
     
-    <div class="section">
-        <h3>1. Trademarks</h3>
-        
-        <div class="subsection">
-            <h4>What They Are</h4>
-            <p>Trademarks protect brand identifiers that distinguish your goods or services from others, such as business names, logos, slogans, or symbols. Examples include your company name, product logos, or taglines like "Tim Hortons Always Fresh." In Canada, trademarks are governed by the Trademarks Act and administered by the Canadian Intellectual Property Office (CIPO).</p>
-        </div>
-        
-        <div class="subsection">
-            <h4>How to Protect</h4>
-            <ul>
-                <li><strong>Conduct a Search:</strong> Before using a trademark, search the CIPO Trademarks Database (available at www.canada.ca/en/services/business/ip/trademarks) to ensure it's not already registered or in use. Additional searches via Google or the Ontario Business Registry can help identify unregistered marks protected by common law.</li>
-                <li><strong>Register with CIPO:</strong> Registering your trademark with CIPO provides nationwide protection for 10 years (renewable). Registration strengthens your legal rights, especially in disputes. File online at www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/h_wr00002.html.</li>
-                <li><strong>Use Properly:</strong> Use ™ for unregistered trademarks or ® for registered marks to signal your claim. Consistent use in commerce (e.g., on packaging, websites) strengthens common law rights, even without registration.</li>
-                <li><strong>Monitor and Enforce:</strong> Regularly monitor for unauthorized use. If infringement occurs, consult a lawyer to send a cease-and-desist letter or pursue action under the Trademarks Act.</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <h4>Common Pitfalls</h4>
-            <ul>
-                <li>Choosing generic or descriptive terms (e.g., "Ontario Legal Services") that cannot be registered under s. 12 of the Trademarks Act.</li>
-                <li>Failing to renew registrations every 10 years, as required by s. 46.</li>
-                <li>Not documenting use of unregistered marks, which weakens common law claims in Ontario.</li>
-            </ul>
-        </div>
-    </div>
+    doc.setFontSize(14)
+    doc.setFont('helvetica', 'normal')
+    doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
+    doc.text('Sault Ste. Marie, Ontario', 20, 38)
     
-    <div class="section">
-        <h3>2. Copyrights</h3>
-        
-        <div class="subsection">
-            <h4>What They Are</h4>
-            <p>Copyright protects original works of authorship fixed in a tangible medium, such as writings, music, artwork, software, websites, photographs, and videos. It covers the expression of ideas, not the ideas themselves. In Canada, copyright is governed by the Copyright Act and automatically applies upon creation.</p>
-        </div>
-        
-        <div class="subsection">
-            <h4>How to Protect</h4>
-            <ul>
-                <li><strong>Automatic Protection:</strong> Under s. 5 of the Copyright Act, copyright exists from the moment a work is created in a fixed form (e.g., written, recorded). No registration is required, but it lasts for the creator's lifetime plus 70 years (as amended in 2022).</li>
-                <li><strong>Register with CIPO:</strong> Voluntary registration (via www.ic.gc.ca/eic/site/cipointernet-internetopic.nsf/eng/h_wr00003.html) provides a certificate that strengthens enforcement in disputes, per s. 53. It's recommended for high-value works.</li>
-                <li><strong>Document Creation:</strong> Keep records of drafts, creation dates, and authorship to prove ownership, especially in disputes.</li>
-                <li><strong>Use Agreements:</strong> For works created by employees or contractors, use contracts to clarify ownership (e.g., "work-made-for-hire" agreements). Under s. 13(3), employer ownership applies to employee-created works in the course of employment.</li>
-                <li><strong>Display Notice:</strong> Include a copyright notice (e.g., © 2025 Tim Harmar Law) to deter infringement, though not required under the Copyright Act.</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <h4>Common Pitfalls</h4>
-            <ul>
-                <li>Assuming "fair dealing" (Canada's equivalent to fair use, per s. 29) allows broad use of others' works. Fair dealing is limited to purposes like research, private study, or criticism.</li>
-                <li>Using third-party content (e.g., images, music) without permission or proper licensing, risking infringement claims.</li>
-            </ul>
-        </div>
-    </div>
+    doc.setFontSize(12)
+    doc.text('Understanding Trademarks, Copyrights, and Trade Secrets for Ontario Businesses', 20, 50)
     
-    <div class="section">
-        <h3>3. Trade Secrets</h3>
-        
-        <div class="subsection">
-            <h4>What They Are</h4>
-            <p>Trade secrets are confidential business information that provides a competitive edge, such as client lists, business processes, recipes, or proprietary methods. Examples include a law firm's client database or a unique marketing strategy. In Ontario, trade secrets are protected under common law, not a specific statute, though misappropriation may violate contracts or tort law (e.g., breach of confidence).</p>
-        </div>
-        
-        <div class="subsection">
-            <h4>How to Protect</h4>
-            <ul>
-                <li><strong>Identify Secrets:</strong> Clearly mark confidential information as "confidential" and limit access to authorized personnel only.</li>
-                <li><strong>Use Non-Disclosure Agreements (NDAs):</strong> Require employees, contractors, and partners to sign NDAs to protect sensitive information. Ensure NDAs comply with Ontario contract law principles.</li>
-                <li><strong>Implement Security Measures:</strong> Use passwords, encryption, and restricted access to safeguard data. Train employees on confidentiality obligations, aligning with Law Society of Ontario guidelines for client data protection.</li>
-                <li><strong>Enforce Rights:</strong> If a trade secret is misappropriated (e.g., by a former employee), pursue legal remedies like injunctions or damages through Ontario courts for breach of confidence or contract.</li>
-            </ul>
-        </div>
-        
-        <div class="subsection">
-            <h4>Common Pitfalls</h4>
-            <ul>
-                <li>Failing to use written NDAs, which weakens legal recourse.</li>
-                <li>Publicly disclosing confidential information (e.g., on social media), which destroys trade secret status under common law.</li>
-                <li>Not training employees on confidentiality, risking accidental leaks.</li>
-            </ul>
-        </div>
-    </div>
+    let yPosition = 65
     
-    <h3>Next Steps for Your Ontario Business</h3>
-    <ul>
-        <li><strong>Audit Your IP:</strong> Identify all IP assets (e.g., logos, website content, client lists) and assess risks of infringement or loss.</li>
-        <li><strong>Develop an IP Strategy:</strong> Prioritize protections based on your business goals. For example, register key trademarks with CIPO, document copyrightable works, and secure trade secrets with NDAs.</li>
-        <li><strong>Seek Professional Help:</strong> Consult Tim Harmar Law for trademark searches, copyright registration, or drafting NDAs tailored to Ontario law. We can also assist with enforcement actions.</li>
-        <li><strong>Stay Informed:</strong> Monitor changes to Canadian IP law through CIPO (www.ic.gc.ca) or the Law Society of Ontario for professional obligations.</li>
-    </ul>
+    // Introduction
+    doc.setFont('helvetica', 'normal')
+    const introText = 'Intellectual property protection is critical for Ontario businesses to prevent unauthorized use, maintain competitive advantage, and avoid costly disputes.'
+    const splitIntro = doc.splitTextToSize(introText, 170)
+    doc.text(splitIntro, 20, yPosition)
+    yPosition += splitIntro.length * 6 + 15
     
-    <div class="disclaimer">
-        <h4>Disclaimer</h4>
-        <p>This guide, prepared by Tim Harmar Law, is for informational purposes only and does not constitute legal advice. For specific legal guidance, contact our firm to discuss your needs.</p>
-    </div>
+    // IP Types
+    const ipTypes = [
+      {
+        title: '1. Trademarks',
+        content: 'Protect brand identifiers that distinguish your goods or services. In Canada, register with CIPO for 10-year renewable protection.'
+      },
+      {
+        title: '2. Copyrights',
+        content: 'Protect original creative works. Automatic protection under Canadian Copyright Act, lasting creator\'s lifetime plus 70 years.'
+      },
+      {
+        title: '3. Trade Secrets',
+        content: 'Protect confidential business information through NDAs and security measures. No registration required but must maintain confidentiality.'
+      }
+    ]
     
-    <div class="footer">
-        <p>Prepared by Tim Harmar: Legal and Consulting Services - Sault Ste. Marie, Ontario</p>
-    </div>
-</body>
-</html>
-    `
-
-    const newWindow = window.open('', '_blank')
-    newWindow.document.write(content)
-    newWindow.document.close()
+    ipTypes.forEach((type) => {
+      if (yPosition > 250) {
+        doc.addPage()
+        yPosition = 20
+      }
+      
+      doc.setFont('helvetica', 'bold')
+      doc.text(type.title, 20, yPosition)
+      yPosition += 10
+      
+      doc.setFont('helvetica', 'normal')
+      const splitContent = doc.splitTextToSize(type.content, 170)
+      doc.text(splitContent, 20, yPosition)
+      yPosition += splitContent.length * 6 + 15
+    })
+    
+    // Key recommendations
+    if (yPosition > 220) {
+      doc.addPage()
+      yPosition = 20
+    }
+    
+    doc.setFont('helvetica', 'bold')
+    doc.text('Key Recommendations:', 20, yPosition)
+    yPosition += 15
+    
+    const recommendations = [
+      '• Conduct IP audits to identify all protectable assets',
+      '• Register trademarks and copyrights for valuable assets',
+      '• Implement comprehensive NDAs for trade secrets',
+      '• Monitor for infringement and enforce rights promptly',
+      '• Seek professional legal advice for IP strategy'
+    ]
+    
+    doc.setFont('helvetica', 'normal')
+    recommendations.forEach((rec) => {
+      if (yPosition > 270) {
+        doc.addPage()
+        yPosition = 20
+      }
+      doc.text(rec, 20, yPosition)
+      yPosition += 8
+    })
+    
+    // Add footer
+    if (yPosition > 250) {
+      doc.addPage()
+      yPosition = 20
+    }
+    yPosition += 20
+    doc.setFont('helvetica', 'italic')
+    doc.setFontSize(10)
+    doc.text('This guide is for informational purposes only and does not constitute legal advice.', 20, yPosition)
+    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 10)
+    
+    // Auto-download the PDF
+    doc.save('IP-Protection-Guide-Tim-Harmar-Legal.pdf')
   }
 
   const resources = {
@@ -1262,8 +1432,7 @@ export const LegalResourcesLibrary = () => {
         type: 'PDF Guide',
         icon: '🔒',
         downloadable: true,
-        downloadAction: openPrivacyGuide,
-        downloadPDF: downloadPrivacyGuidePDF,
+        downloadAction: downloadPrivacyGuidePDF,
       },
       {
         title: 'Contract Review Checklist',
@@ -1271,7 +1440,7 @@ export const LegalResourcesLibrary = () => {
         type: 'Checklist',
         icon: '✅',
         downloadable: true,
-        downloadAction: openContractChecklist,
+        downloadAction: downloadContractChecklistPDF,
       },
       {
         title: 'Intellectual Property Guide',
@@ -1280,7 +1449,7 @@ export const LegalResourcesLibrary = () => {
         type: 'Guide',
         icon: '💡',
         downloadable: true,
-        downloadAction: openIPGuide,
+        downloadAction: downloadIPGuidePDF,
       },
     ],
     faqs: [
@@ -1589,30 +1758,16 @@ export const LegalResourcesLibrary = () => {
                       {resource.type}
                     </span>
                     {resource.downloadable && (
-                      <div className="flex space-x-2">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            resource.downloadAction()
-                          }}
-                          className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-2 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 text-sm font-semibold shadow-medium hover:shadow-large transform hover:scale-105"
-                        >
-                          <FileText className="w-4 h-4" />
-                          <span>View Guide</span>
-                        </button>
-                        {resource.downloadPDF && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              resource.downloadPDF()
-                            }}
-                            className="flex items-center space-x-2 bg-gradient-to-r from-green-600 to-green-700 text-white px-3 py-2 rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-300 text-sm font-semibold shadow-medium hover:shadow-large transform hover:scale-105"
-                          >
-                            <Download className="w-4 h-4" />
-                            <span>PDF</span>
-                          </button>
-                        )}
-                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          resource.downloadAction()
+                        }}
+                        className="flex items-center space-x-2 bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-300 text-sm font-semibold shadow-medium hover:shadow-large transform hover:scale-105"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Download PDF</span>
+                      </button>
                     )}
                   </div>
                 </div>
@@ -1660,13 +1815,16 @@ export const LegalResourcesLibrary = () => {
                     resource.title === 'Legal Budget Calculator' && (
                       <div className="mt-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
                         <h4 className="text-lg font-bold text-blue-800 mb-4 flex items-center">
-                          💰 Interactive Budget Calculator
+                          🤖 AI-Powered Legal Budget Calculator
                         </h4>
+                        <p className="text-sm text-blue-700 mb-6">
+                          Get accurate cost estimates based on Tim Harmar's rates: $300/hr (counsel) and $90/hr (admin support)
+                        </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Service Type
+                              Service Type *
                             </label>
                             <select
                               value={budgetInputs.serviceType}
@@ -1676,18 +1834,18 @@ export const LegalResourcesLibrary = () => {
                               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             >
                               <option value="">Select a service...</option>
-                              <option value="business-formation">Business Formation</option>
-                              <option value="contract-services">Contract Services</option>
-                              <option value="employment-law">Employment Law</option>
-                              <option value="intellectual-property">Intellectual Property</option>
-                              <option value="litigation-support">Litigation Support</option>
-                              <option value="privacy-compliance">Privacy & Compliance</option>
+                              <option value="business-formation">Business Formation & Corporate Law</option>
+                              <option value="contract-services">Contract Drafting & Review</option>
+                              <option value="employment-law">Employment Law & HR Compliance</option>
+                              <option value="intellectual-property">Intellectual Property Protection</option>
+                              <option value="litigation-support">Civil Litigation & Dispute Resolution</option>
+                              <option value="privacy-compliance">Privacy & Cybersecurity Compliance</option>
                             </select>
                           </div>
 
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Complexity Level
+                              Matter Complexity
                             </label>
                             <select
                               value={budgetInputs.complexity}
@@ -1696,15 +1854,15 @@ export const LegalResourcesLibrary = () => {
                               }
                               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             >
-                              <option value="simple">Simple (-30%)</option>
-                              <option value="medium">Medium (Standard)</option>
-                              <option value="complex">Complex (+50%)</option>
+                              <option value="simple">Simple (-30% time)</option>
+                              <option value="medium">Standard Complexity</option>
+                              <option value="complex">Complex (+50-100% time)</option>
                             </select>
                           </div>
 
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Urgency
+                              Timeline Requirements
                             </label>
                             <select
                               value={budgetInputs.urgency}
@@ -1713,15 +1871,15 @@ export const LegalResourcesLibrary = () => {
                               }
                               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             >
-                              <option value="normal">Normal Timeline</option>
-                              <option value="urgent">Urgent (+30%)</option>
-                              <option value="rush">Rush (+60%)</option>
+                              <option value="normal">Normal Timeline (Standard rates)</option>
+                              <option value="urgent">Urgent (+30% premium)</option>
+                              <option value="rush">Rush/Emergency (+60% premium)</option>
                             </select>
                           </div>
 
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Service Duration
+                              Engagement Type
                             </label>
                             <select
                               value={budgetInputs.duration}
@@ -1731,57 +1889,168 @@ export const LegalResourcesLibrary = () => {
                               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             >
                               <option value="one-time">One-time Project</option>
-                              <option value="ongoing">Ongoing Support (-15%)</option>
-                              <option value="retainer">Monthly Retainer (-25%)</option>
+                              <option value="ongoing">Ongoing Support (-15% discount)</option>
+                              <option value="retainer">Monthly Retainer (-25% discount)</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Organization Size
+                            </label>
+                            <select
+                              value={budgetInputs.clientSize}
+                              onChange={(e) =>
+                                setBudgetInputs({ ...budgetInputs, clientSize: e.target.value })
+                              }
+                              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                              <option value="small">Small Business (1-50 employees)</option>
+                              <option value="medium">Medium Business (51-200 employees)</option>
+                              <option value="large">Large Organization (200+ employees)</option>
+                              <option value="enterprise">Enterprise/Multi-national</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Industry Type (Optional)
+                            </label>
+                            <select
+                              value={budgetInputs.industryType}
+                              onChange={(e) =>
+                                setBudgetInputs({ ...budgetInputs, industryType: e.target.value })
+                              }
+                              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                              <option value="">Select industry...</option>
+                              <option value="technology">Technology/Software</option>
+                              <option value="healthcare">Healthcare/Medical</option>
+                              <option value="manufacturing">Manufacturing</option>
+                              <option value="retail">Retail/E-commerce</option>
+                              <option value="professional">Professional Services</option>
+                              <option value="other">Other</option>
                             </select>
                           </div>
                         </div>
 
                         <button
                           onClick={calculateBudget}
-                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105"
+                          disabled={!budgetInputs.serviceType}
+                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                         >
-                          Calculate Estimate
+                          🧠 Calculate AI-Powered Estimate
                         </button>
 
                         {budgetResults && (
-                          <div className="mt-6 p-4 bg-white rounded-lg border border-blue-200">
-                            <h5 className="font-bold text-blue-800 mb-3">
-                              Your Estimated Legal Budget
-                            </h5>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                              <div className="bg-blue-50 p-3 rounded-lg">
-                                <div className="text-sm text-gray-600">Base Estimate</div>
-                                <div className="text-xl font-bold text-blue-800">
-                                  ${budgetResults.baseEstimate.toLocaleString()}
+                          <div className="mt-6 p-6 bg-white rounded-lg border border-blue-200 shadow-sm">
+                            <div className="flex items-center justify-between mb-4">
+                              <h5 className="font-bold text-blue-800 text-lg">
+                                Your Legal Budget Estimate
+                              </h5>
+                              <button
+                                onClick={downloadBudgetPDF}
+                                className="flex items-center space-x-2 bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                              >
+                                <Download className="w-4 h-4" />
+                                <span>Download PDF</span>
+                              </button>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                              <div className="bg-blue-50 p-4 rounded-lg">
+                                <div className="text-sm text-blue-600 font-medium">Counsel Time (Tim Harmar)</div>
+                                <div className="text-lg font-bold text-blue-800">
+                                  {budgetResults.counselHours} hours × $300/hr
+                                </div>
+                                <div className="text-xl font-bold text-blue-900">
+                                  ${budgetResults.counselCost.toLocaleString()}
                                 </div>
                               </div>
-                              <div className="bg-green-50 p-3 rounded-lg">
-                                <div className="text-sm text-gray-600">Hourly Rate</div>
-                                <div className="text-xl font-bold text-green-800">
-                                  ${budgetResults.hourlyRate}/hr
+                              
+                              <div className="bg-green-50 p-4 rounded-lg">
+                                <div className="text-sm text-green-600 font-medium">Admin Support</div>
+                                <div className="text-lg font-bold text-green-800">
+                                  {budgetResults.adminHours} hours × $90/hr
+                                </div>
+                                <div className="text-xl font-bold text-green-900">
+                                  ${budgetResults.adminCost.toLocaleString()}
                                 </div>
                               </div>
-                              <div className="bg-purple-50 p-3 rounded-lg">
-                                <div className="text-sm text-gray-600">Range</div>
-                                <div className="text-lg font-bold text-purple-800">
+                              
+                              <div className="bg-purple-50 p-4 rounded-lg">
+                                <div className="text-sm text-purple-600 font-medium">Total Estimate</div>
+                                <div className="text-2xl font-bold text-purple-900">
+                                  ${budgetResults.totalEstimate.toLocaleString()}
+                                </div>
+                                {budgetResults.savings > 0 && (
+                                  <div className="text-sm text-green-600 font-medium">
+                                    Savings: ${budgetResults.savings.toLocaleString()}
+                                  </div>
+                                )}
+                              </div>
+                              
+                              <div className="bg-orange-50 p-4 rounded-lg">
+                                <div className="text-sm text-orange-600 font-medium">Estimated Range</div>
+                                <div className="text-lg font-bold text-orange-800">
                                   ${budgetResults.range.low.toLocaleString()} - $
                                   {budgetResults.range.high.toLocaleString()}
                                 </div>
-                              </div>
-                              {budgetResults.monthly && (
-                                <div className="bg-orange-50 p-3 rounded-lg">
-                                  <div className="text-sm text-gray-600">Monthly Retainer</div>
-                                  <div className="text-lg font-bold text-orange-800">
-                                    ${budgetResults.monthly.toLocaleString()}/month
+                                {budgetResults.monthlyRetainer && (
+                                  <div className="text-sm text-blue-600 font-medium mt-1">
+                                    Monthly Retainer: ${budgetResults.monthlyRetainer.toLocaleString()}
                                   </div>
-                                </div>
-                              )}
+                                )}
+                              </div>
                             </div>
-                            <div className="mt-4 text-xs text-gray-500">
-                              * Estimates are based on typical matters and may vary depending on
-                              specific circumstances. Contact us for a detailed consultation and
-                              personalized quote.
+
+                            {aiRecommendations && aiRecommendations.length > 0 && (
+                              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-lg">
+                                <h6 className="font-bold text-indigo-800 mb-3 flex items-center">
+                                  🤖 AI-Powered Recommendations
+                                </h6>
+                                <ul className="space-y-2">
+                                  {aiRecommendations.map((rec, idx) => (
+                                    <li key={idx} className="flex items-start">
+                                      <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                      <span className="text-sm text-indigo-700">{rec}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                            
+                            <div className="mt-4 text-xs text-gray-500 italic">
+                              * Estimates based on typical matters. Actual costs may vary depending on specific circumstances. 
+                              Contact us for a detailed consultation and personalized quote.
+                            </div>
+
+                            <div className="mt-4 flex space-x-3">
+                              <button
+                                onClick={() => {
+                                  window.location.href = `mailto:kburton@timharmar.com?subject=Budget Consultation Request&body=Hello,%0D%0A%0D%0AI have used your budget calculator and would like to discuss my legal needs.%0D%0A%0D%0AService Type: ${budgetInputs.serviceType}%0D%0AEstimated Cost: $${budgetResults.totalEstimate.toLocaleString()}%0D%0A%0D%0APlease contact me to schedule a consultation.%0D%0A%0D%0AThank you!`
+                                }}
+                                className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                              >
+                                Schedule Consultation
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setBudgetInputs({
+                                    serviceType: '',
+                                    complexity: 'medium',
+                                    urgency: 'normal',
+                                    duration: 'one-time',
+                                    clientSize: 'small',
+                                    industryType: '',
+                                  })
+                                  setBudgetResults(null)
+                                  setAiRecommendations(null)
+                                }}
+                                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+                              >
+                                Reset Calculator
+                              </button>
                             </div>
                           </div>
                         )}
@@ -1798,23 +2067,58 @@ export const LegalResourcesLibrary = () => {
         whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}
         onClick={() => {
-          // Show all resources at once by setting expanded items for tools that have calculators or interactive features
-          if (selectedCategory === 'tools') {
-            setExpandedItem(expandedItem === 0 ? null : 0) // Toggle first tool (Legal Budget Calculator)
-          } else {
-            // For guides and faqs, show all items by expanding them
-            const totalItems = resources[selectedCategory].length
-            for (let i = 0; i < totalItems; i++) {
-              if (resources[selectedCategory][i].expandable) {
-                setExpandedItem(i)
-                break
-              }
+          // Show all categories and expand all expandable items
+          setSelectedCategory('guides')
+          
+          // First show guides category
+          setTimeout(() => {
+            setSelectedCategory('faqs')
+          }, 500)
+          
+          // Then show tools category
+          setTimeout(() => {
+            setSelectedCategory('tools')
+            // For tools, expand the budget calculator
+            setExpandedItem(0)
+          }, 1000)
+          
+          // Finally go back to guides to show the complete library experience
+          setTimeout(() => {
+            setSelectedCategory('guides')
+          }, 1500)
+          
+          // Scroll through all categories to show user everything is available
+          const categories = ['guides', 'faqs', 'tools']
+          let currentIndex = 0
+          
+          const cycleInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % categories.length
+            setSelectedCategory(categories[currentIndex])
+            
+            // Expand some items in each category to show functionality
+            if (categories[currentIndex] === 'faqs') {
+              setExpandedItem(0) // Expand first FAQ
+            } else if (categories[currentIndex] === 'tools') {
+              setExpandedItem(0) // Expand budget calculator
+            } else {
+              setExpandedItem(null)
             }
-          }
+          }, 2000)
+          
+          // Stop cycling after showing all categories
+          setTimeout(() => {
+            clearInterval(cycleInterval)
+            setSelectedCategory('guides') // End on guides
+            setExpandedItem(null)
+          }, 8000)
         }}
         className="w-full mt-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-xl font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-large hover:shadow-xl relative overflow-hidden"
       >
-        <span className="relative z-10">Access Full Resource Library</span>
+        <span className="relative z-10 flex items-center justify-center">
+          <FileText className="w-5 h-5 mr-2" />
+          Access Full Resource Library
+          <ArrowRight className="w-5 h-5 ml-2" />
+        </span>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
       </motion.button>
     </motion.div>
