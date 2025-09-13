@@ -632,7 +632,7 @@ export default function App() {
                       <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
                     </button>
-                    
+
                     {activeDropdown === 'services' && (
                       <div
                         onMouseEnter={() => setActiveDropdown('services')}
@@ -644,27 +644,45 @@ export default function App() {
                           <p className="text-xs text-gray-600">Award-winning expertise</p>
                         </div>
                         <div className="py-2">
-                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#services"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <Scale className="w-4 h-4 mr-3 text-brand-accent" />
                             Civil Litigation
                           </a>
-                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#services"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <Shield className="w-4 h-4 mr-3 text-brand-accent" />
                             Privacy & Cybersecurity Law
                           </a>
-                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#services"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <Lightbulb className="w-4 h-4 mr-3 text-brand-accent" />
                             Intellectual Property
                           </a>
-                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#services"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <Building2 className="w-4 h-4 mr-3 text-brand-accent" />
                             Business Law
                           </a>
-                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#services"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <Rocket className="w-4 h-4 mr-3 text-brand-accent" />
                             Business Start Up & Strategy
                           </a>
-                          <a href="#services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#services"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <Target className="w-4 h-4 mr-3 text-brand-accent" />
                             Legal Consulting
                           </a>
@@ -685,7 +703,7 @@ export default function App() {
                       <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
                     </button>
-                    
+
                     {activeDropdown === 'about' && (
                       <div
                         onMouseEnter={() => setActiveDropdown('about')}
@@ -697,20 +715,32 @@ export default function App() {
                           <p className="text-xs text-gray-600">Meet our legal professionals</p>
                         </div>
                         <div className="py-2">
-                          <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#about"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <User className="w-4 h-4 mr-3 text-brand-accent" />
                             Tim J. Harmar - Principal Lawyer
                           </a>
-                          <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#about"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <UserCheck className="w-4 h-4 mr-3 text-brand-accent" />
                             Kelly Burton - Legal Assistant
                           </a>
-                          <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                          <a
+                            href="#about"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                          >
                             <Briefcase className="w-4 h-4 mr-3 text-brand-accent" />
                             Josh Ochoa - Office Administrator
                           </a>
                           <div className="border-t border-gray-100 mt-2 pt-2">
-                            <a href="#about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center">
+                            <a
+                              href="#about"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
+                            >
                               <Award className="w-4 h-4 mr-3 text-brand-accent" />
                               Why Choose Us
                             </a>
@@ -732,7 +762,7 @@ export default function App() {
                       <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
                     </button>
-                    
+
                     {activeDropdown === 'resources' && (
                       <div
                         onMouseEnter={() => setActiveDropdown('resources')}
@@ -744,9 +774,11 @@ export default function App() {
                           <p className="text-xs text-gray-600">Tools, guides & assessments</p>
                         </div>
                         <div className="py-2">
-                          <button 
+                          <button
                             onClick={() => {
-                              document.querySelector('.legal-resources-section')?.scrollIntoView({ behavior: 'smooth' })
+                              document
+                                .querySelector('.legal-resources-section')
+                                ?.scrollIntoView({ behavior: 'smooth' })
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -754,9 +786,11 @@ export default function App() {
                             <FileText className="w-4 h-4 mr-3 text-brand-accent" />
                             Legal Resources Library
                           </button>
-                          <button 
+                          <button
                             onClick={() => {
-                              document.querySelector('.legal-assessment-section')?.scrollIntoView({ behavior: 'smooth' })
+                              document
+                                .querySelector('.legal-assessment-section')
+                                ?.scrollIntoView({ behavior: 'smooth' })
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -764,9 +798,11 @@ export default function App() {
                             <Brain className="w-4 h-4 mr-3 text-brand-accent" />
                             Legal Needs Assessment
                           </button>
-                          <button 
+                          <button
                             onClick={() => {
-                              document.querySelector('.budget-calculator-section')?.scrollIntoView({ behavior: 'smooth' })
+                              document
+                                .querySelector('.budget-calculator-section')
+                                ?.scrollIntoView({ behavior: 'smooth' })
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -774,9 +810,11 @@ export default function App() {
                             <TrendingUp className="w-4 h-4 mr-3 text-brand-accent" />
                             Budget Calculator
                           </button>
-                          <button 
+                          <button
                             onClick={() => {
-                              document.querySelector('.news-feed-section')?.scrollIntoView({ behavior: 'smooth' })
+                              document
+                                .querySelector('.news-feed-section')
+                                ?.scrollIntoView({ behavior: 'smooth' })
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -835,7 +873,9 @@ export default function App() {
                   <nav className="flex flex-col space-y-2 pt-6">
                     {/* Services submenu */}
                     <div className="mx-2">
-                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">Services</h4>
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">
+                        Services
+                      </h4>
                       <a
                         href="#services"
                         className={getResponsiveClassName(deviceInfo, {
@@ -884,7 +924,9 @@ export default function App() {
 
                     {/* About submenu */}
                     <div className="mx-2">
-                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">About</h4>
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">
+                        About
+                      </h4>
                       <a
                         href="#about"
                         className={getResponsiveClassName(deviceInfo, {
@@ -900,10 +942,14 @@ export default function App() {
 
                     {/* Resources submenu */}
                     <div className="mx-2">
-                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">Resources</h4>
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">
+                        Resources
+                      </h4>
                       <button
                         onClick={() => {
-                          document.querySelector('.legal-resources-section')?.scrollIntoView({ behavior: 'smooth' })
+                          document
+                            .querySelector('.legal-resources-section')
+                            ?.scrollIntoView({ behavior: 'smooth' })
                           setMobileMenuOpen(false)
                         }}
                         className={getResponsiveClassName(deviceInfo, {
@@ -916,7 +962,9 @@ export default function App() {
                       </button>
                       <button
                         onClick={() => {
-                          document.querySelector('.budget-calculator-section')?.scrollIntoView({ behavior: 'smooth' })
+                          document
+                            .querySelector('.budget-calculator-section')
+                            ?.scrollIntoView({ behavior: 'smooth' })
                           setMobileMenuOpen(false)
                         }}
                         className={getResponsiveClassName(deviceInfo, {
@@ -929,7 +977,9 @@ export default function App() {
                       </button>
                       <button
                         onClick={() => {
-                          document.querySelector('.legal-assessment-section')?.scrollIntoView({ behavior: 'smooth' })
+                          document
+                            .querySelector('.legal-assessment-section')
+                            ?.scrollIntoView({ behavior: 'smooth' })
                           setMobileMenuOpen(false)
                         }}
                         className={getResponsiveClassName(deviceInfo, {
@@ -944,7 +994,9 @@ export default function App() {
 
                     {/* Contact */}
                     <div className="mx-2">
-                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">Contact</h4>
+                      <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">
+                        Contact
+                      </h4>
                       <a
                         href="#contact"
                         className={getResponsiveClassName(deviceInfo, {

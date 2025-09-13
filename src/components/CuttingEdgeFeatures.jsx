@@ -790,47 +790,47 @@ export const LegalResourcesLibrary = () => {
   // Tim Harmar hourly rates as specified
   const HOURLY_RATES = {
     counsel: 300, // Tim Harmar as counsel
-    admin: 90,    // Admin staff rate
+    admin: 90, // Admin staff rate
   }
 
   // AI-powered budget calculation with enhanced logic
   const calculateBudget = () => {
     const baseServices = {
-      'business-formation': { 
-        baseHours: 8, 
-        counselHours: 6, 
-        adminHours: 2, 
-        complexity: { simple: 0.7, medium: 1.0, complex: 1.5 } 
+      'business-formation': {
+        baseHours: 8,
+        counselHours: 6,
+        adminHours: 2,
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.5 },
       },
-      'contract-services': { 
-        baseHours: 4, 
-        counselHours: 3, 
-        adminHours: 1, 
-        complexity: { simple: 0.6, medium: 1.0, complex: 1.8 } 
+      'contract-services': {
+        baseHours: 4,
+        counselHours: 3,
+        adminHours: 1,
+        complexity: { simple: 0.6, medium: 1.0, complex: 1.8 },
       },
-      'employment-law': { 
-        baseHours: 5, 
-        counselHours: 4, 
-        adminHours: 1, 
-        complexity: { simple: 0.7, medium: 1.0, complex: 1.6 } 
+      'employment-law': {
+        baseHours: 5,
+        counselHours: 4,
+        adminHours: 1,
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.6 },
       },
-      'intellectual-property': { 
-        baseHours: 6, 
-        counselHours: 5, 
-        adminHours: 1, 
-        complexity: { simple: 0.8, medium: 1.0, complex: 1.7 } 
+      'intellectual-property': {
+        baseHours: 6,
+        counselHours: 5,
+        adminHours: 1,
+        complexity: { simple: 0.8, medium: 1.0, complex: 1.7 },
       },
-      'litigation-support': { 
-        baseHours: 15, 
-        counselHours: 12, 
-        adminHours: 3, 
-        complexity: { simple: 0.8, medium: 1.0, complex: 2.0 } 
+      'litigation-support': {
+        baseHours: 15,
+        counselHours: 12,
+        adminHours: 3,
+        complexity: { simple: 0.8, medium: 1.0, complex: 2.0 },
       },
-      'privacy-compliance': { 
-        baseHours: 7, 
-        counselHours: 5, 
-        adminHours: 2, 
-        complexity: { simple: 0.7, medium: 1.0, complex: 1.4 } 
+      'privacy-compliance': {
+        baseHours: 7,
+        counselHours: 5,
+        adminHours: 2,
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.4 },
       },
     }
 
@@ -863,17 +863,11 @@ export const LegalResourcesLibrary = () => {
 
     // Calculate hours with all multipliers
     const adjustedCounselHours = Math.ceil(
-      service.counselHours * 
-      complexityMultiplier * 
-      urgencyMultiplier * 
-      clientSizeMultiplier
+      service.counselHours * complexityMultiplier * urgencyMultiplier * clientSizeMultiplier
     )
-    
+
     const adjustedAdminHours = Math.ceil(
-      service.adminHours * 
-      complexityMultiplier * 
-      urgencyMultiplier * 
-      clientSizeMultiplier
+      service.adminHours * complexityMultiplier * urgencyMultiplier * clientSizeMultiplier
     )
 
     // Calculate costs
@@ -887,22 +881,22 @@ export const LegalResourcesLibrary = () => {
     // Generate AI recommendations
     const generateAIRecommendations = () => {
       const recommendations = []
-      
+
       if (budgetInputs.complexity === 'complex') {
         recommendations.push('Consider phased implementation to manage costs')
         recommendations.push('Additional research time may be required for complex matters')
       }
-      
+
       if (budgetInputs.urgency === 'rush') {
         recommendations.push('Rush timeline may require weekend/evening work')
         recommendations.push('Consider if deadline can be extended to reduce costs')
       }
-      
+
       if (budgetInputs.duration === 'retainer') {
         recommendations.push('Monthly retainer includes ongoing support and priority access')
         recommendations.push('Retainer agreements offer 25% cost savings for ongoing needs')
       }
-      
+
       if (budgetInputs.clientSize === 'enterprise') {
         recommendations.push('Enterprise clients may require additional compliance documentation')
         recommendations.push('Coordination with in-house legal teams may be necessary')
@@ -913,7 +907,7 @@ export const LegalResourcesLibrary = () => {
         recommendations.push('PIPEDA compliance audit recommended as starting point')
         recommendations.push('Consider employee training as additional service')
       }
-      
+
       if (budgetInputs.serviceType === 'intellectual-property') {
         recommendations.push('Trademark search should be conducted before registration')
         recommendations.push('Portfolio review may reveal additional protection opportunities')
@@ -934,7 +928,8 @@ export const LegalResourcesLibrary = () => {
         low: Math.round(totalEstimate * 0.85),
         high: Math.round(totalEstimate * 1.25),
       },
-      monthlyRetainer: budgetInputs.duration === 'retainer' ? Math.round(totalEstimate * 0.4) : null,
+      monthlyRetainer:
+        budgetInputs.duration === 'retainer' ? Math.round(totalEstimate * 0.4) : null,
     })
 
     setAiRecommendations(generateAIRecommendations())
@@ -943,82 +938,94 @@ export const LegalResourcesLibrary = () => {
   // Function to download budget calculation as PDF
   const downloadBudgetPDF = async () => {
     if (!budgetResults) return
-    
+
     const { jsPDF } = await import('jspdf')
     const doc = new jsPDF()
-    
+
     // Header
     doc.setFontSize(20)
     doc.setFont('helvetica', 'bold')
     doc.text('Legal Services Budget Estimate', 20, 20)
-    
+
     doc.setFontSize(14)
     doc.setFont('helvetica', 'normal')
     doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
     doc.text('Sault Ste. Marie, Ontario', 20, 38)
     doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 46)
-    
+
     let yPosition = 60
-    
+
     // Client inputs
     doc.setFontSize(16)
     doc.setFont('helvetica', 'bold')
     doc.text('Service Details', 20, yPosition)
     yPosition += 15
-    
+
     doc.setFontSize(12)
     doc.setFont('helvetica', 'normal')
     const inputs = [
-      `Service Type: ${budgetInputs.serviceType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`,
+      `Service Type: ${budgetInputs.serviceType.replace('-', ' ').replace(/\b\w/g, (l) => l.toUpperCase())}`,
       `Complexity: ${budgetInputs.complexity.charAt(0).toUpperCase() + budgetInputs.complexity.slice(1)}`,
       `Timeline: ${budgetInputs.urgency.charAt(0).toUpperCase() + budgetInputs.urgency.slice(1)}`,
-      `Engagement Type: ${budgetInputs.duration.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`,
+      `Engagement Type: ${budgetInputs.duration.replace('-', ' ').replace(/\b\w/g, (l) => l.toUpperCase())}`,
       `Client Size: ${budgetInputs.clientSize.charAt(0).toUpperCase() + budgetInputs.clientSize.slice(1)}`,
     ]
-    
-    inputs.forEach(input => {
+
+    inputs.forEach((input) => {
       doc.text(input, 20, yPosition)
       yPosition += 8
     })
-    
+
     yPosition += 10
-    
+
     // Cost breakdown
     doc.setFontSize(16)
     doc.setFont('helvetica', 'bold')
     doc.text('Cost Breakdown', 20, yPosition)
     yPosition += 15
-    
+
     doc.setFontSize(12)
     doc.setFont('helvetica', 'normal')
-    doc.text(`Counsel Time (${budgetResults.counselHours} hours @ $${HOURLY_RATES.counsel}/hr):`, 20, yPosition)
+    doc.text(
+      `Counsel Time (${budgetResults.counselHours} hours @ $${HOURLY_RATES.counsel}/hr):`,
+      20,
+      yPosition
+    )
     doc.text(`$${budgetResults.counselCost.toLocaleString()}`, 150, yPosition)
     yPosition += 10
-    
-    doc.text(`Admin Support (${budgetResults.adminHours} hours @ $${HOURLY_RATES.admin}/hr):`, 20, yPosition)
+
+    doc.text(
+      `Admin Support (${budgetResults.adminHours} hours @ $${HOURLY_RATES.admin}/hr):`,
+      20,
+      yPosition
+    )
     doc.text(`$${budgetResults.adminCost.toLocaleString()}`, 150, yPosition)
     yPosition += 10
-    
+
     doc.setFont('helvetica', 'bold')
     doc.text('Total Estimated Cost:', 20, yPosition)
     doc.text(`$${budgetResults.totalEstimate.toLocaleString()}`, 150, yPosition)
     yPosition += 15
-    
+
     // Range
     doc.setFont('helvetica', 'normal')
-    doc.text(`Estimated Range: $${budgetResults.range.low.toLocaleString()} - $${budgetResults.range.high.toLocaleString()}`, 20, yPosition)
+    doc.text(
+      `Estimated Range: $${budgetResults.range.low.toLocaleString()} - $${budgetResults.range.high.toLocaleString()}`,
+      20,
+      yPosition
+    )
     yPosition += 20
-    
+
     // AI Recommendations
     if (aiRecommendations && aiRecommendations.length > 0) {
       doc.setFontSize(16)
       doc.setFont('helvetica', 'bold')
       doc.text('AI-Powered Recommendations', 20, yPosition)
       yPosition += 15
-      
+
       doc.setFontSize(11)
       doc.setFont('helvetica', 'normal')
-      aiRecommendations.forEach(rec => {
+      aiRecommendations.forEach((rec) => {
         if (yPosition > 270) {
           doc.addPage()
           yPosition = 20
@@ -1028,7 +1035,7 @@ export const LegalResourcesLibrary = () => {
         yPosition += splitRec.length * 6 + 5
       })
     }
-    
+
     // Footer
     if (yPosition > 250) {
       doc.addPage()
@@ -1037,10 +1044,18 @@ export const LegalResourcesLibrary = () => {
     yPosition += 20
     doc.setFontSize(10)
     doc.setFont('helvetica', 'italic')
-    doc.text('This estimate is based on typical matters and may vary depending on specific circumstances.', 20, yPosition)
+    doc.text(
+      'This estimate is based on typical matters and may vary depending on specific circumstances.',
+      20,
+      yPosition
+    )
     doc.text('Contact us for a detailed consultation and personalized quote.', 20, yPosition + 8)
-    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 16)
-    
+    doc.text(
+      '© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.',
+      20,
+      yPosition + 16
+    )
+
     // Download the PDF
     doc.save(`Legal-Budget-Estimate-${new Date().toISOString().split('T')[0]}.pdf`)
   }
@@ -1140,40 +1155,41 @@ export const LegalResourcesLibrary = () => {
   const downloadPrivacyGuidePDF = async () => {
     // Import jsPDF dynamically
     const { jsPDF } = await import('jspdf')
-    
+
     const doc = new jsPDF()
-    
+
     // Set up document styling
     doc.setFontSize(20)
     doc.setFont('helvetica', 'bold')
     doc.text('Privacy Compliance Guide for Small Business', 20, 20)
-    
+
     doc.setFontSize(14)
     doc.setFont('helvetica', 'normal')
     doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
     doc.text('Sault Ste. Marie, Ontario', 20, 38)
-    
+
     doc.setFontSize(12)
     doc.text('Essential Steps to Ensure Your Business Complies with Canadian Privacy Laws', 20, 50)
-    
+
     // Add content sections
     let yPosition = 65
-    
+
     // Introduction
     doc.setFont('helvetica', 'bold')
     doc.text('Introduction', 20, yPosition)
     yPosition += 10
     doc.setFont('helvetica', 'normal')
-    const introText = 'This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including PIPEDA and Ontario privacy regulations.'
+    const introText =
+      'This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including PIPEDA and Ontario privacy regulations.'
     const splitIntro = doc.splitTextToSize(introText, 170)
     doc.text(splitIntro, 20, yPosition)
     yPosition += splitIntro.length * 6 + 10
-    
+
     // Key Steps
     doc.setFont('helvetica', 'bold')
     doc.text('Key Steps for Privacy Compliance', 20, yPosition)
     yPosition += 15
-    
+
     const steps = [
       '1. Understand Applicable Laws - PIPEDA applies to private-sector organizations in Canada that collect, use, or disclose personal information.',
       '2. Appoint a Privacy Officer - Designate a person responsible for overseeing privacy compliance.',
@@ -1182,9 +1198,9 @@ export const LegalResourcesLibrary = () => {
       '5. Secure Personal Information - Implement safeguards like encryption and restricted access.',
       '6. Limit Data Retention - Retain personal information only as long as necessary.',
       '7. Respond to Access Requests - Allow individuals to access their personal information within 30 days.',
-      '8. Prepare for Data Breaches - Develop a response plan and document all breaches.'
+      '8. Prepare for Data Breaches - Develop a response plan and document all breaches.',
     ]
-    
+
     doc.setFont('helvetica', 'normal')
     steps.forEach((step) => {
       if (yPosition > 250) {
@@ -1195,7 +1211,7 @@ export const LegalResourcesLibrary = () => {
       doc.text(splitStep, 20, yPosition)
       yPosition += splitStep.length * 6 + 8
     })
-    
+
     // Add footer
     if (yPosition > 240) {
       doc.addPage()
@@ -1204,10 +1220,22 @@ export const LegalResourcesLibrary = () => {
     yPosition += 20
     doc.setFont('helvetica', 'italic')
     doc.setFontSize(10)
-    doc.text('This guide is for informational purposes only and does not constitute legal advice.', 20, yPosition)
-    doc.text('Contact Tim Harmar: Legal and Consulting Services for personalized legal advice.', 20, yPosition + 10)
-    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 20)
-    
+    doc.text(
+      'This guide is for informational purposes only and does not constitute legal advice.',
+      20,
+      yPosition
+    )
+    doc.text(
+      'Contact Tim Harmar: Legal and Consulting Services for personalized legal advice.',
+      20,
+      yPosition + 10
+    )
+    doc.text(
+      '© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.',
+      20,
+      yPosition + 20
+    )
+
     // Auto-download the PDF
     doc.save('Privacy-Compliance-Guide-Tim-Harmar-Legal.pdf')
   }
@@ -1215,31 +1243,32 @@ export const LegalResourcesLibrary = () => {
   // Function to download Contract Review Checklist as PDF
   const downloadContractChecklistPDF = async () => {
     const { jsPDF } = await import('jspdf')
-    
+
     const doc = new jsPDF()
-    
+
     // Set up document styling
     doc.setFontSize(20)
     doc.setFont('helvetica', 'bold')
     doc.text('Contract Review Checklist', 20, 20)
-    
+
     doc.setFontSize(14)
     doc.setFont('helvetica', 'normal')
     doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
     doc.text('Sault Ste. Marie, Ontario', 20, 38)
-    
+
     doc.setFontSize(12)
     doc.text('Key Elements to Review Before Signing Any Business Contract', 20, 50)
-    
+
     let yPosition = 65
-    
+
     // Introduction
     doc.setFont('helvetica', 'normal')
-    const introText = 'This checklist helps small business owners ensure they thoroughly evaluate contracts before committing. It is not a substitute for professional legal advice.'
+    const introText =
+      'This checklist helps small business owners ensure they thoroughly evaluate contracts before committing. It is not a substitute for professional legal advice.'
     const splitIntro = doc.splitTextToSize(introText, 170)
     doc.text(splitIntro, 20, yPosition)
     yPosition += splitIntro.length * 6 + 15
-    
+
     // Checklist sections
     const sections = [
       {
@@ -1247,53 +1276,53 @@ export const LegalResourcesLibrary = () => {
         items: [
           '☐ Confirm all parties are correctly identified with full legal names and addresses',
           '☐ Verify authority: Does the signer have the right to bind the party?',
-          '☐ Check for any subsidiaries, affiliates, or third parties involved'
-        ]
+          '☐ Check for any subsidiaries, affiliates, or third parties involved',
+        ],
       },
       {
         title: '2. Scope of Work/Services/Goods',
         items: [
           '☐ Clearly define what is being provided (deliverables, timelines, quality standards)',
           '☐ Look for ambiguities: Are terms like "reasonable efforts" defined?',
-          '☐ Identify any exclusions or limitations on what\'s included'
-        ]
+          "☐ Identify any exclusions or limitations on what's included",
+        ],
       },
       {
         title: '3. Payment Terms',
         items: [
           '☐ Review amounts, payment schedule, methods, and currency',
           '☐ Check for milestones, retainers, late fees, interest, or penalties',
-          '☐ Understand conditions for payment (e.g., upon delivery, approval)'
-        ]
+          '☐ Understand conditions for payment (e.g., upon delivery, approval)',
+        ],
       },
       {
         title: '4. Term and Termination',
         items: [
           '☐ Note the start date, duration, and renewal options',
           '☐ Examine termination clauses: For cause (breach), without cause (notice)',
-          '☐ Look for survival clauses: What obligations continue post-termination?'
-        ]
+          '☐ Look for survival clauses: What obligations continue post-termination?',
+        ],
       },
       {
         title: '5. Liability and Risk',
         items: [
           '☐ Review caps on liability (e.g., limited to contract value)',
           '☐ Check indemnification: Who covers losses from claims?',
-          '☐ Note insurance requirements and coverage expectations'
-        ]
-      }
+          '☐ Note insurance requirements and coverage expectations',
+        ],
+      },
     ]
-    
+
     sections.forEach((section) => {
       if (yPosition > 240) {
         doc.addPage()
         yPosition = 20
       }
-      
+
       doc.setFont('helvetica', 'bold')
       doc.text(section.title, 20, yPosition)
       yPosition += 10
-      
+
       doc.setFont('helvetica', 'normal')
       section.items.forEach((item) => {
         if (yPosition > 270) {
@@ -1306,7 +1335,7 @@ export const LegalResourcesLibrary = () => {
       })
       yPosition += 10
     })
-    
+
     // Add footer
     if (yPosition > 250) {
       doc.addPage()
@@ -1314,9 +1343,17 @@ export const LegalResourcesLibrary = () => {
     }
     doc.setFont('helvetica', 'italic')
     doc.setFontSize(10)
-    doc.text('Disclaimer: This checklist is for informational purposes only and does not constitute legal advice.', 20, yPosition)
-    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 10)
-    
+    doc.text(
+      'Disclaimer: This checklist is for informational purposes only and does not constitute legal advice.',
+      20,
+      yPosition
+    )
+    doc.text(
+      '© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.',
+      20,
+      yPosition + 10
+    )
+
     // Auto-download the PDF
     doc.save('Contract-Review-Checklist-Tim-Harmar-Legal.pdf')
   }
@@ -1324,81 +1361,89 @@ export const LegalResourcesLibrary = () => {
   // Function to download IP Protection Guide as PDF
   const downloadIPGuidePDF = async () => {
     const { jsPDF } = await import('jspdf')
-    
+
     const doc = new jsPDF()
-    
+
     // Set up document styling
     doc.setFontSize(20)
     doc.setFont('helvetica', 'bold')
     doc.text('Intellectual Property Protection Guide', 20, 20)
-    
+
     doc.setFontSize(14)
     doc.setFont('helvetica', 'normal')
     doc.text('Tim Harmar: Legal and Consulting Services', 20, 30)
     doc.text('Sault Ste. Marie, Ontario', 20, 38)
-    
+
     doc.setFontSize(12)
-    doc.text('Understanding Trademarks, Copyrights, and Trade Secrets for Ontario Businesses', 20, 50)
-    
+    doc.text(
+      'Understanding Trademarks, Copyrights, and Trade Secrets for Ontario Businesses',
+      20,
+      50
+    )
+
     let yPosition = 65
-    
+
     // Introduction
     doc.setFont('helvetica', 'normal')
-    const introText = 'Intellectual property protection is critical for Ontario businesses to prevent unauthorized use, maintain competitive advantage, and avoid costly disputes.'
+    const introText =
+      'Intellectual property protection is critical for Ontario businesses to prevent unauthorized use, maintain competitive advantage, and avoid costly disputes.'
     const splitIntro = doc.splitTextToSize(introText, 170)
     doc.text(splitIntro, 20, yPosition)
     yPosition += splitIntro.length * 6 + 15
-    
+
     // IP Types
     const ipTypes = [
       {
         title: '1. Trademarks',
-        content: 'Protect brand identifiers that distinguish your goods or services. In Canada, register with CIPO for 10-year renewable protection.'
+        content:
+          'Protect brand identifiers that distinguish your goods or services. In Canada, register with CIPO for 10-year renewable protection.',
       },
       {
         title: '2. Copyrights',
-        content: 'Protect original creative works. Automatic protection under Canadian Copyright Act, lasting creator\'s lifetime plus 70 years.'
+        content:
+          "Protect original creative works. Automatic protection under Canadian Copyright Act, lasting creator's lifetime plus 70 years.",
       },
       {
         title: '3. Trade Secrets',
-        content: 'Protect confidential business information through NDAs and security measures. No registration required but must maintain confidentiality.'
-      }
+        content:
+          'Protect confidential business information through NDAs and security measures. No registration required but must maintain confidentiality.',
+      },
     ]
-    
+
     ipTypes.forEach((type) => {
       if (yPosition > 250) {
         doc.addPage()
         yPosition = 20
       }
-      
+
       doc.setFont('helvetica', 'bold')
       doc.text(type.title, 20, yPosition)
       yPosition += 10
-      
+
       doc.setFont('helvetica', 'normal')
       const splitContent = doc.splitTextToSize(type.content, 170)
       doc.text(splitContent, 20, yPosition)
       yPosition += splitContent.length * 6 + 15
     })
-    
+
     // Key recommendations
     if (yPosition > 220) {
       doc.addPage()
       yPosition = 20
     }
-    
+
     doc.setFont('helvetica', 'bold')
     doc.text('Key Recommendations:', 20, yPosition)
     yPosition += 15
-    
+
     const recommendations = [
       '• Conduct IP audits to identify all protectable assets',
       '• Register trademarks and copyrights for valuable assets',
       '• Implement comprehensive NDAs for trade secrets',
       '• Monitor for infringement and enforce rights promptly',
-      '• Seek professional legal advice for IP strategy'
+      '• Seek professional legal advice for IP strategy',
     ]
-    
+
     doc.setFont('helvetica', 'normal')
     recommendations.forEach((rec) => {
       if (yPosition > 270) {
@@ -1408,7 +1453,7 @@ export const LegalResourcesLibrary = () => {
       doc.text(rec, 20, yPosition)
       yPosition += 8
     })
-    
+
     // Add footer
     if (yPosition > 250) {
       doc.addPage()
@@ -1417,9 +1462,17 @@ export const LegalResourcesLibrary = () => {
     yPosition += 20
     doc.setFont('helvetica', 'italic')
     doc.setFontSize(10)
-    doc.text('This guide is for informational purposes only and does not constitute legal advice.', 20, yPosition)
-    doc.text('© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.', 20, yPosition + 10)
-    
+    doc.text(
+      'This guide is for informational purposes only and does not constitute legal advice.',
+      20,
+      yPosition
+    )
+    doc.text(
+      '© 2025 Tim Harmar: Legal and Consulting Services - All rights reserved.',
+      20,
+      yPosition + 10
+    )
+
     // Auto-download the PDF
     doc.save('IP-Protection-Guide-Tim-Harmar-Legal.pdf')
   }
@@ -1818,7 +1871,8 @@ export const LegalResourcesLibrary = () => {
                           🤖 AI-Powered Legal Budget Calculator
                         </h4>
                         <p className="text-sm text-blue-700 mb-6">
-                          Get accurate cost estimates based on Tim Harmar's rates: $300/hr (counsel) and $90/hr (admin support)
+                          Get accurate cost estimates based on Tim Harmar's rates: $300/hr (counsel)
+                          and $90/hr (admin support)
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -1834,12 +1888,20 @@ export const LegalResourcesLibrary = () => {
                               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             >
                               <option value="">Select a service...</option>
-                              <option value="business-formation">Business Formation & Corporate Law</option>
+                              <option value="business-formation">
+                                Business Formation & Corporate Law
+                              </option>
                               <option value="contract-services">Contract Drafting & Review</option>
                               <option value="employment-law">Employment Law & HR Compliance</option>
-                              <option value="intellectual-property">Intellectual Property Protection</option>
-                              <option value="litigation-support">Civil Litigation & Dispute Resolution</option>
-                              <option value="privacy-compliance">Privacy & Cybersecurity Compliance</option>
+                              <option value="intellectual-property">
+                                Intellectual Property Protection
+                              </option>
+                              <option value="litigation-support">
+                                Civil Litigation & Dispute Resolution
+                              </option>
+                              <option value="privacy-compliance">
+                                Privacy & Cybersecurity Compliance
+                              </option>
                             </select>
                           </div>
 
@@ -1956,10 +2018,12 @@ export const LegalResourcesLibrary = () => {
                                 <span>Download PDF</span>
                               </button>
                             </div>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                               <div className="bg-blue-50 p-4 rounded-lg">
-                                <div className="text-sm text-blue-600 font-medium">Counsel Time (Tim Harmar)</div>
+                                <div className="text-sm text-blue-600 font-medium">
+                                  Counsel Time (Tim Harmar)
+                                </div>
                                 <div className="text-lg font-bold text-blue-800">
                                   {budgetResults.counselHours} hours × $300/hr
                                 </div>
@@ -1967,9 +2031,11 @@ export const LegalResourcesLibrary = () => {
                                   ${budgetResults.counselCost.toLocaleString()}
                                 </div>
                               </div>
-                              
+
                               <div className="bg-green-50 p-4 rounded-lg">
-                                <div className="text-sm text-green-600 font-medium">Admin Support</div>
+                                <div className="text-sm text-green-600 font-medium">
+                                  Admin Support
+                                </div>
                                 <div className="text-lg font-bold text-green-800">
                                   {budgetResults.adminHours} hours × $90/hr
                                 </div>
@@ -1977,9 +2043,11 @@ export const LegalResourcesLibrary = () => {
                                   ${budgetResults.adminCost.toLocaleString()}
                                 </div>
                               </div>
-                              
+
                               <div className="bg-purple-50 p-4 rounded-lg">
-                                <div className="text-sm text-purple-600 font-medium">Total Estimate</div>
+                                <div className="text-sm text-purple-600 font-medium">
+                                  Total Estimate
+                                </div>
                                 <div className="text-2xl font-bold text-purple-900">
                                   ${budgetResults.totalEstimate.toLocaleString()}
                                 </div>
@@ -1989,16 +2057,19 @@ export const LegalResourcesLibrary = () => {
                                   </div>
                                 )}
                               </div>
-                              
+
                               <div className="bg-orange-50 p-4 rounded-lg">
-                                <div className="text-sm text-orange-600 font-medium">Estimated Range</div>
+                                <div className="text-sm text-orange-600 font-medium">
+                                  Estimated Range
+                                </div>
                                 <div className="text-lg font-bold text-orange-800">
                                   ${budgetResults.range.low.toLocaleString()} - $
                                   {budgetResults.range.high.toLocaleString()}
                                 </div>
                                 {budgetResults.monthlyRetainer && (
                                   <div className="text-sm text-blue-600 font-medium mt-1">
-                                    Monthly Retainer: ${budgetResults.monthlyRetainer.toLocaleString()}
+                                    Monthly Retainer: $
+                                    {budgetResults.monthlyRetainer.toLocaleString()}
                                   </div>
                                 )}
                               </div>
@@ -2019,10 +2090,11 @@ export const LegalResourcesLibrary = () => {
                                 </ul>
                               </div>
                             )}
-                            
+
                             <div className="mt-4 text-xs text-gray-500 italic">
-                              * Estimates based on typical matters. Actual costs may vary depending on specific circumstances. 
-                              Contact us for a detailed consultation and personalized quote.
+                              * Estimates based on typical matters. Actual costs may vary depending
+                              on specific circumstances. Contact us for a detailed consultation and
+                              personalized quote.
                             </div>
 
                             <div className="mt-4 flex space-x-3">
@@ -2069,32 +2141,32 @@ export const LegalResourcesLibrary = () => {
         onClick={() => {
           // Show all categories and expand all expandable items
           setSelectedCategory('guides')
-          
+
           // First show guides category
           setTimeout(() => {
             setSelectedCategory('faqs')
           }, 500)
-          
+
           // Then show tools category
           setTimeout(() => {
             setSelectedCategory('tools')
             // For tools, expand the budget calculator
             setExpandedItem(0)
           }, 1000)
-          
+
           // Finally go back to guides to show the complete library experience
           setTimeout(() => {
             setSelectedCategory('guides')
           }, 1500)
-          
+
           // Scroll through all categories to show user everything is available
           const categories = ['guides', 'faqs', 'tools']
           let currentIndex = 0
-          
+
           const cycleInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % categories.length
             setSelectedCategory(categories[currentIndex])
-            
+
             // Expand some items in each category to show functionality
             if (categories[currentIndex] === 'faqs') {
               setExpandedItem(0) // Expand first FAQ
@@ -2104,7 +2176,7 @@ export const LegalResourcesLibrary = () => {
               setExpandedItem(null)
             }
           }, 2000)
-          
+
           // Stop cycling after showing all categories
           setTimeout(() => {
             clearInterval(cycleInterval)
