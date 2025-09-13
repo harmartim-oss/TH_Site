@@ -596,11 +596,11 @@ export const SmartScheduler = () => {
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-teal-100/40 to-transparent rounded-full -mr-16 -mt-16"></div>
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-100/40 to-transparent rounded-full -ml-12 -mb-12"></div>
-      
+
       <div className="flex items-center mb-8 relative z-10">
         <motion.div
           animate={{ rotate: [0, 10, -10, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           className="bg-gradient-to-r from-teal-500 to-blue-500 p-3 rounded-xl mr-4 shadow-lg"
         >
           <Calendar className="w-8 h-8 text-white" />
@@ -2027,7 +2027,7 @@ export const LegalResourcesLibrary = () => {
                             🚀 Calculate AI-Powered Estimate
                             <motion.span
                               animate={{ rotate: [0, 15, -15, 0] }}
-                              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                             >
                               ⚡
                             </motion.span>
@@ -2035,18 +2035,18 @@ export const LegalResourcesLibrary = () => {
                         </motion.button>
 
                         {budgetResults && (
-                          <motion.div 
+                          <motion.div
                             initial={{ opacity: 0, y: 20, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            transition={{ duration: 0.6, ease: 'easeOut' }}
                             className="mt-8 p-8 bg-gradient-to-br from-white via-slate-50 to-blue-50 rounded-2xl border-2 border-blue-200/50 shadow-2xl relative overflow-hidden"
                           >
                             {/* Background decoration */}
                             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-100/50 to-transparent rounded-full -mr-16 -mt-16"></div>
                             <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-emerald-100/50 to-transparent rounded-full -ml-12 -mb-12"></div>
-                            
+
                             <div className="flex items-center justify-between mb-6 relative z-10">
-                              <motion.h5 
+                              <motion.h5
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
@@ -2070,7 +2070,7 @@ export const LegalResourcesLibrary = () => {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 relative z-10">
-                              <motion.div 
+                              <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
@@ -2088,7 +2088,7 @@ export const LegalResourcesLibrary = () => {
                                 </div>
                               </motion.div>
 
-                              <motion.div 
+                              <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
@@ -2106,7 +2106,7 @@ export const LegalResourcesLibrary = () => {
                                 </div>
                               </motion.div>
 
-                              <motion.div 
+                              <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
@@ -2121,7 +2121,7 @@ export const LegalResourcesLibrary = () => {
                                   ${budgetResults.totalEstimate.toLocaleString()}
                                 </div>
                                 {budgetResults.savings > 0 && (
-                                  <motion.div 
+                                  <motion.div
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.7 }}
@@ -2133,7 +2133,7 @@ export const LegalResourcesLibrary = () => {
                               </motion.div>
                             </div>
 
-                            <motion.div 
+                            <motion.div
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.6 }}
@@ -2156,7 +2156,7 @@ export const LegalResourcesLibrary = () => {
                             </motion.div>
 
                             {aiRecommendations && aiRecommendations.length > 0 && (
-                              <motion.div 
+                              <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.8 }}
@@ -2165,7 +2165,7 @@ export const LegalResourcesLibrary = () => {
                                 <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-indigo-200/20 to-transparent rounded-full -ml-10 -mt-10"></div>
                                 <h6 className="font-black text-indigo-900 mb-4 flex items-center text-xl relative z-10">
                                   🤖 AI-Powered Recommendations
-                                  <motion.span 
+                                  <motion.span
                                     animate={{ scale: [1, 1.1, 1] }}
                                     transition={{ duration: 2, repeat: Infinity }}
                                     className="ml-2"
@@ -2175,22 +2175,24 @@ export const LegalResourcesLibrary = () => {
                                 </h6>
                                 <ul className="space-y-3 relative z-10">
                                   {aiRecommendations.map((rec, idx) => (
-                                    <motion.li 
-                                      key={idx} 
+                                    <motion.li
+                                      key={idx}
                                       initial={{ opacity: 0, x: -20 }}
                                       animate={{ opacity: 1, x: 0 }}
                                       transition={{ delay: 0.9 + idx * 0.1 }}
                                       className="flex items-start bg-white/60 p-3 rounded-lg hover:bg-white/80 transition-all duration-300"
                                     >
                                       <div className="w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></div>
-                                      <span className="text-sm text-indigo-800 font-medium">{rec}</span>
+                                      <span className="text-sm text-indigo-800 font-medium">
+                                        {rec}
+                                      </span>
                                     </motion.li>
                                   ))}
                                 </ul>
                               </motion.div>
                             )}
 
-                            <motion.div 
+                            <motion.div
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               transition={{ delay: 1.0 }}
@@ -2200,14 +2202,14 @@ export const LegalResourcesLibrary = () => {
                               <div className="flex items-start gap-2 relative z-10">
                                 <span className="text-sm">ℹ️</span>
                                 <span>
-                                  * Estimates based on typical matters. Actual costs may vary depending
-                                  on specific circumstances. Contact us for a detailed consultation and
-                                  personalized quote.
+                                  * Estimates based on typical matters. Actual costs may vary
+                                  depending on specific circumstances. Contact us for a detailed
+                                  consultation and personalized quote.
                                 </span>
                               </div>
                             </motion.div>
 
-                            <motion.div 
+                            <motion.div
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 1.1 }}
@@ -2523,9 +2525,14 @@ export const ComplianceeDashboard = () => {
       color: 'blue',
       tasks: [
         { name: 'Annual Return Filing', due: '2025-03-15', status: 'pending', priority: 'high' },
-        { name: 'Director Resolutions', due: '2025-02-28', status: 'completed', priority: 'medium' },
+        {
+          name: 'Director Resolutions',
+          due: '2025-02-28',
+          status: 'completed',
+          priority: 'medium',
+        },
         { name: 'Corporate Minutes', due: '2025-04-30', status: 'upcoming', priority: 'medium' },
-      ]
+      ],
     },
     employment: {
       title: 'Employment Standards',
@@ -2533,9 +2540,14 @@ export const ComplianceeDashboard = () => {
       color: 'green',
       tasks: [
         { name: 'Payroll Remittance', due: '2025-01-31', status: 'pending', priority: 'high' },
-        { name: 'Vacation Pay Calculation', due: '2025-02-15', status: 'completed', priority: 'low' },
+        {
+          name: 'Vacation Pay Calculation',
+          due: '2025-02-15',
+          status: 'completed',
+          priority: 'low',
+        },
         { name: 'T4 Preparation', due: '2025-02-28', status: 'upcoming', priority: 'high' },
-      ]
+      ],
     },
     privacy: {
       title: 'Privacy Law',
@@ -2545,25 +2557,33 @@ export const ComplianceeDashboard = () => {
         { name: 'PIPEDA Review', due: '2025-03-01', status: 'pending', priority: 'medium' },
         { name: 'Privacy Policy Update', due: '2025-04-15', status: 'upcoming', priority: 'high' },
         { name: 'Data Breach Protocol', due: '2025-05-01', status: 'completed', priority: 'high' },
-      ]
-    }
+      ],
+    },
   }
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'completed': return 'text-green-600 bg-green-100'
-      case 'pending': return 'text-red-600 bg-red-100'
-      case 'upcoming': return 'text-blue-600 bg-blue-100'
-      default: return 'text-gray-600 bg-gray-100'
+      case 'completed':
+        return 'text-green-600 bg-green-100'
+      case 'pending':
+        return 'text-red-600 bg-red-100'
+      case 'upcoming':
+        return 'text-blue-600 bg-blue-100'
+      default:
+        return 'text-gray-600 bg-gray-100'
     }
   }
 
   const getPriorityColor = (priority) => {
     switch (priority) {
-      case 'high': return 'border-l-red-500'
-      case 'medium': return 'border-l-yellow-500'
-      case 'low': return 'border-l-green-500'
-      default: return 'border-l-gray-500'
+      case 'high':
+        return 'border-l-red-500'
+      case 'medium':
+        return 'border-l-yellow-500'
+      case 'low':
+        return 'border-l-green-500'
+      default:
+        return 'border-l-gray-500'
     }
   }
 
@@ -2577,11 +2597,11 @@ export const ComplianceeDashboard = () => {
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full -mr-20 -mt-20"></div>
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-100/40 to-transparent rounded-full -ml-16 -mb-16"></div>
-      
+
       <div className="flex items-center mb-8 relative z-10">
         <motion.div
           animate={{ rotate: [0, 5, -5, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
           className="bg-gradient-to-r from-blue-500 to-purple-500 p-3 rounded-xl mr-4 shadow-lg"
         >
           <Calendar className="w-8 h-8 text-white" />
@@ -2668,10 +2688,14 @@ export const ComplianceeDashboard = () => {
                 <p className="text-sm text-gray-600">Due: {task.due}</p>
               </div>
               <div className="flex items-center gap-3">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold ${getStatusColor(task.status)}`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${getStatusColor(task.status)}`}
+                >
                   {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
                 </span>
-                <div className={`w-3 h-3 rounded-full ${task.priority === 'high' ? 'bg-red-500' : task.priority === 'medium' ? 'bg-yellow-500' : 'bg-green-500'}`}></div>
+                <div
+                  className={`w-3 h-3 rounded-full ${task.priority === 'high' ? 'bg-red-500' : task.priority === 'medium' ? 'bg-yellow-500' : 'bg-green-500'}`}
+                ></div>
               </div>
             </div>
           </motion.div>

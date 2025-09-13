@@ -172,14 +172,7 @@ export default {
           'Times New Roman',
           'serif',
         ],
-        body: [
-          'Inter',
-          'Open Sans',
-          'Source Sans Pro',
-          'Roboto',
-          'system-ui',
-          'sans-serif',
-        ],
+        body: ['Inter', 'Open Sans', 'Source Sans Pro', 'Roboto', 'system-ui', 'sans-serif'],
         legal: ['Source Serif Pro', 'Charter', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
         mono: [
           'JetBrains Mono',
