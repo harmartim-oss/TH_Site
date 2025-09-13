@@ -25,13 +25,14 @@
 
 /* Enhanced Typography Updates */
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', 'Open Sans', 'Roboto', sans-serif;
   line-height: 1.65; /* Updated line-height for better readability */
   color: #374151; /* Enhanced base text color with better contrast */
 }
 
 h1,
 h2 {
+  font-family: 'Poppins', 'Montserrat', 'Inter', sans-serif;
   font-weight: 800; /* Increased from 700 to 800 */
   letter-spacing: -0.5px; /* Tightened letter-spacing */
   color: #0a2351; /* Ensure headings use the primary brand color */
@@ -39,6 +40,7 @@ h2 {
 
 h3,
 h4 {
+  font-family: 'Poppins', 'Montserrat', 'Inter', sans-serif;
   font-weight: 700;
   color: #0a2351;
 }

@@ -2510,7 +2510,196 @@ export const LegalNewsFeed = () => {
   )
 }
 
-// Interactive Legal Assessment Tool
+// Interactive Legal Compliance Dashboard
+export const ComplianceeDashboard = () => {
+  const [selectedCompliance, setSelectedCompliance] = useState('corporate')
+  const [activeReminders, setActiveReminders] = useState(3)
+  const [completionRate, setCompletionRate] = useState(87)
+
+  const complianceCategories = {
+    corporate: {
+      title: 'Corporate Filings',
+      icon: '🏢',
+      color: 'blue',
+      tasks: [
+        { name: 'Annual Return Filing', due: '2025-03-15', status: 'pending', priority: 'high' },
+        { name: 'Director Resolutions', due: '2025-02-28', status: 'completed', priority: 'medium' },
+        { name: 'Corporate Minutes', due: '2025-04-30', status: 'upcoming', priority: 'medium' },
+      ]
+    },
+    employment: {
+      title: 'Employment Standards',
+      icon: '👥',
+      color: 'green',
+      tasks: [
+        { name: 'Payroll Remittance', due: '2025-01-31', status: 'pending', priority: 'high' },
+        { name: 'Vacation Pay Calculation', due: '2025-02-15', status: 'completed', priority: 'low' },
+        { name: 'T4 Preparation', due: '2025-02-28', status: 'upcoming', priority: 'high' },
+      ]
+    },
+    privacy: {
+      title: 'Privacy Law',
+      icon: '🔒',
+      color: 'purple',
+      tasks: [
+        { name: 'PIPEDA Review', due: '2025-03-01', status: 'pending', priority: 'medium' },
+        { name: 'Privacy Policy Update', due: '2025-04-15', status: 'upcoming', priority: 'high' },
+        { name: 'Data Breach Protocol', due: '2025-05-01', status: 'completed', priority: 'high' },
+      ]
+    }
+  }
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'completed': return 'text-green-600 bg-green-100'
+      case 'pending': return 'text-red-600 bg-red-100'
+      case 'upcoming': return 'text-blue-600 bg-blue-100'
+      default: return 'text-gray-600 bg-gray-100'
+    }
+  }
+
+  const getPriorityColor = (priority) => {
+    switch (priority) {
+      case 'high': return 'border-l-red-500'
+      case 'medium': return 'border-l-yellow-500'
+      case 'low': return 'border-l-green-500'
+      default: return 'border-l-gray-500'
+    }
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="bg-gradient-to-br from-white via-slate-50 to-blue-50/30 p-8 rounded-2xl shadow-2xl border border-blue-200/50 relative overflow-hidden"
+    >
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-full -mr-20 -mt-20"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-100/40 to-transparent rounded-full -ml-16 -mb-16"></div>
+      
+      <div className="flex items-center mb-8 relative z-10">
+        <motion.div
+          animate={{ rotate: [0, 5, -5, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="bg-gradient-to-r from-blue-500 to-purple-500 p-3 rounded-xl mr-4 shadow-lg"
+        >
+          <Calendar className="w-8 h-8 text-white" />
+        </motion.div>
+        <div>
+          <h3 className="text-3xl font-black text-gray-800 flex items-center gap-2">
+            Compliance Dashboard
+            <motion.span
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-2xl"
+            >
+              ⚡
+            </motion.span>
+          </h3>
+          <p className="text-gray-600">Stay on top of your legal obligations</p>
+        </div>
+      </div>
+
+      {/* Stats Overview */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 relative z-10">
+        <motion.div
+          whileHover={{ scale: 1.02, y: -2 }}
+          className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-blue-200/50 shadow-lg"
+        >
+          <div className="text-sm text-blue-600 font-medium mb-1">Active Reminders</div>
+          <div className="text-3xl font-black text-blue-900">{activeReminders}</div>
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.02, y: -2 }}
+          className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-green-200/50 shadow-lg"
+        >
+          <div className="text-sm text-green-600 font-medium mb-1">Completion Rate</div>
+          <div className="text-3xl font-black text-green-900">{completionRate}%</div>
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.02, y: -2 }}
+          className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-purple-200/50 shadow-lg"
+        >
+          <div className="text-sm text-purple-600 font-medium mb-1">Next Due</div>
+          <div className="text-lg font-black text-purple-900">Jan 31</div>
+        </motion.div>
+      </div>
+
+      {/* Category Tabs */}
+      <div className="flex flex-wrap gap-2 mb-6 relative z-10">
+        {Object.entries(complianceCategories).map(([key, category]) => (
+          <motion.button
+            key={key}
+            onClick={() => setSelectedCompliance(key)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center gap-2 ${
+              selectedCompliance === key
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                : 'bg-white/60 text-gray-700 hover:bg-white/80'
+            }`}
+          >
+            <span className="text-lg">{category.icon}</span>
+            {category.title}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Tasks List */}
+      <motion.div
+        key={selectedCompliance}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.3 }}
+        className="space-y-3 relative z-10"
+      >
+        {complianceCategories[selectedCompliance].tasks.map((task, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className={`bg-white/70 backdrop-blur-sm p-4 rounded-xl border-l-4 ${getPriorityColor(task.priority)} shadow-lg hover:shadow-xl transition-all duration-300`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <h4 className="font-bold text-gray-800">{task.name}</h4>
+                <p className="text-sm text-gray-600">Due: {task.due}</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className={`px-3 py-1 rounded-full text-xs font-bold ${getStatusColor(task.status)}`}>
+                  {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
+                </span>
+                <div className={`w-3 h-3 rounded-full ${task.priority === 'high' ? 'bg-red-500' : task.priority === 'medium' ? 'bg-yellow-500' : 'bg-green-500'}`}></div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Action Buttons */}
+      <div className="mt-8 flex flex-col sm:flex-row gap-4 relative z-10">
+        <motion.button
+          whileHover={{ scale: 1.02, y: -1 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 text-sm font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+        >
+          <span className="text-lg">📅</span>
+          Schedule Compliance Review
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.02, y: -1 }}
+          whileTap={{ scale: 0.98 }}
+          className="px-6 py-4 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-sm font-bold flex items-center justify-center gap-2"
+        >
+          <span className="text-lg">📊</span>
+          View Full Calendar
+        </motion.button>
+      </div>
+    </motion.div>
+  )
+}
 // Enhanced Legal Assessment with Learning Modules
 export const LegalAssessment = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -2864,4 +3053,5 @@ export default {
   LegalResourcesLibrary,
   LegalNewsFeed,
   LegalAssessment,
+  ComplianceeDashboard,
 }
