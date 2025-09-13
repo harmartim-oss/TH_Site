@@ -591,11 +591,30 @@ export const SmartScheduler = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-white p-8 rounded-xl shadow-lg border border-gray-100"
+      className="bg-gradient-to-br from-white via-blue-50/30 to-teal-50/50 p-8 rounded-2xl shadow-2xl border border-teal-200/50 relative overflow-hidden"
     >
-      <div className="flex items-center mb-6">
-        <Calendar className="w-8 h-8 text-teal-600 mr-3" />
-        <h3 className="text-2xl font-bold text-gray-800">Smart Scheduler</h3>
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-teal-100/40 to-transparent rounded-full -mr-16 -mt-16"></div>
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-100/40 to-transparent rounded-full -ml-12 -mb-12"></div>
+      
+      <div className="flex items-center mb-8 relative z-10">
+        <motion.div
+          animate={{ rotate: [0, 10, -10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="bg-gradient-to-r from-teal-500 to-blue-500 p-3 rounded-xl mr-4 shadow-lg"
+        >
+          <Calendar className="w-8 h-8 text-white" />
+        </motion.div>
+        <h3 className="text-3xl font-black text-gray-800 flex items-center gap-2">
+          Smart Scheduler
+          <motion.span
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="text-2xl"
+          >
+            🚀
+          </motion.span>
+        </h3>
       </div>
 
       <div className="space-y-4">
@@ -1996,117 +2015,216 @@ export const LegalResourcesLibrary = () => {
                           </div>
                         </div>
 
-                        <button
+                        <motion.button
                           onClick={calculateBudget}
                           disabled={!budgetInputs.serviceType}
-                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white p-4 rounded-xl font-bold text-lg hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 transition-all duration-500 shadow-lg hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden group"
                         >
-                          🧠 Calculate AI-Powered Estimate
-                        </button>
+                          <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                          <span className="relative flex items-center justify-center gap-2">
+                            🚀 Calculate AI-Powered Estimate
+                            <motion.span
+                              animate={{ rotate: [0, 15, -15, 0] }}
+                              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                              ⚡
+                            </motion.span>
+                          </span>
+                        </motion.button>
 
                         {budgetResults && (
-                          <div className="mt-6 p-6 bg-white rounded-lg border border-blue-200 shadow-sm">
-                            <div className="flex items-center justify-between mb-4">
-                              <h5 className="font-bold text-blue-800 text-lg">
+                          <motion.div 
+                            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            className="mt-8 p-8 bg-gradient-to-br from-white via-slate-50 to-blue-50 rounded-2xl border-2 border-blue-200/50 shadow-2xl relative overflow-hidden"
+                          >
+                            {/* Background decoration */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-100/50 to-transparent rounded-full -mr-16 -mt-16"></div>
+                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-emerald-100/50 to-transparent rounded-full -ml-12 -mb-12"></div>
+                            
+                            <div className="flex items-center justify-between mb-6 relative z-10">
+                              <motion.h5 
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="font-black text-blue-900 text-2xl flex items-center gap-3"
+                              >
+                                <span className="text-3xl">💼</span>
                                 Your Legal Budget Estimate
-                              </h5>
-                              <button
+                              </motion.h5>
+                              <motion.button
                                 onClick={downloadBudgetPDF}
-                                className="flex items-center space-x-2 bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                                whileHover={{ scale: 1.05, rotate: 2 }}
+                                whileTap={{ scale: 0.95 }}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.4 }}
+                                className="flex items-center space-x-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 text-sm font-bold shadow-lg hover:shadow-xl"
                               >
                                 <Download className="w-4 h-4" />
                                 <span>Download PDF</span>
-                              </button>
+                              </motion.button>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                              <div className="bg-blue-50 p-4 rounded-lg">
-                                <div className="text-sm text-blue-600 font-medium">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 relative z-10">
+                              <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-2xl border border-blue-200/50 hover:shadow-lg transition-all duration-300"
+                              >
+                                <div className="text-sm text-blue-700 font-semibold mb-2 flex items-center gap-2">
+                                  <span className="text-lg">👨‍💼</span>
                                   Counsel Time (Tim Harmar)
                                 </div>
-                                <div className="text-lg font-bold text-blue-800">
+                                <div className="text-lg text-blue-800 font-medium mb-1">
                                   {budgetResults.counselHours} hours × $300/hr
                                 </div>
-                                <div className="text-xl font-bold text-blue-900">
+                                <div className="text-3xl font-black text-blue-900">
                                   ${budgetResults.counselCost.toLocaleString()}
                                 </div>
-                              </div>
+                              </motion.div>
 
-                              <div className="bg-green-50 p-4 rounded-lg">
-                                <div className="text-sm text-green-600 font-medium">
+                              <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                                className="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-2xl border border-green-200/50 hover:shadow-lg transition-all duration-300"
+                              >
+                                <div className="text-sm text-green-700 font-semibold mb-2 flex items-center gap-2">
+                                  <span className="text-lg">🏢</span>
                                   Admin Support
                                 </div>
-                                <div className="text-lg font-bold text-green-800">
+                                <div className="text-lg text-green-800 font-medium mb-1">
                                   {budgetResults.adminHours} hours × $90/hr
                                 </div>
-                                <div className="text-xl font-bold text-green-900">
+                                <div className="text-3xl font-black text-green-900">
                                   ${budgetResults.adminCost.toLocaleString()}
                                 </div>
-                              </div>
+                              </motion.div>
 
-                              <div className="bg-purple-50 p-4 rounded-lg">
-                                <div className="text-sm text-purple-600 font-medium">
+                              <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="bg-gradient-to-br from-purple-50 via-violet-50 to-indigo-100 p-6 rounded-2xl border border-purple-200/50 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+                              >
+                                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-purple-200/30 to-transparent rounded-full -mr-8 -mt-8"></div>
+                                <div className="text-sm text-purple-700 font-semibold mb-2 flex items-center gap-2 relative z-10">
+                                  <span className="text-lg">💰</span>
                                   Total Estimate
                                 </div>
-                                <div className="text-2xl font-bold text-purple-900">
+                                <div className="text-4xl font-black text-purple-900 relative z-10">
                                   ${budgetResults.totalEstimate.toLocaleString()}
                                 </div>
                                 {budgetResults.savings > 0 && (
-                                  <div className="text-sm text-green-600 font-medium">
-                                    Savings: ${budgetResults.savings.toLocaleString()}
-                                  </div>
+                                  <motion.div 
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.7 }}
+                                    className="text-sm text-green-600 font-bold mt-2 bg-green-100 px-3 py-1 rounded-full inline-block"
+                                  >
+                                    💡 Savings: ${budgetResults.savings.toLocaleString()}
+                                  </motion.div>
                                 )}
-                              </div>
-
-                              <div className="bg-orange-50 p-4 rounded-lg">
-                                <div className="text-sm text-orange-600 font-medium">
-                                  Estimated Range
-                                </div>
-                                <div className="text-lg font-bold text-orange-800">
-                                  ${budgetResults.range.low.toLocaleString()} - $
-                                  {budgetResults.range.high.toLocaleString()}
-                                </div>
-                                {budgetResults.monthlyRetainer && (
-                                  <div className="text-sm text-blue-600 font-medium mt-1">
-                                    Monthly Retainer: $
-                                    {budgetResults.monthlyRetainer.toLocaleString()}
-                                  </div>
-                                )}
-                              </div>
+                              </motion.div>
                             </div>
+
+                            <motion.div 
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.6 }}
+                              className="bg-gradient-to-r from-orange-50 via-amber-50 to-yellow-50 p-6 rounded-2xl border border-orange-200/50 mb-6"
+                            >
+                              <div className="text-sm text-orange-700 font-semibold mb-2 flex items-center gap-2">
+                                <span className="text-lg">📊</span>
+                                Estimated Range
+                              </div>
+                              <div className="text-2xl font-black text-orange-900">
+                                ${budgetResults.range.low.toLocaleString()} - $
+                                {budgetResults.range.high.toLocaleString()}
+                              </div>
+                              {budgetResults.monthlyRetainer && (
+                                <div className="text-sm text-blue-600 font-bold mt-3 bg-blue-100 px-3 py-2 rounded-lg inline-block">
+                                  📅 Monthly Retainer: $
+                                  {budgetResults.monthlyRetainer.toLocaleString()}
+                                </div>
+                              )}
+                            </motion.div>
 
                             {aiRecommendations && aiRecommendations.length > 0 && (
-                              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-lg">
-                                <h6 className="font-bold text-indigo-800 mb-3 flex items-center">
+                              <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.8 }}
+                                className="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 p-6 rounded-2xl border border-indigo-200/50 relative overflow-hidden"
+                              >
+                                <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-indigo-200/20 to-transparent rounded-full -ml-10 -mt-10"></div>
+                                <h6 className="font-black text-indigo-900 mb-4 flex items-center text-xl relative z-10">
                                   🤖 AI-Powered Recommendations
+                                  <motion.span 
+                                    animate={{ scale: [1, 1.1, 1] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                    className="ml-2"
+                                  >
+                                    ✨
+                                  </motion.span>
                                 </h6>
-                                <ul className="space-y-2">
+                                <ul className="space-y-3 relative z-10">
                                   {aiRecommendations.map((rec, idx) => (
-                                    <li key={idx} className="flex items-start">
-                                      <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                      <span className="text-sm text-indigo-700">{rec}</span>
-                                    </li>
+                                    <motion.li 
+                                      key={idx} 
+                                      initial={{ opacity: 0, x: -20 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: 0.9 + idx * 0.1 }}
+                                      className="flex items-start bg-white/60 p-3 rounded-lg hover:bg-white/80 transition-all duration-300"
+                                    >
+                                      <div className="w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></div>
+                                      <span className="text-sm text-indigo-800 font-medium">{rec}</span>
+                                    </motion.li>
                                   ))}
                                 </ul>
-                              </div>
+                              </motion.div>
                             )}
 
-                            <div className="mt-4 text-xs text-gray-500 italic">
-                              * Estimates based on typical matters. Actual costs may vary depending
-                              on specific circumstances. Contact us for a detailed consultation and
-                              personalized quote.
-                            </div>
+                            <motion.div 
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 1.0 }}
+                              className="mt-6 p-4 bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl border border-gray-200/50 text-xs text-gray-600 italic relative overflow-hidden"
+                            >
+                              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-gray-100/30 to-transparent rounded-full -mr-8 -mt-8"></div>
+                              <div className="flex items-start gap-2 relative z-10">
+                                <span className="text-sm">ℹ️</span>
+                                <span>
+                                  * Estimates based on typical matters. Actual costs may vary depending
+                                  on specific circumstances. Contact us for a detailed consultation and
+                                  personalized quote.
+                                </span>
+                              </div>
+                            </motion.div>
 
-                            <div className="mt-4 flex space-x-3">
-                              <button
+                            <motion.div 
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 1.1 }}
+                              className="mt-6 flex flex-col sm:flex-row gap-4"
+                            >
+                              <motion.button
                                 onClick={() => {
                                   window.location.href = `mailto:kburton@timharmar.com?subject=Budget Consultation Request&body=Hello,%0D%0A%0D%0AI have used your budget calculator and would like to discuss my legal needs.%0D%0A%0D%0AService Type: ${budgetInputs.serviceType}%0D%0AEstimated Cost: $${budgetResults.totalEstimate.toLocaleString()}%0D%0A%0D%0APlease contact me to schedule a consultation.%0D%0A%0D%0AThank you!`
                                 }}
-                                className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                                whileHover={{ scale: 1.02, y: -1 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 text-sm font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                               >
+                                <span className="text-lg">📞</span>
                                 Schedule Consultation
-                              </button>
-                              <button
+                              </motion.button>
+                              <motion.button
                                 onClick={() => {
                                   setBudgetInputs({
                                     serviceType: '',
@@ -2119,12 +2237,15 @@ export const LegalResourcesLibrary = () => {
                                   setBudgetResults(null)
                                   setAiRecommendations(null)
                                 }}
-                                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+                                whileHover={{ scale: 1.02, y: -1 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="px-6 py-4 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-sm font-bold flex items-center justify-center gap-2"
                               >
+                                <span className="text-lg">🔄</span>
                                 Reset Calculator
-                              </button>
-                            </div>
-                          </div>
+                              </motion.button>
+                            </motion.div>
+                          </motion.div>
                         )}
                       </div>
                     )}
