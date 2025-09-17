@@ -25,18 +25,18 @@ export const useDeviceDetection = () => {
       const height = window.innerHeight
 
       let screenSize = 'mobile'
-      let isMobile = true
-      let isTablet = false
-      let isDesktop = false
+      let _isMobile = true
+      let _isTablet = false
+      let _isDesktop = false
 
       if (width >= 1024) {
         screenSize = 'desktop'
-        isDesktop = true
-        isMobile = false
+        _isDesktop = true
+        _isMobile = false
       } else if (width >= 768) {
         screenSize = 'tablet'
-        isTablet = true
-        isMobile = false
+        _isTablet = true
+        _isMobile = false
       }
 
       // More specific mobile detection
