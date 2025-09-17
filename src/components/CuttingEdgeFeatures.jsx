@@ -185,10 +185,10 @@ export const AILegalAssistant = () => {
   const generateAIResponse = (userMessage) => {
     const message = userMessage.toLowerCase()
     const words = message.split(' ')
-    
+
     // Update conversation context
     const updateContext = (topic, intent) => {
-      setConversationContext(prev => ({
+      setConversationContext((prev) => ({
         topics: [...prev.topics.slice(-4), topic], // Keep last 5 topics
         userIntent: intent,
         lastInteraction: Date.now(),
@@ -196,8 +196,24 @@ export const AILegalAssistant = () => {
     }
 
     // Enhanced question detection
-    const isQuestion = message.includes('?') || 
-                     words.some(word => ['what', 'how', 'when', 'where', 'why', 'who', 'can', 'do', 'will', 'should', 'would', 'could'].includes(word))
+    const isQuestion =
+      message.includes('?') ||
+      words.some((word) =>
+        [
+          'what',
+          'how',
+          'when',
+          'where',
+          'why',
+          'who',
+          'can',
+          'do',
+          'will',
+          'should',
+          'would',
+          'could',
+        ].includes(word)
+      )
 
     // Greeting detection
     if (message.match(/^(hi|hello|hey|good\s+(morning|afternoon|evening)|greetings)/i)) {
@@ -209,9 +225,15 @@ export const AILegalAssistant = () => {
     }
 
     // Budget and cost inquiries with enhanced detection
-    if (message.includes('budget') || message.includes('calculate') || message.includes('estimate') || 
-        (message.includes('cost') && (message.includes('much') || message.includes('estimate'))) ||
-        message.includes('price') || message.includes('fee') || message.includes('affordable')) {
+    if (
+      message.includes('budget') ||
+      message.includes('calculate') ||
+      message.includes('estimate') ||
+      (message.includes('cost') && (message.includes('much') || message.includes('estimate'))) ||
+      message.includes('price') ||
+      message.includes('fee') ||
+      message.includes('affordable')
+    ) {
       updateContext('budget', 'cost_inquiry')
       return {
         text: "I can help you estimate legal costs! We have an interactive budget calculator that uses Tim's actual rates ($300/hr for counsel, $90/hr for admin support). It considers complexity, urgency, and project scope to give you accurate estimates. You can also schedule a free consultation to discuss your specific needs and get a personalized quote.",
@@ -220,28 +242,65 @@ export const AILegalAssistant = () => {
     }
 
     // Emergency legal help with enhanced urgency detection
-    const urgencyWords = ['urgent', 'emergency', 'asap', 'immediately', 'crisis', 'help', 'problem', 'trouble', 'sued', 'court date']
-    if (urgencyWords.some(word => message.includes(word))) {
+    const urgencyWords = [
+      'urgent',
+      'emergency',
+      'asap',
+      'immediately',
+      'crisis',
+      'help',
+      'problem',
+      'trouble',
+      'sued',
+      'court date',
+    ]
+    if (urgencyWords.some((word) => message.includes(word))) {
       updateContext('emergency', 'urgent_help')
       return {
-        text: 'I understand this is urgent and time-sensitive. For immediate legal assistance, please call Tim directly at (705) 943-5049. We provide emergency consultations and can often accommodate same-day or next-day meetings for critical matters. Don\'t wait - legal issues often become more complex and expensive when delayed.',
+        text: "I understand this is urgent and time-sensitive. For immediate legal assistance, please call Tim directly at (705) 943-5049. We provide emergency consultations and can often accommodate same-day or next-day meetings for critical matters. Don't wait - legal issues often become more complex and expensive when delayed.",
         quickActions: ['Call Now (705) 943-5049', 'Emergency Consultation', 'Text for Urgent Help'],
       }
     }
 
     // Business and startup inquiries with improved detection
-    const businessWords = ['startup', 'business', 'company', 'corporation', 'incorporate', 'llc', 'partnership', 'entrepreneur', 'launch', 'new venture']
-    if (businessWords.some(word => message.includes(word))) {
+    const businessWords = [
+      'startup',
+      'business',
+      'company',
+      'corporation',
+      'incorporate',
+      'llc',
+      'partnership',
+      'entrepreneur',
+      'launch',
+      'new venture',
+    ]
+    if (businessWords.some((word) => message.includes(word))) {
       updateContext('business', 'business_formation')
       return {
         text: "Excellent! Tim specializes in helping entrepreneurs and growing businesses. Our comprehensive Business Start Up & Strategy package includes entity selection and formation, founders' agreements, IP strategy development, regulatory compliance roadmaps, employment policies, and ongoing legal support. We understand startups need efficient, cost-effective legal solutions that scale with growth. What stage is your business in?",
-        quickActions: ['Startup Package Info', 'Incorporation Guide', 'Schedule Business Consultation'],
+        quickActions: [
+          'Startup Package Info',
+          'Incorporation Guide',
+          'Schedule Business Consultation',
+        ],
       }
     }
 
     // Privacy and cybersecurity with enhanced keyword detection
-    const privacyWords = ['privacy', 'data', 'cybersecurity', 'pipeda', 'gdpr', 'breach', 'security', 'compliance', 'personal information', 'cyber']
-    if (privacyWords.some(word => message.includes(word))) {
+    const privacyWords = [
+      'privacy',
+      'data',
+      'cybersecurity',
+      'pipeda',
+      'gdpr',
+      'breach',
+      'security',
+      'compliance',
+      'personal information',
+      'cyber',
+    ]
+    if (privacyWords.some((word) => message.includes(word))) {
       updateContext('privacy', 'privacy_compliance')
       return {
         text: 'Tim is a recognized expert in Canadian privacy and cybersecurity law - this is one of our core specialties! Our privacy practice includes PIPEDA compliance audits, data breach response protocols, privacy impact assessments, CASL email marketing compliance, cross-border data transfer agreements, and cybersecurity policy development. We help businesses build privacy-first practices that protect both your customers and your company. What specific privacy challenge are you facing?',
@@ -250,18 +309,44 @@ export const AILegalAssistant = () => {
     }
 
     // Litigation and disputes with comprehensive detection
-    const litigationWords = ['litigation', 'dispute', 'contract', 'lawsuit', 'legal action', 'court', 'trial', 'settlement', 'mediation', 'arbitration', 'conflict']
-    if (litigationWords.some(word => message.includes(word))) {
+    const litigationWords = [
+      'litigation',
+      'dispute',
+      'contract',
+      'lawsuit',
+      'legal action',
+      'court',
+      'trial',
+      'settlement',
+      'mediation',
+      'arbitration',
+      'conflict',
+    ]
+    if (litigationWords.some((word) => message.includes(word))) {
       updateContext('litigation', 'dispute_resolution')
       return {
         text: 'Tim has extensive litigation experience, including arguing cases at the Supreme Court of Canada. Our civil litigation practice covers contract disputes, employment litigation, commercial disputes, defamation, and appellate matters. We believe in strategic advocacy that explores all resolution options - including negotiation, mediation, and arbitration - to find the most cost-effective solution. Tell me more about your situation.',
-        quickActions: ['Litigation Strategy', 'Dispute Resolution Options', 'Contract Dispute Help'],
+        quickActions: [
+          'Litigation Strategy',
+          'Dispute Resolution Options',
+          'Contract Dispute Help',
+        ],
       }
     }
 
     // Intellectual property with expanded detection
-    const ipWords = ['intellectual property', 'trademark', 'copyright', 'patent', 'ip', 'brand', 'logo', 'licensing', 'trade secret']
-    if (ipWords.some(word => message.includes(word))) {
+    const ipWords = [
+      'intellectual property',
+      'trademark',
+      'copyright',
+      'patent',
+      'ip',
+      'brand',
+      'logo',
+      'licensing',
+      'trade secret',
+    ]
+    if (ipWords.some((word) => message.includes(word))) {
       updateContext('ip', 'intellectual_property')
       return {
         text: 'Our IP practice provides comprehensive protection for your innovations and creative assets. We handle trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, IP portfolio management, and brand protection strategies. Tim helps businesses develop strategic IP monetization plans that turn intellectual property into revenue streams. What IP assets need protection?',
@@ -270,8 +355,21 @@ export const AILegalAssistant = () => {
     }
 
     // Employment law detection
-    const employmentWords = ['employment', 'employee', 'workplace', 'hiring', 'firing', 'hr', 'human resources', 'contract', 'policy']
-    if (employmentWords.some(word => message.includes(word)) && !message.includes('intellectual')) {
+    const employmentWords = [
+      'employment',
+      'employee',
+      'workplace',
+      'hiring',
+      'firing',
+      'hr',
+      'human resources',
+      'contract',
+      'policy',
+    ]
+    if (
+      employmentWords.some((word) => message.includes(word)) &&
+      !message.includes('intellectual')
+    ) {
       updateContext('employment', 'employment_law')
       return {
         text: 'Tim provides comprehensive employment law services for both employers and employees. Our employment practice includes drafting employment contracts, workplace policies, performance management protocols, termination procedures, workplace investigations, and compliance with Ontario employment standards. We help create positive, legally compliant workplaces that protect both employers and employees. What employment matter can we help with?',
@@ -280,18 +378,32 @@ export const AILegalAssistant = () => {
     }
 
     // Consultation and scheduling with natural language detection
-    const consultationWords = ['schedule', 'appointment', 'meet', 'book', 'available', 'consultation', 'talk', 'discuss', 'call']
-    if (consultationWords.some(word => message.includes(word))) {
+    const consultationWords = [
+      'schedule',
+      'appointment',
+      'meet',
+      'book',
+      'available',
+      'consultation',
+      'talk',
+      'discuss',
+      'call',
+    ]
+    if (consultationWords.some((word) => message.includes(word))) {
       updateContext('scheduling', 'book_consultation')
       return {
-        text: 'Perfect! I\'d be happy to help you schedule a consultation with Tim. We offer completely FREE initial consultations with no obligation - this gives you a chance to discuss your situation and get strategic guidance. We have flexible scheduling including morning, afternoon, and evening slots, plus virtual consultations via secure video call. The Smart Scheduler below makes booking easy, or I can connect you directly.',
-        quickActions: ['Use Smart Scheduler', 'Book Virtual Meeting', 'Call to Schedule (705) 943-5049'],
+        text: "Perfect! I'd be happy to help you schedule a consultation with Tim. We offer completely FREE initial consultations with no obligation - this gives you a chance to discuss your situation and get strategic guidance. We have flexible scheduling including morning, afternoon, and evening slots, plus virtual consultations via secure video call. The Smart Scheduler below makes booking easy, or I can connect you directly.",
+        quickActions: [
+          'Use Smart Scheduler',
+          'Book Virtual Meeting',
+          'Call to Schedule (705) 943-5049',
+        ],
       }
     }
 
     // Location and service area
     const locationWords = ['location', 'where', 'sault', 'ontario', 'office', 'visit', 'address']
-    if (locationWords.some(word => message.includes(word))) {
+    if (locationWords.some((word) => message.includes(word))) {
       updateContext('location', 'office_location')
       return {
         text: 'Tim Harmar Legal is based in Sault Ste. Marie, Ontario, serving clients throughout Northern Ontario and beyond. We offer in-person consultations at our modern Sault Ste. Marie office, as well as secure virtual meetings for clients anywhere in Ontario. Our practice covers all of Canada for federal matters like intellectual property and privacy law.',
@@ -300,8 +412,16 @@ export const AILegalAssistant = () => {
     }
 
     // Experience and credentials
-    const credentialsWords = ['experience', 'background', 'qualified', 'credentials', 'supreme court', 'education', 'awards']
-    if (credentialsWords.some(word => message.includes(word))) {
+    const credentialsWords = [
+      'experience',
+      'background',
+      'qualified',
+      'credentials',
+      'supreme court',
+      'education',
+      'awards',
+    ]
+    if (credentialsWords.some((word) => message.includes(word))) {
       updateContext('credentials', 'lawyer_background')
       return {
         text: 'Tim Harmar is an award-winning lawyer with 15+ years of experience who has argued cases at the Supreme Court of Canada. He holds degrees from University of Windsor Faculty of Law and York University Osgoode Hall Law School. Tim is a member in good standing with the Law Society of Ontario, regularly speaks at legal conferences, and has received recognition for his expertise in privacy law and litigation. His combination of legal excellence and technological innovation sets him apart.',
@@ -311,7 +431,7 @@ export const AILegalAssistant = () => {
 
     // Contact information
     const contactWords = ['contact', 'phone', 'email', 'reach', 'call', 'message']
-    if (contactWords.some(word => message.includes(word))) {
+    if (contactWords.some((word) => message.includes(word))) {
       updateContext('contact', 'contact_info')
       return {
         text: 'You can reach us several ways: Phone: (705) 943-5049 | Email: kburton@timharmar.com | Or use our contact form for non-urgent matters. We typically respond to emails within 2 business hours during office hours (9 AM - 5 PM EST). For urgent matters, please call directly. Kelly Burton, our legal assistant, coordinates all communications and scheduling.',
@@ -322,7 +442,7 @@ export const AILegalAssistant = () => {
     // Handle follow-up questions based on context
     if (conversationContext.topics.length > 0 && isQuestion) {
       const lastTopic = conversationContext.topics[conversationContext.topics.length - 1]
-      
+
       if (lastTopic === 'budget' && (message.includes('how') || message.includes('work'))) {
         return {
           text: "The budget calculator analyzes your specific needs using several factors: service type, complexity level, urgency, client size, and project duration. It then applies Tim's actual hourly rates and provides a detailed breakdown showing counsel time, admin support time, and total estimated costs. The AI recommendations help optimize your legal spend. It's much more accurate than generic estimates!",
@@ -332,7 +452,7 @@ export const AILegalAssistant = () => {
 
       if (lastTopic === 'privacy' && (message.includes('start') || message.includes('begin'))) {
         return {
-          text: "Great question! Privacy compliance starts with a thorough assessment of how your business collects, uses, and stores personal information. We typically begin with a privacy audit, then develop customized policies and procedures. For businesses just starting, we can build privacy protection into your foundation. For established businesses, we identify gaps and create an implementation roadmap.",
+          text: 'Great question! Privacy compliance starts with a thorough assessment of how your business collects, uses, and stores personal information. We typically begin with a privacy audit, then develop customized policies and procedures. For businesses just starting, we can build privacy protection into your foundation. For established businesses, we identify gaps and create an implementation roadmap.',
           quickActions: ['Privacy Audit Info', 'PIPEDA Compliance Guide', 'Schedule Assessment'],
         }
       }
@@ -358,8 +478,8 @@ export const AILegalAssistant = () => {
     const greetings = [
       "I'd be happy to help you with that!",
       "That's a great question!",
-      "Let me provide you with some information about that.",
-      "I can definitely help you understand this better.",
+      'Let me provide you with some information about that.',
+      'I can definitely help you understand this better.',
     ]
     const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)]
 
@@ -3283,13 +3403,19 @@ export const BudgetCalculator = () => {
         recommendations.push('Consider breaking down complex matters into phases to manage costs')
       }
       if (budgetInputs.urgency === 'emergency') {
-        recommendations.push('Emergency matters require immediate attention but may incur premium rates')
+        recommendations.push(
+          'Emergency matters require immediate attention but may incur premium rates'
+        )
       }
       if (budgetInputs.clientSize === 'enterprise') {
-        recommendations.push('Large organizations may benefit from retainer agreements for ongoing services')
+        recommendations.push(
+          'Large organizations may benefit from retainer agreements for ongoing services'
+        )
       }
       if (budgetInputs.duration === 'ongoing') {
-        recommendations.push('Ongoing legal support offers the best value for continuous compliance needs')
+        recommendations.push(
+          'Ongoing legal support offers the best value for continuous compliance needs'
+        )
       }
 
       return recommendations
@@ -3322,15 +3448,14 @@ export const BudgetCalculator = () => {
           💰 Legal Budget Calculator
         </h3>
         <p className="text-blue-700 text-lg">
-          Get accurate cost estimates based on Tim Harmar's rates: $300/hr (counsel) and $90/hr (admin support)
+          Get accurate cost estimates based on Tim Harmar's rates: $300/hr (counsel) and $90/hr
+          (admin support)
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Service Type *
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Service Type *</label>
           <select
             value={budgetInputs.serviceType}
             onChange={(e) => setBudgetInputs({ ...budgetInputs, serviceType: e.target.value })}
@@ -3347,9 +3472,7 @@ export const BudgetCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Complexity Level
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Complexity Level</label>
           <select
             value={budgetInputs.complexity}
             onChange={(e) => setBudgetInputs({ ...budgetInputs, complexity: e.target.value })}
@@ -3362,9 +3485,7 @@ export const BudgetCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Urgency
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Urgency</label>
           <select
             value={budgetInputs.urgency}
             onChange={(e) => setBudgetInputs({ ...budgetInputs, urgency: e.target.value })}
@@ -3377,9 +3498,7 @@ export const BudgetCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Client Size
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Client Size</label>
           <select
             value={budgetInputs.clientSize}
             onChange={(e) => setBudgetInputs({ ...budgetInputs, clientSize: e.target.value })}
