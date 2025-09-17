@@ -24,6 +24,7 @@ import {
   Lightbulb,
   Building2,
   ArrowRight,
+  AlertTriangle,
 } from 'lucide-react'
 
 // Utility function to open Privacy Compliance Guide in new window
@@ -3286,154 +3287,267 @@ export const LegalAssessment = () => {
   )
 }
 
-// Standalone Budget Calculator Component
-export const BudgetCalculator = () => {
-  // Enhanced Budget Calculator state with AI functionality
-  const [budgetInputs, setBudgetInputs] = useState({
-    serviceType: '',
+// AI-Powered Legal Case Strategy Simulator
+export const LegalCaseStrategySimulator = () => {
+  const [currentStep, setCurrentStep] = useState(0)
+  const [caseInputs, setCaseInputs] = useState({
+    caseType: '',
+    jurisdiction: 'ontario',
+    caseValue: '',
     complexity: 'medium',
-    urgency: 'normal',
-    duration: 'one-time',
-    estimatedHours: '',
-    additionalServices: [],
-    clientSize: 'small',
-    industryType: '',
+    timeline: '',
+    riskTolerance: 'medium',
+    primaryGoal: '',
+    hasEvidence: 'unknown',
+    opposingParty: 'individual',
+    priorNegotiation: 'no',
   })
-  const [budgetResults, setBudgetResults] = useState(null)
-  const [aiRecommendations, setAiRecommendations] = useState(null)
+  const [analysisResults, setAnalysisResults] = useState(null)
+  const [strategicInsights, setStrategicInsights] = useState(null)
+  const [isAnalyzing, setIsAnalyzing] = useState(false)
 
-  // Tim Harmar hourly rates as specified
-  const HOURLY_RATES = {
-    counsel: 300, // Tim Harmar as counsel
-    admin: 90, // Kelly and Josh admin staff rate
+  const caseTypes = {
+    'contract-dispute': {
+      name: 'Contract Dispute',
+      icon: '📋',
+      description: 'Breach of contract, interpretation issues, or performance disputes',
+      factors: ['contract_clarity', 'damages_amount', 'breach_type', 'mitigation_efforts'],
+    },
+    'employment-dispute': {
+      name: 'Employment Dispute',
+      icon: '👔',
+      description: 'Wrongful dismissal, harassment, or workplace issues',
+      factors: ['employment_type', 'tenure', 'severance_offered', 'documentation'],
+    },
+    'ip-protection': {
+      name: 'IP Protection',
+      icon: '💡',
+      description: 'Patent, trademark, copyright, or trade secret matters',
+      factors: ['ip_type', 'registration_status', 'infringement_scope', 'market_impact'],
+    },
+    'privacy-breach': {
+      name: 'Privacy Breach',
+      icon: '🔒',
+      description: 'Data breach response, PIPEDA compliance, or privacy violations',
+      factors: ['data_sensitivity', 'affected_individuals', 'breach_scope', 'notification_timing'],
+    },
+    'business-litigation': {
+      name: 'Business Litigation',
+      icon: '🏢',
+      description: 'Commercial disputes, partnership issues, or corporate conflicts',
+      factors: ['business_relationship', 'financial_impact', 'reputation_risk', 'ongoing_operations'],
+    },
+    'regulatory-compliance': {
+      name: 'Regulatory Compliance',
+      icon: '⚖️',
+      description: 'Regulatory investigations or compliance matters',
+      factors: ['regulation_type', 'violation_severity', 'agency_involved', 'compliance_history'],
+    },
   }
 
-  // AI-powered budget calculation with enhanced logic
-  const calculateBudget = () => {
-    const baseServices = {
-      'business-formation': {
-        baseHours: 8,
-        counselHours: 6,
-        adminHours: 2,
-        complexity: { simple: 0.7, medium: 1.0, complex: 1.5 },
-      },
-      'contract-services': {
-        baseHours: 4,
-        counselHours: 3,
-        adminHours: 1,
-        complexity: { simple: 0.6, medium: 1.0, complex: 1.8 },
-      },
-      'employment-law': {
-        baseHours: 6,
-        counselHours: 4,
-        adminHours: 2,
-        complexity: { simple: 0.8, medium: 1.0, complex: 1.4 },
-      },
-      'intellectual-property': {
-        baseHours: 10,
-        counselHours: 8,
-        adminHours: 2,
-        complexity: { simple: 0.9, medium: 1.0, complex: 1.6 },
-      },
-      'litigation-support': {
-        baseHours: 15,
-        counselHours: 12,
-        adminHours: 3,
-        complexity: { simple: 0.8, medium: 1.0, complex: 2.0 },
-      },
-      'privacy-compliance': {
-        baseHours: 12,
-        counselHours: 9,
-        adminHours: 3,
-        complexity: { simple: 0.7, medium: 1.0, complex: 1.7 },
-      },
+  const analyzeCase = () => {
+    setIsAnalyzing(true)
+    
+    // Simulate AI analysis
+    setTimeout(() => {
+      const caseType = caseTypes[caseInputs.caseType]
+      if (!caseType) return
+      
+      // Generate strategic analysis based on inputs
+      const analysis = generateCaseAnalysis()
+      const insights = generateStrategicInsights()
+      
+      setAnalysisResults(analysis)
+      setStrategicInsights(insights)
+      setIsAnalyzing(false)
+    }, 2000)
+  }
+
+  const generateCaseAnalysis = () => {
+    const successProbabilities = {
+      high: Math.floor(Math.random() * 20) + 70, // 70-90%
+      medium: Math.floor(Math.random() * 40) + 40, // 40-80%
+      low: Math.floor(Math.random() * 30) + 20, // 20-50%
     }
 
-    const urgencyMultipliers = {
-      normal: 1.0,
-      urgent: 1.3,
-      emergency: 1.6,
+    const riskLevels = {
+      high: 'High Risk - Significant exposure',
+      medium: 'Moderate Risk - Manageable exposure',
+      low: 'Low Risk - Minimal exposure',
     }
 
-    const durationMultipliers = {
-      'one-time': 1.0,
-      'short-term': 0.95,
-      'long-term': 0.85,
-      ongoing: 0.8,
+    const timelineEstimates = {
+      'contract-dispute': { min: 6, max: 18 },
+      'employment-dispute': { min: 3, max: 12 },
+      'ip-protection': { min: 8, max: 24 },
+      'privacy-breach': { min: 2, max: 8 },
+      'business-litigation': { min: 9, max: 30 },
+      'regulatory-compliance': { min: 4, max: 15 },
     }
 
-    const clientSizeMultipliers = {
-      small: 1.0,
-      medium: 1.1,
-      large: 1.25,
-      enterprise: 1.4,
+    const timeline = timelineEstimates[caseInputs.caseType] || { min: 6, max: 18 }
+    const complexityMultiplier = caseInputs.complexity === 'high' ? 1.5 : caseInputs.complexity === 'low' ? 0.7 : 1.0
+    
+    return {
+      caseType: caseInputs.caseType,
+      successProbability: successProbabilities[caseInputs.riskTolerance] || 60,
+      riskAssessment: riskLevels[caseInputs.riskTolerance] || 'Moderate Risk',
+      estimatedTimeframe: `${Math.round(timeline.min * complexityMultiplier)}-${Math.round(timeline.max * complexityMultiplier)} months`,
+      keyFactors: caseTypes[caseInputs.caseType].factors,
+      recommendedApproach: getRecommendedApproach(),
+      alternativeOptions: getAlternativeOptions(),
     }
+  }
 
-    const service = baseServices[budgetInputs.serviceType]
-    if (!service) return
-
-    // Apply multipliers
-    const complexityMultiplier = service.complexity[budgetInputs.complexity]
-    const urgencyMultiplier = urgencyMultipliers[budgetInputs.urgency]
-    const durationMultiplier = durationMultipliers[budgetInputs.duration]
-    const clientSizeMultiplier = clientSizeMultipliers[budgetInputs.clientSize]
-
-    // Calculate hours with all multipliers
-    const adjustedCounselHours = Math.ceil(
-      service.counselHours * complexityMultiplier * urgencyMultiplier * clientSizeMultiplier
-    )
-
-    const adjustedAdminHours = Math.ceil(
-      service.adminHours * complexityMultiplier * urgencyMultiplier * clientSizeMultiplier
-    )
-
-    // Calculate costs
-    const counselCost = adjustedCounselHours * HOURLY_RATES.counsel
-    const adminCost = adjustedAdminHours * HOURLY_RATES.admin
-    const subtotal = counselCost + adminCost
-
-    // Apply duration discount
-    const totalEstimate = Math.round(subtotal * durationMultiplier)
-
-    // Generate AI recommendations
-    const generateAIRecommendations = () => {
-      const recommendations = []
-
-      if (budgetInputs.complexity === 'complex') {
-        recommendations.push('Consider breaking down complex matters into phases to manage costs')
-      }
-      if (budgetInputs.urgency === 'emergency') {
-        recommendations.push(
-          'Emergency matters require immediate attention but may incur premium rates'
-        )
-      }
-      if (budgetInputs.clientSize === 'enterprise') {
-        recommendations.push(
-          'Large organizations may benefit from retainer agreements for ongoing services'
-        )
-      }
-      if (budgetInputs.duration === 'ongoing') {
-        recommendations.push(
-          'Ongoing legal support offers the best value for continuous compliance needs'
-        )
-      }
-
-      return recommendations
+  const getRecommendedApproach = () => {
+    const approaches = {
+      'contract-dispute': [
+        'Document review and analysis',
+        'Negotiation with opposing party',
+        'Mediation if negotiation fails',
+        'Litigation as last resort',
+      ],
+      'employment-dispute': [
+        'Gather employment documentation',
+        'Assess severance entitlement',
+        'Negotiate settlement terms',
+        'Consider human rights implications',
+      ],
+      'ip-protection': [
+        'Conduct IP landscape analysis',
+        'File protective registrations',
+        'Develop licensing strategy',
+        'Monitor for infringement',
+      ],
+      'privacy-breach': [
+        'Immediate containment measures',
+        'Regulatory notification compliance',
+        'Affected individual communication',
+        'Implement preventive measures',
+      ],
+      'business-litigation': [
+        'Comprehensive case assessment',
+        'Early settlement discussions',
+        'Preserve business relationships',
+        'Minimize operational disruption',
+      ],
+      'regulatory-compliance': [
+        'Regulatory landscape analysis',
+        'Compliance gap assessment',
+        'Develop correction plan',
+        'Ongoing monitoring system',
+      ],
     }
+    
+    return approaches[caseInputs.caseType] || approaches['contract-dispute']
+  }
 
-    const results = {
-      serviceType: budgetInputs.serviceType,
-      counselHours: adjustedCounselHours,
-      adminHours: adjustedAdminHours,
-      counselCost: counselCost,
-      adminCost: adminCost,
-      subtotal: subtotal,
-      totalEstimate: totalEstimate,
-      savings: subtotal - totalEstimate,
+  const getAlternativeOptions = () => {
+    return [
+      'Alternative Dispute Resolution (ADR)',
+      'Direct negotiation',
+      'Collaborative law approach',
+      'Binding arbitration',
+      'Expert determination',
+      'Industry-specific mediation',
+    ]
+  }
+
+  const generateStrategicInsights = () => {
+    const insights = []
+    
+    if (caseInputs.priorNegotiation === 'yes') {
+      insights.push({
+        type: 'opportunity',
+        title: 'Previous Negotiation Experience',
+        description: 'Prior negotiation attempts can provide valuable insights into opposing party\'s position and priorities.',
+      })
     }
+    
+    if (caseInputs.riskTolerance === 'low') {
+      insights.push({
+        type: 'strategy',
+        title: 'Conservative Approach Recommended',
+        description: 'Given your risk tolerance, consider settlement-focused strategies and early resolution options.',
+      })
+    }
+    
+    if (caseInputs.complexity === 'high') {
+      insights.push({
+        type: 'warning',
+        title: 'Complex Case Considerations',
+        description: 'High complexity cases often benefit from phased approaches and expert consultation.',
+      })
+    }
+    
+    insights.push({
+      type: 'resource',
+      title: 'Documentation Is Key',
+      description: 'Comprehensive documentation significantly improves case outcomes. Ensure all relevant materials are preserved.',
+    })
+    
+    return insights
+  }
 
-    setBudgetResults(results)
-    setAiRecommendations(generateAIRecommendations())
+  const downloadCaseAnalysis = () => {
+    if (!analysisResults) return
+    
+    const analysisContent = `
+LEGAL CASE STRATEGY ANALYSIS
+Generated by Tim Harmar Legal - Case Strategy Simulator
+
+DISCLAIMER: This analysis provides general information only and does not constitute legal advice.
+For personalized legal guidance, schedule a consultation with Tim Harmar Legal.
+
+Case Type: ${caseTypes[analysisResults.caseType]?.name}
+Success Probability: ${analysisResults.successProbability}%
+Risk Assessment: ${analysisResults.riskAssessment}
+Estimated Timeframe: ${analysisResults.estimatedTimeframe}
+
+RECOMMENDED APPROACH:
+${analysisResults.recommendedApproach.map((step, i) => `${i + 1}. ${step}`).join('\n')}
+
+ALTERNATIVE OPTIONS:
+${analysisResults.alternativeOptions.map((option, i) => `• ${option}`).join('\n')}
+
+STRATEGIC INSIGHTS:
+${strategicInsights?.map(insight => `• ${insight.title}: ${insight.description}`).join('\n')}
+
+Contact Tim Harmar Legal for personalized consultation:
+Email: info@timharmar.com
+Phone: (705) 946-0372
+Website: www.timharmar.com
+
+Generated on: ${new Date().toLocaleDateString()}
+    `
+    
+    const blob = new Blob([analysisContent], { type: 'text/plain' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `case-strategy-analysis-${Date.now()}.txt`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
+
+  const resetSimulator = () => {
+    setCurrentStep(0)
+    setCaseInputs({
+      caseType: '',
+      jurisdiction: 'ontario',
+      caseValue: '',
+      complexity: 'medium',
+      timeline: '',
+      riskTolerance: 'medium',
+      primaryGoal: '',
+      hasEvidence: 'unknown',
+      opposingParty: 'individual',
+      priorNegotiation: 'no',
+    })
+    setAnalysisResults(null)
+    setStrategicInsights(null)
   }
 
   return (
@@ -3441,261 +3555,340 @@ export const BudgetCalculator = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-br from-white to-blue-50 p-8 rounded-xl shadow-lg border border-blue-200"
+      className="bg-gradient-to-br from-white via-purple-50 to-blue-50 p-8 rounded-xl shadow-lg border border-purple-200"
     >
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-bold text-blue-800 mb-4 flex items-center justify-center gap-3">
-          💰 Legal Budget Calculator
+        <h3 className="text-3xl font-bold text-purple-800 mb-4 flex items-center justify-center gap-3">
+          🎯 AI Legal Case Strategy Simulator
         </h3>
-        <p className="text-blue-700 text-lg">
-          Get accurate cost estimates based on Tim Harmar's rates: $300/hr (counsel) and $90/hr
-          (admin support)
+        <p className="text-purple-700 text-lg">
+          Interactive case analysis and strategic insights powered by Tim Harmar's legal expertise
         </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Service Type *</label>
-          <select
-            value={budgetInputs.serviceType}
-            onChange={(e) => setBudgetInputs({ ...budgetInputs, serviceType: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="">Select service type...</option>
-            <option value="business-formation">Business Formation</option>
-            <option value="contract-services">Contract Services</option>
-            <option value="employment-law">Employment Law</option>
-            <option value="intellectual-property">Intellectual Property</option>
-            <option value="litigation-support">Litigation Support</option>
-            <option value="privacy-compliance">Privacy & Compliance</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Complexity Level</label>
-          <select
-            value={budgetInputs.complexity}
-            onChange={(e) => setBudgetInputs({ ...budgetInputs, complexity: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="simple">Simple</option>
-            <option value="medium">Medium</option>
-            <option value="complex">Complex</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Urgency</label>
-          <select
-            value={budgetInputs.urgency}
-            onChange={(e) => setBudgetInputs({ ...budgetInputs, urgency: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="normal">Normal Timeline</option>
-            <option value="urgent">Urgent (within 1 week)</option>
-            <option value="emergency">Emergency (ASAP)</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Client Size</label>
-          <select
-            value={budgetInputs.clientSize}
-            onChange={(e) => setBudgetInputs({ ...budgetInputs, clientSize: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="small">Small Business (1-10 employees)</option>
-            <option value="medium">Medium Business (11-50 employees)</option>
-            <option value="large">Large Business (51-250 employees)</option>
-            <option value="enterprise">Enterprise (250+ employees)</option>
-          </select>
+        <div className="mt-2 text-sm text-purple-600">
+          <strong>Note:</strong> This tool provides general information only, not legal advice
         </div>
       </div>
 
-      <motion.button
-        onClick={calculateBudget}
-        disabled={!budgetInputs.serviceType}
-        whileHover={{ scale: 1.02, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        className="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white p-4 rounded-xl font-bold text-lg hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 transition-all duration-500 shadow-lg hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden group"
-      >
-        <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span className="relative flex items-center justify-center gap-2">
-          🚀 Calculate AI-Powered Estimate
-          <motion.span
-            animate={{ rotate: [0, 15, -15, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            ⚡
-          </motion.span>
-        </span>
-      </motion.button>
-
-      {budgetResults && (
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mt-8 p-8 bg-gradient-to-br from-white via-slate-50 to-blue-50 rounded-2xl border-2 border-blue-200/50 shadow-2xl relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-100/50 to-transparent rounded-full -mr-16 -mt-16"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-emerald-100/50 to-transparent rounded-full -ml-12 -mb-12"></div>
-
-          <div className="flex items-center justify-between mb-6 relative z-10">
-            <motion.h5
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-2xl font-black text-slate-800 flex items-center gap-3"
-            >
-              📊 Cost Breakdown
-              <motion.span
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-emerald-600"
-              >
-                ✨
-              </motion.span>
-            </motion.h5>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-blue-200/50 shadow-sm"
-            >
-              <h6 className="font-bold text-slate-700 mb-4 flex items-center text-lg">
-                ⚖️ Legal Counsel (Tim Harmar)
-              </h6>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Hours:</span>
-                  <span className="font-semibold text-slate-800">{budgetResults.counselHours}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Rate:</span>
-                  <span className="font-semibold text-slate-800">${HOURLY_RATES.counsel}/hr</span>
-                </div>
-                <div className="flex justify-between items-center pt-2 border-t border-slate-200">
-                  <span className="font-semibold text-slate-700">Subtotal:</span>
-                  <span className="font-bold text-emerald-600 text-lg">
-                    ${budgetResults.counselCost.toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-blue-200/50 shadow-sm"
-            >
-              <h6 className="font-bold text-slate-700 mb-4 flex items-center text-lg">
-                👥 Admin Support (Kelly & Josh)
-              </h6>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Hours:</span>
-                  <span className="font-semibold text-slate-800">{budgetResults.adminHours}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Rate:</span>
-                  <span className="font-semibold text-slate-800">${HOURLY_RATES.admin}/hr</span>
-                </div>
-                <div className="flex justify-between items-center pt-2 border-t border-slate-200">
-                  <span className="font-semibold text-slate-700">Subtotal:</span>
-                  <span className="font-bold text-emerald-600 text-lg">
-                    ${budgetResults.adminCost.toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="bg-gradient-to-r from-emerald-50 via-teal-50 to-cyan-50 p-6 rounded-xl border-2 border-emerald-200 shadow-sm relative z-10"
-          >
-            <div className="flex justify-between items-center mb-4">
-              <h6 className="text-2xl font-black text-emerald-800 flex items-center gap-2">
-                💎 Total Estimated Cost
-              </h6>
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.6, type: 'spring', stiffness: 200 }}
-                className="text-right"
-              >
-                <div className="text-4xl font-black text-emerald-700">
-                  ${budgetResults.totalEstimate.toLocaleString()}
-                </div>
-                {budgetResults.savings > 0 && (
-                  <div className="text-sm text-emerald-600 font-semibold">
-                    Saves ${budgetResults.savings.toLocaleString()} with selected options
-                  </div>
-                )}
-              </motion.div>
+      {!analysisResults ? (
+        <div className="space-y-6">
+          {/* Step 1: Case Type Selection */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="md:col-span-2 lg:col-span-3">
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                Select Your Legal Matter *
+              </label>
             </div>
-          </motion.div>
+            {Object.entries(caseTypes).map(([key, caseType]) => (
+              <motion.div
+                key={key}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setCaseInputs({ ...caseInputs, caseType: key })}
+                className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
+                  caseInputs.caseType === key
+                    ? 'border-purple-500 bg-purple-50 shadow-md'
+                    : 'border-gray-200 hover:border-purple-300 hover:bg-purple-25'
+                }`}
+              >
+                <div className="text-2xl mb-2">{caseType.icon}</div>
+                <h4 className="font-bold text-gray-800 mb-1">{caseType.name}</h4>
+                <p className="text-sm text-gray-600">{caseType.description}</p>
+              </motion.div>
+            ))}
+          </div>
 
-          {aiRecommendations && aiRecommendations.length > 0 && (
+          {caseInputs.caseType && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="mt-6 p-6 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-xl border-2 border-indigo-200/50 shadow-sm relative z-10 overflow-hidden"
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 p-6 bg-white/70 rounded-lg border border-purple-200"
             >
-              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-indigo-200/20 to-transparent rounded-full -ml-10 -mt-10"></div>
-              <h6 className="font-black text-indigo-900 mb-4 flex items-center text-xl relative z-10">
-                🤖 AI-Powered Recommendations
-                <motion.span
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="ml-2"
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Case Complexity</label>
+                <select
+                  value={caseInputs.complexity}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, complexity: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 >
-                  ✨
-                </motion.span>
-              </h6>
-              <ul className="space-y-3 relative z-10">
-                {aiRecommendations.map((rec, idx) => (
-                  <motion.li
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.9 + idx * 0.1 }}
-                    className="flex items-start gap-3 text-indigo-800"
-                  >
-                    <span className="text-indigo-500 text-lg">•</span>
-                    <span className="font-medium">{rec}</span>
-                  </motion.li>
-                ))}
-              </ul>
+                  <option value="low">Low - Straightforward matter</option>
+                  <option value="medium">Medium - Standard complexity</option>
+                  <option value="high">High - Complex or novel issues</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Risk Tolerance</label>
+                <select
+                  value={caseInputs.riskTolerance}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, riskTolerance: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="low">Conservative - Minimize risk</option>
+                  <option value="medium">Balanced - Moderate risk</option>
+                  <option value="high">Aggressive - Higher risk tolerance</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Estimated Case Value</label>
+                <select
+                  value={caseInputs.caseValue}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, caseValue: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="">Select value range...</option>
+                  <option value="under-10k">Under $10,000</option>
+                  <option value="10k-50k">$10,000 - $50,000</option>
+                  <option value="50k-250k">$50,000 - $250,000</option>
+                  <option value="250k-1m">$250,000 - $1,000,000</option>
+                  <option value="over-1m">Over $1,000,000</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Primary Goal</label>
+                <select
+                  value={caseInputs.primaryGoal}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, primaryGoal: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="">Select primary goal...</option>
+                  <option value="monetary-recovery">Monetary Recovery</option>
+                  <option value="injunctive-relief">Injunctive Relief</option>
+                  <option value="compliance">Regulatory Compliance</option>
+                  <option value="protection">Asset Protection</option>
+                  <option value="resolution">Quick Resolution</option>
+                  <option value="precedent">Set Legal Precedent</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Prior Negotiation Attempts</label>
+                <select
+                  value={caseInputs.priorNegotiation}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, priorNegotiation: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="no">No prior negotiation</option>
+                  <option value="informal">Informal discussions</option>
+                  <option value="formal">Formal negotiation attempted</option>
+                  <option value="failed">Negotiation failed</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Evidence Strength</label>
+                <select
+                  value={caseInputs.hasEvidence}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, hasEvidence: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="unknown">Uncertain</option>
+                  <option value="weak">Limited evidence</option>
+                  <option value="moderate">Some supporting evidence</option>
+                  <option value="strong">Strong evidence available</option>
+                  <option value="compelling">Compelling evidence</option>
+                </select>
+              </div>
             </motion.div>
           )}
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="flex gap-4 mt-8 relative z-10"
-          >
+          {caseInputs.caseType && caseInputs.caseValue && caseInputs.primaryGoal && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="text-center mt-8"
+            >
+              <motion.button
+                onClick={analyzeCase}
+                disabled={isAnalyzing}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className={`px-8 py-4 rounded-lg font-bold text-lg shadow-lg transition-all duration-300 ${
+                  isAnalyzing
+                    ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white hover:shadow-xl'
+                }`}
+              >
+                {isAnalyzing ? (
+                  <div className="flex items-center gap-3">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    Analyzing Case Strategy...
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <Brain className="w-5 h-5" />
+                    Generate Strategic Analysis
+                  </div>
+                )}
+              </motion.button>
+            </motion.div>
+          )}
+        </div>
+      ) : (
+        /* Results Display */
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6"
+        >
+          {/* Case Overview */}
+          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+            <h4 className="text-2xl font-bold text-purple-800 mb-4 flex items-center gap-3">
+              {caseTypes[analysisResults.caseType]?.icon}
+              {caseTypes[analysisResults.caseType]?.name} Analysis
+            </h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                <div className="text-3xl font-bold text-green-600">{analysisResults.successProbability}%</div>
+                <div className="text-sm text-green-700 font-medium">Success Probability</div>
+              </div>
+              
+              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                <div className="text-lg font-bold text-blue-600">{analysisResults.estimatedTimeframe}</div>
+                <div className="text-sm text-blue-700 font-medium">Estimated Timeline</div>
+              </div>
+              
+              <div className="text-center p-4 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
+                <div className="text-sm font-bold text-orange-600">{analysisResults.riskAssessment}</div>
+                <div className="text-sm text-orange-700 font-medium">Risk Level</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Recommended Approach */}
+          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+            <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+              <ArrowRight className="w-5 h-5" />
+              Recommended Strategic Approach
+            </h5>
+            <div className="space-y-3">
+              {analysisResults.recommendedApproach.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-3 p-3 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-100"
+                >
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                    {index + 1}
+                  </div>
+                  <span className="text-gray-700">{step}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Strategic Insights */}
+          {strategicInsights && strategicInsights.length > 0 && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+              <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                <Lightbulb className="w-5 h-5" />
+                Strategic Insights
+              </h5>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {strategicInsights.map((insight, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`p-4 rounded-lg border-l-4 ${
+                      insight.type === 'opportunity' ? 'border-green-500 bg-green-50' :
+                      insight.type === 'warning' ? 'border-orange-500 bg-orange-50' :
+                      insight.type === 'strategy' ? 'border-blue-500 bg-blue-50' :
+                      'border-purple-500 bg-purple-50'
+                    }`}
+                  >
+                    <h6 className="font-bold text-gray-800 mb-2">{insight.title}</h6>
+                    <p className="text-sm text-gray-600">{insight.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Alternative Options */}
+          <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+            <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+              <MoreHorizontal className="w-5 h-5" />
+              Alternative Resolution Options
+            </h5>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {analysisResults.alternativeOptions.map((option, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg border border-gray-200 text-center hover:shadow-md transition-all duration-300"
+                >
+                  <span className="text-sm text-gray-700 font-medium">{option}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <motion.button
+              onClick={downloadCaseAnalysis}
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-4 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+            >
+              <Download className="w-5 h-5" />
+              Download Analysis Report
+            </motion.button>
+            
+            <motion.button
+              onClick={resetSimulator}
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-4 border-2 border-purple-300 text-purple-700 rounded-xl hover:bg-purple-50 hover:border-purple-400 transition-all duration-300 font-bold flex items-center justify-center gap-2"
+            >
+              <ArrowRight className="w-5 h-5 transform rotate-180" />
+              New Analysis
+            </motion.button>
+            
             <motion.button
               onClick={() => {
-                window.location.href = `mailto:kburton@timharmar.com?subject=Budget Consultation Request&body=Hello,%0D%0A%0D%0AI have used your budget calculator and would like to discuss my legal needs.%0D%0A%0D%0AService Type: ${budgetInputs.serviceType}%0D%0AEstimated Cost: $${budgetResults.totalEstimate.toLocaleString()}%0D%0A%0D%0APlease contact me to schedule a consultation.%0D%0A%0D%0AThank you!`
+                const emailBody = encodeURIComponent(
+                  `I've completed a case strategy analysis using your simulator for a ${caseTypes[analysisResults.caseType]?.name} matter. I would like to schedule a consultation to discuss my specific situation in detail.
+
+Case Type: ${caseTypes[analysisResults.caseType]?.name}
+Estimated Success Rate: ${analysisResults.successProbability}%
+Estimated Timeline: ${analysisResults.estimatedTimeframe}
+
+Please let me know your availability for a consultation.
+
+Thank you!`
+                )
+                window.location.href = `mailto:info@timharmar.com?subject=Consultation Request - Case Strategy Analysis&body=${emailBody}`
               }}
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
-              className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 text-sm font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-4 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
             >
-              <Send className="w-4 h-4" />
+              <Calendar className="w-5 h-5" />
               Schedule Consultation
             </motion.button>
-          </motion.div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg mt-6">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-yellow-800">
+                <strong>Important Disclaimer:</strong> This analysis provides general strategic information based on common legal scenarios and should not be considered legal advice. Every case is unique and requires professional legal assessment. Contact Tim Harmar Legal for personalized legal counsel.
+              </div>
+            </div>
+          </div>
         </motion.div>
       )}
     </motion.div>
@@ -3709,5 +3902,5 @@ export default {
   LegalNewsFeed,
   LegalAssessment,
   ComplianceeDashboard,
-  BudgetCalculator,
+  LegalCaseStrategySimulator,
 }

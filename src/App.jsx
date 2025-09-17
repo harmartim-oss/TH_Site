@@ -5,7 +5,7 @@ import {
   LegalResourcesLibrary,
   LegalNewsFeed,
   LegalAssessment,
-  BudgetCalculator,
+  LegalCaseStrategySimulator,
 } from './components/CuttingEdgeFeatures'
 import LoadingScreen from './components/LoadingScreen'
 import { useDeviceDetection, getResponsiveClassName } from './hooks/useDeviceDetection'
@@ -802,14 +802,14 @@ export default function App() {
                           <button
                             onClick={() => {
                               document
-                                .querySelector('.budget-calculator-section')
+                                .querySelector('.case-strategy-simulator-section')
                                 ?.scrollIntoView({ behavior: 'smooth' })
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
                           >
                             <TrendingUp className="w-4 h-4 mr-3 text-brand-accent" />
-                            Budget Calculator
+                            Case Strategy Simulator
                           </button>
                           <button
                             onClick={() => {
@@ -1428,8 +1428,8 @@ export default function App() {
                 <div className="news-feed-section">
                   <LegalNewsFeed />
                 </div>
-                <div className="budget-calculator-section">
-                  <BudgetCalculator />
+                <div className="case-strategy-simulator-section">
+                  <LegalCaseStrategySimulator />
                 </div>
               </div>
             </div>
