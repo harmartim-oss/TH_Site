@@ -5,6 +5,7 @@ import {
   LegalResourcesLibrary,
   LegalNewsFeed,
   LegalAssessment,
+  BudgetCalculator,
 } from './components/CuttingEdgeFeatures'
 import LoadingScreen from './components/LoadingScreen'
 import { useDeviceDetection, getResponsiveClassName } from './hooks/useDeviceDetection'
@@ -1428,7 +1429,7 @@ export default function App() {
                   <LegalNewsFeed />
                 </div>
                 <div className="budget-calculator-section">
-                  <SmartScheduler />
+                  <BudgetCalculator />
                 </div>
               </div>
             </div>

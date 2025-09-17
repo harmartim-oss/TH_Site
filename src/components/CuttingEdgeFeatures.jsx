@@ -26,7 +26,143 @@ import {
   ArrowRight,
 } from 'lucide-react'
 
-// AI-Powered Legal Assistant Chat Widget
+// Utility function to open Privacy Compliance Guide in new window
+const openPrivacyGuide = () => {
+  const content = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Compliance Guide for Small Business</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #1f2937; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
+        h2 { color: #374151; margin-top: 30px; }
+        h3 { color: #4b5563; }
+        .step { margin-bottom: 20px; padding: 15px; background: #f9fafb; border-left: 4px solid #3b82f6; }
+        .disclaimer { background: #fef3c7; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .footer { text-align: center; margin-top: 40px; padding: 20px; background: #f3f4f6; }
+    </style>
+</head>
+<body>
+    <h1>🔐 Privacy Compliance Guide for Small Business</h1>
+    <p><strong>Prepared by Tim Harmar Legal</strong></p>
+    
+    <div class="disclaimer">
+        <strong>Important:</strong> This guide provides general information only and does not constitute legal advice. 
+        Every business situation is unique. For personalized guidance, schedule a consultation with Tim Harmar Legal.
+    </div>
+
+    <h2>1. Understanding PIPEDA (Personal Information Protection and Electronic Documents Act)</h2>
+    <div class="step">
+        <h3>What is PIPEDA?</h3>
+        <p>PIPEDA is Canada's federal privacy law that governs how private sector organizations collect, use, and disclose personal information in the course of commercial activities.</p>
+        
+        <h3>Who Must Comply?</h3>
+        <ul>
+            <li>All federally regulated businesses</li>
+            <li>Organizations operating across provincial/territorial boundaries</li>
+            <li>Businesses in provinces without substantially similar privacy laws</li>
+        </ul>
+    </div>
+
+    <h2>2. The 10 Privacy Principles</h2>
+    <div class="step">
+        <ol>
+            <li><strong>Accountability:</strong> Designate someone responsible for privacy compliance</li>
+            <li><strong>Identifying Purposes:</strong> Clearly state why you collect personal information</li>
+            <li><strong>Consent:</strong> Obtain meaningful consent before collecting, using, or disclosing</li>
+            <li><strong>Limiting Collection:</strong> Only collect information necessary for identified purposes</li>
+            <li><strong>Limiting Use, Disclosure & Retention:</strong> Use info only for stated purposes</li>
+            <li><strong>Accuracy:</strong> Keep personal information accurate and up-to-date</li>
+            <li><strong>Safeguards:</strong> Protect information with appropriate security measures</li>
+            <li><strong>Openness:</strong> Make privacy policies readily available</li>
+            <li><strong>Individual Access:</strong> Provide access to personal information upon request</li>
+            <li><strong>Challenging Compliance:</strong> Provide mechanism for complaints</li>
+        </ol>
+    </div>
+
+    <h2>3. Privacy Policy Requirements</h2>
+    <div class="step">
+        <h3>Your privacy policy must include:</h3>
+        <ul>
+            <li>What personal information you collect</li>
+            <li>Why you collect it</li>
+            <li>How you use it</li>
+            <li>When you may disclose it and to whom</li>
+            <li>How you protect it</li>
+            <li>How individuals can access their information</li>
+            <li>How to contact your privacy officer</li>
+        </ul>
+    </div>
+
+    <h2>4. Data Breach Response Plan</h2>
+    <div class="step">
+        <h3>Mandatory Breach Reporting (since November 2018):</h3>
+        <ul>
+            <li><strong>Report to Privacy Commissioner:</strong> As soon as feasible after becoming aware</li>
+            <li><strong>Notify affected individuals:</strong> If real risk of significant harm</li>
+            <li><strong>Keep records:</strong> All breaches must be documented</li>
+        </ul>
+        
+        <h3>Breach Response Steps:</h3>
+        <ol>
+            <li>Contain the breach immediately</li>
+            <li>Assess the scope and risk</li>
+            <li>Report to Privacy Commissioner if required</li>
+            <li>Notify affected individuals if required</li>
+            <li>Document everything</li>
+            <li>Review and improve security measures</li>
+        </ol>
+    </div>
+
+    <h2>5. Implementation Checklist</h2>
+    <div class="step">
+        <h3>Getting Started:</h3>
+        <ul>
+            <li>☐ Appoint a privacy officer</li>
+            <li>☐ Conduct privacy audit/assessment</li>
+            <li>☐ Map data flows in your organization</li>
+            <li>☐ Draft comprehensive privacy policy</li>
+            <li>☐ Implement consent mechanisms</li>
+            <li>☐ Create data breach response plan</li>
+            <li>☐ Train staff on privacy obligations</li>
+            <li>☐ Establish access request procedures</li>
+            <li>☐ Regular privacy policy reviews</li>
+        </ul>
+    </div>
+
+    <h2>6. Common Compliance Challenges</h2>
+    <div class="step">
+        <ul>
+            <li><strong>Website cookies and tracking:</strong> Require proper consent mechanisms</li>
+            <li><strong>Employee information:</strong> Still covered by PIPEDA for employment purposes</li>
+            <li><strong>Marketing communications:</strong> Must comply with both PIPEDA and CASL</li>
+            <li><strong>Cloud storage:</strong> Ensure service providers have adequate safeguards</li>
+            <li><strong>Cross-border transfers:</strong> Special considerations for data leaving Canada</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <h3>Need Help with Privacy Compliance?</h3>
+        <p>Tim Harmar is a recognized expert in Canadian privacy law with extensive experience helping businesses achieve and maintain compliance.</p>
+        <p><strong>Contact Tim Harmar Legal:</strong><br>
+        📞 (705) 943-5049<br>
+        ✉️ kburton@timharmar.com<br>
+        🌐 www.timharmar.com</p>
+        <p><em>This guide is current as of 2024 and subject to legal and regulatory changes.</em></p>
+    </div>
+</body>
+</html>
+    `
+
+  const newWindow = window.open('', '_blank')
+  newWindow.document.write(content)
+  newWindow.document.close()
+}
+
+// AI-Powered Legal Assistant Chat Widget with Enhanced Capabilities
 export const AILegalAssistant = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
@@ -39,155 +175,197 @@ export const AILegalAssistant = () => {
   ])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [conversationContext, setConversationContext] = useState({
+    topics: [],
+    userIntent: null,
+    lastInteraction: null,
+  })
 
-  // Enhanced AI response logic with appointment integration
+  // Enhanced AI response logic with conversation context and improved understanding
   const generateAIResponse = (userMessage) => {
     const message = userMessage.toLowerCase()
+    const words = message.split(' ')
+    
+    // Update conversation context
+    const updateContext = (topic, intent) => {
+      setConversationContext(prev => ({
+        topics: [...prev.topics.slice(-4), topic], // Keep last 5 topics
+        userIntent: intent,
+        lastInteraction: Date.now(),
+      }))
+    }
 
-    // Emergency legal help
-    if (
-      message.includes('urgent') ||
-      message.includes('emergency') ||
-      message.includes('asap') ||
-      message.includes('immediately')
-    ) {
+    // Enhanced question detection
+    const isQuestion = message.includes('?') || 
+                     words.some(word => ['what', 'how', 'when', 'where', 'why', 'who', 'can', 'do', 'will', 'should', 'would', 'could'].includes(word))
+
+    // Greeting detection
+    if (message.match(/^(hi|hello|hey|good\s+(morning|afternoon|evening)|greetings)/i)) {
+      updateContext('greeting', 'greet')
       return {
-        text: 'I understand this is urgent. For immediate legal assistance, please call us directly at (705) 943-5049. Tim Harmar provides emergency legal consultations for time-sensitive matters. I can also help you schedule an expedited appointment.',
-        quickActions: ['Call Now (705) 943-5049', 'Emergency Consultation', 'Text Us'],
+        text: "Hello! Great to meet you. I'm here to help with any legal questions you might have. Tim Harmar Legal specializes in business law, privacy & cybersecurity, litigation, and intellectual property. What brings you here today?",
+        quickActions: ['View Services', 'Free Consultation', 'About Tim'],
       }
     }
 
-    // Startup and business formation
-    if (
-      message.includes('startup') ||
-      message.includes('business formation') ||
-      message.includes('new business') ||
-      message.includes('incorporate')
-    ) {
+    // Budget and cost inquiries with enhanced detection
+    if (message.includes('budget') || message.includes('calculate') || message.includes('estimate') || 
+        (message.includes('cost') && (message.includes('much') || message.includes('estimate'))) ||
+        message.includes('price') || message.includes('fee') || message.includes('affordable')) {
+      updateContext('budget', 'cost_inquiry')
       return {
-        text: "Great! Tim specializes in startup legal services. Our Business Start Up & Strategy package includes: business entity selection, founders' agreements, IP strategy, regulatory compliance roadmaps, and employment policies. We help you build a solid legal foundation while staying agile and cost-effective. What stage is your startup in?",
-        quickActions: ['Startup Consultation', 'Incorporation Guide', 'Founders Agreement Info'],
+        text: "I can help you estimate legal costs! We have an interactive budget calculator that uses Tim's actual rates ($300/hr for counsel, $90/hr for admin support). It considers complexity, urgency, and project scope to give you accurate estimates. You can also schedule a free consultation to discuss your specific needs and get a personalized quote.",
+        quickActions: ['Use Budget Calculator', 'Free Consultation', 'View Pricing Guide'],
       }
     }
 
-    // Privacy and cybersecurity
-    if (
-      message.includes('privacy') ||
-      message.includes('data') ||
-      message.includes('cybersecurity') ||
-      message.includes('pipeda') ||
-      message.includes('gdpr') ||
-      message.includes('breach')
-    ) {
+    // Emergency legal help with enhanced urgency detection
+    const urgencyWords = ['urgent', 'emergency', 'asap', 'immediately', 'crisis', 'help', 'problem', 'trouble', 'sued', 'court date']
+    if (urgencyWords.some(word => message.includes(word))) {
+      updateContext('emergency', 'urgent_help')
       return {
-        text: 'Tim is a leading expert in Canadian privacy and cybersecurity law. Our services include PIPEDA compliance, data breach response protocols, privacy impact assessments, CASL compliance, cross-border data transfers, and cybersecurity audits. We help businesses of all sizes navigate the complex privacy landscape. What specific privacy challenge are you facing?',
+        text: 'I understand this is urgent and time-sensitive. For immediate legal assistance, please call Tim directly at (705) 943-5049. We provide emergency consultations and can often accommodate same-day or next-day meetings for critical matters. Don\'t wait - legal issues often become more complex and expensive when delayed.',
+        quickActions: ['Call Now (705) 943-5049', 'Emergency Consultation', 'Text for Urgent Help'],
+      }
+    }
+
+    // Business and startup inquiries with improved detection
+    const businessWords = ['startup', 'business', 'company', 'corporation', 'incorporate', 'llc', 'partnership', 'entrepreneur', 'launch', 'new venture']
+    if (businessWords.some(word => message.includes(word))) {
+      updateContext('business', 'business_formation')
+      return {
+        text: "Excellent! Tim specializes in helping entrepreneurs and growing businesses. Our comprehensive Business Start Up & Strategy package includes entity selection and formation, founders' agreements, IP strategy development, regulatory compliance roadmaps, employment policies, and ongoing legal support. We understand startups need efficient, cost-effective legal solutions that scale with growth. What stage is your business in?",
+        quickActions: ['Startup Package Info', 'Incorporation Guide', 'Schedule Business Consultation'],
+      }
+    }
+
+    // Privacy and cybersecurity with enhanced keyword detection
+    const privacyWords = ['privacy', 'data', 'cybersecurity', 'pipeda', 'gdpr', 'breach', 'security', 'compliance', 'personal information', 'cyber']
+    if (privacyWords.some(word => message.includes(word))) {
+      updateContext('privacy', 'privacy_compliance')
+      return {
+        text: 'Tim is a recognized expert in Canadian privacy and cybersecurity law - this is one of our core specialties! Our privacy practice includes PIPEDA compliance audits, data breach response protocols, privacy impact assessments, CASL email marketing compliance, cross-border data transfer agreements, and cybersecurity policy development. We help businesses build privacy-first practices that protect both your customers and your company. What specific privacy challenge are you facing?',
         quickActions: ['Privacy Assessment', 'Data Breach Response', 'PIPEDA Consultation'],
       }
     }
 
-    // Litigation and disputes
-    if (
-      message.includes('litigation') ||
-      message.includes('dispute') ||
-      message.includes('contract') ||
-      message.includes('lawsuit') ||
-      message.includes('sued') ||
-      message.includes('court')
-    ) {
+    // Litigation and disputes with comprehensive detection
+    const litigationWords = ['litigation', 'dispute', 'contract', 'lawsuit', 'legal action', 'court', 'trial', 'settlement', 'mediation', 'arbitration', 'conflict']
+    if (litigationWords.some(word => message.includes(word))) {
+      updateContext('litigation', 'dispute_resolution')
       return {
-        text: 'Tim has extensive litigation experience, including cases argued at the Supreme Court of Canada. Our civil litigation practice covers contract disputes, employment litigation, commercial disputes, and appellate matters. We provide strategic advocacy while exploring cost-effective resolution options like mediation. Tell me more about your situation.',
-        quickActions: ['Litigation Strategy', 'Contract Dispute Help', 'Mediation Options'],
+        text: 'Tim has extensive litigation experience, including arguing cases at the Supreme Court of Canada. Our civil litigation practice covers contract disputes, employment litigation, commercial disputes, defamation, and appellate matters. We believe in strategic advocacy that explores all resolution options - including negotiation, mediation, and arbitration - to find the most cost-effective solution. Tell me more about your situation.',
+        quickActions: ['Litigation Strategy', 'Dispute Resolution Options', 'Contract Dispute Help'],
       }
     }
 
-    // Intellectual property
-    if (
-      message.includes('intellectual property') ||
-      message.includes('trademark') ||
-      message.includes('copyright') ||
-      message.includes('patent') ||
-      message.includes('ip') ||
-      message.includes('brand protection')
-    ) {
+    // Intellectual property with expanded detection
+    const ipWords = ['intellectual property', 'trademark', 'copyright', 'patent', 'ip', 'brand', 'logo', 'licensing', 'trade secret']
+    if (ipWords.some(word => message.includes(word))) {
+      updateContext('ip', 'intellectual_property')
       return {
-        text: 'Our IP practice provides comprehensive protection for your innovations and creative assets. We handle trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, and IP portfolio management. Tim helps businesses develop strategic IP licensing and monetization strategies. What IP assets need protection?',
+        text: 'Our IP practice provides comprehensive protection for your innovations and creative assets. We handle trademark registration and enforcement, copyright matters, trade secret protection, licensing agreements, IP portfolio management, and brand protection strategies. Tim helps businesses develop strategic IP monetization plans that turn intellectual property into revenue streams. What IP assets need protection?',
         quickActions: ['Trademark Registration', 'IP Strategy Session', 'Copyright Protection'],
       }
     }
 
-    // Pricing and consultation
-    if (
-      message.includes('cost') ||
-      message.includes('price') ||
-      message.includes('fee') ||
-      message.includes('consultation') ||
-      message.includes('free')
-    ) {
+    // Employment law detection
+    const employmentWords = ['employment', 'employee', 'workplace', 'hiring', 'firing', 'hr', 'human resources', 'contract', 'policy']
+    if (employmentWords.some(word => message.includes(word)) && !message.includes('intellectual')) {
+      updateContext('employment', 'employment_law')
       return {
-        text: 'We believe in transparent, value-based pricing. Your initial consultation is completely FREE with no obligation. During this 30-minute session, Tim will assess your legal needs and provide strategic guidance. Our fee structures are competitive and we offer flexible payment arrangements. Ready to schedule?',
-        quickActions: ['Book Free Consultation', 'Learn About Fees', 'Payment Options'],
+        text: 'Tim provides comprehensive employment law services for both employers and employees. Our employment practice includes drafting employment contracts, workplace policies, performance management protocols, termination procedures, workplace investigations, and compliance with Ontario employment standards. We help create positive, legally compliant workplaces that protect both employers and employees. What employment matter can we help with?',
+        quickActions: ['Employment Contracts', 'Workplace Policies', 'HR Consultation'],
       }
     }
 
-    // Scheduling and appointments
-    if (
-      message.includes('schedule') ||
-      message.includes('appointment') ||
-      message.includes('meet') ||
-      message.includes('book') ||
-      message.includes('available')
-    ) {
+    // Consultation and scheduling with natural language detection
+    const consultationWords = ['schedule', 'appointment', 'meet', 'book', 'available', 'consultation', 'talk', 'discuss', 'call']
+    if (consultationWords.some(word => message.includes(word))) {
+      updateContext('scheduling', 'book_consultation')
       return {
-        text: 'Perfect! I can help you schedule a consultation with Tim. We offer flexible scheduling including morning, afternoon, and evening slots. Our Smart Scheduler below makes it easy to book your preferred time. Tim also offers virtual consultations via secure video call. What time works best for you?',
-        quickActions: ['Use Smart Scheduler', 'Virtual Meeting', 'Call to Schedule'],
+        text: 'Perfect! I\'d be happy to help you schedule a consultation with Tim. We offer completely FREE initial consultations with no obligation - this gives you a chance to discuss your situation and get strategic guidance. We have flexible scheduling including morning, afternoon, and evening slots, plus virtual consultations via secure video call. The Smart Scheduler below makes booking easy, or I can connect you directly.',
+        quickActions: ['Use Smart Scheduler', 'Book Virtual Meeting', 'Call to Schedule (705) 943-5049'],
       }
     }
 
     // Location and service area
-    if (
-      message.includes('location') ||
-      message.includes('where') ||
-      message.includes('sault') ||
-      message.includes('ontario') ||
-      message.includes('office')
-    ) {
+    const locationWords = ['location', 'where', 'sault', 'ontario', 'office', 'visit', 'address']
+    if (locationWords.some(word => message.includes(word))) {
+      updateContext('location', 'office_location')
       return {
-        text: 'Tim Harmar Legal is based in Sault Ste. Marie, Ontario, serving clients throughout Northern Ontario and beyond. We offer in-person consultations at our Sault Ste. Marie office, as well as secure virtual meetings for clients anywhere in Ontario. Our practice covers all of Canada for federal matters.',
-        quickActions: ['Virtual Consultation', 'Office Location', 'Service Areas'],
+        text: 'Tim Harmar Legal is based in Sault Ste. Marie, Ontario, serving clients throughout Northern Ontario and beyond. We offer in-person consultations at our modern Sault Ste. Marie office, as well as secure virtual meetings for clients anywhere in Ontario. Our practice covers all of Canada for federal matters like intellectual property and privacy law.',
+        quickActions: ['Virtual Consultation', 'Office Location & Directions', 'Service Areas'],
       }
     }
 
-    // Legal experience and credentials
-    if (
-      message.includes('experience') ||
-      message.includes('background') ||
-      message.includes('qualified') ||
-      message.includes('credentials') ||
-      message.includes('supreme court')
-    ) {
+    // Experience and credentials
+    const credentialsWords = ['experience', 'background', 'qualified', 'credentials', 'supreme court', 'education', 'awards']
+    if (credentialsWords.some(word => message.includes(word))) {
+      updateContext('credentials', 'lawyer_background')
       return {
-        text: 'Tim Harmar is an award-winning lawyer with 15+ years of experience and has argued cases at the Supreme Court of Canada. He holds degrees from University of Windsor Faculty of Law and York University Osgoode Hall Law School. Tim is a member in good standing with the Law Society of Ontario and regularly speaks at legal conferences.',
-        quickActions: ["Tim's Full Bio", 'Awards & Recognition', 'Schedule with Tim'],
+        text: 'Tim Harmar is an award-winning lawyer with 15+ years of experience who has argued cases at the Supreme Court of Canada. He holds degrees from University of Windsor Faculty of Law and York University Osgoode Hall Law School. Tim is a member in good standing with the Law Society of Ontario, regularly speaks at legal conferences, and has received recognition for his expertise in privacy law and litigation. His combination of legal excellence and technological innovation sets him apart.',
+        quickActions: ["View Tim's Full Bio", 'Awards & Recognition', 'Schedule with Tim'],
       }
     }
 
     // Contact information
-    if (
-      message.includes('contact') ||
-      message.includes('phone') ||
-      message.includes('email') ||
-      message.includes('reach')
-    ) {
+    const contactWords = ['contact', 'phone', 'email', 'reach', 'call', 'message']
+    if (contactWords.some(word => message.includes(word))) {
+      updateContext('contact', 'contact_info')
       return {
-        text: 'You can reach us several ways: Phone: (705) 943-5049 | Email: kburton@timharmar.com | Or use our contact form for non-urgent matters. We typically respond to emails within 2 business hours during office hours (9 AM - 5 PM EST). For urgent matters, please call directly.',
+        text: 'You can reach us several ways: Phone: (705) 943-5049 | Email: kburton@timharmar.com | Or use our contact form for non-urgent matters. We typically respond to emails within 2 business hours during office hours (9 AM - 5 PM EST). For urgent matters, please call directly. Kelly Burton, our legal assistant, coordinates all communications and scheduling.',
         quickActions: ['Call (705) 943-5049', 'Send Email', 'Contact Form'],
       }
     }
 
-    // Default comprehensive response
+    // Handle follow-up questions based on context
+    if (conversationContext.topics.length > 0 && isQuestion) {
+      const lastTopic = conversationContext.topics[conversationContext.topics.length - 1]
+      
+      if (lastTopic === 'budget' && (message.includes('how') || message.includes('work'))) {
+        return {
+          text: "The budget calculator analyzes your specific needs using several factors: service type, complexity level, urgency, client size, and project duration. It then applies Tim's actual hourly rates and provides a detailed breakdown showing counsel time, admin support time, and total estimated costs. The AI recommendations help optimize your legal spend. It's much more accurate than generic estimates!",
+          quickActions: ['Try Calculator Now', 'See Sample Estimate', 'Schedule Consultation'],
+        }
+      }
+
+      if (lastTopic === 'privacy' && (message.includes('start') || message.includes('begin'))) {
+        return {
+          text: "Great question! Privacy compliance starts with a thorough assessment of how your business collects, uses, and stores personal information. We typically begin with a privacy audit, then develop customized policies and procedures. For businesses just starting, we can build privacy protection into your foundation. For established businesses, we identify gaps and create an implementation roadmap.",
+          quickActions: ['Privacy Audit Info', 'PIPEDA Compliance Guide', 'Schedule Assessment'],
+        }
+      }
+    }
+
+    // Conversational responses for common phrases
+    if (message.includes('thank you') || message.includes('thanks')) {
+      return {
+        text: "You're very welcome! I'm here anytime you need legal guidance. Tim and our team are committed to providing exceptional service and making legal help accessible. Is there anything else I can help you with today?",
+        quickActions: ['Ask Another Question', 'Schedule Consultation', 'View All Services'],
+      }
+    }
+
+    if (message.includes('goodbye') || message.includes('bye')) {
+      return {
+        text: "Thank you for chatting with me today! Remember, we're always here when you need legal assistance. Feel free to return anytime with questions, and don't forget about your free consultation with Tim. Have a great day!",
+        quickActions: ['Schedule Free Consultation', 'Contact Info', 'Bookmark This Page'],
+      }
+    }
+
+    // Enhanced default response with personalization
+    updateContext('general', 'general_inquiry')
+    const greetings = [
+      "I'd be happy to help you with that!",
+      "That's a great question!",
+      "Let me provide you with some information about that.",
+      "I can definitely help you understand this better.",
+    ]
+    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)]
+
     return {
-      text: 'Welcome! Tim Harmar Legal provides cutting-edge legal solutions in Northern Ontario. Our award-winning practice specializes in civil litigation, privacy & cybersecurity law, intellectual property, business law, and startup consulting. Tim combines 15+ years of experience with innovative technology to deliver exceptional results. What legal challenge can we help you with?',
-      quickActions: ['View All Services', 'Free Consultation', 'Legal Assessment'],
+      text: `${randomGreeting} Tim Harmar Legal provides cutting-edge legal solutions in Northern Ontario and beyond. Our award-winning practice specializes in civil litigation, privacy & cybersecurity law, intellectual property, business law, and startup consulting. Tim combines 15+ years of experience with innovative technology to deliver exceptional results. What specific legal challenge can we help you with?`,
+      quickActions: ['View All Services', 'Free Consultation', 'Legal Needs Assessment'],
     }
   }
 
@@ -337,6 +515,14 @@ export const AILegalAssistant = () => {
           responseText =
             'For urgent legal matters, please call (705) 943-5049 immediately. Tim provides emergency consultations for time-sensitive issues including litigation deadlines, regulatory compliance, data breaches, and business crises. After-hours emergency contact available for existing clients.'
           newQuickActions = ['Call Emergency Line', 'Urgent Appointment', 'Crisis Management']
+          hasActions = true
+          break
+
+        case 'Privacy Guide':
+          openPrivacyGuide()
+          responseText =
+            "I've opened our comprehensive Privacy Compliance Guide for Small Business in a new window. This guide covers PIPEDA requirements, privacy policy templates, data breach protocols, and practical compliance steps. It's one of our most popular resources!"
+          newQuickActions = ['Privacy Assessment', 'PIPEDA Consultation', 'Data Breach Help']
           hasActions = true
           break
 
@@ -1077,97 +1263,6 @@ export const LegalResourcesLibrary = () => {
 
     // Download the PDF
     doc.save(`Legal-Budget-Estimate-${new Date().toISOString().split('T')[0]}.pdf`)
-  }
-
-  // Function to open Privacy Compliance Guide in new window
-  const openPrivacyGuide = () => {
-    const content = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Compliance Guide for Small Business</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-        h1 { color: #1f2937; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
-        h2 { color: #374151; margin-top: 30px; }
-        h3 { color: #4b5563; }
-        .step { margin-bottom: 20px; padding: 15px; background: #f9fafb; border-left: 4px solid #3b82f6; }
-        .disclaimer { background: #fef3c7; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .footer { text-align: center; margin-top: 40px; padding: 20px; background: #f3f4f6; }
-    </style>
-</head>
-<body>
-    <h1>Privacy Compliance Guide for Small Business</h1>
-    <h2>Essential Steps to Ensure Your Business Complies with Canadian Privacy Laws</h2>
-    
-    <h3>Introduction</h3>
-    <p>This guide provides small businesses in Ontario with a clear and practical roadmap to comply with Canadian privacy laws, including the Personal Information Protection and Electronic Documents Act (PIPEDA) and Ontario's privacy regulations.</p>
-    
-    <h3>Key Steps for Privacy Compliance</h3>
-    
-    <div class="step">
-        <h4>1. Understand Applicable Laws</h4>
-        <p>PIPEDA applies to private-sector organizations in Canada that collect, use, or disclose personal information during commercial activities.</p>
-    </div>
-    
-    <div class="step">
-        <h4>2. Appoint a Privacy Officer</h4>
-        <p>Designate a person responsible for overseeing privacy compliance and handling privacy policies and complaints.</p>
-    </div>
-    
-    <div class="step">
-        <h4>3. Develop a Privacy Policy</h4>
-        <p>Create a clear, accessible privacy policy that explains how your business collects, uses, stores, and protects personal information.</p>
-    </div>
-    
-    <div class="step">
-        <h4>4. Obtain Consent</h4>
-        <p>Obtain explicit or implied consent before collecting personal information and clearly explain why the information is needed.</p>
-    </div>
-    
-    <div class="step">
-        <h4>5. Secure Personal Information</h4>
-        <p>Implement safeguards such as encryption, secure storage, and restricted access to personal data.</p>
-    </div>
-    
-    <div class="step">
-        <h4>6. Limit Data Retention</h4>
-        <p>Retain personal information only as long as necessary for the identified purpose.</p>
-    </div>
-    
-    <div class="step">
-        <h4>7. Respond to Access Requests</h4>
-        <p>Allow individuals to access their personal information and respond to requests within 30 days.</p>
-    </div>
-    
-    <div class="step">
-        <h4>8. Prepare for Data Breaches</h4>
-        <p>Develop a data breach response plan and document all breaches to prevent recurrence.</p>
-    </div>
-    
-    <h3>Resources</h3>
-    <ul>
-        <li>Office of the Privacy Commissioner of Canada: <a href="https://www.priv.gc.ca" target="_blank">https://www.priv.gc.ca</a></li>
-        <li>PIPEDA Compliance Guide: <a href="https://www.priv.gc.ca/en/for-businesses" target="_blank">https://www.priv.gc.ca/en/for-businesses</a></li>
-    </ul>
-    
-    <div class="disclaimer">
-        <h4>Disclaimer</h4>
-        <p>This guide is for informational purposes only and does not constitute legal advice. Consult a qualified lawyer to ensure compliance with all applicable laws.</p>
-    </div>
-    
-    <div class="footer">
-        <p>Prepared by Tim Harmar: Legal and Consulting Services - Sault Ste. Marie, Ontario</p>
-    </div>
-</body>
-</html>
-    `
-
-    const newWindow = window.open('', '_blank')
-    newWindow.document.write(content)
-    newWindow.document.close()
   }
 
   // Function to download PDF version of Privacy Guide using jsPDF
@@ -2515,8 +2610,8 @@ export const LegalNewsFeed = () => {
 // Interactive Legal Compliance Dashboard
 export const ComplianceeDashboard = () => {
   const [selectedCompliance, setSelectedCompliance] = useState('corporate')
-  const [activeReminders, setActiveReminders] = useState(3)
-  const [completionRate, setCompletionRate] = useState(87)
+  const [activeReminders, _setActiveReminders] = useState(3)
+  const [completionRate, _setCompletionRate] = useState(87)
 
   const complianceCategories = {
     corporate: {
@@ -3071,6 +3166,423 @@ export const LegalAssessment = () => {
   )
 }
 
+// Standalone Budget Calculator Component
+export const BudgetCalculator = () => {
+  // Enhanced Budget Calculator state with AI functionality
+  const [budgetInputs, setBudgetInputs] = useState({
+    serviceType: '',
+    complexity: 'medium',
+    urgency: 'normal',
+    duration: 'one-time',
+    estimatedHours: '',
+    additionalServices: [],
+    clientSize: 'small',
+    industryType: '',
+  })
+  const [budgetResults, setBudgetResults] = useState(null)
+  const [aiRecommendations, setAiRecommendations] = useState(null)
+
+  // Tim Harmar hourly rates as specified
+  const HOURLY_RATES = {
+    counsel: 300, // Tim Harmar as counsel
+    admin: 90, // Kelly and Josh admin staff rate
+  }
+
+  // AI-powered budget calculation with enhanced logic
+  const calculateBudget = () => {
+    const baseServices = {
+      'business-formation': {
+        baseHours: 8,
+        counselHours: 6,
+        adminHours: 2,
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.5 },
+      },
+      'contract-services': {
+        baseHours: 4,
+        counselHours: 3,
+        adminHours: 1,
+        complexity: { simple: 0.6, medium: 1.0, complex: 1.8 },
+      },
+      'employment-law': {
+        baseHours: 6,
+        counselHours: 4,
+        adminHours: 2,
+        complexity: { simple: 0.8, medium: 1.0, complex: 1.4 },
+      },
+      'intellectual-property': {
+        baseHours: 10,
+        counselHours: 8,
+        adminHours: 2,
+        complexity: { simple: 0.9, medium: 1.0, complex: 1.6 },
+      },
+      'litigation-support': {
+        baseHours: 15,
+        counselHours: 12,
+        adminHours: 3,
+        complexity: { simple: 0.8, medium: 1.0, complex: 2.0 },
+      },
+      'privacy-compliance': {
+        baseHours: 12,
+        counselHours: 9,
+        adminHours: 3,
+        complexity: { simple: 0.7, medium: 1.0, complex: 1.7 },
+      },
+    }
+
+    const urgencyMultipliers = {
+      normal: 1.0,
+      urgent: 1.3,
+      emergency: 1.6,
+    }
+
+    const durationMultipliers = {
+      'one-time': 1.0,
+      'short-term': 0.95,
+      'long-term': 0.85,
+      ongoing: 0.8,
+    }
+
+    const clientSizeMultipliers = {
+      small: 1.0,
+      medium: 1.1,
+      large: 1.25,
+      enterprise: 1.4,
+    }
+
+    const service = baseServices[budgetInputs.serviceType]
+    if (!service) return
+
+    // Apply multipliers
+    const complexityMultiplier = service.complexity[budgetInputs.complexity]
+    const urgencyMultiplier = urgencyMultipliers[budgetInputs.urgency]
+    const durationMultiplier = durationMultipliers[budgetInputs.duration]
+    const clientSizeMultiplier = clientSizeMultipliers[budgetInputs.clientSize]
+
+    // Calculate hours with all multipliers
+    const adjustedCounselHours = Math.ceil(
+      service.counselHours * complexityMultiplier * urgencyMultiplier * clientSizeMultiplier
+    )
+
+    const adjustedAdminHours = Math.ceil(
+      service.adminHours * complexityMultiplier * urgencyMultiplier * clientSizeMultiplier
+    )
+
+    // Calculate costs
+    const counselCost = adjustedCounselHours * HOURLY_RATES.counsel
+    const adminCost = adjustedAdminHours * HOURLY_RATES.admin
+    const subtotal = counselCost + adminCost
+
+    // Apply duration discount
+    const totalEstimate = Math.round(subtotal * durationMultiplier)
+
+    // Generate AI recommendations
+    const generateAIRecommendations = () => {
+      const recommendations = []
+
+      if (budgetInputs.complexity === 'complex') {
+        recommendations.push('Consider breaking down complex matters into phases to manage costs')
+      }
+      if (budgetInputs.urgency === 'emergency') {
+        recommendations.push('Emergency matters require immediate attention but may incur premium rates')
+      }
+      if (budgetInputs.clientSize === 'enterprise') {
+        recommendations.push('Large organizations may benefit from retainer agreements for ongoing services')
+      }
+      if (budgetInputs.duration === 'ongoing') {
+        recommendations.push('Ongoing legal support offers the best value for continuous compliance needs')
+      }
+
+      return recommendations
+    }
+
+    const results = {
+      serviceType: budgetInputs.serviceType,
+      counselHours: adjustedCounselHours,
+      adminHours: adjustedAdminHours,
+      counselCost: counselCost,
+      adminCost: adminCost,
+      subtotal: subtotal,
+      totalEstimate: totalEstimate,
+      savings: subtotal - totalEstimate,
+    }
+
+    setBudgetResults(results)
+    setAiRecommendations(generateAIRecommendations())
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="bg-gradient-to-br from-white to-blue-50 p-8 rounded-xl shadow-lg border border-blue-200"
+    >
+      <div className="text-center mb-8">
+        <h3 className="text-3xl font-bold text-blue-800 mb-4 flex items-center justify-center gap-3">
+          💰 Legal Budget Calculator
+        </h3>
+        <p className="text-blue-700 text-lg">
+          Get accurate cost estimates based on Tim Harmar's rates: $300/hr (counsel) and $90/hr (admin support)
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Service Type *
+          </label>
+          <select
+            value={budgetInputs.serviceType}
+            onChange={(e) => setBudgetInputs({ ...budgetInputs, serviceType: e.target.value })}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="">Select service type...</option>
+            <option value="business-formation">Business Formation</option>
+            <option value="contract-services">Contract Services</option>
+            <option value="employment-law">Employment Law</option>
+            <option value="intellectual-property">Intellectual Property</option>
+            <option value="litigation-support">Litigation Support</option>
+            <option value="privacy-compliance">Privacy & Compliance</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Complexity Level
+          </label>
+          <select
+            value={budgetInputs.complexity}
+            onChange={(e) => setBudgetInputs({ ...budgetInputs, complexity: e.target.value })}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="simple">Simple</option>
+            <option value="medium">Medium</option>
+            <option value="complex">Complex</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Urgency
+          </label>
+          <select
+            value={budgetInputs.urgency}
+            onChange={(e) => setBudgetInputs({ ...budgetInputs, urgency: e.target.value })}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="normal">Normal Timeline</option>
+            <option value="urgent">Urgent (within 1 week)</option>
+            <option value="emergency">Emergency (ASAP)</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Client Size
+          </label>
+          <select
+            value={budgetInputs.clientSize}
+            onChange={(e) => setBudgetInputs({ ...budgetInputs, clientSize: e.target.value })}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="small">Small Business (1-10 employees)</option>
+            <option value="medium">Medium Business (11-50 employees)</option>
+            <option value="large">Large Business (51-250 employees)</option>
+            <option value="enterprise">Enterprise (250+ employees)</option>
+          </select>
+        </div>
+      </div>
+
+      <motion.button
+        onClick={calculateBudget}
+        disabled={!budgetInputs.serviceType}
+        whileHover={{ scale: 1.02, y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        className="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white p-4 rounded-xl font-bold text-lg hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 transition-all duration-500 shadow-lg hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden group"
+      >
+        <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <span className="relative flex items-center justify-center gap-2">
+          🚀 Calculate AI-Powered Estimate
+          <motion.span
+            animate={{ rotate: [0, 15, -15, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            ⚡
+          </motion.span>
+        </span>
+      </motion.button>
+
+      {budgetResults && (
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="mt-8 p-8 bg-gradient-to-br from-white via-slate-50 to-blue-50 rounded-2xl border-2 border-blue-200/50 shadow-2xl relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-100/50 to-transparent rounded-full -mr-16 -mt-16"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-emerald-100/50 to-transparent rounded-full -ml-12 -mb-12"></div>
+
+          <div className="flex items-center justify-between mb-6 relative z-10">
+            <motion.h5
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-2xl font-black text-slate-800 flex items-center gap-3"
+            >
+              📊 Cost Breakdown
+              <motion.span
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-emerald-600"
+              >
+                ✨
+              </motion.span>
+            </motion.h5>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-blue-200/50 shadow-sm"
+            >
+              <h6 className="font-bold text-slate-700 mb-4 flex items-center text-lg">
+                ⚖️ Legal Counsel (Tim Harmar)
+              </h6>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-600">Hours:</span>
+                  <span className="font-semibold text-slate-800">{budgetResults.counselHours}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-600">Rate:</span>
+                  <span className="font-semibold text-slate-800">${HOURLY_RATES.counsel}/hr</span>
+                </div>
+                <div className="flex justify-between items-center pt-2 border-t border-slate-200">
+                  <span className="font-semibold text-slate-700">Subtotal:</span>
+                  <span className="font-bold text-emerald-600 text-lg">
+                    ${budgetResults.counselCost.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-blue-200/50 shadow-sm"
+            >
+              <h6 className="font-bold text-slate-700 mb-4 flex items-center text-lg">
+                👥 Admin Support (Kelly & Josh)
+              </h6>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-600">Hours:</span>
+                  <span className="font-semibold text-slate-800">{budgetResults.adminHours}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-600">Rate:</span>
+                  <span className="font-semibold text-slate-800">${HOURLY_RATES.admin}/hr</span>
+                </div>
+                <div className="flex justify-between items-center pt-2 border-t border-slate-200">
+                  <span className="font-semibold text-slate-700">Subtotal:</span>
+                  <span className="font-bold text-emerald-600 text-lg">
+                    ${budgetResults.adminCost.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="bg-gradient-to-r from-emerald-50 via-teal-50 to-cyan-50 p-6 rounded-xl border-2 border-emerald-200 shadow-sm relative z-10"
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h6 className="text-2xl font-black text-emerald-800 flex items-center gap-2">
+                💎 Total Estimated Cost
+              </h6>
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.6, type: 'spring', stiffness: 200 }}
+                className="text-right"
+              >
+                <div className="text-4xl font-black text-emerald-700">
+                  ${budgetResults.totalEstimate.toLocaleString()}
+                </div>
+                {budgetResults.savings > 0 && (
+                  <div className="text-sm text-emerald-600 font-semibold">
+                    Saves ${budgetResults.savings.toLocaleString()} with selected options
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {aiRecommendations && aiRecommendations.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="mt-6 p-6 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-xl border-2 border-indigo-200/50 shadow-sm relative z-10 overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-indigo-200/20 to-transparent rounded-full -ml-10 -mt-10"></div>
+              <h6 className="font-black text-indigo-900 mb-4 flex items-center text-xl relative z-10">
+                🤖 AI-Powered Recommendations
+                <motion.span
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="ml-2"
+                >
+                  ✨
+                </motion.span>
+              </h6>
+              <ul className="space-y-3 relative z-10">
+                {aiRecommendations.map((rec, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.9 + idx * 0.1 }}
+                    className="flex items-start gap-3 text-indigo-800"
+                  >
+                    <span className="text-indigo-500 text-lg">•</span>
+                    <span className="font-medium">{rec}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="flex gap-4 mt-8 relative z-10"
+          >
+            <motion.button
+              onClick={() => {
+                window.location.href = `mailto:kburton@timharmar.com?subject=Budget Consultation Request&body=Hello,%0D%0A%0D%0AI have used your budget calculator and would like to discuss my legal needs.%0D%0A%0D%0AService Type: ${budgetInputs.serviceType}%0D%0AEstimated Cost: $${budgetResults.totalEstimate.toLocaleString()}%0D%0A%0D%0APlease contact me to schedule a consultation.%0D%0A%0D%0AThank you!`
+              }}
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 text-sm font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+            >
+              <Send className="w-4 h-4" />
+              Schedule Consultation
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      )}
+    </motion.div>
+  )
+}
+
 export default {
   AILegalAssistant,
   SmartScheduler,
@@ -3078,4 +3590,5 @@ export default {
   LegalNewsFeed,
   LegalAssessment,
   ComplianceeDashboard,
+  BudgetCalculator,
 }
