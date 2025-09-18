@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import jsPDF from 'jspdf'
 import {
@@ -28,6 +28,7 @@ import {
   AlertTriangle,
   MapPin,
 } from 'lucide-react'
+import { sendConsultationEmailMock, initEmailJS } from '../lib/emailService'
 
 // Utility function to open Privacy Compliance Guide in new window
 const openPrivacyGuide = () => {
@@ -827,8 +828,15 @@ export const SmartScheduler = () => {
   const [userPhone, setUserPhone] = useState('')
   const [additionalInfo, setAdditionalInfo] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
 
-  const handleScheduleSubmit = () => {
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    initEmailJS()
+  }, [])
+
+  const handleScheduleSubmit = async () => {
     if (!consultationType || !selectedDate || !selectedTime || !userName || !userEmail) {
       alert('Please fill in all required fields.')
       return
@@ -841,46 +849,54 @@ export const SmartScheduler = () => {
       return
     }
 
-    // Show confirmation message
-    setIsSubmitted(true)
+    setIsSubmitting(true)
+    setSubmitMessage('Sending your consultation request...')
 
-    // Enhanced email content with professional formatting
-    const emailSubject = `🏛️ Consultation Request - ${consultationType} - ${userName}`
+    // Prepare form data for email service
+    const formData = {
+      userName,
+      userEmail,
+      userPhone,
+      consultationType,
+      selectedDate,
+      selectedTime,
+      additionalInfo
+    }
 
-    const emailBody =
-      `Dear Tim Harmar Legal Team,%0D%0A%0D%0A` +
-      `I would like to schedule a consultation with the following details:%0D%0A%0D%0A` +
-      `📋 CLIENT INFORMATION:%0D%0A` +
-      `• Name: ${userName}%0D%0A` +
-      `• Email: ${userEmail}%0D%0A` +
-      `• Phone: ${userPhone || 'Not provided'}%0D%0A%0D%0A` +
-      `⚖️ CONSULTATION DETAILS:%0D%0A` +
-      `• Type: ${consultationType}%0D%0A` +
-      `• Preferred Date: ${selectedDate}%0D%0A` +
-      `• Preferred Time: ${selectedTime}%0D%0A%0D%0A` +
-      `📝 ADDITIONAL INFORMATION:%0D%0A${additionalInfo || 'None provided'}%0D%0A%0D%0A` +
-      `⏰ SUBMISSION TIME: ${new Date().toLocaleString()}%0D%0A%0D%0A` +
-      `This consultation request was submitted through the Tim Harmar Legal website's Smart Scheduler.%0D%0A%0D%0A` +
-      `Please confirm receipt and advise on next steps for scheduling.%0D%0A%0D%0A` +
-      `Thank you for your prompt attention to this matter.%0D%0A%0D%0A` +
-      `Best regards,%0D%0A${userName}`
-
-    // Delay the email redirect to allow user to see the confirmation message
-    setTimeout(() => {
-      window.location.href = `mailto:kburton@timharmar.com?subject=${emailSubject}&body=${emailBody}`
-    }, 2000)
-
-    // Auto-reset form after 5 seconds for new submissions
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setUserName('')
-      setUserEmail('')
-      setUserPhone('')
-      setConsultationType('')
-      setSelectedDate('')
-      setSelectedTime('')
-      setAdditionalInfo('')
-    }, 5000)
+    try {
+      // Send email using the email service
+      const result = await sendConsultationEmailMock(formData)
+      
+      if (result.success) {
+        setIsSubmitted(true)
+        setSubmitMessage('✅ Your consultation request has been submitted successfully! A representative will contact you within 2 hours to confirm your appointment.')
+        
+        // Auto-reset form after 8 seconds for new submissions
+        setTimeout(() => {
+          setIsSubmitted(false)
+          setIsSubmitting(false)
+          setSubmitMessage('')
+          setUserName('')
+          setUserEmail('')
+          setUserPhone('')
+          setConsultationType('')
+          setSelectedDate('')
+          setSelectedTime('')
+          setAdditionalInfo('')
+        }, 8000)
+      } else {
+        throw new Error(result.error || 'Failed to send email')
+      }
+    } catch (error) {
+      console.error('Failed to send consultation request:', error)
+      setSubmitMessage('❌ There was an error sending your request. Please try again or contact us directly at kburton@timharmar.com or (705) 943-5049.')
+      
+      // Reset after 5 seconds on error
+      setTimeout(() => {
+        setIsSubmitting(false)
+        setSubmitMessage('')
+      }, 5000)
+    }
   }
 
   const availableTimes = ['9:00 AM', '10:30 AM', '2:00 PM', '3:30 PM', '4:30 PM']
@@ -1078,18 +1094,48 @@ export const SmartScheduler = () => {
           </motion.div>
         )}
 
+        {/* Confirmation/Status Message */}
+        {(isSubmitting || submitMessage) && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`mb-4 p-4 rounded-lg text-center font-medium ${
+              isSubmitted && !isSubmitting
+                ? 'bg-green-50 text-green-800 border border-green-200'
+                : isSubmitting
+                ? 'bg-blue-50 text-blue-800 border border-blue-200'
+                : 'bg-red-50 text-red-800 border border-red-200'
+            }`}
+          >
+            {submitMessage}
+          </motion.div>
+        )}
+
         <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+          whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
           onClick={handleScheduleSubmit}
-          disabled={isSubmitted}
+          disabled={isSubmitted || isSubmitting}
           className={`w-full p-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-token-sm hover:shadow-medium ${
-            isSubmitted
+            isSubmitted || isSubmitting
               ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
               : 'bg-brand-accent hover:bg-brand-accent/90 text-white'
           }`}
         >
-          {isSubmitted ? 'Request Submitted' : 'Schedule Consultation'}
+          {isSubmitting ? (
+            <span className="flex items-center justify-center">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full"
+              />
+              Sending Request...
+            </span>
+          ) : isSubmitted ? (
+            'Request Submitted ✅'
+          ) : (
+            'Schedule Consultation'
+          )}
         </motion.button>
       </div>
     </motion.div>
