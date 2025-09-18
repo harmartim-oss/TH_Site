@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser'
 const EMAILJS_CONFIG = {
   SERVICE_ID: 'service_timharmar', // Configure this in your EmailJS dashboard
   TEMPLATE_ID: 'template_consultation', // Configure this in your EmailJS dashboard
-  PUBLIC_KEY: 'YOUR_PUBLIC_KEY', // Replace with actual public key from EmailJS dashboard
+  PUBLIC_KEY: 'hJox27DUTsnqPY3Q3', // Public key provided for EmailJS integration
 }
 
 // For development: You can override these values here for testing
@@ -23,6 +23,7 @@ export const initEmailJS = () => {
     return false
   }
   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY)
+  console.log('EmailJS initialized with public key:', EMAILJS_CONFIG.PUBLIC_KEY)
   return true
 }
 
@@ -34,6 +35,12 @@ export const sendConsultationEmail = async (formData) => {
       console.warn('EmailJS not configured, falling back to mock service')
       return await sendConsultationEmailMock(formData)
     }
+
+    console.log('Sending email with config:', {
+      serviceId: EMAILJS_CONFIG.SERVICE_ID,
+      templateId: EMAILJS_CONFIG.TEMPLATE_ID,
+      publicKey: EMAILJS_CONFIG.PUBLIC_KEY
+    })
 
     const templateParams = {
       to_email: 'kburton@timharmar.com',
