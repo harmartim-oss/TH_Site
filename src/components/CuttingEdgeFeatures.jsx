@@ -3289,7 +3289,6 @@ export const LegalAssessment = () => {
 
 // AI-Powered Legal Case Strategy Simulator
 export const LegalCaseStrategySimulator = () => {
-  const [currentStep, setCurrentStep] = useState(0)
   const [caseInputs, setCaseInputs] = useState({
     caseType: '',
     jurisdiction: 'ontario',
@@ -3312,24 +3311,79 @@ export const LegalCaseStrategySimulator = () => {
       icon: '📋',
       description: 'Breach of contract, interpretation issues, or performance disputes',
       factors: ['contract_clarity', 'damages_amount', 'breach_type', 'mitigation_efforts'],
+      causesOfAction: [
+        {
+          name: 'Breach of Contract',
+          description: 'When one party fails to perform any duty stipulated in the contract without legal excuse',
+          elements: ['Valid contract existence', 'Breach occurred', 'Damages resulted from breach'],
+          remedies: ['Damages', 'Specific performance', 'Injunctive relief']
+        },
+        {
+          name: 'Unjust Enrichment', 
+          description: 'Recovery when defendant has been enriched at plaintiff\'s expense without justification',
+          elements: ['Enrichment of defendant', 'Corresponding deprivation of plaintiff', 'Absence of juristic reason'],
+          remedies: ['Restitution', 'Disgorgement of profits', 'Constructive trust']
+        }
+      ],
+      proceduralAspects: [
+        'Statement of Claim filing within limitation period (typically 2-6 years depending on claim)',
+        'Discovery process including document production and examinations for discovery',
+        'Mandatory mediation in most jurisdictions before trial'
+      ]
     },
     'employment-dispute': {
       name: 'Employment Dispute',
       icon: '👔',
       description: 'Wrongful dismissal, harassment, or workplace issues',
       factors: ['employment_type', 'tenure', 'severance_offered', 'documentation'],
+      causesOfAction: [
+        {
+          name: 'Wrongful Dismissal',
+          description: 'Termination without cause where insufficient notice or pay in lieu provided',
+          elements: ['Employment relationship', 'Termination without cause', 'Insufficient notice'],
+          remedies: ['Pay in lieu of notice', 'Benefits continuation', 'Moral damages']
+        }
+      ],
+      proceduralAspects: [
+        'Employment Standards complaint filing within specified time limits',
+        'Superior Court action for wrongful dismissal claims exceeding ESA minimums'
+      ]
     },
     'ip-protection': {
       name: 'IP Protection',
       icon: '💡',
       description: 'Patent, trademark, copyright, or trade secret matters',
       factors: ['ip_type', 'registration_status', 'infringement_scope', 'market_impact'],
+      causesOfAction: [
+        {
+          name: 'Trademark Infringement',
+          description: 'Unauthorized use of registered or common law trademark causing confusion',
+          elements: ['Valid trademark rights', 'Use in commerce', 'Likelihood of confusion'],
+          remedies: ['Injunctive relief', 'Damages or profits', 'Destruction of infringing goods']
+        }
+      ],
+      proceduralAspects: [
+        'Federal Court jurisdiction for most IP matters in Canada',
+        'Urgent injunction applications for ongoing infringement'
+      ]
     },
     'privacy-breach': {
       name: 'Privacy Breach',
       icon: '🔒',
       description: 'Data breach response, PIPEDA compliance, or privacy violations',
       factors: ['data_sensitivity', 'affected_individuals', 'breach_scope', 'notification_timing'],
+      causesOfAction: [
+        {
+          name: 'PIPEDA Violation',
+          description: 'Breach of Personal Information Protection and Electronic Documents Act',
+          elements: ['Personal information involved', 'Commercial activity', 'Violation of privacy principles'],
+          remedies: ['Compliance orders', 'Damages for actual loss', 'Court-ordered remedies']
+        }
+      ],
+      proceduralAspects: [
+        'Privacy Commissioner complaint process (no cost, informal resolution)',
+        'Urgent notification requirements (72 hours to Commissioner)'
+      ]
     },
     'business-litigation': {
       name: 'Business Litigation',
@@ -3341,12 +3395,36 @@ export const LegalCaseStrategySimulator = () => {
         'reputation_risk',
         'ongoing_operations',
       ],
+      causesOfAction: [
+        {
+          name: 'Oppression Remedy',
+          description: 'Relief from oppressive conduct in corporate affairs under CBCA/OBCA',
+          elements: ['Stakeholder status', 'Oppressive/prejudicial conduct', 'Reasonable expectations'],
+          remedies: ['Buy-out orders', 'Dissolution', 'Interim orders', 'Damages']
+        }
+      ],
+      proceduralAspects: [
+        'Commercial Court or Commercial List procedures for complex business disputes',
+        'Case management conference system for streamlined proceedings'
+      ]
     },
     'regulatory-compliance': {
       name: 'Regulatory Compliance',
       icon: '⚖️',
       description: 'Regulatory investigations or compliance matters',
       factors: ['regulation_type', 'violation_severity', 'agency_involved', 'compliance_history'],
+      causesOfAction: [
+        {
+          name: 'Administrative Law Challenge',
+          description: 'Judicial review of regulatory decision or order',
+          elements: ['Standing to challenge', 'Jurisdictional error or procedural fairness breach', 'Public interest'],
+          remedies: ['Certiorari (quashing)', 'Mandamus (compelling action)', 'Prohibition']
+        }
+      ],
+      proceduralAspects: [
+        'Administrative tribunal proceedings with specialized rules and procedures',
+        'Strict time limits for challenging regulatory decisions (typically 30 days)'
+      ]
     },
   }
 
@@ -3369,17 +3447,8 @@ export const LegalCaseStrategySimulator = () => {
   }
 
   const generateCaseAnalysis = () => {
-    const successProbabilities = {
-      high: Math.floor(Math.random() * 20) + 70, // 70-90%
-      medium: Math.floor(Math.random() * 40) + 40, // 40-80%
-      low: Math.floor(Math.random() * 30) + 20, // 20-50%
-    }
-
-    const riskLevels = {
-      high: 'High Risk - Significant exposure',
-      medium: 'Moderate Risk - Manageable exposure',
-      low: 'Low Risk - Minimal exposure',
-    }
+    const caseType = caseTypes[caseInputs.caseType]
+    if (!caseType) return null
 
     const timelineEstimates = {
       'contract-dispute': { min: 6, max: 18 },
@@ -3394,14 +3463,20 @@ export const LegalCaseStrategySimulator = () => {
     const complexityMultiplier =
       caseInputs.complexity === 'high' ? 1.5 : caseInputs.complexity === 'low' ? 0.7 : 1.0
 
+    // Get risk assessment
+    const riskLevel = caseInputs.riskTolerance === 'high' ? 'High Risk - Significant exposure' : 
+                      caseInputs.riskTolerance === 'low' ? 'Low Risk - Minimal exposure' : 
+                      'Moderate Risk - Manageable exposure'
+
     return {
       caseType: caseInputs.caseType,
-      successProbability: successProbabilities[caseInputs.riskTolerance] || 60,
-      riskAssessment: riskLevels[caseInputs.riskTolerance] || 'Moderate Risk',
       estimatedTimeframe: `${Math.round(timeline.min * complexityMultiplier)}-${Math.round(timeline.max * complexityMultiplier)} months`,
-      keyFactors: caseTypes[caseInputs.caseType].factors,
+      keyFactors: caseType.factors,
+      causesOfAction: caseType.causesOfAction,
+      proceduralAspects: caseType.proceduralAspects,
       recommendedApproach: getRecommendedApproach(),
       alternativeOptions: getAlternativeOptions(),
+      riskAssessment: riskLevel,
     }
   }
 
@@ -3510,18 +3585,32 @@ DISCLAIMER: This analysis provides general information only and does not constit
 For personalized legal guidance, schedule a consultation with Tim Harmar Legal.
 
 Case Type: ${caseTypes[analysisResults.caseType]?.name}
-Success Probability: ${analysisResults.successProbability}%
 Risk Assessment: ${analysisResults.riskAssessment}
 Estimated Timeframe: ${analysisResults.estimatedTimeframe}
+
+POTENTIAL CAUSES OF ACTION:
+${analysisResults.causesOfAction?.map((cause, i) => `
+${i + 1}. ${cause.name}
+   Description: ${cause.description}
+   
+   Required Elements:
+${cause.elements.map(element => `   • ${element}`).join('\n')}
+   
+   Available Remedies:
+${cause.remedies.map(remedy => `   • ${remedy}`).join('\n')}
+`).join('\n') || 'No specific causes of action identified'}
+
+PROCEDURAL ASPECTS:
+${analysisResults.proceduralAspects?.map((aspect, i) => `${i + 1}. ${aspect}`).join('\n') || 'Standard litigation procedures apply'}
 
 RECOMMENDED APPROACH:
 ${analysisResults.recommendedApproach.map((step, i) => `${i + 1}. ${step}`).join('\n')}
 
 ALTERNATIVE OPTIONS:
-${analysisResults.alternativeOptions.map((option, i) => `• ${option}`).join('\n')}
+${analysisResults.alternativeOptions.map((option) => `• ${option}`).join('\n')}
 
 STRATEGIC INSIGHTS:
-${strategicInsights?.map((insight) => `• ${insight.title}: ${insight.description}`).join('\n')}
+${strategicInsights?.map((insight) => `• ${insight.title}: ${insight.description}`).join('\n') || 'See recommended approach above'}
 
 Contact Tim Harmar Legal for personalized consultation:
 Email: info@timharmar.com
@@ -3543,7 +3632,6 @@ Generated on: ${new Date().toLocaleDateString()}
   }
 
   const resetSimulator = () => {
-    setCurrentStep(0)
     setCaseInputs({
       caseType: '',
       jurisdiction: 'ontario',
@@ -3765,13 +3853,6 @@ Generated on: ${new Date().toLocaleDateString()}
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-200">
-                <div className="text-3xl font-bold text-green-600">
-                  {analysisResults.successProbability}%
-                </div>
-                <div className="text-sm text-green-700 font-medium">Success Probability</div>
-              </div>
-
               <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
                 <div className="text-lg font-bold text-blue-600">
                   {analysisResults.estimatedTimeframe}
@@ -3785,8 +3866,96 @@ Generated on: ${new Date().toLocaleDateString()}
                 </div>
                 <div className="text-sm text-orange-700 font-medium">Risk Level</div>
               </div>
+
+              <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+                <div className="text-lg font-bold text-purple-600">
+                  {analysisResults.causesOfAction?.length || 0}
+                </div>
+                <div className="text-sm text-purple-700 font-medium">Potential Claims</div>
+              </div>
             </div>
           </div>
+
+          {/* Causes of Action */}
+          {analysisResults.causesOfAction && analysisResults.causesOfAction.length > 0 && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+              <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                <Scale className="w-5 h-5" />
+                Potential Causes of Action
+              </h5>
+              <div className="space-y-4">
+                {analysisResults.causesOfAction.map((cause, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="border border-gray-200 rounded-lg p-4 bg-gradient-to-r from-gray-50 to-white"
+                  >
+                    <h6 className="font-bold text-purple-800 mb-2 flex items-center gap-2">
+                      <div className="w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        {index + 1}
+                      </div>
+                      {cause.name}
+                    </h6>
+                    <p className="text-gray-700 mb-3">{cause.description}</p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <h7 className="font-semibold text-sm text-gray-800 mb-1">Required Elements:</h7>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {cause.elements.map((element, elemIndex) => (
+                            <li key={elemIndex} className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                              {element}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h7 className="font-semibold text-sm text-gray-800 mb-1">Available Remedies:</h7>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {cause.remedies.map((remedy, remIndex) => (
+                            <li key={remIndex} className="flex items-start gap-2">
+                              <ArrowRight className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                              {remedy}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Procedural Aspects */}
+          {analysisResults.proceduralAspects && analysisResults.proceduralAspects.length > 0 && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+              <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5" />
+                Litigation Procedural Aspects
+              </h5>
+              <div className="space-y-3">
+                {analysisResults.proceduralAspects.map((aspect, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-3 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      {index + 1}
+                    </div>
+                    <span className="text-gray-700">{aspect}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Recommended Approach */}
           <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
@@ -3893,7 +4062,7 @@ Generated on: ${new Date().toLocaleDateString()}
                   `I've completed a case strategy analysis using your simulator for a ${caseTypes[analysisResults.caseType]?.name} matter. I would like to schedule a consultation to discuss my specific situation in detail.
 
 Case Type: ${caseTypes[analysisResults.caseType]?.name}
-Estimated Success Rate: ${analysisResults.successProbability}%
+Risk Assessment: ${analysisResults.riskAssessment}
 Estimated Timeline: ${analysisResults.estimatedTimeframe}
 
 Please let me know your availability for a consultation.
