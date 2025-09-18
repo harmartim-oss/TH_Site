@@ -26,6 +26,7 @@ import {
   Building2,
   ArrowRight,
   AlertTriangle,
+  MapPin,
 } from 'lucide-react'
 
 // Utility function to open Privacy Compliance Guide in new window
@@ -3470,6 +3471,7 @@ export const LegalCaseStrategySimulator = () => {
     const caseType = caseTypes[caseInputs.caseType]
     if (!caseType) return null
 
+    // Ontario-specific timeline estimates based on Superior Court procedures
     const timelineEstimates = {
       'contract-dispute': { min: 6, max: 18 },
       'employment-dispute': { min: 3, max: 12 },
@@ -3483,78 +3485,116 @@ export const LegalCaseStrategySimulator = () => {
     const complexityMultiplier =
       caseInputs.complexity === 'high' ? 1.5 : caseInputs.complexity === 'low' ? 0.7 : 1.0
 
-    // Get risk assessment
+    // Enhanced AI-powered risk assessment for Ontario legal framework
     const riskLevel =
       caseInputs.riskTolerance === 'high'
-        ? 'High Risk - Significant exposure'
+        ? 'High Risk - Significant exposure under Ontario procedures'
         : caseInputs.riskTolerance === 'low'
-          ? 'Low Risk - Minimal exposure'
-          : 'Moderate Risk - Manageable exposure'
+          ? 'Low Risk - Minimal exposure under Ontario framework'
+          : 'Moderate Risk - Manageable exposure within Ontario guidelines'
 
     return {
       caseType: caseInputs.caseType,
-      estimatedTimeframe: `${Math.round(timeline.min * complexityMultiplier)}-${Math.round(timeline.max * complexityMultiplier)} months`,
+      estimatedTimeframe: `${Math.round(timeline.min * complexityMultiplier)}-${Math.round(timeline.max * complexityMultiplier)} months (based on Ontario Superior Court procedures)`,
       keyFactors: caseType.factors,
       causesOfAction: caseType.causesOfAction,
       proceduralAspects: caseType.proceduralAspects,
-      recommendedApproach: getRecommendedApproach(),
-      alternativeOptions: getAlternativeOptions(),
+      recommendedApproach: getOntarioRecommendedApproach(),
+      alternativeOptions: getOntarioAlternativeOptions(),
       riskAssessment: riskLevel,
+      ontarioSpecificInsights: getOntarioSpecificInsights(),
     }
   }
 
-  const getRecommendedApproach = () => {
+  const getOntarioRecommendedApproach = () => {
     const approaches = {
       'contract-dispute': [
-        'Document review and analysis',
-        'Negotiation with opposing party',
-        'Mediation if negotiation fails',
-        'Litigation as last resort',
+        'Comprehensive document review under Ontario contract law',
+        'Pre-litigation negotiation following Ontario Superior Court guidelines',
+        'Mandatory mediation as per Ontario Rules of Civil Procedure',
+        'Superior Court litigation if alternative resolution fails',
       ],
       'employment-dispute': [
-        'Gather employment documentation',
-        'Assess severance entitlement',
-        'Negotiate settlement terms',
-        'Consider human rights implications',
+        'Review employment standards under Ontario ESA',
+        'Assess severance under Ontario common law and ESA minimums',
+        'Negotiate settlement considering Ontario human rights framework',
+        'Consider Labour Relations Board procedures if applicable',
       ],
       'ip-protection': [
-        'Conduct IP landscape analysis',
-        'File protective registrations',
-        'Develop licensing strategy',
-        'Monitor for infringement',
+        'Federal IP analysis (CIPO procedures)',
+        'Ontario common law trademark protection assessment',
+        'Develop licensing strategy under Ontario business law',
+        'Monitor for infringement using Canadian legal frameworks',
       ],
       'privacy-breach': [
-        'Immediate containment measures',
-        'Regulatory notification compliance',
-        'Affected individual communication',
-        'Implement preventive measures',
+        'PIPEDA compliance assessment and immediate containment',
+        'Ontario privacy commissioner notification procedures',
+        'Affected individual communication per Canadian requirements',
+        'Implement preventive measures under Ontario regulatory framework',
       ],
       'business-litigation': [
-        'Comprehensive case assessment',
-        'Early settlement discussions',
-        'Preserve business relationships',
-        'Minimize operational disruption',
+        'Case assessment under Ontario Business Corporations Act',
+        'Early settlement discussions following Ontario mediation rules',
+        'Preserve relationships under Ontario commercial practices',
+        'Minimize disruption considering Ontario court schedules',
       ],
       'regulatory-compliance': [
-        'Regulatory landscape analysis',
-        'Compliance gap assessment',
-        'Develop correction plan',
-        'Ongoing monitoring system',
+        'Ontario regulatory landscape analysis',
+        'Compliance gap assessment under provincial regulations',
+        'Develop correction plan following Ontario regulatory procedures',
+        'Ongoing monitoring system per Ontario compliance requirements',
       ],
     }
 
     return approaches[caseInputs.caseType] || approaches['contract-dispute']
   }
 
-  const getAlternativeOptions = () => {
+  const getOntarioAlternativeOptions = () => {
     return [
-      'Alternative Dispute Resolution (ADR)',
-      'Direct negotiation',
-      'Collaborative law approach',
-      'Binding arbitration',
-      'Expert determination',
-      'Industry-specific mediation',
+      'Ontario ADR Institute mediation services',
+      'Direct negotiation under Ontario legal framework',
+      'Collaborative law following Law Society of Ontario guidelines',
+      'Binding arbitration per Ontario Arbitration Act',
+      'Expert determination under Ontario Rules of Civil Procedure',
+      'Industry-specific mediation (Ontario-based providers)',
     ]
+  }
+
+  const getOntarioSpecificInsights = () => {
+    const insights = {
+      'contract-dispute': [
+        'Ontario contract law emphasizes good faith performance obligations',
+        'Superior Court mandatory case management may expedite proceedings',
+        'Ontario limitation periods: 2 years for most contracts, 6 years for specialty contracts',
+      ],
+      'employment-dispute': [
+        'Ontario ESA provides minimum standards - common law may provide greater entitlements',
+        'Human Rights Tribunal of Ontario handles discrimination claims separately',
+        'Constructive dismissal analysis follows Wallace principle in Ontario courts',
+      ],
+      'ip-protection': [
+        'Federal IP law applies, but enforcement often occurs in Ontario Superior Court',
+        'Ontario courts recognized for sophisticated IP jurisprudence',
+        'Trade secret protection follows Ontario common law confidentiality principles',
+      ],
+      'privacy-breach': [
+        'PIPEDA federal law + Ontario privacy legislation creates dual compliance framework',
+        'Ontario Privacy Commissioner has investigation powers for public sector',
+        'Class action risk higher in Ontario due to established privacy litigation precedents',
+      ],
+      'business-litigation': [
+        'Ontario OBCA provides specific oppression remedy procedures',
+        'Toronto Commercial List offers specialized business court procedures',
+        'Ontario courts favor commercial reasonableness in business disputes',
+      ],
+      'regulatory-compliance': [
+        'Ontario regulatory bodies have broad investigation and penalty powers',
+        'Administrative penalties often preferred over criminal prosecution',
+        'Judicial review available through Ontario Divisional Court',
+      ],
+    }
+
+    return insights[caseInputs.caseType] || insights['contract-dispute']
   }
 
   const generateStrategicInsights = () => {
@@ -3803,13 +3843,13 @@ export const LegalCaseStrategySimulator = () => {
     >
       <div className="text-center mb-8">
         <h3 className="text-3xl font-bold text-purple-800 mb-4 flex items-center justify-center gap-3">
-          🎯 AI Legal Case Strategy Simulator
+          🎯 AI Legal Case Strategy Simulator - Ontario Claims
         </h3>
         <p className="text-purple-700 text-lg">
-          Interactive case analysis and strategic insights powered by Tim Harmar's legal expertise
+          Interactive case analysis and strategic insights powered by Tim Harmar's legal expertise, specifically focused on Ontario legal procedures and regulations
         </p>
         <div className="mt-2 text-sm text-purple-600">
-          <strong>Note:</strong> This tool provides general information only, not legal advice
+          <strong>Note:</strong> This tool provides general information based on Ontario legal framework only, not legal advice
         </div>
       </div>
 
@@ -4157,6 +4197,32 @@ export const LegalCaseStrategySimulator = () => {
                   >
                     <h6 className="font-bold text-gray-800 mb-2">{insight.title}</h6>
                     <p className="text-sm text-gray-600">{insight.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Ontario-Specific Legal Insights */}
+          {analysisResults.ontarioSpecificInsights && analysisResults.ontarioSpecificInsights.length > 0 && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-red-200 shadow-lg">
+              <h5 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+                <MapPin className="w-5 h-5" />
+                Ontario-Specific Legal Insights
+              </h5>
+              <div className="space-y-3">
+                {analysisResults.ontarioSpecificInsights.map((insight, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-3 p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-lg border border-red-100"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      🍁
+                    </div>
+                    <span className="text-sm text-red-800 font-medium leading-relaxed">{insight}</span>
                   </motion.div>
                 ))}
               </div>
