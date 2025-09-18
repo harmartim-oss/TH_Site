@@ -28,7 +28,7 @@ import {
   AlertTriangle,
   MapPin,
 } from 'lucide-react'
-import { sendConsultationEmailMock, initEmailJS } from '../lib/emailService'
+import { sendConsultationEmail, sendConsultationEmailMock, initEmailJS } from '../lib/emailService'
 
 // Utility function to open Privacy Compliance Guide in new window
 const openPrivacyGuide = () => {
@@ -833,7 +833,10 @@ export const SmartScheduler = () => {
 
   // Initialize EmailJS when component mounts
   useEffect(() => {
-    initEmailJS()
+    const isConfigured = initEmailJS()
+    if (!isConfigured) {
+      console.log('EmailJS not configured - using mock service for development')
+    }
   }, [])
 
   const handleScheduleSubmit = async () => {
@@ -865,7 +868,7 @@ export const SmartScheduler = () => {
 
     try {
       // Send email using the email service
-      const result = await sendConsultationEmailMock(formData)
+      const result = await sendConsultationEmail(formData)
 
       if (result.success) {
         setIsSubmitted(true)
