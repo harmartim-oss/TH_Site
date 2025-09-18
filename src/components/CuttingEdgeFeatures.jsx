@@ -3314,22 +3314,28 @@ export const LegalCaseStrategySimulator = () => {
       causesOfAction: [
         {
           name: 'Breach of Contract',
-          description: 'When one party fails to perform any duty stipulated in the contract without legal excuse',
+          description:
+            'When one party fails to perform any duty stipulated in the contract without legal excuse',
           elements: ['Valid contract existence', 'Breach occurred', 'Damages resulted from breach'],
-          remedies: ['Damages', 'Specific performance', 'Injunctive relief']
+          remedies: ['Damages', 'Specific performance', 'Injunctive relief'],
         },
         {
-          name: 'Unjust Enrichment', 
-          description: 'Recovery when defendant has been enriched at plaintiff\'s expense without justification',
-          elements: ['Enrichment of defendant', 'Corresponding deprivation of plaintiff', 'Absence of juristic reason'],
-          remedies: ['Restitution', 'Disgorgement of profits', 'Constructive trust']
-        }
+          name: 'Unjust Enrichment',
+          description:
+            "Recovery when defendant has been enriched at plaintiff's expense without justification",
+          elements: [
+            'Enrichment of defendant',
+            'Corresponding deprivation of plaintiff',
+            'Absence of juristic reason',
+          ],
+          remedies: ['Restitution', 'Disgorgement of profits', 'Constructive trust'],
+        },
       ],
       proceduralAspects: [
         'Statement of Claim filing within limitation period (typically 2-6 years depending on claim)',
         'Discovery process including document production and examinations for discovery',
-        'Mandatory mediation in most jurisdictions before trial'
-      ]
+        'Mandatory mediation in most jurisdictions before trial',
+      ],
     },
     'employment-dispute': {
       name: 'Employment Dispute',
@@ -3339,15 +3345,16 @@ export const LegalCaseStrategySimulator = () => {
       causesOfAction: [
         {
           name: 'Wrongful Dismissal',
-          description: 'Termination without cause where insufficient notice or pay in lieu provided',
+          description:
+            'Termination without cause where insufficient notice or pay in lieu provided',
           elements: ['Employment relationship', 'Termination without cause', 'Insufficient notice'],
-          remedies: ['Pay in lieu of notice', 'Benefits continuation', 'Moral damages']
-        }
+          remedies: ['Pay in lieu of notice', 'Benefits continuation', 'Moral damages'],
+        },
       ],
       proceduralAspects: [
         'Employment Standards complaint filing within specified time limits',
-        'Superior Court action for wrongful dismissal claims exceeding ESA minimums'
-      ]
+        'Superior Court action for wrongful dismissal claims exceeding ESA minimums',
+      ],
     },
     'ip-protection': {
       name: 'IP Protection',
@@ -3359,13 +3366,13 @@ export const LegalCaseStrategySimulator = () => {
           name: 'Trademark Infringement',
           description: 'Unauthorized use of registered or common law trademark causing confusion',
           elements: ['Valid trademark rights', 'Use in commerce', 'Likelihood of confusion'],
-          remedies: ['Injunctive relief', 'Damages or profits', 'Destruction of infringing goods']
-        }
+          remedies: ['Injunctive relief', 'Damages or profits', 'Destruction of infringing goods'],
+        },
       ],
       proceduralAspects: [
         'Federal Court jurisdiction for most IP matters in Canada',
-        'Urgent injunction applications for ongoing infringement'
-      ]
+        'Urgent injunction applications for ongoing infringement',
+      ],
     },
     'privacy-breach': {
       name: 'Privacy Breach',
@@ -3376,14 +3383,18 @@ export const LegalCaseStrategySimulator = () => {
         {
           name: 'PIPEDA Violation',
           description: 'Breach of Personal Information Protection and Electronic Documents Act',
-          elements: ['Personal information involved', 'Commercial activity', 'Violation of privacy principles'],
-          remedies: ['Compliance orders', 'Damages for actual loss', 'Court-ordered remedies']
-        }
+          elements: [
+            'Personal information involved',
+            'Commercial activity',
+            'Violation of privacy principles',
+          ],
+          remedies: ['Compliance orders', 'Damages for actual loss', 'Court-ordered remedies'],
+        },
       ],
       proceduralAspects: [
         'Privacy Commissioner complaint process (no cost, informal resolution)',
-        'Urgent notification requirements (72 hours to Commissioner)'
-      ]
+        'Urgent notification requirements (72 hours to Commissioner)',
+      ],
     },
     'business-litigation': {
       name: 'Business Litigation',
@@ -3399,14 +3410,18 @@ export const LegalCaseStrategySimulator = () => {
         {
           name: 'Oppression Remedy',
           description: 'Relief from oppressive conduct in corporate affairs under CBCA/OBCA',
-          elements: ['Stakeholder status', 'Oppressive/prejudicial conduct', 'Reasonable expectations'],
-          remedies: ['Buy-out orders', 'Dissolution', 'Interim orders', 'Damages']
-        }
+          elements: [
+            'Stakeholder status',
+            'Oppressive/prejudicial conduct',
+            'Reasonable expectations',
+          ],
+          remedies: ['Buy-out orders', 'Dissolution', 'Interim orders', 'Damages'],
+        },
       ],
       proceduralAspects: [
         'Commercial Court or Commercial List procedures for complex business disputes',
-        'Case management conference system for streamlined proceedings'
-      ]
+        'Case management conference system for streamlined proceedings',
+      ],
     },
     'regulatory-compliance': {
       name: 'Regulatory Compliance',
@@ -3417,14 +3432,18 @@ export const LegalCaseStrategySimulator = () => {
         {
           name: 'Administrative Law Challenge',
           description: 'Judicial review of regulatory decision or order',
-          elements: ['Standing to challenge', 'Jurisdictional error or procedural fairness breach', 'Public interest'],
-          remedies: ['Certiorari (quashing)', 'Mandamus (compelling action)', 'Prohibition']
-        }
+          elements: [
+            'Standing to challenge',
+            'Jurisdictional error or procedural fairness breach',
+            'Public interest',
+          ],
+          remedies: ['Certiorari (quashing)', 'Mandamus (compelling action)', 'Prohibition'],
+        },
       ],
       proceduralAspects: [
         'Administrative tribunal proceedings with specialized rules and procedures',
-        'Strict time limits for challenging regulatory decisions (typically 30 days)'
-      ]
+        'Strict time limits for challenging regulatory decisions (typically 30 days)',
+      ],
     },
   }
 
@@ -3464,9 +3483,12 @@ export const LegalCaseStrategySimulator = () => {
       caseInputs.complexity === 'high' ? 1.5 : caseInputs.complexity === 'low' ? 0.7 : 1.0
 
     // Get risk assessment
-    const riskLevel = caseInputs.riskTolerance === 'high' ? 'High Risk - Significant exposure' : 
-                      caseInputs.riskTolerance === 'low' ? 'Low Risk - Minimal exposure' : 
-                      'Moderate Risk - Manageable exposure'
+    const riskLevel =
+      caseInputs.riskTolerance === 'high'
+        ? 'High Risk - Significant exposure'
+        : caseInputs.riskTolerance === 'low'
+          ? 'Low Risk - Minimal exposure'
+          : 'Moderate Risk - Manageable exposure'
 
     return {
       caseType: caseInputs.caseType,
@@ -3589,16 +3611,22 @@ Risk Assessment: ${analysisResults.riskAssessment}
 Estimated Timeframe: ${analysisResults.estimatedTimeframe}
 
 POTENTIAL CAUSES OF ACTION:
-${analysisResults.causesOfAction?.map((cause, i) => `
+${
+  analysisResults.causesOfAction
+    ?.map(
+      (cause, i) => `
 ${i + 1}. ${cause.name}
    Description: ${cause.description}
    
    Required Elements:
-${cause.elements.map(element => `   • ${element}`).join('\n')}
+${cause.elements.map((element) => `   • ${element}`).join('\n')}
    
    Available Remedies:
-${cause.remedies.map(remedy => `   • ${remedy}`).join('\n')}
-`).join('\n') || 'No specific causes of action identified'}
+${cause.remedies.map((remedy) => `   • ${remedy}`).join('\n')}
+`
+    )
+    .join('\n') || 'No specific causes of action identified'
+}
 
 PROCEDURAL ASPECTS:
 ${analysisResults.proceduralAspects?.map((aspect, i) => `${i + 1}. ${aspect}`).join('\n') || 'Standard litigation procedures apply'}
@@ -3899,10 +3927,12 @@ Generated on: ${new Date().toLocaleDateString()}
                       {cause.name}
                     </h6>
                     <p className="text-gray-700 mb-3">{cause.description}</p>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <h7 className="font-semibold text-sm text-gray-800 mb-1">Required Elements:</h7>
+                        <h7 className="font-semibold text-sm text-gray-800 mb-1">
+                          Required Elements:
+                        </h7>
                         <ul className="text-sm text-gray-600 space-y-1">
                           {cause.elements.map((element, elemIndex) => (
                             <li key={elemIndex} className="flex items-start gap-2">
@@ -3912,9 +3942,11 @@ Generated on: ${new Date().toLocaleDateString()}
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
-                        <h7 className="font-semibold text-sm text-gray-800 mb-1">Available Remedies:</h7>
+                        <h7 className="font-semibold text-sm text-gray-800 mb-1">
+                          Available Remedies:
+                        </h7>
                         <ul className="text-sm text-gray-600 space-y-1">
                           {cause.remedies.map((remedy, remIndex) => (
                             <li key={remIndex} className="flex items-start gap-2">
