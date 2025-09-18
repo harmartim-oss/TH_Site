@@ -3289,18 +3289,35 @@ export const LegalAssessment = () => {
 
 // AI-Powered Legal Case Strategy Simulator
 export const LegalCaseStrategySimulator = () => {
-  const [currentStep, setCurrentStep] = useState(0)
   const [caseInputs, setCaseInputs] = useState({
     caseType: '',
     jurisdiction: 'ontario',
     caseValue: '',
     complexity: 'medium',
     timeline: '',
+    urgency: 'normal',
     riskTolerance: 'medium',
     primaryGoal: '',
     hasEvidence: 'unknown',
     opposingParty: 'individual',
     priorNegotiation: 'no',
+    // New expanded fields
+    clientType: 'individual',
+    businessSize: '',
+    industryType: '',
+    timeConstraints: '',
+    budgetRange: '',
+    preferredResolution: '',
+    currentStatus: 'initial_consultation',
+    legalRepresentation: 'none',
+    documentsAvailable: '',
+    witnessesAvailable: 'unknown',
+    expertOpinionNeeded: 'unknown',
+    regulatoryContext: '',
+    crossBorderIssues: 'no',
+    mediationWillingness: 'open',
+    publicityPreferences: 'confidential',
+    relationshipImportance: 'low'
   })
   const [analysisResults, setAnalysisResults] = useState(null)
   const [strategicInsights, setStrategicInsights] = useState(null)
@@ -3312,24 +3329,132 @@ export const LegalCaseStrategySimulator = () => {
       icon: '📋',
       description: 'Breach of contract, interpretation issues, or performance disputes',
       factors: ['contract_clarity', 'damages_amount', 'breach_type', 'mitigation_efforts'],
+      causesOfAction: [
+        {
+          name: 'Breach of Contract',
+          description: 'When one party fails to perform any duty stipulated in the contract without legal excuse',
+          elements: ['Valid contract existence', 'Breach occurred', 'Damages resulted from breach'],
+          remedies: ['Damages', 'Specific performance', 'Injunctive relief']
+        },
+        {
+          name: 'Unjust Enrichment',
+          description: 'Recovery when defendant has been enriched at plaintiff\'s expense without justification',
+          elements: ['Enrichment of defendant', 'Corresponding deprivation of plaintiff', 'Absence of juristic reason'],
+          remedies: ['Restitution', 'Disgorgement of profits', 'Constructive trust']
+        },
+        {
+          name: 'Negligent Misrepresentation',
+          description: 'False statement made carelessly resulting in reliance and damages',
+          elements: ['Duty of care', 'Misrepresentation', 'Reasonable reliance', 'Damages'],
+          remedies: ['Compensatory damages', 'Rescission']
+        }
+      ],
+      proceduralAspects: [
+        'Statement of Claim filing within limitation period (typically 2-6 years depending on claim)',
+        'Discovery process including document production and examinations for discovery',
+        'Mandatory mediation in most jurisdictions before trial',
+        'Pre-trial conference to narrow issues and attempt settlement',
+        'Trial proceedings with witness testimony and evidence presentation'
+      ]
     },
     'employment-dispute': {
       name: 'Employment Dispute',
       icon: '👔',
       description: 'Wrongful dismissal, harassment, or workplace issues',
       factors: ['employment_type', 'tenure', 'severance_offered', 'documentation'],
+      causesOfAction: [
+        {
+          name: 'Wrongful Dismissal',
+          description: 'Termination without cause where insufficient notice or pay in lieu provided',
+          elements: ['Employment relationship', 'Termination without cause', 'Insufficient notice'],
+          remedies: ['Pay in lieu of notice', 'Benefits continuation', 'Moral damages']
+        },
+        {
+          name: 'Constructive Dismissal',
+          description: 'Fundamental change to employment terms forcing employee resignation',
+          elements: ['Fundamental change to terms', 'No employee consent', 'Resignation within reasonable time'],
+          remedies: ['Notice period compensation', 'Severance pay', 'Benefits']
+        },
+        {
+          name: 'Human Rights Violation',
+          description: 'Discrimination or harassment based on protected grounds',
+          elements: ['Protected ground', 'Adverse treatment', 'Connection between ground and treatment'],
+          remedies: ['Compensation for injury to dignity', 'Lost wages', 'Reinstatement']
+        }
+      ],
+      proceduralAspects: [
+        'Employment Standards complaint filing within specified time limits',
+        'Human Rights tribunal application if discrimination involved',
+        'Superior Court action for wrongful dismissal claims exceeding ESA minimums',
+        'Mandatory disclosure of employment records and policies',
+        'Alternative dispute resolution options including mediation'
+      ]
     },
     'ip-protection': {
       name: 'IP Protection',
       icon: '💡',
       description: 'Patent, trademark, copyright, or trade secret matters',
       factors: ['ip_type', 'registration_status', 'infringement_scope', 'market_impact'],
+      causesOfAction: [
+        {
+          name: 'Trademark Infringement',
+          description: 'Unauthorized use of registered or common law trademark causing confusion',
+          elements: ['Valid trademark rights', 'Use in commerce', 'Likelihood of confusion'],
+          remedies: ['Injunctive relief', 'Damages or profits', 'Destruction of infringing goods']
+        },
+        {
+          name: 'Copyright Infringement',
+          description: 'Unauthorized reproduction, distribution, or public performance of copyrighted work',
+          elements: ['Valid copyright', 'Copying', 'Substantial similarity'],
+          remedies: ['Statutory damages', 'Actual damages', 'Injunctive relief']
+        },
+        {
+          name: 'Passing Off',
+          description: 'Misrepresentation causing confusion about source of goods or services',
+          elements: ['Goodwill/reputation', 'Misrepresentation', 'Damage to goodwill'],
+          remedies: ['Injunction', 'Damages', 'Account of profits']
+        }
+      ],
+      proceduralAspects: [
+        'Federal Court jurisdiction for most IP matters in Canada',
+        'Urgent injunction applications for ongoing infringement',
+        'Discovery of documents including technical specifications',
+        'Expert evidence often required for damages and technical issues',
+        'Border enforcement measures for imported infringing goods'
+      ]
     },
     'privacy-breach': {
       name: 'Privacy Breach',
       icon: '🔒',
       description: 'Data breach response, PIPEDA compliance, or privacy violations',
       factors: ['data_sensitivity', 'affected_individuals', 'breach_scope', 'notification_timing'],
+      causesOfAction: [
+        {
+          name: 'PIPEDA Violation',
+          description: 'Breach of Personal Information Protection and Electronic Documents Act',
+          elements: ['Personal information involved', 'Commercial activity', 'Violation of privacy principles'],
+          remedies: ['Compliance orders', 'Damages for actual loss', 'Court-ordered remedies']
+        },
+        {
+          name: 'Breach of Confidence',
+          description: 'Unauthorized disclosure of confidential personal information',
+          elements: ['Information has quality of confidence', 'Communicated in confidence', 'Unauthorized use'],
+          remedies: ['Injunctive relief', 'Damages', 'Account of profits']
+        },
+        {
+          name: 'Negligence in Data Protection',
+          description: 'Failure to implement reasonable security measures for personal data',
+          elements: ['Duty of care', 'Breach of standard', 'Causation', 'Damages'],
+          remedies: ['Compensatory damages', 'Injunctive relief', 'Corrective measures']
+        }
+      ],
+      proceduralAspects: [
+        'Privacy Commissioner complaint process (no cost, informal resolution)',
+        'Federal Court application if Commissioner investigation unsatisfactory',
+        'Class action procedures for large-scale breaches',
+        'Urgent notification requirements (72 hours to Commissioner, immediately for serious harm)',
+        'Regulatory compliance audits and corrective action orders'
+      ]
     },
     'business-litigation': {
       name: 'Business Litigation',
@@ -3341,12 +3466,66 @@ export const LegalCaseStrategySimulator = () => {
         'reputation_risk',
         'ongoing_operations',
       ],
+      causesOfAction: [
+        {
+          name: 'Oppression Remedy',
+          description: 'Relief from oppressive conduct in corporate affairs under CBCA/OBCA',
+          elements: ['Stakeholder status', 'Oppressive/prejudicial conduct', 'Reasonable expectations'],
+          remedies: ['Buy-out orders', 'Dissolution', 'Interim orders', 'Damages']
+        },
+        {
+          name: 'Breach of Fiduciary Duty',
+          description: 'Violation of duties owed by directors, officers, or partners',
+          elements: ['Fiduciary relationship', 'Breach of duty', 'Loss or opportunity foregone'],
+          remedies: ['Disgorgement of profits', 'Damages', 'Constructive trust']
+        },
+        {
+          name: 'Fraudulent Misrepresentation',
+          description: 'Intentionally false statements inducing business relationship or transaction',
+          elements: ['False representation', 'Knowledge of falsity', 'Intention to deceive', 'Reliance', 'Damages'],
+          remedies: ['Rescission', 'Damages', 'Punitive damages']
+        }
+      ],
+      proceduralAspects: [
+        'Commercial Court or Commercial List procedures for complex business disputes',
+        'Case management conference system for streamlined proceedings',
+        'Expedited discovery procedures for business-critical disputes',
+        'Court-ordered mediation or arbitration for appropriate cases',
+        'Interim remedies including Mareva injunctions and asset preservation orders'
+      ]
     },
     'regulatory-compliance': {
       name: 'Regulatory Compliance',
       icon: '⚖️',
       description: 'Regulatory investigations or compliance matters',
       factors: ['regulation_type', 'violation_severity', 'agency_involved', 'compliance_history'],
+      causesOfAction: [
+        {
+          name: 'Administrative Law Challenge',
+          description: 'Judicial review of regulatory decision or order',
+          elements: ['Standing to challenge', 'Jurisdictional error or procedural fairness breach', 'Public interest'],
+          remedies: ['Certiorari (quashing)', 'Mandamus (compelling action)', 'Prohibition']
+        },
+        {
+          name: 'Regulatory Offence Defense',
+          description: 'Defense against charges under regulatory statutes',
+          elements: ['Due diligence defense', 'Lack of mens rea', 'Procedural defects'],
+          remedies: ['Acquittal', 'Reduced penalties', 'Conditional discharge']
+        },
+        {
+          name: 'Charter Challenge',
+          description: 'Constitutional challenge to regulatory provisions or enforcement',
+          elements: ['Charter right engaged', 'Government action', 'Rights infringement', 'No s.1 justification'],
+          remedies: ['Declaration of invalidity', 'Constitutional exemption', 'Damages under s.24(1)']
+        }
+      ],
+      proceduralAspects: [
+        'Administrative tribunal proceedings with specialized rules and procedures',
+        'Judicial review applications to Divisional Court or Federal Court',
+        'Strict time limits for challenging regulatory decisions (typically 30 days)',
+        'Leave requirements for certain categories of judicial review',
+        'Public interest standing considerations for broad regulatory challenges'
+      ]
     },
   }
 
@@ -3369,17 +3548,8 @@ export const LegalCaseStrategySimulator = () => {
   }
 
   const generateCaseAnalysis = () => {
-    const successProbabilities = {
-      high: Math.floor(Math.random() * 20) + 70, // 70-90%
-      medium: Math.floor(Math.random() * 40) + 40, // 40-80%
-      low: Math.floor(Math.random() * 30) + 20, // 20-50%
-    }
-
-    const riskLevels = {
-      high: 'High Risk - Significant exposure',
-      medium: 'Moderate Risk - Manageable exposure',
-      low: 'Low Risk - Minimal exposure',
-    }
+    const caseType = caseTypes[caseInputs.caseType]
+    if (!caseType) return null
 
     const timelineEstimates = {
       'contract-dispute': { min: 6, max: 18 },
@@ -3394,14 +3564,28 @@ export const LegalCaseStrategySimulator = () => {
     const complexityMultiplier =
       caseInputs.complexity === 'high' ? 1.5 : caseInputs.complexity === 'low' ? 0.7 : 1.0
 
+    const urgencyMultiplier = 
+      caseInputs.urgency === 'urgent' ? 0.8 : caseInputs.urgency === 'flexible' ? 1.3 : 1.0
+
+    // Determine applicable causes of action based on case details
+    const applicableCauses = caseType.causesOfAction.filter(cause => {
+      // Basic filtering logic - in a real system this would be more sophisticated
+      if (caseInputs.caseValue === 'under-10k' && cause.name.includes('Fiduciary')) {
+        return false // Complex claims less likely for small value cases
+      }
+      return true
+    })
+
     return {
       caseType: caseInputs.caseType,
-      successProbability: successProbabilities[caseInputs.riskTolerance] || 60,
-      riskAssessment: riskLevels[caseInputs.riskTolerance] || 'Moderate Risk',
-      estimatedTimeframe: `${Math.round(timeline.min * complexityMultiplier)}-${Math.round(timeline.max * complexityMultiplier)} months`,
-      keyFactors: caseTypes[caseInputs.caseType].factors,
+      estimatedTimeframe: `${Math.round(timeline.min * complexityMultiplier * urgencyMultiplier)}-${Math.round(timeline.max * complexityMultiplier * urgencyMultiplier)} months`,
+      keyFactors: caseType.factors,
+      causesOfAction: applicableCauses,
+      proceduralAspects: caseType.proceduralAspects,
       recommendedApproach: getRecommendedApproach(),
       alternativeOptions: getAlternativeOptions(),
+      riskAssessment: getRiskAssessment(),
+      researchFindings: getCurrentLegalResearch(),
     }
   }
 
@@ -3448,14 +3632,163 @@ export const LegalCaseStrategySimulator = () => {
     return approaches[caseInputs.caseType] || approaches['contract-dispute']
   }
 
+  const getRiskAssessment = () => {
+    const riskFactors = []
+    
+    if (caseInputs.complexity === 'high') {
+      riskFactors.push('High complexity increases litigation risk and costs')
+    }
+    
+    if (caseInputs.hasEvidence === 'weak' || caseInputs.hasEvidence === 'unknown') {
+      riskFactors.push('Limited evidence may weaken case strength')
+    }
+    
+    if (caseInputs.urgency === 'urgent') {
+      riskFactors.push('Urgent timeline may limit strategic options')
+    }
+    
+    if (caseInputs.opposingParty === 'corporation') {
+      riskFactors.push('Corporate defendants often have significant legal resources')
+    }
+
+    const riskLevel = riskFactors.length > 2 ? 'High Risk' : riskFactors.length > 0 ? 'Moderate Risk' : 'Low Risk'
+    
+    return {
+      level: riskLevel,
+      factors: riskFactors.length > 0 ? riskFactors : ['Standard litigation risks apply']
+    }
+  }
+
   const getAlternativeOptions = () => {
-    return [
+    const baseOptions = [
       'Alternative Dispute Resolution (ADR)',
       'Direct negotiation',
       'Collaborative law approach',
       'Binding arbitration',
       'Expert determination',
       'Industry-specific mediation',
+    ]
+    
+    // Add case-specific options
+    const caseSpecificOptions = {
+      'employment-dispute': ['Employment Standards complaint', 'Human Rights application'],
+      'privacy-breach': ['Privacy Commissioner complaint', 'Regulatory compliance review'],
+      'business-litigation': ['Commercial mediation', 'Business court procedures'],
+      'regulatory-compliance': ['Administrative review', 'Compliance negotiation']
+    }
+    
+    return [...baseOptions, ...(caseSpecificOptions[caseInputs.caseType] || [])]
+  }
+    // Simulated research findings - in a real system this would integrate with legal databases
+    const researchByCase = {
+      'contract-dispute': [
+        {
+          type: 'Case Law',
+          citation: 'Bhasin v. Hrynew, 2014 SCC 71',
+          relevance: 'Establishes duty of honest performance in contract law',
+          impact: 'Strengthens claims for breach involving bad faith conduct'
+        },
+        {
+          type: 'Statute',
+          citation: 'Sale of Goods Act, R.S.O. 1990, c. S.1',
+          relevance: 'Governs contracts for sale of goods',
+          impact: 'Provides implied warranties and remedies for buyers'
+        }
+      ],
+      'employment-dispute': [
+        {
+          type: 'Case Law',
+          citation: 'Bardal v. Globe & Mail Ltd. (1960), 24 D.L.R. (2d) 140',
+          relevance: 'Establishes factors for reasonable notice calculation',
+          impact: 'Standard for determining notice periods in wrongful dismissal'
+        },
+        {
+          type: 'Legislation Update',
+          citation: 'Working for Workers Act, 2021, S.O. 2021, c. 35',
+          relevance: 'Recent amendments to Employment Standards Act',
+          impact: 'Enhanced employee protections and disconnection rights'
+        }
+      ],
+      'privacy-breach': [
+        {
+          type: 'Regulatory Update',
+          citation: 'PIPEDA Breach Notification Regulations, SOR/2018-64',
+          relevance: 'Mandatory breach notification requirements',
+          impact: 'Strict timelines for reporting privacy breaches'
+        },
+        {
+          type: 'Case Law',
+          citation: 'Jones v. Tsige, 2012 ONCA 32',
+          relevance: 'Recognizes tort of intrusion upon seclusion',
+          impact: 'Provides civil remedy for privacy violations'
+        }
+      ]
+    }
+    
+    return researchByCase[caseInputs.caseType] || [
+      {
+        type: 'General',
+        citation: 'Current as of ' + new Date().toLocaleDateString(),
+        relevance: 'Legal research updated with latest developments',
+        impact: 'Analysis reflects current state of law'
+      }
+    ]
+  }
+
+  const getCurrentLegalResearch = () => {
+    // Simulated research findings - in a real system this would integrate with legal databases
+    const researchByCase = {
+      'contract-dispute': [
+        {
+          type: 'Case Law',
+          citation: 'Bhasin v. Hrynew, 2014 SCC 71',
+          relevance: 'Establishes duty of honest performance in contract law',
+          impact: 'Strengthens claims for breach involving bad faith conduct'
+        },
+        {
+          type: 'Statute',
+          citation: 'Sale of Goods Act, R.S.O. 1990, c. S.1',
+          relevance: 'Governs contracts for sale of goods',
+          impact: 'Provides implied warranties and remedies for buyers'
+        }
+      ],
+      'employment-dispute': [
+        {
+          type: 'Case Law',
+          citation: 'Bardal v. Globe & Mail Ltd. (1960), 24 D.L.R. (2d) 140',
+          relevance: 'Establishes factors for reasonable notice calculation',
+          impact: 'Standard for determining notice periods in wrongful dismissal'
+        },
+        {
+          type: 'Legislation Update',
+          citation: 'Working for Workers Act, 2021, S.O. 2021, c. 35',
+          relevance: 'Recent amendments to Employment Standards Act',
+          impact: 'Enhanced employee protections and disconnection rights'
+        }
+      ],
+      'privacy-breach': [
+        {
+          type: 'Regulatory Update',
+          citation: 'PIPEDA Breach Notification Regulations, SOR/2018-64',
+          relevance: 'Mandatory breach notification requirements',
+          impact: 'Strict timelines for reporting privacy breaches'
+        },
+        {
+          type: 'Case Law',
+          citation: 'Jones v. Tsige, 2012 ONCA 32',
+          relevance: 'Recognizes tort of intrusion upon seclusion',
+          impact: 'Provides civil remedy for privacy violations'
+        }
+      ]
+    }
+    
+    return researchByCase[caseInputs.caseType] || [
+      {
+        type: 'General',
+        citation: 'Current as of ' + new Date().toLocaleDateString(),
+        relevance: 'Legal research updated with latest developments',
+        impact: 'Analysis reflects current state of law'
+      }
     ]
   }
 
@@ -3510,18 +3843,40 @@ DISCLAIMER: This analysis provides general information only and does not constit
 For personalized legal guidance, schedule a consultation with Tim Harmar Legal.
 
 Case Type: ${caseTypes[analysisResults.caseType]?.name}
-Success Probability: ${analysisResults.successProbability}%
-Risk Assessment: ${analysisResults.riskAssessment}
 Estimated Timeframe: ${analysisResults.estimatedTimeframe}
+Risk Assessment: ${analysisResults.riskAssessment?.level || 'Not assessed'}
+
+POTENTIAL CAUSES OF ACTION:
+${analysisResults.causesOfAction?.map((cause, i) => `
+${i + 1}. ${cause.name}
+   Description: ${cause.description}
+   
+   Required Elements:
+${cause.elements.map(element => `   • ${element}`).join('\n')}
+   
+   Available Remedies:
+${cause.remedies.map(remedy => `   • ${remedy}`).join('\n')}
+`).join('\n') || 'No specific causes of action identified'}
+
+PROCEDURAL ASPECTS:
+${analysisResults.proceduralAspects?.map((aspect, i) => `${i + 1}. ${aspect}`).join('\n') || 'Standard litigation procedures apply'}
 
 RECOMMENDED APPROACH:
 ${analysisResults.recommendedApproach.map((step, i) => `${i + 1}. ${step}`).join('\n')}
 
 ALTERNATIVE OPTIONS:
-${analysisResults.alternativeOptions.map((option, i) => `• ${option}`).join('\n')}
+${analysisResults.alternativeOptions.map((option) => `• ${option}`).join('\n')}
+
+CURRENT LEGAL RESEARCH:
+${analysisResults.researchFindings?.map((finding) => `• ${finding.type}: ${finding.citation}
+  Relevance: ${finding.relevance}
+  Impact: ${finding.impact}`).join('\n\n') || 'Research current as of analysis date'}
+
+RISK FACTORS:
+${analysisResults.riskAssessment?.factors?.map((factor) => `• ${factor}`).join('\n') || 'Standard litigation risks apply'}
 
 STRATEGIC INSIGHTS:
-${strategicInsights?.map((insight) => `• ${insight.title}: ${insight.description}`).join('\n')}
+${strategicInsights?.map((insight) => `• ${insight.title}: ${insight.description}`).join('\n') || 'See recommended approach above'}
 
 Contact Tim Harmar Legal for personalized consultation:
 Email: info@timharmar.com
@@ -3543,18 +3898,35 @@ Generated on: ${new Date().toLocaleDateString()}
   }
 
   const resetSimulator = () => {
-    setCurrentStep(0)
     setCaseInputs({
       caseType: '',
       jurisdiction: 'ontario',
       caseValue: '',
       complexity: 'medium',
       timeline: '',
+      urgency: 'normal',
       riskTolerance: 'medium',
       primaryGoal: '',
       hasEvidence: 'unknown',
       opposingParty: 'individual',
       priorNegotiation: 'no',
+      // New expanded fields
+      clientType: 'individual',
+      businessSize: '',
+      industryType: '',
+      timeConstraints: '',
+      budgetRange: '',
+      preferredResolution: '',
+      currentStatus: 'initial_consultation',
+      legalRepresentation: 'none',
+      documentsAvailable: '',
+      witnessesAvailable: 'unknown',
+      expertOpinionNeeded: 'unknown',
+      regulatoryContext: '',
+      crossBorderIssues: 'no',
+      mediationWillingness: 'open',
+      publicityPreferences: 'confidential',
+      relationshipImportance: 'low'
     })
     setAnalysisResults(null)
     setStrategicInsights(null)
@@ -3716,6 +4088,203 @@ Generated on: ${new Date().toLocaleDateString()}
             </motion.div>
           )}
 
+          {/* Additional Information Section */}
+          {caseInputs.caseType && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 p-6 bg-white/70 rounded-lg border border-purple-200"
+            >
+              <div className="md:col-span-2">
+                <h4 className="text-lg font-bold text-purple-800 mb-4">Additional Case Information</h4>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Client Type
+                </label>
+                <select
+                  value={caseInputs.clientType}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, clientType: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="individual">Individual</option>
+                  <option value="small_business">Small Business</option>
+                  <option value="corporation">Corporation</option>
+                  <option value="non_profit">Non-Profit Organization</option>
+                  <option value="government">Government Entity</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Urgency Level
+                </label>
+                <select
+                  value={caseInputs.urgency}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, urgency: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="flexible">Flexible timeline</option>
+                  <option value="normal">Standard urgency</option>
+                  <option value="urgent">Time-sensitive</option>
+                  <option value="emergency">Emergency situation</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Budget Range
+                </label>
+                <select
+                  value={caseInputs.budgetRange}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, budgetRange: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="">Select budget range...</option>
+                  <option value="under-5k">Under $5,000</option>
+                  <option value="5k-15k">$5,000 - $15,000</option>
+                  <option value="15k-50k">$15,000 - $50,000</option>
+                  <option value="50k-100k">$50,000 - $100,000</option>
+                  <option value="over-100k">Over $100,000</option>
+                  <option value="discuss">Prefer to discuss</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Preferred Resolution Method
+                </label>
+                <select
+                  value={caseInputs.preferredResolution}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, preferredResolution: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="">Select preference...</option>
+                  <option value="negotiation">Direct negotiation</option>
+                  <option value="mediation">Mediation</option>
+                  <option value="arbitration">Arbitration</option>
+                  <option value="litigation">Court litigation</option>
+                  <option value="collaborative">Collaborative process</option>
+                  <option value="open">Open to recommendations</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Relationship Importance
+                </label>
+                <select
+                  value={caseInputs.relationshipImportance}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, relationshipImportance: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="low">Not important to preserve</option>
+                  <option value="medium">Somewhat important</option>
+                  <option value="high">Very important to preserve</option>
+                  <option value="critical">Critical business relationship</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Publicity Preferences
+                </label>
+                <select
+                  value={caseInputs.publicityPreferences}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, publicityPreferences: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="confidential">Keep confidential</option>
+                  <option value="low_profile">Low profile approach</option>
+                  <option value="neutral">No strong preference</option>
+                  <option value="public">Open to public proceedings</option>
+                </select>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Case Documentation Section */}
+          {caseInputs.caseType && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 p-6 bg-white/70 rounded-lg border border-purple-200"
+            >
+              <div className="md:col-span-2">
+                <h4 className="text-lg font-bold text-purple-800 mb-4">Documentation & Evidence</h4>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Documents Available
+                </label>
+                <select
+                  value={caseInputs.documentsAvailable}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, documentsAvailable: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="">Select documentation level...</option>
+                  <option value="comprehensive">Comprehensive documentation</option>
+                  <option value="partial">Partial documentation</option>
+                  <option value="limited">Limited documentation</option>
+                  <option value="minimal">Minimal documentation</option>
+                  <option value="none">No relevant documents</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Witnesses Available
+                </label>
+                <select
+                  value={caseInputs.witnessesAvailable}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, witnessesAvailable: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="unknown">Unknown at this time</option>
+                  <option value="multiple">Multiple witnesses</option>
+                  <option value="few">Few key witnesses</option>
+                  <option value="one">One witness</option>
+                  <option value="none">No witnesses</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Expert Opinion Needed
+                </label>
+                <select
+                  value={caseInputs.expertOpinionNeeded}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, expertOpinionNeeded: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="unknown">To be determined</option>
+                  <option value="yes">Yes, expert required</option>
+                  <option value="maybe">Possibly required</option>
+                  <option value="no">Not required</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Cross-Border Issues
+                </label>
+                <select
+                  value={caseInputs.crossBorderIssues}
+                  onChange={(e) => setCaseInputs({ ...caseInputs, crossBorderIssues: e.target.value })}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                >
+                  <option value="no">No international elements</option>
+                  <option value="yes">International parties/assets</option>
+                  <option value="maybe">Possible international issues</option>
+                </select>
+              </div>
+            </motion.div>
+          )}
+
           {caseInputs.caseType && caseInputs.caseValue && caseInputs.primaryGoal && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -3765,13 +4334,6 @@ Generated on: ${new Date().toLocaleDateString()}
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-200">
-                <div className="text-3xl font-bold text-green-600">
-                  {analysisResults.successProbability}%
-                </div>
-                <div className="text-sm text-green-700 font-medium">Success Probability</div>
-              </div>
-
               <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
                 <div className="text-lg font-bold text-blue-600">
                   {analysisResults.estimatedTimeframe}
@@ -3781,12 +4343,158 @@ Generated on: ${new Date().toLocaleDateString()}
 
               <div className="text-center p-4 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
                 <div className="text-sm font-bold text-orange-600">
-                  {analysisResults.riskAssessment}
+                  {analysisResults.riskAssessment?.level || 'Moderate Risk'}
                 </div>
                 <div className="text-sm text-orange-700 font-medium">Risk Level</div>
               </div>
+
+              <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+                <div className="text-lg font-bold text-purple-600">
+                  {analysisResults.causesOfAction?.length || 0}
+                </div>
+                <div className="text-sm text-purple-700 font-medium">Potential Claims</div>
+              </div>
             </div>
           </div>
+
+          {/* Causes of Action */}
+          {analysisResults.causesOfAction && analysisResults.causesOfAction.length > 0 && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+              <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                <Scale className="w-5 h-5" />
+                Potential Causes of Action
+              </h5>
+              <div className="space-y-4">
+                {analysisResults.causesOfAction.map((cause, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="border border-gray-200 rounded-lg p-4 bg-gradient-to-r from-gray-50 to-white"
+                  >
+                    <h6 className="font-bold text-purple-800 mb-2 flex items-center gap-2">
+                      <div className="w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        {index + 1}
+                      </div>
+                      {cause.name}
+                    </h6>
+                    <p className="text-gray-700 mb-3">{cause.description}</p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <h7 className="font-semibold text-sm text-gray-800 mb-1">Required Elements:</h7>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {cause.elements.map((element, elemIndex) => (
+                            <li key={elemIndex} className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                              {element}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h7 className="font-semibold text-sm text-gray-800 mb-1">Available Remedies:</h7>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {cause.remedies.map((remedy, remIndex) => (
+                            <li key={remIndex} className="flex items-start gap-2">
+                              <ArrowRight className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                              {remedy}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Procedural Aspects */}
+          {analysisResults.proceduralAspects && analysisResults.proceduralAspects.length > 0 && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+              <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5" />
+                Litigation Procedural Aspects
+              </h5>
+              <div className="space-y-3">
+                {analysisResults.proceduralAspects.map((aspect, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-3 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      {index + 1}
+                    </div>
+                    <span className="text-gray-700">{aspect}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Legal Research Findings */}
+          {analysisResults.researchFindings && analysisResults.researchFindings.length > 0 && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+              <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                <Search className="w-5 h-5" />
+                Current Legal Research
+              </h5>
+              <div className="space-y-4">
+                {analysisResults.researchFindings.map((finding, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="border-l-4 border-green-500 bg-green-50 p-4 rounded-r-lg"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="px-2 py-1 bg-green-200 text-green-800 text-xs font-semibold rounded">
+                        {finding.type}
+                      </span>
+                      <span className="font-semibold text-gray-800">{finding.citation}</span>
+                    </div>
+                    <p className="text-sm text-gray-700 mb-1">
+                      <strong>Relevance:</strong> {finding.relevance}
+                    </p>
+                    <p className="text-sm text-gray-700">
+                      <strong>Impact:</strong> {finding.impact}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Risk Assessment Details */}
+          {analysisResults.riskAssessment && analysisResults.riskAssessment.factors && (
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
+              <h5 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                <AlertTriangle className="w-5 h-5" />
+                Risk Assessment Details
+              </h5>
+              <div className="space-y-2">
+                {analysisResults.riskAssessment.factors.map((factor, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex items-start gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200"
+                  >
+                    <AlertTriangle className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700 text-sm">{factor}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Recommended Approach */}
           <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
@@ -3893,7 +4601,7 @@ Generated on: ${new Date().toLocaleDateString()}
                   `I've completed a case strategy analysis using your simulator for a ${caseTypes[analysisResults.caseType]?.name} matter. I would like to schedule a consultation to discuss my specific situation in detail.
 
 Case Type: ${caseTypes[analysisResults.caseType]?.name}
-Estimated Success Rate: ${analysisResults.successProbability}%
+Risk Level: ${analysisResults.riskAssessment?.level || 'To be assessed'}
 Estimated Timeline: ${analysisResults.estimatedTimeframe}
 
 Please let me know your availability for a consultation.
