@@ -3,19 +3,38 @@ import emailjs from '@emailjs/browser'
 // EmailJS configuration
 // These are public keys and are safe to expose in client-side code
 const EMAILJS_CONFIG = {
-  SERVICE_ID: 'service_timharmar', // Will be configured with EmailJS
-  TEMPLATE_ID: 'template_consultation', // Will be configured with EmailJS
-  PUBLIC_KEY: 'YOUR_PUBLIC_KEY', // Will be configured with EmailJS
+  SERVICE_ID: 'service_timharmar', // Configure this in your EmailJS dashboard
+  TEMPLATE_ID: 'template_consultation', // Configure this in your EmailJS dashboard  
+  PUBLIC_KEY: 'YOUR_PUBLIC_KEY', // Replace with actual public key from EmailJS dashboard
 }
+
+// For development: You can override these values here for testing
+// Example:
+// const EMAILJS_CONFIG = {
+//   SERVICE_ID: 'service_abc123',
+//   TEMPLATE_ID: 'template_def456', 
+//   PUBLIC_KEY: 'user_ghi789',
+// }
 
 // Initialize EmailJS
 export const initEmailJS = () => {
+  if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    console.warn('EmailJS: Please configure your public key in emailService.js')
+    return false
+  }
   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY)
+  return true
 }
 
 // Send consultation request email
 export const sendConsultationEmail = async (formData) => {
   try {
+    // Check if EmailJS is properly configured
+    if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+      console.warn('EmailJS not configured, falling back to mock service')
+      return await sendConsultationEmailMock(formData)
+    }
+
     const templateParams = {
       to_email: 'kburton@timharmar.com',
       from_name: formData.userName,
@@ -35,10 +54,22 @@ export const sendConsultationEmail = async (formData) => {
       templateParams
     )
 
+    console.log('EmailJS response:', response)
     return { success: true, response }
   } catch (error) {
     console.error('Email sending failed:', error)
-    return { success: false, error }
+    
+    // Provide detailed error information
+    let errorMessage = 'Failed to send email'
+    if (error.status === 422) {
+      errorMessage = 'Invalid template parameters'
+    } else if (error.status === 400) {
+      errorMessage = 'Invalid EmailJS configuration'
+    } else if (error.text) {
+      errorMessage = error.text
+    }
+    
+    return { success: false, error: errorMessage }
   }
 }
 
