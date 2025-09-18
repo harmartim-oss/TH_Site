@@ -11,11 +11,13 @@ This guide will help you configure EmailJS to automatically send consultation re
 ## Step-by-Step Setup
 
 ### 1. Create EmailJS Account
+
 1. Go to [emailjs.com](https://www.emailjs.com/)
 2. Sign up for a free account
 3. Verify your email address
 
 ### 2. Configure Email Service
+
 1. In your EmailJS dashboard, go to **Email Services** > **Add New Service**
 2. Choose your email provider (recommended: Gmail)
 3. For Gmail:
@@ -25,12 +27,14 @@ This guide will help you configure EmailJS to automatically send consultation re
 4. Save the service and copy the **Service ID** (e.g., `service_abc123`)
 
 ### 3. Create Email Template
+
 1. Go to **Email Templates** > **Create New Template**
 2. Use this template configuration:
 
 **Subject:** `New Consultation Request - {{consultation_type}} - {{from_name}}`
 
 **HTML Content:**
+
 ```html
 <h2>🏛️ New Consultation Request</h2>
 <p><strong>Client Information:</strong></p>
@@ -50,11 +54,12 @@ This guide will help you configure EmailJS to automatically send consultation re
 <p><strong>Additional Information:</strong></p>
 <p>{{additional_info}}</p>
 
-<hr>
+<hr />
 <p><small>Submitted on {{submission_time}} via timharmar.com Smart Scheduler</small></p>
 ```
 
 **Settings:**
+
 - **To Email:** `kburton@timharmar.com`
 - **From Name:** `Tim Harmar Website`
 - **From Email:** Your configured service email
@@ -62,22 +67,25 @@ This guide will help you configure EmailJS to automatically send consultation re
 3. Save and copy the **Template ID** (e.g., `template_def456`)
 
 ### 4. Get Your Public Key
+
 1. Go to **Account** > **API Keys**
 2. Copy your **Public Key** (e.g., `user_ghi789`)
 
 ### 5. Configure the Website
+
 1. Open `src/lib/emailService.js`
 2. Replace the configuration values:
 
 ```javascript
 const EMAILJS_CONFIG = {
-  SERVICE_ID: 'your_service_id_here',    // From step 2
-  TEMPLATE_ID: 'your_template_id_here',  // From step 3
-  PUBLIC_KEY: 'your_public_key_here',    // From step 4
+  SERVICE_ID: 'your_service_id_here', // From step 2
+  TEMPLATE_ID: 'your_template_id_here', // From step 3
+  PUBLIC_KEY: 'your_public_key_here', // From step 4
 }
 ```
 
 ### 6. Test the Integration
+
 1. Start the development server: `npm run dev`
 2. Navigate to the Smart Scheduler section
 3. Fill out and submit a test consultation request
@@ -90,7 +98,7 @@ The following variables are automatically sent to your EmailJS template:
 
 - `{{to_email}}` - Always kburton@timharmar.com
 - `{{from_name}}` - User's name from form
-- `{{from_email}}` - User's email from form  
+- `{{from_email}}` - User's email from form
 - `{{phone}}` - User's phone (or "Not provided")
 - `{{consultation_type}}` - Selected consultation type
 - `{{preferred_date}}` - User's preferred date
@@ -118,9 +126,11 @@ The following variables are automatically sent to your EmailJS template:
    - Test template in EmailJS dashboard preview
 
 ### Development Mode
+
 If EmailJS is not configured, the system automatically falls back to a mock service that logs to the console. This allows development to continue without EmailJS setup.
 
 ### Support
+
 - EmailJS Documentation: [emailjs.com/docs](https://www.emailjs.com/docs)
 - For template issues, use the EmailJS dashboard preview feature
 - Check browser console for detailed error messages

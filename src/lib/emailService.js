@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser'
 // These are public keys and are safe to expose in client-side code
 const EMAILJS_CONFIG = {
   SERVICE_ID: 'service_timharmar', // Configure this in your EmailJS dashboard
-  TEMPLATE_ID: 'template_consultation', // Configure this in your EmailJS dashboard  
+  TEMPLATE_ID: 'template_consultation', // Configure this in your EmailJS dashboard
   PUBLIC_KEY: 'YOUR_PUBLIC_KEY', // Replace with actual public key from EmailJS dashboard
 }
 
@@ -12,7 +12,7 @@ const EMAILJS_CONFIG = {
 // Example:
 // const EMAILJS_CONFIG = {
 //   SERVICE_ID: 'service_abc123',
-//   TEMPLATE_ID: 'template_def456', 
+//   TEMPLATE_ID: 'template_def456',
 //   PUBLIC_KEY: 'user_ghi789',
 // }
 
@@ -58,7 +58,7 @@ export const sendConsultationEmail = async (formData) => {
     return { success: true, response }
   } catch (error) {
     console.error('Email sending failed:', error)
-    
+
     // Provide detailed error information
     let errorMessage = 'Failed to send email'
     if (error.status === 422) {
@@ -68,7 +68,7 @@ export const sendConsultationEmail = async (formData) => {
     } else if (error.text) {
       errorMessage = error.text
     }
-    
+
     return { success: false, error: errorMessage }
   }
 }
