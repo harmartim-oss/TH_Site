@@ -830,7 +830,9 @@ export default function App() {
 
                   {/* Contact Button */}
                   <button
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() =>
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                    }
                     className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
                     aria-label="Navigate to contact section"
                   >
@@ -1888,7 +1890,8 @@ export default function App() {
                     Schedule Your Free Consultation
                   </h3>
                   <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-                    Book your no-obligation consultation with our legal experts. We'll discuss your needs and provide strategic guidance.
+                    Book your no-obligation consultation with our legal experts. We'll discuss your
+                    needs and provide strategic guidance.
                   </p>
                 </div>
                 <SmartScheduler />

@@ -3846,10 +3846,12 @@ export const LegalCaseStrategySimulator = () => {
           🎯 AI Legal Case Strategy Simulator - Ontario Claims
         </h3>
         <p className="text-purple-700 text-lg">
-          Interactive case analysis and strategic insights powered by Tim Harmar's legal expertise, specifically focused on Ontario legal procedures and regulations
+          Interactive case analysis and strategic insights powered by Tim Harmar's legal expertise,
+          specifically focused on Ontario legal procedures and regulations
         </p>
         <div className="mt-2 text-sm text-purple-600">
-          <strong>Note:</strong> This tool provides general information based on Ontario legal framework only, not legal advice
+          <strong>Note:</strong> This tool provides general information based on Ontario legal
+          framework only, not legal advice
         </div>
       </div>
 
@@ -4204,30 +4206,33 @@ export const LegalCaseStrategySimulator = () => {
           )}
 
           {/* Ontario-Specific Legal Insights */}
-          {analysisResults.ontarioSpecificInsights && analysisResults.ontarioSpecificInsights.length > 0 && (
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-red-200 shadow-lg">
-              <h5 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
-                Ontario-Specific Legal Insights
-              </h5>
-              <div className="space-y-3">
-                {analysisResults.ontarioSpecificInsights.map((insight, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-3 p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-lg border border-red-100"
-                  >
-                    <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                      🍁
-                    </div>
-                    <span className="text-sm text-red-800 font-medium leading-relaxed">{insight}</span>
-                  </motion.div>
-                ))}
+          {analysisResults.ontarioSpecificInsights &&
+            analysisResults.ontarioSpecificInsights.length > 0 && (
+              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-red-200 shadow-lg">
+                <h5 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+                  <MapPin className="w-5 h-5" />
+                  Ontario-Specific Legal Insights
+                </h5>
+                <div className="space-y-3">
+                  {analysisResults.ontarioSpecificInsights.map((insight, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-start gap-3 p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-lg border border-red-100"
+                    >
+                      <div className="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        🍁
+                      </div>
+                      <span className="text-sm text-red-800 font-medium leading-relaxed">
+                        {insight}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
           {/* Alternative Options */}
           <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-purple-200 shadow-lg">
