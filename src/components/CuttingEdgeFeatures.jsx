@@ -860,17 +860,19 @@ export const SmartScheduler = () => {
       consultationType,
       selectedDate,
       selectedTime,
-      additionalInfo
+      additionalInfo,
     }
 
     try {
       // Send email using the email service
       const result = await sendConsultationEmailMock(formData)
-      
+
       if (result.success) {
         setIsSubmitted(true)
-        setSubmitMessage('✅ Your consultation request has been submitted successfully! A representative will contact you within 2 hours to confirm your appointment.')
-        
+        setSubmitMessage(
+          '✅ Your consultation request has been submitted successfully! A representative will contact you within 2 hours to confirm your appointment.'
+        )
+
         // Auto-reset form after 8 seconds for new submissions
         setTimeout(() => {
           setIsSubmitted(false)
@@ -889,8 +891,10 @@ export const SmartScheduler = () => {
       }
     } catch (error) {
       console.error('Failed to send consultation request:', error)
-      setSubmitMessage('❌ There was an error sending your request. Please try again or contact us directly at kburton@timharmar.com or (705) 943-5049.')
-      
+      setSubmitMessage(
+        '❌ There was an error sending your request. Please try again or contact us directly at kburton@timharmar.com or (705) 943-5049.'
+      )
+
       // Reset after 5 seconds on error
       setTimeout(() => {
         setIsSubmitting(false)
@@ -1103,8 +1107,8 @@ export const SmartScheduler = () => {
               isSubmitted && !isSubmitting
                 ? 'bg-green-50 text-green-800 border border-green-200'
                 : isSubmitting
-                ? 'bg-blue-50 text-blue-800 border border-blue-200'
-                : 'bg-red-50 text-red-800 border border-red-200'
+                  ? 'bg-blue-50 text-blue-800 border border-blue-200'
+                  : 'bg-red-50 text-red-800 border border-red-200'
             }`}
           >
             {submitMessage}
@@ -1126,7 +1130,7 @@ export const SmartScheduler = () => {
             <span className="flex items-center justify-center">
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                 className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full"
               />
               Sending Request...

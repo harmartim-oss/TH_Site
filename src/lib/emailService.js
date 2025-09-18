@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser'
 const EMAILJS_CONFIG = {
   SERVICE_ID: 'service_timharmar', // Will be configured with EmailJS
   TEMPLATE_ID: 'template_consultation', // Will be configured with EmailJS
-  PUBLIC_KEY: 'YOUR_PUBLIC_KEY' // Will be configured with EmailJS
+  PUBLIC_KEY: 'YOUR_PUBLIC_KEY', // Will be configured with EmailJS
 }
 
 // Initialize EmailJS
@@ -26,7 +26,7 @@ export const sendConsultationEmail = async (formData) => {
       preferred_time: formData.selectedTime,
       additional_info: formData.additionalInfo || 'None provided',
       submission_time: new Date().toLocaleString(),
-      subject: `🏛️ Consultation Request - ${formData.consultationType} - ${formData.userName}`
+      subject: `🏛️ Consultation Request - ${formData.consultationType} - ${formData.userName}`,
     }
 
     const response = await emailjs.send(
@@ -46,12 +46,15 @@ export const sendConsultationEmail = async (formData) => {
 export const sendConsultationEmailMock = async (formData) => {
   console.log('=== MOCK EMAIL SENT ===')
   console.log('To: kburton@timharmar.com')
-  console.log('Subject:', `🏛️ Consultation Request - ${formData.consultationType} - ${formData.userName}`)
+  console.log(
+    'Subject:',
+    `🏛️ Consultation Request - ${formData.consultationType} - ${formData.userName}`
+  )
   console.log('Form Data:', formData)
   console.log('======================')
-  
+
   // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
   return { success: true, mock: true }
 }
