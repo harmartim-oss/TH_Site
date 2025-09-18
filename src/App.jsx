@@ -828,15 +828,15 @@ export default function App() {
                     )}
                   </div>
 
-                  {/* Contact Link */}
-                  <a
-                    href="#contact"
-                    className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
+                  {/* Contact Button */}
+                  <button
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
                     aria-label="Navigate to contact section"
                   >
                     Contact
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
-                  </a>
+                  </button>
                 </nav>
 
                 {/* Desktop CTA Button */}
@@ -998,17 +998,19 @@ export default function App() {
                       <h4 className="text-sm font-semibold text-brand-accent uppercase tracking-wide px-4 py-2">
                         Contact
                       </h4>
-                      <a
-                        href="#contact"
+                      <button
+                        onClick={() => {
+                          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                          setMobileMenuOpen(false)
+                        }}
                         className={getResponsiveClassName(deviceInfo, {
-                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block',
+                          base: 'text-brand-primary hover:text-brand-accent font-medium py-2 px-6 rounded-token-sm hover:bg-brand-secondary/20 transition-all duration-300 block text-left w-full',
                           mobile: 'min-h-[44px] text-base',
                           touch: 'active:bg-brand-secondary/30',
                         })}
-                        onClick={() => setMobileMenuOpen(false)}
                       >
                         Get In Touch
-                      </a>
+                      </button>
                     </div>
 
                     <button
