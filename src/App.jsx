@@ -1743,7 +1743,7 @@ export default function App() {
                   </div>
                   <button
                     className="w-full bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-4 py-3 rounded-token-sm font-semibold shadow-token-md hover:shadow-button-hover transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
-                    onClick={() => (window.location.href = 'mailto:admin@timharmar.com')}
+                    onClick={() => (window.location.href = 'mailto:jochoa@timharmar.com')}
                   >
                     <Mail className="inline-block w-4 h-4 mr-2" />
                     Contact Josh
