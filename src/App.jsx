@@ -831,7 +831,7 @@ export default function App() {
                   {/* Contact Link */}
                   <a
                     href="#contact"
-                    className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group"
+                    className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
                     aria-label="Navigate to contact section"
                   >
                     Contact

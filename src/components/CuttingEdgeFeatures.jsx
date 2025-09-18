@@ -3333,9 +3333,9 @@ export const LegalCaseStrategySimulator = () => {
         },
       ],
       proceduralAspects: [
-        'Statement of Claim filing within limitation period (typically 2-6 years depending on claim)',
-        'Discovery process including document production and examinations for discovery',
-        'Mandatory mediation in most jurisdictions before trial',
+        'Statement of Claim filing in Ontario Superior Court within limitation period (typically 2-6 years depending on claim)',
+        'Discovery process under Ontario Rules of Civil Procedure including document production and examinations for discovery',
+        'Mandatory mediation under Ontario Rule 24.1 before proceeding to trial',
       ],
     },
     'employment-dispute': {
@@ -3353,8 +3353,9 @@ export const LegalCaseStrategySimulator = () => {
         },
       ],
       proceduralAspects: [
-        'Employment Standards complaint filing within specified time limits',
-        'Superior Court action for wrongful dismissal claims exceeding ESA minimums',
+        'Employment Standards Act (Ontario) complaint filing within specified time limits',
+        'Ontario Superior Court action for wrongful dismissal claims exceeding ESA minimums',
+        'Human Rights Tribunal of Ontario (HRTO) for discrimination claims',
       ],
     },
     'ip-protection': {
@@ -3393,8 +3394,9 @@ export const LegalCaseStrategySimulator = () => {
         },
       ],
       proceduralAspects: [
-        'Privacy Commissioner complaint process (no cost, informal resolution)',
-        'Urgent notification requirements (72 hours to Commissioner)',
+        'Privacy Commissioner of Canada complaint process (no cost, informal resolution)',
+        'Urgent notification requirements under PIPEDA (72 hours to Commissioner)',
+        'Ontario privacy laws may also apply for provincial matters',
       ],
     },
     'business-litigation': {
@@ -3420,8 +3422,9 @@ export const LegalCaseStrategySimulator = () => {
         },
       ],
       proceduralAspects: [
-        'Commercial Court or Commercial List procedures for complex business disputes',
-        'Case management conference system for streamlined proceedings',
+        'Ontario Superior Court Commercial List procedures for complex business disputes',
+        'Case management conference system under Ontario Rules of Civil Procedure for streamlined proceedings',
+        'Alternative dispute resolution through Ontario mediation programs',
       ],
     },
     'regulatory-compliance': {
@@ -3442,8 +3445,9 @@ export const LegalCaseStrategySimulator = () => {
         },
       ],
       proceduralAspects: [
-        'Administrative tribunal proceedings with specialized rules and procedures',
-        'Strict time limits for challenging regulatory decisions (typically 30 days)',
+        'Ontario administrative tribunal proceedings with specialized rules and procedures',
+        'Strict time limits for challenging regulatory decisions (typically 30 days under Ontario law)',
+        'Judicial review applications to Ontario Divisional Court',
       ],
     },
   }
@@ -3803,13 +3807,13 @@ export const LegalCaseStrategySimulator = () => {
     >
       <div className="text-center mb-8">
         <h3 className="text-3xl font-bold text-purple-800 mb-4 flex items-center justify-center gap-3">
-          🎯 AI Legal Case Strategy Simulator
+          🎯 AI Legal Case Strategy Simulator for Ontario Claims
         </h3>
         <p className="text-purple-700 text-lg">
-          Interactive case analysis and strategic insights powered by Tim Harmar's legal expertise
+          Interactive case analysis focused on Ontario legal processes and strategic insights powered by Tim Harmar's expertise
         </p>
         <div className="mt-2 text-sm text-purple-600">
-          <strong>Note:</strong> This tool provides general information only, not legal advice
+          <strong>Note:</strong> This tool provides general information for Ontario legal matters only, not legal advice
         </div>
       </div>
 
