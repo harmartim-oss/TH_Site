@@ -549,6 +549,16 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [activeDropdown, setActiveDropdown] = useState(null) // For dropdown menus
 
+  // Helper function to scroll to Smart Scheduler
+  const scrollToScheduler = () => {
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+      // Optional: Close mobile menu if open
+      setMobileMenuOpen(false)
+    }
+  }
+
   // Enhanced device detection
   const deviceInfo = useDeviceDetection()
 
@@ -845,11 +855,8 @@ export default function App() {
                 <div className="hidden md:block">
                   <button
                     className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-8 py-3 rounded-token-sm font-semibold shadow-token-sm hover:shadow-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95 border border-brand-accent/20"
-                    onClick={() =>
-                      (window.location.href =
-                        'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
-                    }
-                    aria-label="Schedule consultation via email"
+                    onClick={scrollToScheduler}
+                    aria-label="Schedule consultation using Smart Scheduler"
                   >
                     <Calendar className="inline-block w-4 h-4 mr-2" aria-hidden="true" />
                     Schedule Consultation
@@ -1021,10 +1028,7 @@ export default function App() {
                         mobile: 'min-h-[44px] text-lg',
                         touch: 'active:scale-98',
                       })}
-                      onClick={() =>
-                        (window.location.href =
-                          'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
-                      }
+                      onClick={scrollToScheduler}
                     >
                       <Calendar className="inline-block w-4 h-4 mr-2" />
                       Schedule Consultation
@@ -1532,10 +1536,7 @@ export default function App() {
                   <div className="flex gap-4 mb-8">
                     <button
                       className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-6 py-3 rounded-token-sm font-semibold shadow-token-md hover:shadow-button-hover transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
-                      onClick={() =>
-                        (window.location.href =
-                          'mailto:kburton@timharmar.com?subject=Schedule Consultation with Tim Harmar&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation with Tim Harmar.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
-                      }
+                      onClick={scrollToScheduler}
                     >
                       <Calendar className="inline-block w-4 h-4 mr-2" />
                       Schedule with Tim
@@ -1806,11 +1807,8 @@ export default function App() {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <button
                   className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-md hover:shadow-button-hover transition-all duration-300 transform hover:scale-105 active:scale-95"
-                  onClick={() =>
-                    (window.location.href =
-                      'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
-                  }
-                  aria-label="Schedule free consultation via email"
+                  onClick={scrollToScheduler}
+                  aria-label="Schedule free consultation using Smart Scheduler"
                 >
                   <Calendar className="inline-block w-5 h-5 mr-3" aria-hidden="true" />
                   Schedule Free Consultation
@@ -2068,11 +2066,8 @@ export default function App() {
                   <div className="mt-6">
                     <button
                       className="bg-brand-accent hover:bg-brand-accent/90 text-text-inverse px-6 py-3 rounded-token-sm font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-token-sm"
-                      onClick={() =>
-                        (window.location.href =
-                          'mailto:kburton@timharmar.com?subject=Schedule Consultation&body=Hello,%0D%0A%0D%0AI would like to schedule a consultation.%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0AThank you!')
-                      }
-                      aria-label="Schedule consultation via email"
+                      onClick={scrollToScheduler}
+                      aria-label="Schedule consultation using Smart Scheduler"
                     >
                       <Calendar className="inline-block w-4 h-4 mr-2" />
                       Schedule Consultation
