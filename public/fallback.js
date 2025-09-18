@@ -1,6 +1,6 @@
 // GitHub Pages deployment fallback script
 // Fallback script for GitHub Pages deployment issues
-(function () {
+;(function () {
   'use strict'
 
   // Check if React app has loaded

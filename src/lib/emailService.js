@@ -39,7 +39,7 @@ export const sendConsultationEmail = async (formData) => {
     console.log('Sending email with config:', {
       serviceId: EMAILJS_CONFIG.SERVICE_ID,
       templateId: EMAILJS_CONFIG.TEMPLATE_ID,
-      publicKey: EMAILJS_CONFIG.PUBLIC_KEY
+      publicKey: EMAILJS_CONFIG.PUBLIC_KEY,
     })
 
     const templateParams = {
