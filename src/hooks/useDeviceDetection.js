@@ -52,9 +52,10 @@ export const useDeviceDetection = () => {
       const orientation = height > width ? 'portrait' : 'landscape'
 
       // Device-specific detection with improved Safari/iOS detection
-      const isIOSDevice = /ipad|iphone|ipod/.test(userAgent) || 
-                         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0) || // iPad Pro on iOS 13+
-                         /macintosh/.test(userAgent) && 'ontouchend' in document // iPad desktop mode detection
+      const isIOSDevice =
+        /ipad|iphone|ipod/.test(userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0) || // iPad Pro on iOS 13+
+        (/macintosh/.test(userAgent) && 'ontouchend' in document) // iPad desktop mode detection
       const isAndroidDevice = /android/.test(userAgent)
       const isSafariDevice = /safari/.test(userAgent) && !/chrome|chromium|edge/.test(userAgent)
 

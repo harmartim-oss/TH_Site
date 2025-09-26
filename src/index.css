@@ -233,24 +233,24 @@ select:focus {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   /* Improve scrolling performance on iOS */
   * {
     -webkit-overflow-scrolling: touch;
   }
-  
+
   /* Fix iOS Safari button styling */
   button,
-  input[type="submit"],
-  input[type="button"] {
+  input[type='submit'],
+  input[type='button'] {
     -webkit-appearance: none;
     border-radius: 0;
   }
-  
+
   /* Fix iOS Safari input styling */
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
   textarea {
     -webkit-appearance: none;
     border-radius: 0;
@@ -263,7 +263,7 @@ select:focus {
   .interactive-scale:hover {
     transform: scale(1.05) translateY(-2px);
   }
-  
+
   /* Optimize touch targets for iOS */
   button,
   .btn-primary,

@@ -11,7 +11,7 @@ export const safariSmoothScroll = (element, options = {}) => {
     behavior: 'smooth',
     block: 'start',
     inline: 'nearest',
-    ...options
+    ...options,
   }
 
   // Check if smooth scrolling is supported
@@ -27,24 +27,24 @@ export const safariSmoothScroll = (element, options = {}) => {
     const offset = elementTop - Math.max(0, (windowHeight - elementHeight) / 2)
     const distance = offset - start
     const duration = Math.min(1000, Math.abs(distance) * 0.3)
-    
+
     let startTime = null
-    
+
     const scroll = (currentTime) => {
       if (startTime === null) startTime = currentTime
       const timeElapsed = currentTime - startTime
       const progress = Math.min(timeElapsed / duration, 1)
-      
+
       // Easing function (ease-out)
       const ease = 1 - Math.pow(1 - progress, 3)
-      
-      window.scrollTo(0, start + (distance * ease))
-      
+
+      window.scrollTo(0, start + distance * ease)
+
       if (timeElapsed < duration) {
         requestAnimationFrame(scroll)
       }
     }
-    
+
     requestAnimationFrame(scroll)
   }
 }
@@ -69,13 +69,13 @@ export const safariRequestIdleCallback = (callback, options = {}) => {
     // Safari fallback
     const timeout = options.timeout || 0
     const start = performance.now()
-    
+
     return setTimeout(() => {
       callback({
         didTimeout: false,
         timeRemaining() {
           return Math.max(0, 50 - (performance.now() - start))
-        }
+        },
       })
     }, timeout || 1)
   }
@@ -97,22 +97,22 @@ export const safariCancelIdleCallback = (id) => {
  */
 export const isIOSDevice = () => {
   const userAgent = navigator.userAgent.toLowerCase()
-  
+
   // Standard iOS detection
   if (/ipad|iphone|ipod/.test(userAgent)) {
     return true
   }
-  
+
   // iPad Pro on iOS 13+ detection (reports as desktop)
   if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0) {
     return true
   }
-  
+
   // iPad in desktop mode detection
   if (/macintosh/.test(userAgent) && 'ontouchend' in document) {
     return true
   }
-  
+
   return false
 }
 

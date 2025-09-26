@@ -823,9 +823,7 @@ export default function App() {
 
                   {/* Contact Button */}
                   <button
-                    onClick={() =>
-                      safariSmoothScrollTo('#contact')
-                    }
+                    onClick={() => safariSmoothScrollTo('#contact')}
                     className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
                     aria-label="Navigate to contact section"
                   >
@@ -1075,9 +1073,7 @@ export default function App() {
                     <div className="flex flex-col sm:flex-row gap-4">
                       <button
                         className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-md hover:shadow-button-hover transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group btn-enhanced animate-pulse-glow"
-                        onClick={() =>
-                          safariSmoothScrollTo('#contact')
-                        }
+                        onClick={() => safariSmoothScrollTo('#contact')}
                         aria-label="Navigate to contact section to schedule a free consultation"
                       >
                         <Calendar className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
