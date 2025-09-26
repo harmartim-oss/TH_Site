@@ -28,7 +28,8 @@ import {
   AlertTriangle,
   MapPin,
 } from 'lucide-react'
-import { sendConsultationEmail, sendConsultationEmailMock, initEmailJS } from '../lib/emailService'
+import { sendConsultationEmail, initEmailJS } from '../lib/emailService'
+import { safariSmoothScrollTo } from '../utils/safariCompat'
 
 // Utility function to open Privacy Compliance Guide in new window
 const openPrivacyGuide = () => {
@@ -569,13 +570,13 @@ export const AILegalAssistant = () => {
           break
 
         case 'Use Smart Scheduler':
-          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+          safariSmoothScrollTo('#contact')
           responseText =
             "Perfect! I'm scrolling to our Smart Scheduler below. It's the easiest way to book your free consultation. Just fill in your details and preferred time, and we'll confirm your appointment within 2 hours."
           break
 
         case 'View All Services':
-          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+          safariSmoothScrollTo('#services')
           responseText =
             'Here are our comprehensive legal services: Civil Litigation (contract disputes, commercial litigation), Privacy & Cybersecurity Law (PIPEDA compliance, data breach response), Intellectual Property (trademarks, copyrights), Business Law (corporate formation, contracts), and Business Start Up & Strategy (comprehensive startup legal support).'
           break

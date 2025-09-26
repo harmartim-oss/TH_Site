@@ -83,12 +83,21 @@ h4 {
   border-color: rgba(23, 144, 127, 0.2);
 }
 
-/* Enhanced text gradients */
+/* Enhanced text gradients with Safari compatibility */
 .text-gradient-primary {
   background: linear-gradient(135deg, #0a2351 0%, #17907f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent; /* Fallback for older browsers */
+}
+
+/* Safari fallback - if background-clip isn't supported, show solid color */
+@supports not (-webkit-background-clip: text) {
+  .text-gradient-primary {
+    color: #17907f;
+    background: none;
+  }
 }
 
 .text-gradient-enhanced {
@@ -96,8 +105,18 @@ h4 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent; /* Fallback for older browsers */
   background-size: 200% 200%;
   animation: gradientShift 4s ease-in-out infinite;
+}
+
+/* Safari fallback for enhanced gradient */
+@supports not (-webkit-background-clip: text) {
+  .text-gradient-enhanced {
+    color: #17907f;
+    background: none;
+    animation: none;
+  }
 }
 
 @keyframes gradientShift {
@@ -204,6 +223,53 @@ select:focus {
   *:hover {
     transform: none !important;
     scale: none !important;
+  }
+}
+
+/* Safari and iOS specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  /* Safari-specific styles */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Improve scrolling performance on iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Fix iOS Safari button styling */
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  
+  /* Fix iOS Safari input styling */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+}
+
+/* iOS device specific optimizations */
+@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 1024px) {
+  /* High DPI iOS devices */
+  .interactive-scale:hover {
+    transform: scale(1.05) translateY(-2px);
+  }
+  
+  /* Optimize touch targets for iOS */
+  button,
+  .btn-primary,
+  .btn-secondary {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -400,15 +466,7 @@ button:focus-visible {
   height: 300px;
 }
 
-/* Typography enhancements */
-.text-gradient-enhanced {
-  background: linear-gradient(135deg, #0a2351 0%, #17907f 50%, #0a2351 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
+/* Typography enhancements - consolidated with Safari compatibility above */
 
 /* Advanced animations */
 @keyframes float {
