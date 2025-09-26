@@ -10,6 +10,7 @@ import {
 import LoadingScreen from './components/LoadingScreen'
 import { useDeviceDetection, getResponsiveClassName } from './hooks/useDeviceDetection'
 import { usePerformanceOptimizations, optimizeForDevice } from './hooks/usePerformanceOptimizations'
+import { safariSmoothScrollTo } from './utils/safariCompat'
 import {
   Scale,
   Shield,
@@ -777,9 +778,7 @@ export default function App() {
                         <div className="py-2">
                           <button
                             onClick={() => {
-                              document
-                                .querySelector('.legal-resources-section')
-                                ?.scrollIntoView({ behavior: 'smooth' })
+                              safariSmoothScrollTo('.legal-resources-section')
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -789,9 +788,7 @@ export default function App() {
                           </button>
                           <button
                             onClick={() => {
-                              document
-                                .querySelector('.legal-assessment-section')
-                                ?.scrollIntoView({ behavior: 'smooth' })
+                              safariSmoothScrollTo('.legal-assessment-section')
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -801,9 +798,7 @@ export default function App() {
                           </button>
                           <button
                             onClick={() => {
-                              document
-                                .querySelector('.case-strategy-simulator-section')
-                                ?.scrollIntoView({ behavior: 'smooth' })
+                              safariSmoothScrollTo('.case-strategy-simulator-section')
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -813,9 +808,7 @@ export default function App() {
                           </button>
                           <button
                             onClick={() => {
-                              document
-                                .querySelector('.news-feed-section')
-                                ?.scrollIntoView({ behavior: 'smooth' })
+                              safariSmoothScrollTo('.news-feed-section')
                               setActiveDropdown(null)
                             }}
                             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-brand-accent/10 hover:text-brand-accent transition-colors flex items-center"
@@ -831,7 +824,7 @@ export default function App() {
                   {/* Contact Button */}
                   <button
                     onClick={() =>
-                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                      safariSmoothScrollTo('#contact')
                     }
                     className="text-brand-primary hover:text-brand-accent font-medium transition-all duration-300 hover:scale-105 relative group flex items-center"
                     aria-label="Navigate to contact section"
@@ -1021,8 +1014,8 @@ export default function App() {
                         touch: 'active:scale-98',
                       })}
                       onClick={() => {
-                        setIsMenuOpen(false)
-                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                        setMobileMenuOpen(false)
+                        safariSmoothScrollTo('#contact')
                       }}
                     >
                       <Calendar className="inline-block w-4 h-4 mr-2" />
@@ -1083,7 +1076,7 @@ export default function App() {
                       <button
                         className="bg-gradient-brand-accent hover:bg-brand-accent text-text-inverse px-8 py-4 rounded-token-sm font-bold text-lg shadow-token-md hover:shadow-button-hover transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 group btn-enhanced animate-pulse-glow"
                         onClick={() =>
-                          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
+                          safariSmoothScrollTo('#contact')
                         }
                         aria-label="Navigate to contact section to schedule a free consultation"
                       >

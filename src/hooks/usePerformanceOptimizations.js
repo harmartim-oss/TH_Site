@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { safariRequestIdleCallback } from '../utils/safariCompat'
 
 export const usePerformanceOptimizations = (deviceInfo) => {
   useEffect(() => {
@@ -60,9 +61,9 @@ export const usePerformanceOptimizations = (deviceInfo) => {
   }, [])
 
   useEffect(() => {
-    // Lazy load non-critical animations
-    if (!deviceInfo.isMobile && 'requestIdleCallback' in window) {
-      requestIdleCallback(() => {
+    // Lazy load non-critical animations with Safari compatibility
+    if (!deviceInfo.isMobile) {
+      safariRequestIdleCallback(() => {
         // Enable enhanced animations for desktop when idle
         document.body.classList.add('enhanced-animations-enabled')
       })
